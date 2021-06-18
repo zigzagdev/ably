@@ -4,67 +4,67 @@ include('partials/header.php');  ?>
 
     <div class="main">
         <div class="wrapper">
-        <h1>Add an account</h1>
-        <br/><br/>
-        <?php
-        if(isset($_SESSION['add']))
-        {
-            echo  $_SESSION['add'];
-            unset($_SESSION['add']);
-        }
-        ?>
+            <h1>Add your account</h1>
+            <br/><br/>
+            <?php
+            if(isset($_SESSION['add']))
+            {
+                echo  $_SESSION['add'];
+                unset($_SESSION['add']);
+            }
+            ?>
 
-        <form action="" method="post"　enctype="multipart/form-data">
-            <table class="tbl-30">
-                <tr>
-                    <td>UserName:</td>
-                    <td>
-                        <input type="text" name="user_name" placeholder="Enter your username">
-                    </td>
-                </tr>
+            <form action="" method="post"　enctype="multipart/form-data">
+                <table class="tbl-30">
+                    <tr>
+                        <td>UserName:</td>
+                        <td>
+                            <input type="text" name="user_name" placeholder="  Enter your username">
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>Password:</td>
-                    <td>
-                        <input type="password" name="password" placeholder="Enter your password">
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td>
+                            <input type="password" name="password" placeholder="  Enter your password">
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>Password Again:</td>
-                    <td>
-                        <input type="password2" name="password2" placeholder="Enter your password again">
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Password Again:</td>
+                        <td>
+                            <input type="password2" name="password2" placeholder="      Password again">
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>Email:</td>
-                    <td>
-                        <input type="email" name="email" placeholder="Enter your email">
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>
+                            <input type="email" name="email" placeholder="      Enter your email">
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>Post a Image:</td>
-                    <td>
-                        <input type="file" name="image">
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Post a Image:</td>
+                        <td>
+                            <input type="file" name="image">
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>Content:</td>
-                    <td>
-                        <textarea name="content" cols="30" rows="5" placeholder="Describe yourself"></textarea>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Content:</td>
+                        <td>
+                            <textarea name="content" cols="30" rows="5" placeholder="Describe yourself"></textarea>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" name="submit" value="Add Admin" class="btn-secondary">
-                    </td>
-                </tr>
-            </table>
-        </form>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" name="submit" value="Add Admin" class="btn-secondary">
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 

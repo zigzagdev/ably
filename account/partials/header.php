@@ -23,9 +23,9 @@ include('../config/constants.php');
 <div class="account text-center">
     <div class=" wrapper ">
         <ul>
-            <li><a href="../customer/index.php">Home</a></li>
-            <li><a href="index.php">DashBoard</a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="../account/manage-client.php">Home</a></li>
+            <li><a href="../account/index.php">DashBoard</a></li>
+            <li><a href="../account/logout.php">Logout</a></li>
         </ul>
     </div>
 </div>

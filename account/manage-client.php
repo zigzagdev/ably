@@ -43,13 +43,16 @@
                 <br/><br/>
                 <!---button--->
                 <a href="update-client.php" class="btn-primary">Update your Account</a>
+                <a href="delete-client.php" class="btn-secondary">Update your Account</a>
+                <a href="update-password.php" class="btn-primary">Update your Password</a>
                 <br/><br/><br/>
                 <table class="tbl-full">
                     <tr>
-                        <th>O.N</th>
-                        <th>Full Name</th>
+                        <th>ID</th>
                         <th>User Name</th>
-                        <th>Actions</th>
+                        <th>Image Photo</th>
+                        <th>Email</th>
+                        <th>Description</th>
                     </tr>
 
                     <?php
@@ -69,21 +72,17 @@
                                 $id = $rows['id'];
                                 $username = $rows['username'];
                                 $password = $rows['password'];
-                                $image = $rows['image'];
-                                $address = $rows['address'];
+                                $image_name = $rows['image_name'];
+                                $email = $rows['email'];
                                 $content = $rows['content'];
                                 ?>
                                 <tr>
                                     <td><?php echo $on++; ?>. </td>
                                     <td><?php echo $username; ?></td>
-                                    <td><?php echo $image; ?></td>
-                                    <td><?php echo $address; ?></td>
+                                    <td><?php echo $image_name; ?></td>
+                                    <td><?php echo $email; ?></td>
                                     <td><?php echo $content; ?></td>
-                                    <td>
-                                        <a href="/account/update-password.php?id=<?php echo $id; ?>" class="btn-primary">Change Password</a>
-                                        <a href="/account/update-client.php?id=<?php echo $id; ?>" class="btn-secondary">Update Your Account</a>
-                                        <a href="/account/delete-client.php?id=<?php echo $id; ?>" class="btn-danger">Delete Your Account</a>
-                                    </td>
+                                    <td></td>
                                 </tr>
                                 <?php
                             }
