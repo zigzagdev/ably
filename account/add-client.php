@@ -14,7 +14,7 @@ include('partials/header.php');  ?>
             }
             ?>
 
-            <form action="" method="post"　enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data" >
                 <table class="tbl-30">
                     <tr>
                         <td>UserName:</td>
@@ -33,7 +33,7 @@ include('partials/header.php');  ?>
                     <tr>
                         <td>Password Again:</td>
                         <td>
-                            <input type="password2" name="password2" placeholder="      Password again">
+                            <input type="password" name="password2" placeholder="      Password again">
                         </td>
                     </tr>
 
@@ -60,7 +60,7 @@ include('partials/header.php');  ?>
 
                     <tr>
                         <td colspan="2">
-                            <input type="submit" name="submit" value="Add Admin" class="btn-secondary">
+                            <input type="submit" name="submit" value="Add an account" class="btn-secondary">
                         </td>
                     </tr>
                 </table>
@@ -83,7 +83,7 @@ if(isset($_POST['submit']))
     {
         $image_name = $_FILES['image']['name'];
 
-        if($image_name!="")
+        if($image_name != " ")
         {
             $src = $_FILES['image']['tmp_name'];
             $dst ="../images/profile".$image_name;
@@ -99,21 +99,29 @@ if(isset($_POST['submit']))
     {
         $image_name= "";
     }
+    if (empty($user_name) || empty($password) || empty($password2) || empty($email) ){
+        die('Please fill all required fields!');
+    }
+
+    if ($password !== $password) {
+        die('Password and Confirm password should match!');
+    }
 
     $sql= "INSERT INTO tbl_account SET username='$user_name',password ='$password', password2 = '$password2',
 image_name = '$image_name',email = '$email',content = '$content' ";
 
     $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
 
-    if($rec==TRUE) {
+    if($rec == TRUE) {
         $_SESSION['add'] = "<div class='success'>Admin Added Successfully.</div>";
-        header("location:" . SITEURL . '/account/manage-account.php');
+        header("location:". SITEURL . 'manage-client.php');
     }
     else
     {
         $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
-        header("location:".SITEURL.'/account/add-account.php');  //ページへのリダイレクトをif~else文にて行っている。
+        header("location:".SITEURL.'/account/add-client.php');//ページへのリダイレクトをif~else文にて行っている。
     }
 }
 
-include('partials/footer.php');
+?>
+<?php include ('partials/footer.php'); ?>

@@ -48,7 +48,6 @@
                 <br/><br/><br/>
                 <table class="tbl-full">
                     <tr>
-                        <th>ID</th>
                         <th>User Name</th>
                         <th>Image Photo</th>
                         <th>Email</th>
@@ -77,9 +76,21 @@
                                 $content = $rows['content'];
                                 ?>
                                 <tr>
-                                    <td><?php echo $on++; ?>. </td>
                                     <td><?php echo $username; ?></td>
-                                    <td><?php echo $image_name; ?></td>
+                                    <td>
+                                        <?php
+                                        if($image_name=="")
+                                        {
+                                            echo "<div class='error'>Image not Added.</div>";
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                            <img src="../images/profile/<?php echo $image_name; ?>" width="100px">
+                                            <?php
+                                        }
+                                        ?>
+                                    </td>
                                     <td><?php echo $email; ?></td>
                                     <td><?php echo $content; ?></td>
                                     <td></td>
