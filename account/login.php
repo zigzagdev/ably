@@ -47,15 +47,21 @@ if(isset($_POST['submit']))
     $username = $_POST['username'];
     $password = md5($_POST['password']);
 
+
     $sql = "SELECT * FROM tbl_account WHERE username='$username' AND password='$password'";
     $rec = mysqli_query($connect, $sql);
     $count = mysqli_num_rows($rec);
 
     if($count==1)
     {
+        $row = mysqli_fetch_assoc($rec);
+        var_dump($row);
+        $url = "http://localhost:8001/account/manage-client.php?id=$row[id]";
         $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-        $_SESSION['user'] = $username;      //特定のユーザーがログアウトしてるかしてないかの確認の為に置いてる
-        header('Location:manage-client.php');
+        $_SESSION['user'] = $username;
+        //特定のユーザーがログアウトしてるかしてないかの確認の為に置いてる
+        header('Location:' .$url,true , 302);
+        exit;
     }
     else
     {

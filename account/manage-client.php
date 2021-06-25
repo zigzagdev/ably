@@ -43,7 +43,7 @@
                 <br/><br/>
                 <!---button--->
                 <a href="update-client.php" class="btn-primary">Update your Account</a>
-                <a href="delete-client.php" class="btn-secondary">Update your Account</a>
+                <a href="delete-client.php" class="btn-secondary">Delete your Account</a>
                 <a href="update-password.php" class="btn-primary">Update your Password</a>
                 <br/><br/><br/>
                 <table class="tbl-full">
@@ -55,8 +55,11 @@
                     </tr>
 
                     <?php
-                    $sql= "SELECT * FROM tbl_account";
-                    $rec= mysqli_query($connect, $sql);
+                    $id = $_GET['id'];
+
+                    $sql = "SELECT * FROM tbl_account where id=$id";
+
+                    $rec = mysqli_query($connect, $sql);
 
                     if($rec==TRUE)
                     {
