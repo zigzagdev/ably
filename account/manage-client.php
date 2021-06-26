@@ -42,8 +42,8 @@
                 ?>
                 <br/><br/>
                 <!---button--->
-                <a href="update-client.php" class="btn-primary">Update your Account</a>
-                <a href="delete-client.php" class="btn-secondary">Delete your Account</a>
+                <a class="btn-primary" href="update-client.php?id=<?= $id=$_GET['id']?>"> Update your Account</a>
+                <a class="btn-secondary" href="delete-client.php?id=<?= $id=$_GET['id']?>">Delete your Account</a>
                 <a href="update-password.php" class="btn-primary">Update your Password</a>
                 <br/><br/><br/>
                 <table class="tbl-full">

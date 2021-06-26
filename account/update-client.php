@@ -16,8 +16,9 @@
                     $count = mysqli_num_rows($rec);
                     if ($count == 1) {
                         $row = mysqli_fetch_assoc($rec);
+                        $id = $row['id'];
                         $username = $row['username'];
-                        $current_image = $row['image_name'];
+                        $image_name = $row['image_name'];
                     } else {
                         header('Location:update-client.php');
                     }
@@ -38,14 +39,14 @@
                         <td>Current Image: </td>
                         <td>
                             <?php
-                            if($current_image == "")
+                            if($image_name == "")
                             {
                                 echo "<div class='error'>Image not Available.</div>";
                             }
                             else
                             {
                                 ?>
-                                <img src="../images/food/<?php echo $current_image; ?>" width="150px">
+                                <img src="../images/profile/<?php echo $image_name; ?>" width="150px">
                                 <?php
                             }
                             ?>
