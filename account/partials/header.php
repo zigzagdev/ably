@@ -23,7 +23,7 @@ include('../config/constants.php');
 <div class="account text-center">
     <div class=" wrapper ">
         <ul>
-            <li><a href="../account/manage-client.php">Home</a></li>
+            <li><a href="../account/manage-client.php?id=<?= $id=$_GET['id']?>">Home</a></li>
             <li><a href="../account/index.php">DashBoard</a></li>
             <li><a href="../account/logout.php">Logout</a></li>
         </ul>
