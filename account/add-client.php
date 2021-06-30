@@ -1,6 +1,6 @@
 <?php
 //
-//include('partials/header.php');  ?>
+include('../config/constants.php'); ?>
 
     <div class="main">
         <div class="wrapper">
