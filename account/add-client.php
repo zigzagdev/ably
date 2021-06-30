@@ -1,10 +1,10 @@
 <?php
-
-include('partials/header.php');  ?>
+//
+//include('partials/header.php');  ?>
 
     <div class="main">
         <div class="wrapper">
-            <h1>Add your account</h1>
+            <h1 class>Add your account</h1>
             <br/><br/>
             <?php
             if(isset($_SESSION['add']))
@@ -113,15 +113,15 @@ image_name = '$image_name',email = '$email',content = '$content' ";
     $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
 
     if($rec == TRUE) {
-        $_SESSION['add'] = "<div class='success'>Admin Added Successfully.</div>";
-        header("location:". SITEURL . 'manage-client.php');
+        $_SESSION['add'] = "<div class='success'>Your account Added Successfully.</div>";
+        header("location: http://localhost:8001/account/manage-client.php");
     }
     else
     {
-        $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
-        header("location:".SITEURL.'/account/add-client.php');//ページへのリダイレクトをif~else文にて行っている。
+        $_SESSION['add'] = "<div class='error'>Failed to add your account.</div>";
+        header("location: http://localhost:8001/account/login.php");//ページへのリダイレクトをif~else文にて行っている。
     }
 }
 
 ?>
-<?php include ('partials/footer.php'); ?>
+
