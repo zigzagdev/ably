@@ -2,7 +2,9 @@
 
 <div class="main">
     <div class="wrapper">
-        <h1>Add Your lesson.</h1>
+        <h1>Add Your lesson.</h1><br/>
+        <br/>
+        <a class="btn-primary" href="manage-lesson.php?id=<?= $id=$_GET['id']?>"> Back to your lesson page</a>
         <br/><br/>
 
 

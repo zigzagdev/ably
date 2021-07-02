@@ -1,4 +1,4 @@
-<?php include('partials/header.php'); ?>
+<?php include('../account/partials/header.php'); ?>
 
 <!--Main Section -->
 <div class="main">
@@ -42,53 +42,34 @@
             <br/><br/><br/>
             <table class="tbl-full">
                 <tr>
-                    <th>User Name</th>
-                    <th>Image Photo</th>
-                    <th>Email</th>
-                    <th>Description</th>
+                    <th>Course</th>
+                    <th>Content</th>
+                    <th>Lesson Day</th>
                 </tr>
 
                 <?php
                 $id = $_GET['id'];
 
-                $sql = "SELECT * FROM tbl_account where id=$id";
+                $sql2 = "SELECT * FROM tbl_lesson where id=$id";
 
-                $rec = mysqli_query($connect, $sql);
+                $rec2 = mysqli_query($connect, $sql2);
 
-                if($rec==TRUE)
+                if($rec2==TRUE)
                 {
-                    $count = mysqli_num_rows($rec); // Function to get all the rows in database
+                    $count = mysqli_num_rows($rec2); // Function to get all the rows in database
 
                     $on=1;
 
                     if($count>0)
                     {
-                        while($rows=mysqli_fetch_assoc($rec))
+                        while($rows=mysqli_fetch_assoc($rec2))
                         {
                             $id = $rows['id'];
-                            $username = $rows['username'];
-                            $password = $rows['password'];
-                            $image_name = $rows['image_name'];
-                            $email = $rows['email'];
+                            $course = $rows['course'];
                             $content = $rows['content'];
                             ?>
                             <tr>
-                                <td><?php echo $username; ?></td>
-                                <td>
-                                    <?php
-                                    if($image_name=="")
-                                    {
-                                        echo "<div class='error'>Image not Added.</div>";
-                                    }
-                                    else
-                                    {
-                                        ?>
-                                        <img src="../images/profile/<?php echo $image_name; ?>" width="100px">
-                                        <?php
-                                    }
-                                    ?>
-                                </td>
-                                <td><?php echo $email; ?></td>
+                                <td><?php echo $course; ?></td>
                                 <td><?php echo $content; ?></td>
                                 <td></td>
                             </tr>
