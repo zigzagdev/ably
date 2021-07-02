@@ -21,7 +21,7 @@
                 <tr>
                     <td>Content:</td>
                     <td>
-                        <textarea name="content" cols="30" rows="5" placeholder="Describe its lesson."></textarea>
+                        <textarea name="content" cols="30" rows="3"></textarea>
                     </td>
                 </tr>
 
@@ -32,9 +32,6 @@
                     </td>
                 </tr>
                 <br/><br/>
-
-
-
 
                 <tr>
                     <td colspan="2">
@@ -61,7 +58,6 @@
                      account_id= $id ";
             $rec2=mysqli_query($connect,$sql2);
             var_dump($sql2);
-            var_dump($rec2);
 
             if($rec2==true)
             {

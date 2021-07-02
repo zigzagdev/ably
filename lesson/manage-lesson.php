@@ -67,10 +67,12 @@
                             $id = $rows['id'];
                             $course = $rows['course'];
                             $content = $rows['content'];
+                            $day = $rows['day'];
                             ?>
                             <tr>
                                 <td><?php echo $course; ?></td>
                                 <td><?php echo $content; ?></td>
+                                <td><?php echo $day; ?></td>
                                 <td></td>
                             </tr>
                             <?php
