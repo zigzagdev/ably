@@ -54,15 +54,14 @@
             }
 
 
-            $sql2 = "INSERT INTO tbl_lesson SET course = '$course',content = '$content', day = '$day'
-                     account_id= $id ";
+            $sql2 = "INSERT INTO tbl_lesson SET course = '$course',content = '$content', day = '$day' ";
             $rec2=mysqli_query($connect,$sql2);
-            var_dump($sql2);
+
 
             if($rec2==true)
             {
                 $url = "http://localhost:8001/account/manage-client.php?id=$id";
-                $_SESSION['add'] = "<div class='success'>Account Updated Successfully.</div>";
+                $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
                 header('Location:' .$url,true , 302);
             }
             else
