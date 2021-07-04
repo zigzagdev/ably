@@ -45,7 +45,8 @@
                 <a class="btn-primary" href="update-client.php?id=<?= $id=$_GET['id']?>"> Update your Account</a>
                 <a class="btn-secondary" href="delete-client.php?id=<?= $id=$_GET['id']?>">Delete your Account</a>
                 <a href="update-password.php" class="btn-primary">Update your Password</a>
-                <a class="btn-secondary" href="../lesson/add-lesson.php?id=<?= $id=$_GET['id']?>"> Create your lesson</a>
+                <a class="btn-secondary" href="../lesson/manage-lesson.php?id=<?= $id=$_GET['id']?>">To Lesson Page</a>
+
                 <br/><br/><br/>
                 <table class="tbl-full">
                     <tr>
