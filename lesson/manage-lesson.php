@@ -48,11 +48,11 @@
                 </tr>
 
                 <?php
-                $id = $_GET['id'];
 
-                $sql2 = "SELECT * FROM tbl_lesson where id=$id";
+                $sql2 = "SELECT * FROM tbl_lesson ";
 
                 $rec2 = mysqli_query($connect, $sql2);
+                var_dump($sql2);
 
                 if($rec2==TRUE)
                 {
