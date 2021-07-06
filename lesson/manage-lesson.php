@@ -37,8 +37,8 @@
             ?>
             <br/><br/>
             <!---button--->
-            <a class="btn-primary" href="update-lesson.php?id=<?= $id=$_GET['id']?>"> Update your Lesson</a>
-            <a class="btn-secondary" href="delete-lesson.php?id=<?= $id=$_GET['id']?>">Delete your Lesson</a>
+            <a class="btn-primary" href="update-lesson.php?id=<?= $id=$_GET['account_id']?>&id=<?= $id=$_GET['id']?>"> Update your Lesson</a>
+            <a class="btn-secondary" href="delete-lesson.php?id=<?= $id=$_GET['account_id']?>&id=<?= $id=$_GET['id']?>">Delete your Lesson</a>
             <br/><br/><br/>
             <table class="tbl-full">
                 <tr>
@@ -49,7 +49,7 @@
 
                 <?php
 
-                $sql2 = "SELECT * FROM tbl_lesson ";
+                $sql2 = "SELECT * FROM tbl_lesson where lesson_id ='$id'";
 
                 $rec2 = mysqli_query($connect, $sql2);
                 var_dump($sql2);
@@ -64,10 +64,11 @@
                     {
                         while($rows=mysqli_fetch_assoc($rec2))
                         {
-                            $id = $rows['id'];
+                            $id = $rows['lesson_id'];
                             $course = $rows['course'];
                             $content = $rows['content'];
                             $day = $rows['day'];
+                            $id2 = $rows['account_id'];
                             ?>
                             <tr>
                                 <td><?php echo $course; ?></td>
@@ -90,4 +91,4 @@
 </div>
 <!--Main Section -->
 
-<?php include('partials/footer.php') ?>
+<?php include('../account/partials/footer.php') ?>

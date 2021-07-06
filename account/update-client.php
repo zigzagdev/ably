@@ -1,16 +1,16 @@
 <?php  include('partials/header.php'); ?>
 
 <?php
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_account WHERE id=$id";
+if(isset($_GET['account_id'])) {
+    $account_id = $_GET['account_id'];
+    $sql = "SELECT * FROM tbl_account WHERE account_id=$account_id";
     $rec = mysqli_query($connect, $sql);
 
     if ($rec == true) {
         $count = mysqli_num_rows($rec);
         if ($count == 1) {
             $row = mysqli_fetch_assoc($rec);
-            $id = $row['id'];
+            $account_id = $row['account_id'];
             $username = $row['username'];
             $current_image = $row['image_name'];
             $image_name = $row['image_name'];
@@ -23,80 +23,80 @@ if(isset($_GET['id'])) {
     }
 }
 ?>
-<div class="main2">
-    <div class="wrapper">
-        <div class="inner">
-            <h1>Update your Account</h1>
-            <br/><br/>
+    <div class="main2">
+        <div class="wrapper">
+            <div class="inner">
+                <h1>Update your Account</h1>
+                <br/><br/>
 
-            <form action="" method="post" enctype="multipart/form-data">
-                <table class="tbl-30">
-                    <tr>
-                        <td class="text-white">Username:</td>
-                        <td>
-                            <input type="text" name="username" value="<?php echo $username; ?>">
-                        </td>
-                    </tr>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <table class="tbl-30">
+                        <tr>
+                            <td class="text-white">Username:</td>
+                            <td>
+                                <input type="text" name="username" value="<?php echo $username; ?>">
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td>Current Image: </td>
-                        <td>
-                            <?php
-                            if($image_name == "")
-                            {
-                                echo "<div class='error'>Image not Available.</div>";
-
-                            }
-                            else
-                            {
-                                ?>
-                                <img src="../images/profile/<?php echo $image_name; ?>" width="150px">
+                        <tr>
+                            <td>Current Image: </td>
+                            <td>
                                 <?php
-                            }
-                            ?>
-                        </td>
-                    </tr>
+                                if($image_name == "")
+                                {
+                                    echo "<div class='error'>Image not Available.</div>";
 
-                    <tr>
-                        <td> Select New Image: </td>
-                        <td>
-                            <input type="file" name="image">
-                        </td>
-                    </tr>
+                                }
+                                else
+                                {
+                                    ?>
+                                    <img src="../images/profile/<?php echo $image_name; ?>" width="150px">
+                                    <?php
+                                }
+                                ?>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td >Email: </td>
-                        <td>
-                            <input name="email" name="name" value="<?php echo $email; ?>">
-                        </td>
-                    </tr>
+                        <tr>
+                            <td> Select New Image: </td>
+                            <td>
+                                <input type="file" name="image">
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <td >Content: </td>
-                        <td>
-                            <textarea name="content" cols="30" rows="6" ><?php echo $content; ?></textarea>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td >Email: </td>
+                            <td>
+                                <input name="email" name="name" value="<?php echo $email; ?>">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td >Content: </td>
+                            <td>
+                                <textarea name="content" cols="30" rows="6" ><?php echo $content; ?></textarea>
+                            </td>
+                        </tr>
 
 
-                    <tr>
-                        <td colspan="2">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                            <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="hidden" name="account_id" value="<?php echo $account_id; ?>">
+                                <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
+                            </td>
+                        </tr>
 
-                </table>
-            </form>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 <?php
 if(isset($_POST['submit']))
 {
 
-    $id = $_POST['id'];
+    $account_id = $_POST['account_id'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $content = $_POST['content'];
@@ -115,7 +115,7 @@ if(isset($_POST['submit']))
             if($upload==false)
             {
                 $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-                $url = "http://localhost:8001/account/update-client.php?id=$row[id]";
+                $url = "http://localhost:8001/account/update-client.php?account_id=$row[account_id]";
                 header('Location:'.$url,true , 401);
                 die();
             }
@@ -126,7 +126,7 @@ if(isset($_POST['submit']))
                 if($remove==false)
                 {
                     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current Image.</div>";
-                    $url = "http://localhost:8001/account/update-client.php?id=$id";
+                    $url = "http://localhost:8001/account/update-client.php?account_id=$account_id";
                     header('Location:' .$url,true , 401);
                     die();
                 }
@@ -142,21 +142,21 @@ if(isset($_POST['submit']))
         $image_name = $current_image;
     }
     $sql = "UPDATE tbl_account SET username='$username',image_name='$image_name',email='$email',
-             content='$content' WHERE id=$id ";
+             content='$content' WHERE account_id=$account_id ";
     $rec = mysqli_query($connect, $sql);
- var_dump($sql);
- var_dump($rec);
+    var_dump($sql);
+    var_dump($rec);
 
     if($rec==true)
     {
-        $url = "http://localhost:8001/account/manage-client.php?id=$id";
+        $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
         $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['update'] = "<div class='error'>Failed to Update Account.</div>";
-        $url = "http://localhost:8001/account/update-client.php?id=$id";
+        $url = "http://localhost:8001/account/update-client.php?account_id=$account_id";
         header('Location:' .$url,true , 401);
         die();
     }

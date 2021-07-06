@@ -42,10 +42,10 @@
                 ?>
                 <br/><br/>
                 <!---button--->
-                <a class="btn-primary" href="update-client.php?id=<?= $id=$_GET['id']?>"> Update your Account</a>
-                <a class="btn-secondary" href="delete-client.php?id=<?= $id=$_GET['id']?>">Delete your Account</a>
+                <a class="btn-primary" href="update-client.php?account_id=<?= $account_id=$_GET['account_id']?>"> Update your Account</a>
+                <a class="btn-secondary" href="delete-client.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Account</a>
                 <a href="update-password.php" class="btn-primary">Update your Password</a>
-                <a class="btn-secondary" href="../lesson/manage-lesson.php?id=<?= $id=$_GET['id']?>">To Lesson Page</a>
+                <a class="btn-secondary" href="../lesson/manage-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
 
                 <br/><br/><br/>
                 <table class="tbl-full">
@@ -57,9 +57,9 @@
                     </tr>
 
                     <?php
-                    $id = $_GET['id'];
+                    $account_id = $_GET['account_id'];
 
-                    $sql = "SELECT * FROM tbl_account where id=$id";
+                    $sql = "SELECT * FROM tbl_account where account_id=$account_id";
 
                     $rec = mysqli_query($connect, $sql);
 
@@ -73,7 +73,7 @@
                         {
                             while($rows=mysqli_fetch_assoc($rec))
                             {
-                                $id = $rows['id'];
+                                $account_id = $rows['account_id'];
                                 $username = $rows['username'];
                                 $password = $rows['password'];
                                 $image_name = $rows['image_name'];

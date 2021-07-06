@@ -55,7 +55,7 @@ if(isset($_POST['submit']))
     if($count==1)
     {
         $row = mysqli_fetch_assoc($rec);
-        $url = "http://localhost:8001/account/manage-client.php?id=$row[id]";
+        $url = "http://localhost:8001/account/manage-client.php?account_id=$row[id]";
         $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
         $_SESSION['user'] = $username;
         //特定のユーザーがログアウトしてるかしてないかの確認の為に置いてる
