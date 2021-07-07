@@ -68,7 +68,7 @@
             }
             else
             {
-                $_SESSION['add'] = "<div class='error'>Failed to Update Account.</div>";
+                $_SESSION['add'] = "<div class='error'>Failed to Create Account.</div>";
                 $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
                 header('Location:' .$url,true , 401);
                 die();
