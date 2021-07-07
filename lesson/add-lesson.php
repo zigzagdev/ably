@@ -29,7 +29,7 @@
                 <tr>
                     <td>Lesson Day:</td>
                     <td>
-                        <input type="datetime-local" name="date">
+                        <input type="datetime-local" name="day">
                     </td>
                 </tr>
                 <br/><br/>
@@ -48,28 +48,30 @@
         {
             $course = $_POST['course'];
             $content = $_POST['content'];
-            $day = $_POST['date'];
+            $day = $_POST['day'];
 
             if (empty($course) || empty($content) || empty($day) ){
                 die('Please fill all required fields!');
             }
 
 
-            $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day' ";
-            $rec2=mysqli_query($connect,$sql2);
+            $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day',account_id='$account_id' ";
+            $rec2=mysqli_query($connect,$sql2) or die(mysqli_error($connect));
+
 
             var_dump($sql2);
+            var_dump($rec2);
 
-            if($rec2==true)
+            if($rec2 == true)
             {
-                $url = "http://localhost:8001/account/manage-lesson.php?account_id=$account_id";
                 $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
+                $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id";
                 header('Location:' .$url,true , 302);
             }
             else
             {
                 $_SESSION['add'] = "<div class='error'>Failed to Create Account.</div>";
-                $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
+                $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id";
                 header('Location:' .$url,true , 401);
                 die();
             }
