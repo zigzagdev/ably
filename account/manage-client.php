@@ -59,9 +59,12 @@
                     <?php
                     $account_id = $_GET['account_id'];
 
+
                     $sql = "SELECT * FROM tbl_account where account_id=$account_id";
 
+
                     $rec = mysqli_query($connect, $sql);
+
 
                     if($rec==TRUE)
                     {

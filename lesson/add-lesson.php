@@ -4,11 +4,12 @@
     <div class="wrapper">
         <h1>Add Your lesson.</h1><br/>
         <br/>
-        <a class="btn-primary" href="manage-lesson.php?id=<?= $id=$_GET['lesson_id']?>&id=<?= $lesson_id=$_GET['lesson_id']?>"> Back to your lesson page</a>
+        <a class="btn-primary" href="manage-lesson.php?id=<?= $account_id=$_GET['account_id']?>"> Back to your lesson page</a>
         <br/><br/>
 
 
         <form action="" method="post" >
+
             <table class="tbl-30">
 
                 <tr>
@@ -54,20 +55,21 @@
             }
 
 
-            $sql2 = "INSERT INTO tbl_lesson SET course = '$course',content = '$content', day = '$day' ";
+            $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day' ";
             $rec2=mysqli_query($connect,$sql2);
 
+            var_dump($sql2);
 
             if($rec2==true)
             {
-                $url = "http://localhost:8001/account/manage-client.php?lesson_id=$lesson_id";
+                $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
                 $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
                 header('Location:' .$url,true , 302);
             }
             else
             {
                 $_SESSION['add'] = "<div class='error'>Failed to Update Account.</div>";
-                $url = "http://localhost:8001/account/update-client.php?id=$lesson_id";
+                $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
                 header('Location:' .$url,true , 401);
                 die();
             }

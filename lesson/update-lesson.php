@@ -1,15 +1,16 @@
 <?php  include('../account/partials/header.php'); ?>
 
 <?php
-if(isset($_GET['id'])) {
-    $sql2 = "SELECT * FROM tbl_lesson ";
+if(isset($_GET['lesson_id'])) {
+
+    $sql2 = "SELECT * FROM tbl_lesson where account_id='$lesson_id'";
     $rec2 = mysqli_query($connect, $sql2);
 
     if ($rec2 == true) {
         $count = mysqli_num_rows($rec2);
         if ($count == 1) {
             $row = mysqli_fetch_assoc($rec2);
-            $id = $row['id'];
+            $lesson_id = $row['lesson_id'];
             $course = $row['course'];
             $content = $row['content'];
             $day = $row['day'];
