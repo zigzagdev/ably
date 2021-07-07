@@ -144,8 +144,6 @@ if(isset($_POST['submit']))
     $sql = "UPDATE tbl_account SET username='$username',image_name='$image_name',email='$email',
              content='$content' WHERE account_id=$account_id ";
     $rec = mysqli_query($connect, $sql);
-    var_dump($sql);
-    var_dump($rec);
 
     if($rec==true)
     {
