@@ -42,20 +42,21 @@ if(isset($_GET['lesson_id'])) {
                     <tr>
                         <td>Content:</td>
                         <td>
-                            <textarea name="content" cols="30" rows="3"></textarea>
+                            <textarea name="content" cols="30" rows="3"><?php echo $content; ?></textarea>
                         </td>
                     </tr>
 
                     <tr>
                         <td>Lesson Day:</td>
                         <td>
-                            <input type="datetime-local" name="date">
+                            <input type="datetime-local" name="day"　value="<?php echo $day; ?>">
                         </td>
                     </tr>
+
                     <br/><br/><br/>
                     <tr>
                         <td colspan="2">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="id" value="<?php echo $lesson_id; ?>">
                             <input type="submit" name="submit" value="Update your Lesson" class="btn-secondary">
                         </td>
                     </tr>
@@ -67,19 +68,24 @@ if(isset($_GET['lesson_id'])) {
 </div>
 
 <?php
-if(isset($_POST['lesson_id']))
+if(isset($_POST['submit']))
 {
     $course = $_POST['course'];
     $content = $_POST['content'];
     $day = $_POST['day'];
 
-    $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day',lesson_id='$lesson_id' ";
-    $rec2 = mysqli_query($connect, $sql2);
+    if (empty($course) || empty($content) || empty($day) ){
+        die('Please fill all required fields!');
+    }
 
+    $sql2 = " UPDATE tbl_lesson SET course = '$course',content = '$content',day = '$day' where lesson_id=$lesson_id";
+    $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
+
+    var_dump($sql2);
 
     if($rec2 == true)
     {
-        $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id&lesson_id=$lesson_id";
+        $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id";
         $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
