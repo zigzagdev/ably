@@ -4,7 +4,7 @@
     <div class="wrapper">
         <h1>Add Your lesson.</h1><br/>
         <br/>
-        <a class="btn-primary" href="manage-lesson.php?id=<?= $account_id=$_GET['account_id']?>"> Back to your lesson page</a>
+        <a class="btn-primary" href="manage-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Back to your lesson page</a>
         <br/><br/>
 
 
@@ -62,7 +62,7 @@
 
             if($rec2==true)
             {
-                $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
+                $url = "http://localhost:8001/account/manage-lesson.php?account_id=$account_id";
                 $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
                 header('Location:' .$url,true , 302);
             }
