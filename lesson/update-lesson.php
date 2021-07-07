@@ -3,7 +3,8 @@
 <?php
 if(isset($_GET['lesson_id'])) {
 
-    $sql2 = "SELECT * FROM tbl_lesson '";
+    $lesson_id = $_GET['lesson_id'];
+    $sql2 = "SELECT * FROM tbl_lesson  where lesson_id= $lesson_id";
     $rec2 = mysqli_query($connect, $sql2);
 
     if ($rec2 == true) {
@@ -34,7 +35,7 @@ if(isset($_GET['lesson_id'])) {
                     <tr>
                         <td class="text-white">Course:</td>
                         <td>
-                            <input type="text" name="course" value="<?php echo $course; ?>">
+                            <input name="course" name="name" value="<?php echo $course; ?>">
                         </td>
                     </tr>
 
@@ -66,69 +67,26 @@ if(isset($_GET['lesson_id'])) {
 </div>
 
 <?php
-if(isset($_POST['submit']))
+if(isset($_POST['lesson_id']))
 {
-
-    $id = $_POST['id'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
+    $course = $_POST['course'];
     $content = $_POST['content'];
+    $day = $_POST['day'];
 
-    if(isset($_FILES['image']['name']))
+    $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day',lesson_id='$lesson_id' ";
+    $rec2 = mysqli_query($connect, $sql2);
+
+
+    if($rec2 == true)
     {
-        $image_name = $_FILES['image']['name'];
-
-        if($image_name != "")
-        {
-
-            $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = "../images/profile/".$image_name;
-            $upload = move_uploaded_file($source_path, $destination_path);
-
-            if($upload==false)
-            {
-                $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-                $url = "http://localhost:8001/account/update-client.php?id=$row[id]";
-                header('Location:'.$url,true , 401);
-                die();
-            }
-            if($current_image!="")
-            {
-                $remove_path = "../images/profile/".$current_image;
-                $remove = unlink($remove_path);
-                if($remove==false)
-                {
-                    $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current Image.</div>";
-                    $url = "http://localhost:8001/account/update-client.php?id=$id";
-                    header('Location:' .$url,true , 401);
-                    die();
-                }
-            }
-        }
-        else
-        {
-            $image_name = $current_image;
-        }
-    }
-    else
-    {
-        $image_name = $current_image;
-    }
-    $sql = "UPDATE tbl_account SET username='$username',image_name='$image_name',email='$email',
-             content='$content' WHERE id=$id ";
-    $rec = mysqli_query($connect, $sql);
-
-
-    if($rec==true)
-    {
-        $url = "http://localhost:8001/account/manage-lesson.php?id=$id";
+        $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id&lesson_id=$lesson_id";
         $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['update'] = "<div class='error'>Failed to Update Account.</div>";
-        $url = "http://localhost:8001/account/update-lesson.php?id=$id";
+        $url = "http://localhost:8001/lesson/update-lesson.php?account_id=$account_id&lesson_id=$lesson_id";
         header('Location:' .$url,true , 401);
         die();
     }
