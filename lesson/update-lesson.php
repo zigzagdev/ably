@@ -3,7 +3,7 @@
 <?php
 if(isset($_GET['lesson_id'])) {
 
-    $sql2 = "SELECT * FROM tbl_lesson where account_id='$lesson_id'";
+    $sql2 = "SELECT * FROM tbl_lesson '";
     $rec2 = mysqli_query($connect, $sql2);
 
     if ($rec2 == true) {
@@ -26,6 +26,8 @@ if(isset($_GET['lesson_id'])) {
         <div class="inner">
             <h1>Update your Lesson</h1>
             <br/><br/>
+            <a class="btn-secondary" href="../lesson/manage-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
+            <br/>
 
             <form action="" method="post" >
                 <table class="tbl-30">
@@ -49,8 +51,7 @@ if(isset($_GET['lesson_id'])) {
                             <input type="datetime-local" name="date">
                         </td>
                     </tr>
-
-
+                    <br/><br/><br/>
                     <tr>
                         <td colspan="2">
                             <input type="hidden" name="id" value="<?php echo $id; ?>">

@@ -37,9 +37,7 @@
             ?>
             <br/><br/>
             <!---button--->
-            <a class="btn-danger" href="add-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Add others Lesson</a>
-            <a class="btn-primary" href="update-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Update your Lesson</a>
-            <a class="btn-secondary" href="delete-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Lesson</a>
+            <a class="btn-danger" href="add-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Add others Lessons</a>
 
             <br/><br/><br/>
             <table class="tbl-full">
@@ -47,6 +45,7 @@
                     <th>Course</th>
                     <th>Content</th>
                     <th>Lesson Day</th>
+                    <th>Maintenance</th>
                 </tr>
 
                 <?php
@@ -69,12 +68,16 @@
                             $course = $rows['course'];
                             $content = $rows['content'];
                             $day = $rows['day'];
+                            $lesson_id = $rows['lesson_id'];
                             ?>
                             <tr>
                                 <td><?php echo $course; ?></td>
                                 <td><?php echo $content; ?></td>
                                 <td><?php echo $day; ?></td>
-                                <td></td>
+                                <td>
+                                    <a class="btn-primary" href="update-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
+                                    <a class="btn-secondary" href="delete-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
+                                </td>
                             </tr>
                             <?php
                         }

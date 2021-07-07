@@ -59,9 +59,6 @@
             $rec2=mysqli_query($connect,$sql2) or die(mysqli_error($connect));
 
 
-            var_dump($sql2);
-            var_dump($rec2);
-
             if($rec2 == true)
             {
                 $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
