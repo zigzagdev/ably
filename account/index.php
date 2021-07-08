@@ -43,6 +43,9 @@
                             <td><?php echo $course; ?></td>
                             <td><?php echo $content; ?></td>
                             <td><?php echo $day; ?></td>
+                            <td>
+                                <a class="btn-primary" href="reserve-form.php?"> Reserve your form</a>
+                            </td>
                         </tr>
                         <?php
                     }
