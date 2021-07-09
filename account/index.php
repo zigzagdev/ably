@@ -44,7 +44,7 @@
                             <td><?php echo $content; ?></td>
                             <td><?php echo $day; ?></td>
                             <td>
-                                <a class="btn-primary" href="reserve-form.php?"> Reserve your form</a>
+                                <a class="btn-primary" href="../form/reserve-form.php"> Reserve your form</a>
                             </td>
                         </tr>
                         <?php
