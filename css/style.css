@@ -25,6 +25,7 @@
 }
 .text-white{
     color: white;
+    margin: auto;
 }
 .text-black{
     color: black;
@@ -210,7 +211,10 @@ fieldset{
     font-weight: bold;
 }
 
+.fieldset{
+    text-align: center;
 
+}
 
 /* CSS for Mobile Size or Smaller Screen */
 
@@ -229,6 +233,7 @@ fieldset{
         width: 90%;
         padding: 2%;
         margin-bottom: 3%;
+        background-image: url("../images/dark.jpeg");
     }
 
     .btn{
@@ -270,4 +275,20 @@ fieldset{
         color: yellow;
     }
 
+    .center-goods{
+        background-color: cornflowerblue;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 7% 0;
+    }
 }
+.food-search input[type="search"]{
+    width: 50%;
+    padding: 1%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+

@@ -4,13 +4,6 @@
 <div class="main">
     <div class="wrapper">
         <h1 style="padding: 20px 0 0 50px">Lesson Index</h1>
-        <?php
-        if(isset($_SESSION['login']))
-        {
-            echo $_SESSION['login'];
-            unset($_SESSION['login']);
-        }
-        ?>
 
         <br/><br/><br/>
         <table class="tbl-full">
