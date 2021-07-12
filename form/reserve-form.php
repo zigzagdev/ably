@@ -1,28 +1,5 @@
 <?php include ('../account/partials/header_info.php'); ?>
 
-<?php
-if(isset($_GET['lesson_id']))
-{
-    $lesson_id = $_GET['lesson_id'];
-    $sql2 = "SELECT * FROM tbl_lesson where id=$lesson_id";
-    $rec2 = mysqli_query($connect, $sql2);
-    $count = mysqli_num_rows($rec2);
-
-    if ($count == 1) {
-        $row = mysqli_fetch_assoc($rec2);   //Get the Data from Database
-    } else {
-        $url = "http://localhost:8001/account/index.php";
-        header('Location:' . $url, true, 401);
-        die();
-    }
-}
-else {
-    $url = "http://localhost:8001/account/index.php";
-    header('Location:' . $url, true, 401);
-    die();
-}
-?>
-
 <section class="food-search">
     <div class="container2">
         <h2 class="text-center">Fill this form to confirm your order.</h2><br/><br/>
@@ -35,11 +12,66 @@ else {
                 <input type="tel" name="contact" placeholder="090-1234-1234" class="input-responsive" required>
                 <div class="order-label ">Email</div>
                 <input type="email" name="email" placeholder="1234aa@test.com" class="input-responsive" required>
-                <div class="order-label text-white">Address</div>
-                <textarea name="address" rows="5 " class="input-responsive" required></textarea></fieldset><br/>
-                <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
+                <div class="order-label text-white">Sex</div>
+                <select name="sex" class="input-responsive" required>
+                    <option value="">Choose here.</option>
+                    <option value="選択肢2">Male</option>
+                    <option value="選択肢3">Female</option>
+                </select></fieldset><br/>
+            <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
             </fieldset>
         </form>
     </div>
 </section>
+
+<?php
+
+if(isset($_POST['submit']))
+{
+    $name = $_POST['name'];
+    $telephone = $_POST['telephone'];
+    $email = $_POST['email'];
+    $email2 = '/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
+    if(preg_match($email,$email2))
+    {
+        print 'write down your email correctly ! ';
+    }
+    else
+    {
+        //
+    }
+    $sex = $_POST['sex'];
+
+
+    $sql2 = "INSERT INTO tbl_order SET 
+                        food = '$food',
+                        price = '$price',
+                        quantity = '$quantity',
+                        total = '$total',
+                        order_date = '$order_date',
+                        status = '$status',
+                        customer_name = '$customer_name',
+                        customer_contact = '$customer_contact',
+                        customer_email = '$customer_email',
+                        customer_address = '$customer_address'
+                    ";
+
+    $rec2=mysqli_query($connect,$sql2) or die(mysqli_error($connect));
+
+    if($rec2==true)
+    {
+        $_SESSION['order'] = "<div class='success text-center'>Food Ordered Successfully.</div>";
+        header('location:'.SITEURL.'/index.php');
+    }
+    else
+    {
+        $_SESSION['order'] = "<div class='error text-center'>Failed to Order Food.</div>";
+        header('location:'.SITEURL.'/index.php');
+    }
+}
+?>
+
+
+
+?>
 <?php include('../account/partials/footer.php'); ?>
