@@ -1,17 +1,18 @@
-<?php include ('../account/partials/header_info.php'); ?>
+<?php include ('../account/partials/header_info.php');?>
 
 <section class="food-search">
     <div class="container2">
-        <h2 class="text-center">Fill this form to confirm your order.</h2><br/><br/>
+        <h2 class="text-center">Fill this form to confirm .</h2><br/><br/>
         <form action="reserve-form.php" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
-                <legend class="legend-center">Delivery Details</legend>
+                <legend class="legend-center">Your information</legend>
                 <div class="order-label text-white" >Full Name</div>
-                <input type="text"  name="name" placeholder="Test" class="input-responsive" required>
+                <input type="text"  name="name" placeholder="Test" class="input-responsive" required><br/>
                 <div class="order-label text-white">Phone Number</div>
-                <input type="telephone" name="telephone" placeholder="090-1234-1234" class="input-responsive" required>
+                <input type="telephone" name="telephone" placeholder="090-1234-1234" class="input-responsive" required><br/>
                 <div class="order-label ">Email</div>
-                <input type="email" name="email" placeholder="1234aa@test.com" class="input-responsive" required><br/><br/>
+                <input type="email" name="email" placeholder="1234aa@test.com" class="input-responsive" required><br/>
+                <div class="order-label ">Sex</div>
                 <select name= "sex">
                     <option value = "male">Male</option>
                     <option value = "female">Female</option>

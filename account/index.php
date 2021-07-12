@@ -1,5 +1,8 @@
 <?php include('partials/header_info.php'); ?>
 
+
+
+
 <!--Main Section -->
 <div class="main">
     <div class="wrapper">
@@ -30,14 +33,14 @@
                         $course = $rows['course'];
                         $content = $rows['content'];
                         $day = $rows['day'];
-                        $lesson_id = $rows['lesson_id'];
+                        $lesson_id = $rows['lesson_id']
                         ?>
                         <tr>
                             <td><?php echo $course; ?></td>
                             <td><?php echo $content; ?></td>
                             <td><?php echo $day; ?></td>
                             <td>
-                                <a class="btn-primary" href="../form/reserve-form.php"> Reserve your form</a>
+                                <a class="btn-primary" href="../form/reserve-form.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
                             </td>
                         </tr>
                         <?php
