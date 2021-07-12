@@ -15,8 +15,8 @@
                 <div class="order-label text-white">Sex</div>
                 <select name="sex" class="input-responsive" required>
                     <option value="">Choose here.</option>
-                    <option value="選択肢2">Male</option>
-                    <option value="選択肢3">Female</option>
+                    <option value="選択肢1">Male</option>
+                    <option value="選択肢2">Female</option>
                 </select></fieldset><br/>
             <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
             </fieldset>
@@ -43,30 +43,21 @@ if(isset($_POST['submit']))
     $sex = $_POST['sex'];
 
 
-    $sql2 = "INSERT INTO tbl_order SET 
-                        food = '$food',
-                        price = '$price',
-                        quantity = '$quantity',
-                        total = '$total',
-                        order_date = '$order_date',
-                        status = '$status',
-                        customer_name = '$customer_name',
-                        customer_contact = '$customer_contact',
-                        customer_email = '$customer_email',
-                        customer_address = '$customer_address'
-                    ";
+    $sql3 = "INSERT INTO tbl_form SET name = '$name',telephone = '$telephone',email = '$email',sex = '$sex' ";
 
-    $rec2=mysqli_query($connect,$sql2) or die(mysqli_error($connect));
+    $rec3=mysqli_query($connect,$sql3) or die(mysqli_error($connect));
 
-    if($rec2==true)
+    if($rec3 == true)
     {
-        $_SESSION['order'] = "<div class='success text-center'>Food Ordered Successfully.</div>";
-        header('location:'.SITEURL.'/index.php');
+        $_SESSION['order'] = "<div class='success text-center'>Form order Successfully.</div>";
+        $url = "http://localhost:8001/account/index.php";
+        header('Location:' .$url,true , 302);
     }
     else
     {
-        $_SESSION['order'] = "<div class='error text-center'>Failed to Order Food.</div>";
-        header('location:'.SITEURL.'/index.php');
+        $_SESSION['order'] = "<div class='error text-center'>Failed to Post a form.</div>";
+        $url = "http://localhost:8001/form/reserve-form.php";
+        header('Location:' .$url,true , 401);
     }
 }
 ?>
