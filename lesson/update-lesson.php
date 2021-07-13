@@ -81,7 +81,6 @@ if(isset($_POST['submit']))
     $sql2 = " UPDATE tbl_lesson SET course = '$course',content = '$content',day = '$day' where lesson_id=$lesson_id";
     $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
 
-    var_dump($sql2);
 
     if($rec2 == true)
     {

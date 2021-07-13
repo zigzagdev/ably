@@ -36,9 +36,9 @@
                         $lesson_id = $rows['lesson_id']
                         ?>
                         <tr>
-                            <td><?php echo $course; ?></td>
-                            <td><?php echo $content; ?></td>
-                            <td><?php echo $day; ?></td>
+                            <td style="text-align: center"><?php echo $course; ?></td>
+                            <td style="text-align: center"><?php echo $content; ?></td>
+                            <td style="text-align: center"><?php echo $day; ?></td>
                             <td>
                                 <a class="btn-primary" href="../form/reserve-form.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
                             </td>
