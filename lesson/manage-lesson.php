@@ -42,10 +42,11 @@
             <br/><br/><br/>
             <table class="tbl-full">
                 <tr>
-                    <th>Course</th>
-                    <th>Content</th>
-                    <th>Lesson Day</th>
-                    <th>Maintenance</th>
+                    <th style="text-align: center" >Course</th>
+                    <th style="text-align: center">Content</th>
+                    <th style="text-align: center">Lesson Day</th>
+                    <th style="text-align: center">Reservation</th>
+                    <th style="text-align: center">Maintenance</th>
                 </tr>
 
                 <?php
@@ -68,12 +69,13 @@
                             $course = $rows['course'];
                             $content = $rows['content'];
                             $day = $rows['day'];
-                            $lesson_id = $rows['lesson_id'];
+                            $form_id = $count;
                             ?>
                             <tr>
-                                <td><?php echo $course; ?></td>
-                                <td><?php echo $content; ?></td>
-                                <td><?php echo $day; ?></td>
+                                <td style="text-align: center"><?php echo $course; ?></td>
+                                <td style="text-align: center"><?php echo $content; ?></td>
+                                <td style="text-align: center"><?php echo $day; ?></td>
+                                <td style="text-align: center"><?php echo $form_id?></td>
                                 <td>
                                     <a class="btn-primary" href="update-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
                                     <a class="btn-secondary" href="delete-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>

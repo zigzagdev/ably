@@ -1,8 +1,8 @@
 <?php include ('../account/partials/header_info.php');?>
 
 <section class="food-search">
-    <div class="container2">
-        <h2 class="text-center">Fill this form to confirm .</h2><br/><br/>
+    <div class="container2"><br/>
+        <h2 class="text-center">Fill this form to confirm.</h2><br/>
         <form action="reserve-form.php" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
                 <legend class="legend-center">Your information</legend>
@@ -63,9 +63,7 @@ if(isset($_POST['submit']))
     }
     else
     {
-        $_SESSION['order'] = "<div class='error text-center'>Failed to Post a form.</div>";
-        $url = "http://localhost:8001/form/reserve-form.php";
-        header('Location:' .$url,true , 401);
+      //
     }
 }
 ?>
