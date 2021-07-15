@@ -72,6 +72,7 @@
                             $course = $rows['course'];
                             $content = $rows['content'];
                             $day = $rows['day'];
+                            $lesson_id = $rows['lesson_id'];
                             $lesson = $rows2['lesson_id'];
                             ?>
                             <tr>

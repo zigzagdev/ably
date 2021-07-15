@@ -3,7 +3,7 @@
 <section class="food-search">
     <div class="container2"><br/>
         <h2 class="text-center">Fill this form to confirm.</h2><br/>
-        <form action="reserve-form.php" method="POST" class="order" style="text-align: center" >
+        <form action="reserve-form.php?lesson_id=$lesson_id" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
                 <legend class="legend-center">Your information</legend>
                 <div class="order-label text-white" >Full Name</div>
@@ -18,15 +18,18 @@
                     <option value = "female">Female</option>
                 </select><br/>
             </fieldset>
+            <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
             <input type="submit" name="submit" value="送信" class="btn btn-third">
         </form>
     </div>
 </section>
 
 <?php
+ $lesson_id = $_GET['lesson_id'];
 
 if(isset($_POST['submit']))
 {
+    $lesson_id = $_REQUEST['lesson_id'];
     $name = $_POST['name'];
     $telephone = $_POST['telephone'];
     $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
@@ -48,13 +51,12 @@ if(isset($_POST['submit']))
     {
             //
     }
-
     $sex = $_POST['sex'];
 
-    $sql3 = "INSERT INTO tbl_form SET name = '$name',telephone = '$telephone',email = '$email',sex = '$sex' ";
+    $sql3 = "INSERT INTO tbl_form SET name = '$name',telephone = '$telephone',
+           email = '$email',sex = '$sex',lesson_id= '$lesson_id'" ;
 
-    $rec3=mysqli_query($connect,$sql3) or die(mysqli_error($connect));
-
+    $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
     {
         $_SESSION['order'] = "<div class='success text-center'>Form order Successfully.</div>";
@@ -63,7 +65,9 @@ if(isset($_POST['submit']))
     }
     else
     {
-      //
+        $_SESSION['order'] = "<div class='success text-center'>Form order Failed.</div>";
+        $url = "http://localhost:8001/account/index.php";
+        header('Location:' .$url,true , 401);
     }
 }
 ?>
