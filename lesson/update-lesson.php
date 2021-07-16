@@ -1,4 +1,4 @@
-<?php  include('../account/partials/header_info.php'); ?>
+<?php  include('../account/partials/header.php'); ?>
 
 <?php
 if(isset($_GET['lesson_id'])) {

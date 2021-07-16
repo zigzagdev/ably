@@ -60,7 +60,7 @@ if(isset($_POST['submit']))
     {
         $_SESSION['form'] = "<div class='success text-center'>Form order Successfully.</div>";
         $form_id = mysqli_insert_id($connect);
-        $url = "http://localhost:8001/form/manage-form.php?form_id=$form_id";
+        $url = "http://localhost:8001/form/manage-form.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
     else

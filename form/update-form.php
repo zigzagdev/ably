@@ -1,4 +1,4 @@
-<?php  include('../account/partials/header.php'); ?>
+<?php  include('../account/partials/header_info.php'); ?>
 
 <?php
 if(isset($_GET['form_id'])) {
@@ -26,7 +26,6 @@ if(isset($_GET['form_id'])) {
 
 <section class="food-search">
     <div class="container2"><br/>
-        <a class="btn-secondary" href="../form/update-form.php?form_id=<?= $form_id=$_GET['form_id']?>">To your Pearsonal Page</a>
         <h2 class="text-center">Update your information.</h2><br/>
         <form action="update-form.php?form_id=$form_id" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
@@ -43,7 +42,6 @@ if(isset($_GET['form_id'])) {
                     <option value = "female">Female</option>
                 </select><br/>
             </fieldset>
-            <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
             <input type="submit" name="submit" value="送信" class="btn btn-third">
         </form>
     </div>
@@ -51,7 +49,6 @@ if(isset($_GET['form_id'])) {
 
 <?php
 
-$form_id = $_GET['form_id'];
 if(isset($_POST['submit']))
 {
     $lesson_id = $_POST['lesson_id'];
