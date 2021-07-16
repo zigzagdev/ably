@@ -108,13 +108,14 @@ if(isset($_POST['submit']))
     }
 
     $sql= "INSERT INTO tbl_account SET username='$user_name',password ='$password', password2 = '$password2',
-image_name = '$image_name',email = '$email',content = '$content' ";
+image_name = '$image_name',email = '$email',content = '$content'";
 
-    $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
+    $rec = mysqli_query($connect,$sql) ;
 
     if($rec == TRUE) {
         $_SESSION['add'] = "<div class='success'>Your account Added Successfully.</div>";
-        header("location: http://localhost:8001/account/manage-client.php");
+        $account_id = mysqli_insert_id($connect);
+        header("location: http://localhost:8001/account/manage-client.php?account_id=$account_id");
     }
     else
     {

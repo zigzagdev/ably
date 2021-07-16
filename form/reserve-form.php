@@ -25,7 +25,6 @@
 </section>
 
 <?php
- $lesson_id = $_GET['lesson_id'];
 
 if(isset($_POST['submit']))
 {
@@ -59,13 +58,14 @@ if(isset($_POST['submit']))
     $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
     {
-        $_SESSION['order'] = "<div class='success text-center'>Form order Successfully.</div>";
-        $url = "http://localhost:8001/account/index.php";
+        $_SESSION['form'] = "<div class='success text-center'>Form order Successfully.</div>";
+        $form_id = mysqli_insert_id($connect);
+        $url = "http://localhost:8001/form/manage-form.php?form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
     else
     {
-        $_SESSION['order'] = "<div class='success text-center'>Form order Failed.</div>";
+        $_SESSION['form'] = "<div class='success text-center'>Form order Failed.</div>";
         $url = "http://localhost:8001/account/index.php";
         header('Location:' .$url,true , 401);
     }
