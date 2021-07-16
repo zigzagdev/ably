@@ -29,7 +29,7 @@
 
 if(isset($_POST['submit']))
 {
-    $lesson_id = $_REQUEST['lesson_id'];
+    $lesson_id = $_POST['lesson_id'];
     $name = $_POST['name'];
     $telephone = $_POST['telephone'];
     $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
