@@ -85,8 +85,8 @@ if(isset($_POST['submit']))
         //
     }
     $sex = $_POST['sex'];
-    $lesson_id = $_GET['lesson_id'];
-    $form_id = $_GET['form_id'];
+    $lesson_id = $_POST['lesson_id'];
+    $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
 
     $sql3 = "UPDATE tbl_form SET name = '$name',telephone = '$telephone',
            email = '$email',sex = '$sex'where form_id= '$form_id' " ;

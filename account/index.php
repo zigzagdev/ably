@@ -11,9 +11,9 @@
         <br/><br/><br/>
         <table class="tbl-full">
             <tr>
-                <th>Course</th>
-                <th>Content</th>
-                <th>Lesson Day</th>
+                <th style="text-align: center">Course</th>
+                <th  style="text-align: center">Content</th>
+                <th  style="text-align: center">Lesson Day</th>
             </tr>
             <?php
             $sql2 = "SELECT * FROM tbl_lesson ";
