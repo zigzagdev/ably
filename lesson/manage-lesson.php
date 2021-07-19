@@ -77,7 +77,7 @@
                                 <td style="text-align: center"><?php echo $content; ?></td>
                                 <td style="text-align: center"><?php echo $day; ?></td>
                                 <td style="text-align: center"><?php echo $lesson?></td>
-                                <td>
+                                <td style="text-align: center">
                                     <a class="btn-primary" href="update-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
                                     <a class="btn-secondary" href="delete-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
                                 </td>

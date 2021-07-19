@@ -32,21 +32,21 @@ if(isset($_GET['lesson_id'])) {
             <form action="" method="post" >
                 <table class="tbl-30">
                     <tr>
-                        <td class="text-white">Course:</td>
+                        <td class="text-white" style="text-align: center">Course:</td>
                         <td>
                             <input name="course" name="name" value="<?php echo $course; ?>">
                         </td>
                     </tr>
 
                     <tr>
-                        <td>Content:</td>
+                        <td style="text-align: center">Content:</td>
                         <td>
                             <textarea name="content" cols="30" rows="3"><?php echo $content; ?></textarea>
                         </td>
                     </tr>
 
                     <tr>
-                        <td>Lesson Day:</td>
+                        <td style="text-align: center">Lesson Day:</td>
                         <td>
                             <input type="datetime-local" name="day"　value="<?php echo $day; ?>">
                         </td>
