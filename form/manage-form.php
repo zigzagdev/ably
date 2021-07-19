@@ -41,6 +41,7 @@
                         <th style="text-align: center">Phone Number</th>
                         <th style="text-align: center">Email Address</th>
                         <th style="text-align: center">Sex</th>
+                        <th style="text-align: center">Maintenance</th>
                     </tr>
 
                     <?php
