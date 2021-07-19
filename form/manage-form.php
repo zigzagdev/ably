@@ -3,7 +3,7 @@
     <div class="main">
         <div class="wrapper">
             <div class="inner">
-                <h1>Manage Your information</h1>
+                <h1>Manage Your  reserve information</h1>
                 <br/>
                 <?php
                 if(isset($_SESSION['add']))

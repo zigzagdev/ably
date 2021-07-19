@@ -19,7 +19,7 @@ if($rec2 == TRUE) {
 else
 {
     $_SESSION['delete'] = "<div class='error'>Failed to Delete lesson.</div>";
-    $url = "http://localhost:8001/form/update-form.php?lesson_id=$lesson_id&form_id=$form_id";
+    $url = "http://localhost:8001/form/manage-form.php?lesson_id=$lesson_id&form_id=$form_id";
     header('Location:' .$url,true , 401);//ページへのリダイレクトをif~else文にて行っている。
 }
 

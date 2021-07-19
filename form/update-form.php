@@ -58,8 +58,7 @@ if(isset($_GET['form_id'])) {
 $lesson_id = $_GET['lesson_id'];
 $form_id = $_GET['form_id'];
 
-var_dump($lesson_id);
-var_dump($form_id);
+
 if(isset($_POST['submit']))
 {
 
