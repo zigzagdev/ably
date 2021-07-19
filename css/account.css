@@ -67,6 +67,15 @@ table tr td{
     text-decoration: none;
     font-weight: bold;
 }
+.btn-third{
+    border-radius: 100vh;
+    background-color: aquamarine;
+    padding: 1%;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+
+}
 .btn-danger:hover{
     background-color: blue;
 }
@@ -177,6 +186,30 @@ table tr td{
 .login10{
     margin-top: 100%;
     text-align: center;
-    background-image: url("../images/pre.png")
-     ;
 }
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 1%;
+}
+
+.input-responsive{
+    padding: 1%;
+    margin: 0 auto;
+}
+
+ .fieldset {
+    width: 450px;
+    margin: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+ .legend-center{
+    text-align: left;
+ }

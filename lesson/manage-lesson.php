@@ -42,39 +42,43 @@
             <br/><br/><br/>
             <table class="tbl-full">
                 <tr>
-                    <th>Course</th>
-                    <th>Content</th>
-                    <th>Lesson Day</th>
-                    <th>Maintenance</th>
+                    <th style="text-align: center" >Course</th>
+                    <th style="text-align: center">Content</th>
+                    <th style="text-align: center">Lesson Day</th>
+                    <th style="text-align: center">Reservation</th>
+                    <th style="text-align: center">Maintenance</th>
                 </tr>
 
                 <?php
 
-                $sql2 = "SELECT * FROM tbl_lesson where account_id ='$account_id'";
+
+                $sql2 = "SELECT * FROM tbl_lesson  ";
+                $sql3 = "SELECT COUNT(*) AS lesson_id FROM tbl_form GROUP BY lesson_id ;";
 
                 $rec2 = mysqli_query($connect, $sql2);
+                $rec3 = mysqli_query($connect, $sql3);
 
-
-                if($rec2==TRUE)
+                if($rec2 && $rec3 ==TRUE)
                 {
                     $count = mysqli_num_rows($rec2); // Function to get all the rows in database
+                    $count2 = mysqli_num_rows($rec3);
 
-                    $on=1;
-
-                    if($count>0)
-                    {
-                        while($rows=mysqli_fetch_assoc($rec2))
+                    if ($count >= 0 && $count2 >= 1)
+                     {
+                        while($rows=mysqli_fetch_array($rec2) and $rows2=mysqli_fetch_array($rec3))
                         {
                             $course = $rows['course'];
                             $content = $rows['content'];
                             $day = $rows['day'];
                             $lesson_id = $rows['lesson_id'];
+                            $lesson = $rows2['lesson_id'];
                             ?>
                             <tr>
-                                <td><?php echo $course; ?></td>
-                                <td><?php echo $content; ?></td>
-                                <td><?php echo $day; ?></td>
-                                <td>
+                                <td style="text-align: center"><?php echo $course; ?></td>
+                                <td style="text-align: center"><?php echo $content; ?></td>
+                                <td style="text-align: center"><?php echo $day; ?></td>
+                                <td style="text-align: center"><?php echo $lesson?></td>
+                                <td style="text-align: center">
                                     <a class="btn-primary" href="update-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
                                     <a class="btn-secondary" href="delete-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
                                 </td>

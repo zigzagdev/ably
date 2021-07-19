@@ -39,7 +39,7 @@ if(isset($_GET['account_id'])) {
                         </tr>
 
                         <tr>
-                            <td>Current Image: </td>
+                            <td >Current Image: </td>
                             <td>
                                 <?php
                                 if($image_name == "")
@@ -65,14 +65,14 @@ if(isset($_GET['account_id'])) {
                         </tr>
 
                         <tr>
-                            <td >Email: </td>
+                            <td style="text-align: center">Email: </td>
                             <td>
                                 <input name="email" name="name" value="<?php echo $email; ?>">
                             </td>
                         </tr>
 
                         <tr>
-                            <td >Content: </td>
+                            <td style="text-align: center">Content: </td>
                             <td>
                                 <textarea name="content" cols="30" rows="6" ><?php echo $content; ?></textarea>
                             </td>

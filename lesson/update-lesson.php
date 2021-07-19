@@ -11,7 +11,6 @@ if(isset($_GET['lesson_id'])) {
         $count = mysqli_num_rows($rec2);
         if ($count == 1) {
             $row = mysqli_fetch_assoc($rec2);
-            $lesson_id = $row['lesson_id'];
             $course = $row['course'];
             $content = $row['content'];
             $day = $row['day'];
@@ -33,21 +32,21 @@ if(isset($_GET['lesson_id'])) {
             <form action="" method="post" >
                 <table class="tbl-30">
                     <tr>
-                        <td class="text-white">Course:</td>
+                        <td class="text-white" style="text-align: center">Course:</td>
                         <td>
                             <input name="course" name="name" value="<?php echo $course; ?>">
                         </td>
                     </tr>
 
                     <tr>
-                        <td>Content:</td>
+                        <td style="text-align: center">Content:</td>
                         <td>
                             <textarea name="content" cols="30" rows="3"><?php echo $content; ?></textarea>
                         </td>
                     </tr>
 
                     <tr>
-                        <td>Lesson Day:</td>
+                        <td style="text-align: center">Lesson Day:</td>
                         <td>
                             <input type="datetime-local" name="day"　value="<?php echo $day; ?>">
                         </td>
@@ -56,7 +55,6 @@ if(isset($_GET['lesson_id'])) {
                     <br/><br/><br/>
                     <tr>
                         <td colspan="2">
-                            <input type="hidden" name="id" value="<?php echo $lesson_id; ?>">
                             <input type="submit" name="submit" value="Update your Lesson" class="btn-secondary">
                         </td>
                     </tr>
@@ -78,10 +76,10 @@ if(isset($_POST['submit']))
         die('Please fill all required fields!');
     }
 
-    $sql2 = " UPDATE tbl_lesson SET course = '$course',content = '$content',day = '$day' where lesson_id=$lesson_id";
+    $sql2 = " UPDATE tbl_lesson SET  course = '$course',content = '$content',day = '$day' 
+              where lesson_id=$lesson_id" ;         // Not to change the columns in mysql everything. why lesson_id is here.
     $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
 
-    var_dump($sql2);
 
     if($rec2 == true)
     {

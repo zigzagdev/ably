@@ -50,10 +50,10 @@
                 <br/><br/><br/>
                 <table class="tbl-full">
                     <tr>
-                        <th>User Name</th>
-                        <th>Image Photo</th>
-                        <th>Email</th>
-                        <th>Description</th>
+                        <th style="text-align: center">User Name</th>
+                        <th style="text-align: center">Image Photo</th>
+                        <th style="text-align: center">Email</th>
+                        <th style="text-align: center">Description</th>
                     </tr>
 
                     <?php
@@ -84,8 +84,8 @@
                                 $content = $rows['content'];
                                 ?>
                                 <tr>
-                                    <td><?php echo $username; ?></td>
-                                    <td>
+                                    <td style="text-align: center"><?php echo $username; ?></td>
+                                    <td style="text-align: center">
                                         <?php
                                         if($image_name=="")
                                         {
@@ -99,9 +99,9 @@
                                         }
                                         ?>
                                     </td>
-                                    <td><?php echo $email; ?></td>
-                                    <td><?php echo $content; ?></td>
-                                    <td></td>
+                                    <td style="text-align: center"><?php echo $email; ?></td>
+                                    <td style="text-align: center"><?php echo $content; ?></td>
+                                    <td style="text-align: center"></td>
                                 </tr>
                                 <?php
                             }

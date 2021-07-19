@@ -71,7 +71,7 @@ if(isset($_POST['submit']))
 ?>
 
 <footer>
- <div class="footer_login">
+    <div class="footer_login">
 
- </div>
+    </div>
 </footer>

@@ -56,7 +56,7 @@
 
 
             $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day',account_id='$account_id' ";
-            $rec2=mysqli_query($connect,$sql2) or die(mysqli_error($connect));
+            $rec2=mysqli_query($connect,$sql2) ;
 
 
             if($rec2 == true)

@@ -1,23 +1,19 @@
 <?php include('partials/header_info.php'); ?>
 
+
+
+
 <!--Main Section -->
 <div class="main">
     <div class="wrapper">
         <h1 style="padding: 20px 0 0 50px">Lesson Index</h1>
-        <?php
-        if(isset($_SESSION['login']))
-        {
-            echo $_SESSION['login'];
-            unset($_SESSION['login']);
-        }
-        ?>
 
         <br/><br/><br/>
         <table class="tbl-full">
             <tr>
-                <th>Course</th>
-                <th>Content</th>
-                <th>Lesson Day</th>
+                <th style="text-align: center">Course</th>
+                <th  style="text-align: center">Content</th>
+                <th  style="text-align: center">Lesson Day</th>
             </tr>
             <?php
             $sql2 = "SELECT * FROM tbl_lesson ";
@@ -37,14 +33,14 @@
                         $course = $rows['course'];
                         $content = $rows['content'];
                         $day = $rows['day'];
-                        $lesson_id = $rows['lesson_id'];
+                        $lesson_id = $rows['lesson_id']
                         ?>
                         <tr>
-                            <td><?php echo $course; ?></td>
-                            <td><?php echo $content; ?></td>
-                            <td><?php echo $day; ?></td>
+                            <td style="text-align: center"><?php echo $course; ?></td>
+                            <td style="text-align: center"><?php echo $content; ?></td>
+                            <td style="text-align: center"><?php echo $day; ?></td>
                             <td>
-                                <a class="btn-primary" href="reserve-form.php?"> Reserve your form</a>
+                                <a class="btn-primary" href="../form/reserve-form.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
                             </td>
                         </tr>
                         <?php
