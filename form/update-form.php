@@ -4,8 +4,10 @@
 if(isset($_GET['form_id'])) {
 
     $form_id = $_GET['form_id'];
-    $sql2 = "SELECT * FROM tbl_form  where form_id= $form_id";
+    $sql2 = "SELECT * FROM tbl_form  where form_id = $form_id";
     $rec2 = mysqli_query($connect, $sql2);
+
+
 
     if ($rec2 == true) {
         $count = mysqli_num_rows($rec2);
@@ -16,18 +18,20 @@ if(isset($_GET['form_id'])) {
             $telephone = $row['telephone'];
             $email = $row['email'];
             $sex = $row['sex'];
+            $lesson_id = $row['lesson_id'];
 
         } else {
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 }
+var_dump($row);
 ?>
 
 <section class="food-search">
     <div class="container2"><br/>
         <h2 class="text-center">Update your information.</h2><br/>
-        <form action="update-form.php?form_id=$form_id" method="POST" class="order" style="text-align: center" >
+        <form action="update-form.php?lesson_id=$lesson_id&form_id=$form_id" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
                 <legend class="legend-center">Your information</legend>
                 <div class="order-label text-white" >Full Name</div>
@@ -42,16 +46,21 @@ if(isset($_GET['form_id'])) {
                     <option value = "female">Female</option>
                 </select><br/>
             </fieldset>
+<!--            <input type="hidden" name="lesson_id" value="--><?php //echo $lesson_id; ?><!--">-->
+<!--            <input type="hidden" name="form_id" value="--><?php //echo $form_id; ?><!--">-->
             <input type="submit" name="submit" value="送信" class="btn btn-third">
         </form>
     </div>
 </section>
 
-<?php
 
+<?php
+$lesson_id = $_POST['lesson_id'];
+$form_id = $_POST['form_id'];
+var_dump($lesson_id);
+var_dump($form_id);
 if(isset($_POST['submit']))
 {
-    $lesson_id = $_POST['lesson_id'];
     $name = $_POST['name'];
     $telephone = $_POST['telephone'];
     $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
@@ -75,20 +84,20 @@ if(isset($_POST['submit']))
     }
     $sex = $_POST['sex'];
 
-    $sql3 = "INSERT INTO tbl_form SET name = '$name',telephone = '$telephone',
-           email = '$email',sex = '$sex',lesson_id= '$lesson_id'" ;
+    $sql3 = "UPDATE tbl_form SET name = '$name',telephone = '$telephone',
+           email = '$email',sex = '$sex' lesson_id = '$lesson_id' where form_id= '$form_id' " ;
 
     $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
     {
-        $_SESSION['order'] = "<div class='success text-center'>Form order Successfully.</div>";
-        $url = "http://localhost:8001/account/index.php";
+        $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
+        $url = "http://localhost:8001/form/manage-php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
     else
     {
-        $_SESSION['order'] = "<div class='success text-center'>Form order Failed.</div>";
-        $url = "http://localhost:8001/account/index.php";
+        $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
+        $url = "http://localhost:8001/form/update-form?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 401);
     }
 }

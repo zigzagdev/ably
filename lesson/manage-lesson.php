@@ -51,7 +51,8 @@
 
                 <?php
 
-                $sql2 = "SELECT * FROM tbl_lesson where account_id ='$account_id'";
+
+                $sql2 = "SELECT * FROM tbl_lesson  ";
                 $sql3 = "SELECT COUNT(lesson_id) AS lesson_id FROM tbl_form GROUP BY lesson_id;";
 
                 $rec2 = mysqli_query($connect, $sql2);
@@ -62,12 +63,8 @@
                     $count = mysqli_num_rows($rec2); // Function to get all the rows in database
                     $count2 = mysqli_num_rows($rec3);
 
-                    $on=1;
 
-
-                    if($count>0)
-                    {
-                        while($rows=mysqli_fetch_array($rec2)) while($rows2=mysqli_fetch_array($rec3))
+                        while($rows=mysqli_fetch_array($rec2) and $rows2=mysqli_fetch_array($rec3))
                         {
                             $course = $rows['course'];
                             $content = $rows['content'];
@@ -92,7 +89,6 @@
                     {
                         //
                     }
-                }
                 ?>
             </table>
         </div>

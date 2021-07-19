@@ -73,8 +73,8 @@
                                     <td style="text-align: center"><?php echo $address; ?></td>
                                     <td style="text-align: center"><?php echo $sex?></td>
                                     <td>
-                                        <a class="btn-primary" href="update-form.php?&lesson_id=<?= $lesson_id=$_GET['lesson_id']?>form_id=<?= $form_id=$_GET['form_id']?>"> Update your Information</a>
-                                        <a class="btn-secondary" href="delete-form.php?&lesson_id=<?= $lesson_id=$_GET['lesson_id']?>form_id=<?= $form_id=$_GET['form_id']?>"> Delete your Information</a>
+                                        <a class="btn-primary" href="update-form.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>&form_id=<?= $form_id=$_GET['form_id']?>"> Update your Information</a>
+                                        <a class="btn-secondary" href="delete-form.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>&form_id=<?= $form_id=$_GET['form_id']?>"> Delete your Information</a>
                                     </td>
                                 </tr>
                                 <?php
