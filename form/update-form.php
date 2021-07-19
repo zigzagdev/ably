@@ -25,7 +25,7 @@ if(isset($_GET['form_id'])) {
         }
     }
 }
-var_dump($row);
+
 ?>
 
 <section class="food-search">
@@ -46,8 +46,8 @@ var_dump($row);
                     <option value = "female">Female</option>
                 </select><br/>
             </fieldset>
-<!--            <input type="hidden" name="lesson_id" value="--><?php //echo $lesson_id; ?><!--">-->
-<!--            <input type="hidden" name="form_id" value="--><?php //echo $form_id; ?><!--">-->
+            <input type="hidden" name="lesson_id" value="<?php echo $lesson_id; ?>">
+            <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
             <input type="submit" name="submit" value="送信" class="btn btn-third">
         </form>
     </div>
@@ -55,12 +55,14 @@ var_dump($row);
 
 
 <?php
-$lesson_id = $_POST['lesson_id'];
-$form_id = $_POST['form_id'];
+$lesson_id = $_GET['lesson_id'];
+$form_id = $_GET['form_id'];
+
 var_dump($lesson_id);
 var_dump($form_id);
 if(isset($_POST['submit']))
 {
+
     $name = $_POST['name'];
     $telephone = $_POST['telephone'];
     $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
@@ -83,21 +85,23 @@ if(isset($_POST['submit']))
         //
     }
     $sex = $_POST['sex'];
+    $lesson_id = $_GET['lesson_id'];
+    $form_id = $_GET['form_id'];
 
     $sql3 = "UPDATE tbl_form SET name = '$name',telephone = '$telephone',
-           email = '$email',sex = '$sex' lesson_id = '$lesson_id' where form_id= '$form_id' " ;
+           email = '$email',sex = '$sex'where form_id= '$form_id' " ;
 
     $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
     {
         $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-        $url = "http://localhost:8001/form/manage-php?lesson_id=$lesson_id&form_id=$form_id";
+        $url = "http://localhost:8001/form/manage-form.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-        $url = "http://localhost:8001/form/update-form?lesson_id=$lesson_id&form_id=$form_id";
+        $url = "http://localhost:8001/form/update-form.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 401);
     }
 }
