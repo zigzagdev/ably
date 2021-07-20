@@ -14,6 +14,7 @@
                 <th style="text-align: center">Course</th>
                 <th  style="text-align: center">Content</th>
                 <th  style="text-align: center">Lesson Day</th>
+                <th  style="text-align: center">Reserve Form</th>
             </tr>
             <?php
             $sql2 = "SELECT * FROM tbl_lesson ";
@@ -39,7 +40,7 @@
                             <td style="text-align: center"><?php echo $course; ?></td>
                             <td style="text-align: center"><?php echo $content; ?></td>
                             <td style="text-align: center"><?php echo $day; ?></td>
-                            <td>
+                            <td style="text-align: center">
                                 <a class="btn-primary" href="../form/reserve-form.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
                             </td>
                         </tr>
