@@ -111,11 +111,13 @@ table tr td{
 
 /*CSS-main */
 .main{
-    height: 90vh;
+    width: 100%;
+    height: 100%;
     background-color:lightgrey;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 3% 0;
+    margin: 0;
+    padding: 0;
 }
 .main2{
     background-size: cover;

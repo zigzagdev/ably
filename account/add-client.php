@@ -1,6 +1,5 @@
 <?php
-//
-include('../config/constants.php'); ?>
+include ('partials/header_info.php'); ?>
 
     <div class="main">
         <div class="wrapper">
@@ -74,9 +73,20 @@ include('../config/constants.php'); ?>
 if(isset($_POST['submit']))
 {
     $user_name = $_POST['user_name'];
+
     $password  = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
-    $email = $_POST['email'];
+
+//    $email = $_POST['email'];
+//    if(isset($_email)) {
+//        $mysql_get_email = mysqli_query("SELECT * FROM tbl_account where email='$email'");
+//        $rec = mysqli_affected_rows($connect,$mysql_get_email);
+//        if ($rec >= 1) {
+//            echo "user exists";
+//            die();
+//        }
+//    }
+
     $content = $_POST['content'];
 
     if(isset($_FILES['image']['name']))
@@ -99,18 +109,33 @@ if(isset($_POST['submit']))
     {
         $image_name= "";
     }
-    if (empty($user_name) || empty($password) || empty($password2) || empty($email) ){
-        die('Please fill all required fields!');
+    if (empty($user_name)){
+        die('Please fill your name fields!');
     }
+
+    if (empty($password)){
+        die('Please fill password !');
+    }
+
+    if (empty($password2)){
+        die('Please fill password2 again !');
+    }
+
+    if (empty($email)){
+        die('Please fill your email !');
+    }
+
 
     if ($password !== $password) {
         die('Password and Confirm password should match!');
     }
 
-    $sql= "INSERT INTO tbl_account SET username='$user_name',password ='$password', password2 = '$password2',
+
+
+    $sql2= "INSERT INTO tbl_account SET username='$user_name',password ='$password', password2 = '$password2',
 image_name = '$image_name',email = '$email',content = '$content'";
 
-    $rec = mysqli_query($connect,$sql) ;
+    $rec = mysqli_query($connect,$sql2) ;
 
     if($rec == TRUE) {
         $_SESSION['add'] = "<div class='success'>Your account Added Successfully.</div>";
@@ -124,5 +149,6 @@ image_name = '$image_name',email = '$email',content = '$content'";
     }
 }
 
+include ('partials/footer.php');
 ?>
 
