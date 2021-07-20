@@ -68,6 +68,11 @@ include ('partials/header_info.php'); ?>
     </div>
 
 <?php
+$host = 'localhost';
+$username = 'root';
+$pass = 'root';
+$dbname = 'overcome';
+
 //Process the value from Form and Save it in Database
 // Check whether the button is clicked or not
 if(isset($_POST['submit']))
@@ -77,15 +82,21 @@ if(isset($_POST['submit']))
     $password  = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
 
-//    $email = $_POST['email'];
-//    if(isset($_email)) {
-//        $mysql_get_email = mysqli_query("SELECT * FROM tbl_account where email='$email'");
-//        $rec = mysqli_affected_rows($connect,$mysql_get_email);
-//        if ($rec >= 1) {
-//            echo "user exists";
-//            die();
-//        }
-//    }
+
+    if(isset($_POST['email'])) {
+        $email = $_POST['email'];
+        $mysqli = mysqli_connect($host,$username,$pass,$dbname);
+        if (!$mysqli){
+            die("Fail to connect your database.");
+        }
+        $sql = ("SELECT * FROM tbl_account where email='$email'");
+        $rec = mysqli_query($mysqli,$sql);
+        $rec2 = mysqli_num_rows($rec);
+        if ($rec2 >= 1) {
+            echo "user exists";
+            die();
+        }
+    }
 
     $content = $_POST['content'];
 
