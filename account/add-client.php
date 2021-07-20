@@ -93,7 +93,7 @@ if(isset($_POST['submit']))
         $rec = mysqli_query($mysqli,$sql);
         $rec2 = mysqli_num_rows($rec);
         if ($rec2 >= 1) {
-            echo "user exists";
+            echo  "<div class style='color: #ff6b81; text-align: center' >user exists</div>";
             die();
         }
     }
