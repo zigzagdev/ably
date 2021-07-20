@@ -55,6 +55,11 @@ if(isset($_GET['form_id'])) {
 
 
 <?php
+$host = 'localhost';
+$username = 'root';
+$pass = 'root';
+$dbname = 'overcome';
+
 $lesson_id = $_GET['lesson_id'];
 $form_id = $_GET['form_id'];
 
@@ -73,6 +78,7 @@ if(isset($_POST['submit']))
     {
         //
     }
+
     $email = $_POST['email'];
     $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
     if(preg_match($contents_mail,$email))
@@ -83,6 +89,7 @@ if(isset($_POST['submit']))
     {
         //
     }
+
     $sex = $_POST['sex'];
     $lesson_id = $_POST['lesson_id'];
     $form_id = $_POST['form_id'];     // Post means repost your correct variable again.

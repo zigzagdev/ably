@@ -25,6 +25,10 @@
 </section>
 
 <?php
+$host = 'localhost';
+$username = 'root';
+$pass = 'root';
+$dbname = 'overcome';
 
 if(isset($_POST['submit']))
 {
@@ -40,7 +44,18 @@ if(isset($_POST['submit']))
     {
         //
     }
-    $email = $_POST['email'];
+
+    if(isset($_POST['email'])) {
+        $email = $_POST['email'];
+        $mysqli = mysqli_connect($host,$username,$pass,$dbname);
+        $sql = ("SELECT * FROM tbl_form where email='$email'");
+        $rec = mysqli_query($mysqli,$sql);
+        $rec2 = mysqli_num_rows($rec);
+        if ($rec2 >= 1) {
+            echo  "<div class style='color: #ff6b81; text-align: center' >Email exist　Push the DashBoard button !</div>";
+            die();
+        }
+    }
     $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
     if(preg_match($contents_mail,$email))
     {
@@ -55,11 +70,11 @@ if(isset($_POST['submit']))
     $sql3 = "INSERT INTO tbl_form SET name = '$name',telephone = '$telephone',
            email = '$email',sex = '$sex',lesson_id= '$lesson_id'" ;
 
-    $rec3=mysqli_query($connect,$sql3);
+    $rec3=mysqli_query($mysqli,$sql3);
     if($rec3 == true)
     {
         $_SESSION['form'] = "<div class='success text-center'>Form order Successfully.</div>";
-        $form_id = mysqli_insert_id($connect);
+        $form_id = mysqli_insert_id($mysqli);
         $url = "http://localhost:8001/form/manage-form.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
