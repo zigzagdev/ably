@@ -1,9 +1,6 @@
 <?php
 include('../account/partials/header.php');
 
-echo '<script type="text/javascript">alert("Do you want to really delete this?");</script>';
-
-
 $lesson_id= $_GET['lesson_id'];
 
 $sql2= "DELETE FROM tbl_lesson WHERE lesson_id=$lesson_id";
