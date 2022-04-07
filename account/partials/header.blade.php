@@ -1,6 +1,6 @@
 <?php
 
-include('../config/constants.php');
+include('../config/constants.blade.php');
 //include('login-check.php');
 ?>
 

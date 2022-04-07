@@ -1,5 +1,5 @@
 <?php
-include('../config/constants.php');
+include('../config/constants.blade.php');
 
 
 $account_id= $_GET['account_id'];

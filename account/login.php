@@ -1,5 +1,5 @@
 <?php include
-('../config/constants.php');
+('../config/constants.blade.php');
 ?>
 
 <html>
