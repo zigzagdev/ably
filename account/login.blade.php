@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
     else
     {
         $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
-        header('Location:login.php');
+        header('Location:login.blade.php');
     }
 }
 ?>

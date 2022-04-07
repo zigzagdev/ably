@@ -160,7 +160,7 @@ if(isset($_POST['submit']))
               ,image_name = '$image_name'
               ,email = '$email'
               ,content = '$content'";
-  
+
     $rec = mysqli_query($connect,$sql2) ;
 
     if($rec == TRUE) {
@@ -171,7 +171,7 @@ if(isset($_POST['submit']))
     else
     {
         $_SESSION['add'] = "<div class='error'>Failed to add your account.</div>";
-        header("location: http://localhost:8001/account/login.php");
+        header("location: http://localhost:8001/account/login.blade.php");
     }
 }
 ?>

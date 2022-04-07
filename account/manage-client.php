@@ -41,7 +41,7 @@
         <br/><br/>
         <a class="btn-primary" href="update-client.php?account_id=<?= $account_id=$_GET['account_id']?>"> Update your Account</a>
         <a class="btn-secondary" class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
-           href="delete-client.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Account</a>
+           href="delete-client.blade.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Account</a>
         <a href="update-password.php" class="btn-primary">Update your Password</a>
         <a class="btn-secondary" href="../lesson/manage-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
         <br/><br/><br/>

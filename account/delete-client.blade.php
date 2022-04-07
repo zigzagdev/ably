@@ -9,7 +9,7 @@ $rec= mysqli_query($connect, $sql);
 
 if($rec == TRUE) {
     $_SESSION['add'] = "<div class='success'>Delete Account Successfully.</div>";
-    $url = "http://localhost:8001/account/login.php";
+    $url = "http://localhost:8001/account/login.blade.php";
     header('Location:' .$url,true , 302);
 }
 else
