@@ -5,11 +5,10 @@ include('../config/constants.blade.php');
 ?>
 
 <html>
-<head>
+  <head>
     <title>Presentation</title>
-
     <link rel="stylesheet" href="../../css/account.css">
-</head>
+  </head>
 
 <body>
 <!--Menu Section -->

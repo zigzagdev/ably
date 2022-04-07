@@ -1,11 +1,11 @@
 <?php
-
 include('../config/constants.blade.php');
 //include('login-check.php');
 ?>
 
 <html class="Wrapper">
   <head>
+    <title>Presentation</title>
     <link rel="stylesheet" href="../../css/account.css">
   </head>
   <body>
