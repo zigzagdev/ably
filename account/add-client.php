@@ -1,65 +1,68 @@
-<?php include ('partials/header_info.php'); ?>
+<?php include('partials/header.blade.php'); ?>
 
-   <body>
-     <div class="main">
-       <div class="wrapper">
-       <h1 class>Add your account</h1>
-         <br/><br/>
-         <?php
-         if(isset($_SESSION['add']))
-           {
-             echo  $_SESSION['add'];
-             unset($_SESSION['add']);
-           }
-         ?>
-         <form action="" method="post" enctype="multipart/form-data" >
-           <table class="tbl-30">
-             <tr>
-               <td>UserName:</td>
-               <td>
-                 <input type="text" name="user_name" placeholder="Enter your username">
-               </td>
-             </tr>
-             <tr>
-               <td>Password:</td>
-                 <td>
-                   <input type="password" name="password" placeholder="  Enter your password">
-                 </td>
-             </tr>
-             <tr>
-               <td>Password Again:</td>
-               <td>
-                 <input type="password" name="password2" placeholder="Password again">
-               </td>
-             </tr>
-             <tr>
-               <td>Email:</td>
-               <td>
-                 <input type="email" name="email" placeholder="Enter your email">
-               </td>
-             </tr>
-             <tr>
-               <td>Post an Image:</td>
-               <td>
-                 <input type="file" name="image">
-               </td>
-             </tr>
-             <tr>
-               <td>Content:</td>
-               <td>
-                 <textarea name="content" cols="30" rows="5" placeholder="Describe yourself"></textarea>
-               </td>
-             </tr>
-             <tr>
-               <td colspan="2">
-                 <input type="submit" name="submit" value="Add an account" class="btn-secondary">
-               </td>
-             </tr>
-           </table>
-         </form>
-       </div>
-     </div>
-   </body>
+<head>
+  <title>AdminRegistration</title>
+  <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+  <div class="formline">
+    <div class="form">
+      <h1 style="padding-top: 50px; text-align: center">Add your account</h1>
+      <?php
+        if(isset($_SESSION['add']))
+          {
+            echo  $_SESSION['add'];
+            unset($_SESSION['add']);
+          }
+      ?>
+      <form action="" method="post" enctype="multipart/form-data" >
+        <table class="tbl-30">
+          <tr>
+            <td>UserName:</td>
+            <td>
+              <input type="text" name="user_name" placeholder="Enter your username">
+            </td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td>
+              <input type="password" name="password" placeholder="  Enter your password">
+            </td>
+          </tr>
+          <tr>
+            <td>Password Again:</td>
+            <td>
+              <input type="password" name="password2" placeholder="Password again">
+            </td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>
+              <input type="email" name="email" placeholder="Enter your email">
+            </td>
+          </tr>
+          <tr>
+            <td>Post an Image:</td>
+            <td>
+              <input type="file" name="image">
+            </td>
+          </tr>
+          <tr>
+            <td>Content:</td>
+            <td>
+              <textarea name="content" cols="30" rows="5" placeholder="Describe yourself"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="submit" name="submit" value="Add an account" class="btn-secondary">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
 <?php
 $host = 'localhost';
 $username = 'root';
@@ -152,7 +155,5 @@ image_name = '$image_name',email = '$email',content = '$content'";
         header("location: http://localhost:8001/account/login.php");//ページへのリダイレクトをif~else文にて行っている。
     }
 }
-
-include ('partials/footer.php');
 ?>
-
+<?php include ('partials/footer.tpl'); ?>

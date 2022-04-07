@@ -87,4 +87,4 @@ if(isset($_POST['submit']))
 }
 ?>
 
-<?php include('../account/partials/footer.php'); ?>
+<?php include('../account/partials/footer.tpl'); ?>

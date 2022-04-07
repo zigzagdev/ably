@@ -1,4 +1,4 @@
-<?php  include('partials/header.php'); ?>
+<?php  include('partials/header.blade.php'); ?>
 
 <?php
 if(isset($_GET['account_id'])) {
@@ -160,4 +160,4 @@ if(isset($_POST['submit']))
     }
 }
 ?>
-<?php include ('partials/footer.php'); ?>
+<?php include('partials/footer.tpl'); ?>

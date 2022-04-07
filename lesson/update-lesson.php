@@ -1,4 +1,4 @@
-<?php  include('../account/partials/header.php'); ?>
+<?php  include('../account/partials/header.blade.php'); ?>
 
 <?php
 if(isset($_GET['lesson_id'])) {
@@ -96,6 +96,6 @@ if(isset($_POST['submit']))
     }
 }
 ?>
-<?php include ('../account/partials/footer.php'); ?>
+<?php include('../account/partials/footer.tpl'); ?>
 
 

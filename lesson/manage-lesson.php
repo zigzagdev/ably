@@ -1,4 +1,4 @@
-<?php include('../account/partials/header.php'); ?>
+<?php include('../account/partials/header.blade.php'); ?>
 
 <!--Main Section -->
 <div class="main">
@@ -102,4 +102,4 @@
 </div>
 <!--Main Section -->
 
-<?php include('../account/partials/footer.php') ?>
+<?php include('../account/partials/footer.tpl') ?>

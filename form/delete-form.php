@@ -23,5 +23,5 @@ else
     header('Location:' .$url,true , 401);//ページへのリダイレクトをif~else文にて行っている。
 }
 
-include('../account/partials/footer.php');
+include('../account/partials/footer.tpl');
 ?>

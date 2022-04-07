@@ -1,7 +1,4 @@
-<?php include('partials/header_info.php'); ?>
-
-
-
+<?php include('partials/header.blade.php'); ?>
 
 <!--Main Section -->
 <div class="main">
@@ -58,4 +55,4 @@
     <div class="clearfix"></div>
 </div>
 
-<?php include('partials/footer.php');  ?>
+<?php include('partials/footer.tpl');  ?>

@@ -1,4 +1,4 @@
-<?php include ('../account/partials/header.php'); ?>
+<?php include('../account/partials/header.blade.php'); ?>
 
 <div class="main">
     <div class="wrapper">
@@ -77,4 +77,4 @@
     </div>
 </div>
 
-<?php include ('../account/partials/footer.php'); ?>
+<?php include('../account/partials/footer.tpl'); ?>

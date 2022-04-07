@@ -1,5 +1,5 @@
 <?php
-include('../account/partials/header.php');
+include('../account/partials/header.blade.php');
 
 $lesson_id= $_GET['lesson_id'];
 
@@ -20,7 +20,7 @@ else
     header('Location:' .$url,true , 401);//ページへのリダイレクトをif~else文にて行っている。
 }
 
-include('../account/partials/footer.php');
+include('../account/partials/footer.tpl');
 ?>
 
 

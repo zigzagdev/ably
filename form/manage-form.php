@@ -94,4 +94,4 @@
     </div>
     <!--Main Section -->
 
-<?php include('../account/partials/footer.php') ?>
+<?php include('../account/partials/footer.tpl') ?>
