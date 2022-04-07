@@ -16,6 +16,6 @@ else
 {
     $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
     $url = "http://localhost:8001/account/manage-client.php?id=$account_id";
-    header('Location:' .$url,true , 401);//ページへのリダイレクトをif~else文にて行っている。
+    header('Location:' .$url,true , 401);
 }
 ?>
