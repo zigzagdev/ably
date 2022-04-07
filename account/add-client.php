@@ -26,7 +26,7 @@
           <tr>
             <td>Password:</td>
             <td>
-              <input type="password" name="password" placeholder="  Enter your password">
+              <input type="password" name="password" placeholder="Enter your password">
             </td>
           </tr>
           <tr>
@@ -74,9 +74,10 @@ $dbname = 'overcome';
 if(isset($_POST['submit']))
 {
     $user_name = $_POST['user_name'];
-
     $password  = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
+
+    $errors = [];
 
 
     if(isset($_POST['email'])) {
@@ -89,7 +90,7 @@ if(isset($_POST['submit']))
         $rec = mysqli_query($mysqli,$sql);
         $rec2 = mysqli_num_rows($rec);
         if ($rec2 >= 1) {
-            echo  "<div class style='color: #ff6b81; text-align: center' >user exists</div>";
+            $errors =  "<div class style='color: #ff6b81; text-align: center' >user exists</div>";
             die();
         }
     }
@@ -132,16 +133,28 @@ if(isset($_POST['submit']))
         die('Please fill your email !');
     }
 
+  if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
+    $error_message[] = "英語のみ有効です。";
+    die();
+  }
 
-    if ($password !== $password) {
+    if ($password !== $password2) {
         die('Password and Confirm password should match!');
     }
 
+  if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password)) {
+    $error_message[] = "パスワードの形式が正しくありません。";
+    die();
+  }
+
+  if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password2)) {
+    $error_message[] = "確認用パスワードの形式が正しくありません。";
+    die();
+  }
 
 
-    $sql2= "INSERT INTO tbl_account SET username='$user_name',password ='$password', password2 = '$password2',
-image_name = '$image_name',email = '$email',content = '$content'";
 
+    $sql2= "INSERT INTO tbl_account SET username='$user_name',password ='$password',image_name = '$image_name',email = '$email',content = '$content'";
     $rec = mysqli_query($connect,$sql2) ;
 
     if($rec == TRUE) {
