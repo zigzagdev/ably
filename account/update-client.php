@@ -6,16 +6,18 @@ if(isset($_GET['account_id'])) {
     $sql = "SELECT * FROM tbl_account WHERE account_id=$account_id";
     $rec = mysqli_query($connect, $sql);
 
-    if ($rec == true) {
-        $count = mysqli_num_rows($rec);
-        if ($count == 1) {
-            $row = mysqli_fetch_assoc($rec);
-            $account_id = $row['account_id'];
-            $username = $row['username'];
-            $current_image = $row['image_name'];
-            $image_name = $row['image_name'];
-            $email = $row['email'];
-            $content = $row['content'];
+    if ($rec == true)
+    {
+      $count = mysqli_num_rows($rec);
+        if ($count == 1)
+        {
+          $row = mysqli_fetch_assoc($rec);
+          $account_id = $row['account_id'];
+          $username = $row['username'];
+          $current_image = $row['image_name'];
+          $image_name = $row['image_name'];
+          $email = $row['email'];
+          $content = $row['content'];
 
         } else {
             header('Location: ' . $_SERVER['HTTP_REFERER']);
