@@ -52,8 +52,10 @@
                 <?php
 
 
-                $sql2 = "SELECT * FROM tbl_lesson  ";
-                $sql3 = "SELECT COUNT(*) AS lesson_id FROM tbl_form GROUP BY lesson_id ;";
+                $sql2 = "SELECT * FROM tbl_lesson where account_id = $account_id ";        // where means selected by each account
+                $sql3 =  " select f.1lesson_id,count(1) from tbl_form f inner join tbl_lesson l on l.lesson_id = f.lesson_id 
+                           where l.account_id = 19 group by f.lesson_id ;";
+
 
                 $rec2 = mysqli_query($connect, $sql2);
                 $rec3 = mysqli_query($connect, $sql3);
@@ -71,7 +73,7 @@
                             $content = $rows['content'];
                             $day = $rows['day'];
                             $lesson_id = $rows['lesson_id'];
-                            $lesson = $rows2['lesson_id'];
+                            $lesson = $rows2['f.lesson_id'];
                             ?>
                             <tr>
                                 <td style="text-align: center"><?php echo $course; ?></td>
