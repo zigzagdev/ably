@@ -1,4 +1,4 @@
-<?php include('../account/partials/header_info.php'); ?>
+<?php include('../account/partials/header_info.blade.php'); ?>
 
     <div class="main">
         <div class="wrapper">

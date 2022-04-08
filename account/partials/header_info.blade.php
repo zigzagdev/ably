@@ -1,7 +1,5 @@
 <?php
-
-include('../config/constants.blade.php');
-//include('login-check.php');
+  include ('../config/constants.blade.php')
 ?>
 
 <html>
@@ -23,7 +21,7 @@ include('../config/constants.blade.php');
         <div class=" wrapper ">
             <ul>
                 <li><a href="../account/index.php">DashBoard</a></li>
-<!--                <li><a href="../account/manage-client.php?account_id=--><?//= $account_id=$_GET['account_id']?><!--">Home</a></li>-->
+<!--                <li><a href="../account/manage-client.php?account_id=--><!--">Home</a></li>-->
 <!--                <li><a href="../account/logout.php">Logout</a></li>-->
             </ul>
         </div>

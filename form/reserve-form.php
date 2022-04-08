@@ -1,4 +1,4 @@
-<?php include ('../account/partials/header_info.php');?>
+<?php include('../account/partials/header_info.blade.php');?>
 
 <section class="food-search">
     <div class="container2"><br/>

@@ -1,4 +1,4 @@
-<?php  include('../account/partials/header_info.php'); ?>
+<?php  include('../account/partials/header_info.blade.php'); ?>
 
 <?php
 if(isset($_GET['form_id'])) {

@@ -1,5 +1,5 @@
 <?php
-include('../account/partials/header_info.php');
+include('../account/partials/header_info.blade.php');
 
 echo '<script type="text/javascript">alert("Do you want to really delete this?");</script>';
 
