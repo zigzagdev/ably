@@ -36,13 +36,13 @@
 /*table tr td{*/
 /*    padding: 1%;*/
 /*}*/
-/*.btn-primary{*/
-/*    background-color: dodgerblue;*/
-/*    padding: 1%;*/
-/*    color: white;*/
-/*    text-decoration: none;*/
-/*    font-weight: bold;*/
-/*}*/
+.btn-primary{
+    background-color: dodgerblue;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 /*.btn-primary:hover{*/
 /*    background-color: orangered;*/
 /*}*/

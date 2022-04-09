@@ -37,9 +37,9 @@
             ?>
             <br/><br/>
             <!---button--->
-            <a class="btn-danger" href="AddLesson.php?account_id=<?=$account_id=$_GET['account_id']?>">
-              Add others Lessons
-            </a>
+<!--            <a class="btn-danger" href="AddLesson.php?account_id=--><?//=$account_id=$_GET['account_id']?><!--">-->
+<!--              Add others Lessons-->
+<!--            </a>-->
 
             <br/><br/><br/>
             <table class="tbl-full">
@@ -52,11 +52,11 @@
                 </tr>
 
                 <?php
+                $lesson_id = $_GET['lesson_id'];
 
-
-                $sql2 = "SELECT * FROM tbl_lesson where account_id = $account_id ";        // where means selected by each account
-                $sql3 =  " select f.1lesson_id,count(1) from tbl_form f inner join tbl_lesson l on l.lesson_id = f.lesson_id 
-                           where l.account_id = 19 group by f.lesson_id ;";
+//                $sql2 = "SELECT * FROM tbl_lesson where lesson_id = $lesson_id ";        // where means selected by each account
+//                $sql3 =  " select f.1lesson_id,count(1) from tbl_form f inner join tbl_lesson l on l.lesson_id = f.lesson_id
+//                           where l.account_id = 19 group by f.lesson_id ;";
 
 
                 $rec2 = mysqli_query($connect, $sql2);

@@ -12,7 +12,8 @@
       <div>
        <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
         <?php
-        $sql2 = "SELECT * FROM tbl_lesson ";
+        $sql2 = "SELECT * FROM tbl_lesson
+                   where ";
         $rec2 = mysqli_query($connect, $sql2);
 
         if($rec2==TRUE)
