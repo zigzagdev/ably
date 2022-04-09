@@ -1,4 +1,4 @@
-<?php include('../account/partials/header_info.blade.php'); ?>
+<?php include('../account/partials/HeaderInfo.blade.php'); ?>
 
     <div class="main">
         <div class="wrapper">
@@ -74,9 +74,9 @@
                                     <td style="text-align: center"><?php echo $address; ?></td>
                                     <td style="text-align: center"><?php echo $sex; ?></td>
                                     <td style="text-align: center">
-                                        <a class="btn-primary" href="update-form.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>&form_id=<?= $form_id=$_GET['form_id']?>"> Update your Information</a>
+                                        <a class="btn-primary" href="UpdateForm.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>&form_id=<?= $form_id=$_GET['form_id']?>"> Update your Information</a>
                                         <a class="btn-secondary"  class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
-                                           href="delete-form.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>&form_id=<?= $form_id=$_GET['form_id']?>"> Delete your Information</a>
+                                           href="DeleteForm.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>&form_id=<?= $form_id=$_GET['form_id']?>"> Delete your Information</a>
                                     </td>
                                 </tr>
                                 <?php
@@ -94,4 +94,4 @@
     </div>
     <!--Main Section -->
 
-<?php include('../account/partials/footer.tpl') ?>
+<?php include('../account/partials/Footer.tpl') ?>

@@ -1,4 +1,4 @@
-<?php  include('partials/header.blade.php'); ?>
+<?php  include('partials/Header.blade.php'); ?>
 
 <?php
 if(isset($_GET['account_id'])) {
@@ -117,7 +117,7 @@ if(isset($_POST['submit']))
             if($upload==false)
             {
                 $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-                $url = "http://localhost:8001/account/update-client.php?account_id=$row[account_id]";
+                $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$row[account_id]";
                 header('Location:'.$url,true , 401);
                 die();
             }
@@ -128,7 +128,7 @@ if(isset($_POST['submit']))
                 if($remove==false)
                 {
                     $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current Image.</div>";
-                    $url = "http://localhost:8001/account/update-client.php?account_id=$account_id";
+                    $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
                     header('Location:' .$url,true , 401);
                     die();
                 }
@@ -149,17 +149,17 @@ if(isset($_POST['submit']))
 
     if($rec==true)
     {
-        $url = "http://localhost:8001/account/manage-client.php?account_id=$account_id";
+        $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
         $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['update'] = "<div class='error'>Failed to Update Account.</div>";
-        $url = "http://localhost:8001/account/update-client.php?account_id=$account_id";
+        $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
         header('Location:' .$url,true , 401);
         die();
     }
 }
 ?>
-<?php include('partials/footer.tpl'); ?>
+<?php include('partials/Footer.tpl'); ?>

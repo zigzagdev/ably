@@ -1,11 +1,11 @@
 <?php
-  include ('../config/constants.blade.php')
+  include ('../config/Constants.blade.php')
 ?>
 
 <html>
   <head>
     <title>PresentationForm</title>
-    <link rel="stylesheet" href="../../css/account.css">
+    <link rel="stylesheet" href="../../css/Account.css">
   </head>
   <body style="background-color: ghostwhite">
     <div class="infooutline">

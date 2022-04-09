@@ -1,8 +1,8 @@
-<?php include('partials/header.blade.php'); ?>
+<?php include('partials/Header.blade.php'); ?>
 
 <head>
   <title>AdminRegistration</title>
-  <link rel="stylesheet" href="../css/account.css">
+  <link rel="stylesheet" href="../css/Account.css">
 </head>
 <body>
   <div class="formline">
@@ -108,7 +108,7 @@ if(isset($_POST['submit']))
             $upload = move_uploaded_file($src, $dst);
             if ($upload == false) {
                 $_SESSION['upload'] = "<div class='error'>Failed to Upload Image.</div>";
-                header('location:/account/add-client.php');
+                header('location:/account/AddAccount.php');
                 die();
             }
         }
@@ -166,13 +166,13 @@ if(isset($_POST['submit']))
     if($rec == TRUE) {
         $_SESSION['add'] = "<div class='success'>Your account Added Successfully.</div>";
         $account_id = mysqli_insert_id($connect);
-        header("location: http://localhost:8001/account/manage-client.php?account_id=$account_id");
+        header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
     }
     else
     {
         $_SESSION['add'] = "<div class='error'>Failed to add your account.</div>";
-        header("location: http://localhost:8001/account/login.blade.php");
+        header("location: http://localhost:8001/account/Login.blade.php");
     }
 }
 ?>
-<?php include ('partials/footer.tpl'); ?>
+<?php include('partials/Footer.tpl'); ?>

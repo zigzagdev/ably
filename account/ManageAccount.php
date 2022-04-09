@@ -1,4 +1,4 @@
-<?php include('partials/header.blade.php'); ?>
+<?php include('partials/Header.blade.php'); ?>
 
     <!--Main Section -->
 <div class="main">
@@ -39,11 +39,11 @@
             }
         ?>
         <br/><br/>
-        <a class="btn-primary" href="update-client.php?account_id=<?= $account_id=$_GET['account_id']?>"> Update your Account</a>
+        <a class="btn-primary" href="UpdateAccount.php?account_id=<?= $account_id=$_GET['account_id']?>"> Update your Account</a>
         <a class="btn-secondary" class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
-           href="delete-client.blade.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Account</a>
+           href="DeleteAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Account</a>
         <a href="update-password.php" class="btn-primary">Update your Password</a>
-        <a class="btn-secondary" href="../lesson/manage-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
+        <a class="btn-secondary" href="../lesson/ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
         <br/><br/><br/>
         <table class="tbl-full">
           <tr>
@@ -104,4 +104,4 @@
   </div>
  </div>
 
-<?php include('partials/footer.tpl') ?>
+<?php include('partials/Footer.tpl') ?>

@@ -1,11 +1,11 @@
 <?php include
-('../config/constants.blade.php');
+('../config/Constants.blade.php');
 ?>
 
 <html>
 <head>
     <title>Sign In</title>
-    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="../css/Account.css">
 </head>
 <body>
 <div class="login">
@@ -35,7 +35,7 @@
     </form>
     <p class="text-center">Havn't create an account ?</p>
     <div class="create">
-    <a href="add-client.php">Create</a>
+    <a href="AddAccount.php">Create</a>
     </div>
 </div>
 </body>
@@ -55,7 +55,7 @@ if(isset($_POST['submit']))
     if($count==1)
     {
         $row = mysqli_fetch_assoc($rec);
-        $url = "http://localhost:8001/account/manage-client.php?account_id=$row[id]";
+        $url = "http://localhost:8001/account/ManageAccount.php?account_id=$row[id]";
         $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
         $_SESSION['user'] = $username;
         //特定のユーザーがログアウトしてるかしてないかの確認の為に置いてる
@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
     else
     {
         $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
-        header('Location:login.blade.php');
+        header('Location:Login.blade.php');
     }
 }
 ?>

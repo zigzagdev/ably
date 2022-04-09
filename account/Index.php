@@ -1,4 +1,4 @@
-<?php include('partials/header.blade.php'); ?>
+<?php include('partials/Header.blade.php'); ?>
 
 <!--Main Section -->
 <div class="main">
@@ -33,7 +33,7 @@
                       <td style="text-align: center"><?php echo $content; ?></td>
                       <td style="text-align: center"><?php echo $day; ?></td>
                       <td style="text-align: center">
-                        <a class="btn-primary" href="../form/reserve-form.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
+                        <a class="btn-primary" href="../form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
                       </td>
                     </tr>
       <?php
@@ -49,4 +49,4 @@
   </div>
 </div>
 
-<?php include('partials/footer.tpl');  ?>
+<?php include('partials/Footer.tpl');  ?>

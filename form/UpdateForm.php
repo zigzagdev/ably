@@ -1,4 +1,4 @@
-<?php  include('../account/partials/header_info.blade.php'); ?>
+<?php  include('../account/partials/HeaderInfo.blade.php'); ?>
 
 <?php
 if(isset($_GET['form_id'])) {
@@ -31,7 +31,7 @@ if(isset($_GET['form_id'])) {
 <section class="food-search">
     <div class="container2"><br/>
         <h2 class="text-center">Update your information.</h2><br/>
-        <form action="update-form.php?lesson_id=$lesson_id&form_id=$form_id" method="POST" class="order" style="text-align: center" >
+        <form action="UpdateForm.php?lesson_id=$lesson_id&form_id=$form_id" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
                 <legend class="legend-center">Your information</legend>
                 <div class="order-label text-white" >Full Name</div>
@@ -101,15 +101,15 @@ if(isset($_POST['submit']))
     if($rec3 == true)
     {
         $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-        $url = "http://localhost:8001/form/manage-form.php?lesson_id=$lesson_id&form_id=$form_id";
+        $url = "http://localhost:8001/form/ManageForm.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-        $url = "http://localhost:8001/form/update-form.php?lesson_id=$lesson_id&form_id=$form_id";
+        $url = "http://localhost:8001/form/UpdateForm.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 401);
     }
 }
 ?>
-<?php include('../account/partials/footer.tpl'); ?>
+<?php include('../account/partials/Footer.tpl'); ?>
