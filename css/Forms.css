@@ -300,12 +300,13 @@
     width: 221px;
     height: 256px;
     background-color: snow;
-    margin-left: 110px;
+
 }
 
 .cardoutline {
-    display: flex;
+    display: inline-block;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 31px;
+    margin: 0 40px 45px 52px;
+    text-align: center;
 }

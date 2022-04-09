@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div class="main">
+    <div style="margin: 0 240px 0 240px">
       <div>
        <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
         <?php
@@ -27,8 +27,10 @@
                       $day = $rows['day'];
                       $lesson_id = $rows['lesson_id']
         ?>
-          <div class="lessonindex">
+          <div class="cardoutline">
+            <div class="cardcontent">
 
+            </div>
           </div>
         <?php
                     }
