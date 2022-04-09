@@ -8,9 +8,9 @@
   </head>
   <body>
     <div class="main">
-      <div style="text-align: center">
+      <div style="text-align: center; margin: 0 230px">
       <h1>Manage Your Account</h1>
-      <?php
+<?php
         if(isset($_SESSION['add']))
         {
           echo $_SESSION['add'];
@@ -58,6 +58,13 @@
                 $image_name = $rows['image_name'];
                 $email = $rows['email'];
                 $content = $rows['content'];
+?>
+                <div class="mainaccount">
+                  <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+                  <b style="margin-left: 20px; font-size: 20px"><?php echo $username ?></b>
+
+                </div>
+<?php
                 if ($image_name == "")
                 {
                   echo "<div class='error'>Image not Added.</div>";
@@ -66,7 +73,8 @@
             }
           }
         ?>
-        <div style="margin-top: 60px">
+      </div>
+        <div style="margin-top: 60px; text-align: center">
           <div style="margin: 0 10px 20px 10px">
             <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id<?= $account_id=$_GET['account_id']?>">
               Update your Account
@@ -80,7 +88,6 @@
             </a>
           </div>
         </div>
-      </div>
     </div>
   </body>
 </html>

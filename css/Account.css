@@ -301,3 +301,8 @@ footer {
 .wrapper-inner {
     margin: 0 20px 0 20px;
 }
+
+.mainaccount {
+  background-color: snow;
+  text-align: left;
+}
