@@ -1,4 +1,4 @@
-<?php include('../account/partials/header.php'); ?>
+<?php include('../account/partials/Header.blade.php'); ?>
 
 <!--Main Section -->
 <div class="main">
@@ -37,7 +37,7 @@
             ?>
             <br/><br/>
             <!---button--->
-            <a class="btn-danger" href="add-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Add others Lessons</a>
+            <a class="btn-danger" href="AddLesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Add others Lessons</a>
 
             <br/><br/><br/>
             <table class="tbl-full">
@@ -52,8 +52,10 @@
                 <?php
 
 
-                $sql2 = "SELECT * FROM tbl_lesson  ";
-                $sql3 = "SELECT COUNT(*) AS lesson_id FROM tbl_form GROUP BY lesson_id ;";
+                $sql2 = "SELECT * FROM tbl_lesson where account_id = $account_id ";        // where means selected by each account
+                $sql3 =  " select f.1lesson_id,count(1) from tbl_form f inner join tbl_lesson l on l.lesson_id = f.lesson_id 
+                           where l.account_id = 19 group by f.lesson_id ;";
+
 
                 $rec2 = mysqli_query($connect, $sql2);
                 $rec3 = mysqli_query($connect, $sql3);
@@ -71,7 +73,7 @@
                             $content = $rows['content'];
                             $day = $rows['day'];
                             $lesson_id = $rows['lesson_id'];
-                            $lesson = $rows2['lesson_id'];
+                            $lesson = $rows2['f.lesson_id'];
                             ?>
                             <tr>
                                 <td style="text-align: center"><?php echo $course; ?></td>
@@ -79,8 +81,10 @@
                                 <td style="text-align: center"><?php echo $day; ?></td>
                                 <td style="text-align: center"><?php echo $lesson?></td>
                                 <td style="text-align: center">
-                                    <a class="btn-primary" href="update-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
-                                    <a class="btn-secondary" href="delete-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
+                                    <a class="btn-primary" href="UpdateLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
+                                    <a class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
+                                       href="DeleteLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
+
                                 </td>
                             </tr>
                             <?php
@@ -98,4 +102,4 @@
 </div>
 <!--Main Section -->
 
-<?php include('../account/partials/footer.php') ?>
+<?php include('../account/partials/Footer.tpl') ?>

@@ -1,10 +1,10 @@
-<?php include ('../account/partials/header.php'); ?>
+<?php include('../account/partials/Header.blade.php'); ?>
 
 <div class="main">
-    <div class="wrapper">
+<div class="wrapper">
         <h1>Add Your lesson.</h1><br/>
         <br/>
-        <a class="btn-primary" href="manage-lesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Back to your lesson page</a>
+        <a class="btn-primary" href="ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Back to your lesson page</a>
         <br/><br/>
 
 
@@ -62,13 +62,13 @@
             if($rec2 == true)
             {
                 $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
-                $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id";
+                $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
                 header('Location:' .$url,true , 302);
             }
             else
             {
                 $_SESSION['add'] = "<div class='error'>Failed to Create Account.</div>";
-                $url = "http://localhost:8001/lesson/manage-lesson.php?account_id=$account_id";
+                $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
                 header('Location:' .$url,true , 401);
                 die();
             }
@@ -77,4 +77,4 @@
     </div>
 </div>
 
-<?php include ('../account/partials/footer.php'); ?>
+<?php include('../account/partials/Footer.tpl'); ?>

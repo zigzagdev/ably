@@ -1,4 +1,4 @@
-<?php  include('../account/partials/header_info.php'); ?>
+<?php  include('../account/partials/HeaderInfo.blade.php'); ?>
 
 <?php
 if(isset($_GET['form_id'])) {
@@ -31,7 +31,7 @@ if(isset($_GET['form_id'])) {
 <section class="food-search">
     <div class="container2"><br/>
         <h2 class="text-center">Update your information.</h2><br/>
-        <form action="update-form.php?lesson_id=$lesson_id&form_id=$form_id" method="POST" class="order" style="text-align: center" >
+        <form action="UpdateForm.php?lesson_id=$lesson_id&form_id=$form_id" method="POST" class="order" style="text-align: center" >
             <fieldset class="fieldset">
                 <legend class="legend-center">Your information</legend>
                 <div class="order-label text-white" >Full Name</div>
@@ -55,6 +55,11 @@ if(isset($_GET['form_id'])) {
 
 
 <?php
+$host = 'localhost';
+$username = 'root';
+$pass = 'root';
+$dbname = 'overcome';
+
 $lesson_id = $_GET['lesson_id'];
 $form_id = $_GET['form_id'];
 
@@ -73,6 +78,7 @@ if(isset($_POST['submit']))
     {
         //
     }
+
     $email = $_POST['email'];
     $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
     if(preg_match($contents_mail,$email))
@@ -83,6 +89,7 @@ if(isset($_POST['submit']))
     {
         //
     }
+
     $sex = $_POST['sex'];
     $lesson_id = $_POST['lesson_id'];
     $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
@@ -94,15 +101,15 @@ if(isset($_POST['submit']))
     if($rec3 == true)
     {
         $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-        $url = "http://localhost:8001/form/manage-form.php?lesson_id=$lesson_id&form_id=$form_id";
+        $url = "http://localhost:8001/form/ManageForm.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-        $url = "http://localhost:8001/form/update-form.php?lesson_id=$lesson_id&form_id=$form_id";
+        $url = "http://localhost:8001/form/UpdateForm.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 401);
     }
 }
 ?>
-<?php include ('../account/partials/footer.php'); ?>
+<?php include('../account/partials/Footer.tpl'); ?>
