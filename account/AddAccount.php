@@ -4,8 +4,8 @@
   <title>AdminRegistration</title>
   <link rel="stylesheet" href="../css/Account.css">
 </head>
-<body>
-  <div class="formline">
+<body style="background-color: whitesmoke">
+  <div class="formline" style="background-color: lightgray">
     <div class="form">
       <h1 style="padding-top: 50px; text-align: center">Add your account</h1>
       <?php
@@ -53,12 +53,10 @@
               <textarea name="content" cols="30" rows="5" placeholder="Describe yourself"></textarea>
             </td>
           </tr>
-          <tr>
-            <td colspan="2">
-              <input type="submit" name="submit" value="Add an account" class="btn-secondary">
-            </td>
-          </tr>
         </table>
+        <div style="text-align: center">
+          <input type="submit" name="submit" value="Add an account" class="btn-secondary">
+        </div>
       </form>
     </div>
   </div>

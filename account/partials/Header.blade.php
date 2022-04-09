@@ -3,18 +3,16 @@ include('../config/Constants.blade.php');
 //include('login-check.php');
 ?>
 
-<html class="Wrapper">
+<html>
   <head>
-    <title>Presentation</title>
+    <title></title>
     <link rel="stylesheet" href="../../css/Account.css">
   </head>
-  <body>
-    <header style="color: #9d9d9d">
-      <div>
-        <h1 class="hchar" style="color: #125EAE"><a>Become a teacher..!</a></h1>
-      </div>
-    </header>
-  </body>
+  <header>
+    <div class="infooutline">
+      <h1 class="hchar" style="color: #125EAE">Become a teacher..!</h1>
+    </div>
+  </header>
 </html>
 
 
