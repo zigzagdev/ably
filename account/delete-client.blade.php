@@ -1,8 +1,7 @@
 <?php
-include('../config/constants.blade.php');
+  include('../config/constants.blade.php');
 
-
-$account_id= $_GET['account_id'];
+  $account_id= $_GET['account_id'];
 
 $sql= "DELETE FROM tbl_account WHERE account_id=$account_id";
 $rec= mysqli_query($connect, $sql);

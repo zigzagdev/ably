@@ -4,26 +4,23 @@
 
 <html>
   <head>
-    <title>Presentation</title>
+    <title>PresentationForm</title>
     <link rel="stylesheet" href="../../css/account.css">
   </head>
-
-<body>
-<!--Menu Section -->
-
-<div class="container">
-    <div class="logo">
-        <a href="#" title="Logo">
-            <img src="../../images/conversation.jpg" alt="" class="img-responsive">
+  <body style="background-color: ghostwhite">
+    <div class="infooutline">
+      <div class="logo">
+        <a href="" title="Logo">
+          <img src="../../images/conversation.jpg" alt="" class="img-responsive">
         </a>
-    </div>
-    <div class="account text-center">
-        <div class=" wrapper ">
-            <ul>
-                <li><a href="../account/index.php">DashBoard</a></li>
-<!--                <li><a href="../account/manage-client.php?account_id=--><!--">Home</a></li>-->
-<!--                <li><a href="../account/logout.php">Logout</a></li>-->
-            </ul>
+      </div>
+      <div class="account text-center">
+        <div class="wrapper">
+          <a href="../account/index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
+          <a href="../account/index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
+          <a href="../account/index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
         </div>
+      </div>
     </div>
-</div>
+  </body>
+</html>
