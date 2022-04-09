@@ -1,9 +1,9 @@
-<?php include('partials/Header.blade.php'); ?>
+<?php include('./account/partials/IndexHeader.blade.php') ?>
 
 <!--Main Section -->
 <div class="main">
   <div class="wrapper">
-    <h1 style="padding: 20px 0 0 50px">Lesson Index</h1>
+    <h1 style="padding: 20px 0 0 50px; text-align: center">Coming Lessons</h1>
     <br/><br/><br/>
     <table class="tbl-full">
       <tr>
@@ -33,7 +33,7 @@
                       <td style="text-align: center"><?php echo $content; ?></td>
                       <td style="text-align: center"><?php echo $day; ?></td>
                       <td style="text-align: center">
-                        <a class="btn-primary" href="../form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
+                        <a class="btn-primary" href="form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
                       </td>
                     </tr>
       <?php
@@ -49,4 +49,4 @@
   </div>
 </div>
 
-<?php include('partials/Footer.tpl');  ?>
+<?php include "./account/partials/Footer.tpl"?>
