@@ -291,4 +291,21 @@
 /*    border-radius: 5px;*/
 /*}*/
 
+.lessonindex {
+    text-align: center;
+    color: pink;
+}
 
+.cardcontent{
+    width: 221px;
+    height: 256px;
+    background-color: snow;
+    margin-left: 110px;
+}
+
+.cardoutline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 31px;
+}

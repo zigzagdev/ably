@@ -1,18 +1,17 @@
 <?php include('./account/partials/IndexHeader.blade.php') ?>
 
 <!--Main Section -->
-<div class="main">
-  <div class="wrapper">
-    <h1 style="padding: 20px 0 0 50px; text-align: center">Coming Lessons</h1>
-    <br/><br/><br/>
-    <table class="tbl-full">
-      <tr>
-        <th style="text-align: center">Course</th>
-        <th  style="text-align: center">Content</th>
-        <th  style="text-align: center">Lesson Day</th>
-        <th  style="text-align: center">Reserve Form</th>
-      </tr>
-      <?php
+<html>
+  <head>
+    <title>TopPage</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <div class="main">
+      <div>
+       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
+        <?php
         $sql2 = "SELECT * FROM tbl_lesson ";
         $rec2 = mysqli_query($connect, $sql2);
 
@@ -27,26 +26,21 @@
                       $content = $rows['content'];
                       $day = $rows['day'];
                       $lesson_id = $rows['lesson_id']
-      ?>
-                    <tr>
-                      <td style="text-align: center"><?php echo $course; ?></td>
-                      <td style="text-align: center"><?php echo $content; ?></td>
-                      <td style="text-align: center"><?php echo $day; ?></td>
-                      <td style="text-align: center">
-                        <a class="btn-primary" href="form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
-                      </td>
-                    </tr>
-      <?php
+        ?>
+          <div class="lessonindex">
+
+          </div>
+        <?php
                     }
                 }
                 else
                 {
                     //
                 }
-          }
-      ?>
-    </table>
-  </div>
-</div>
-
+            }
+        ?>
+      </div>
+    </div>
+  </body>
+</html>
 <?php include "./account/partials/Footer.tpl"?>
