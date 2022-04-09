@@ -1,8 +1,6 @@
 <?php
 include('../account/partials/HeaderInfo.blade.php');
 
-echo '<script type="text/javascript">alert("Do you want to really delete this?");</script>';
-
 
 $form_id= $_GET['form_id'];
 $lesson_id = $_GET['lesson_id'];

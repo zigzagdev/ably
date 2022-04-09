@@ -39,10 +39,11 @@
             }
         ?>
         <br/><br/>
-        <a class="btn-primary" href="UpdateAccount.php?account_id=<?= $account_id=$_GET['account_id']?>"> Update your Account</a>
-        <a class="btn-secondary" class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
-           href="DeleteAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">Delete your Account</a>
-        <a href="update-password.php" class="btn-primary">Update your Password</a>
+        <a class="btn-primary" href="UpdateAccount.php?account_id<?= $account_id=$_GET['account_id']?>"> Update your Account</a>
+        <a class="btn-secondary" id="destroy" href="DeleteAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">
+          Delete your Account
+        </a>
+        <a href="" class="btn-primary">Update your Password</a>
         <a class="btn-secondary" href="../lesson/ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
         <br/><br/><br/>
         <table class="tbl-full">
@@ -54,6 +55,7 @@
           </tr>
           <?php
             $account_id = $_GET['account_id'];
+            var_dump($account_id);
             $sql = "SELECT * FROM tbl_account where account_id=$account_id";
             $rec = mysqli_query($connect, $sql);
 

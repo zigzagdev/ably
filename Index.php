@@ -29,7 +29,7 @@
         ?>
           <div class="cardoutline">
             <div class="cardcontent">
-              <p style="padding-top: 15px"><?php echo $course ?></span><br/>
+              <p style="padding-top: 15px"><?php echo $course ?></p><br/>
               <?php echo $content ?><br/>
               <?php echo $day ?><br/>
               <a href="./form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>

@@ -37,7 +37,9 @@
             ?>
             <br/><br/>
             <!---button--->
-            <a class="btn-danger" href="AddLesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Add others Lessons</a>
+            <a class="btn-danger" href="AddLesson.php?account_id=<?=$account_id=$_GET['account_id']?>">
+              Add others Lessons
+            </a>
 
             <br/><br/><br/>
             <table class="tbl-full">
@@ -81,9 +83,12 @@
                                 <td style="text-align: center"><?php echo $day; ?></td>
                                 <td style="text-align: center"><?php echo $lesson?></td>
                                 <td style="text-align: center">
-                                    <a class="btn-primary" href="UpdateLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
-                                    <a class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
-                                       href="DeleteLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
+                                    <a class="btn-primary" href="UpdateLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>">
+                                      Update your Lesson
+                                    </a>
+                                    <a id="destroy" class="btn-secondary" href="DeleteLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>">
+                                      Delete your Lesson
+                                    </a>
 
                                 </td>
                             </tr>
