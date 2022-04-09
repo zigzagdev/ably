@@ -297,9 +297,9 @@
 }
 
 .cardcontent{
-    width: 221px;
-    height: 256px;
-    background-color: snow;
+    height: 221px;
+    width: 346px;
+    background-color: lightcoral;
 
 }
 
@@ -307,6 +307,6 @@
     display: inline-block;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 40px 45px 52px;
+    margin: 0 20px 45px 36px;
     text-align: center;
 }
