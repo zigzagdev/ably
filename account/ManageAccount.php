@@ -60,9 +60,23 @@
                 $content = $rows['content'];
 ?>
                 <div class="mainaccount">
-                  <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-                  <b style="margin-left: 20px; font-size: 20px"><?php echo $username ?></b>
-
+                  <div style="margin-top: 55px">
+                    <div style="padding: 10px 0">
+                      <b style="font-size: 27px; margin:0 240px 0 20px">User Name</b>
+                      <b style="font-size: 20px"><?php echo $username ?></b>
+                      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+                    </div>
+                    <div style="padding: 10px 0;">
+                      <b style="font-size: 27px; margin:0 0 0 20px; display:inline-block">Email</b>
+                      <b style="display:inline-block; margin-left: 320px"><?php echo $email ?></b>
+                    </div>
+                    <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+                    <div style="padding: 10px 0">
+                      <b style="font-size: 27px; margin:0 194px 0 20px">Self Introduce</b>
+                      <b style="font-size: 20px"><?php echo $content ?></b>
+                      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+                    </div>
+                  </div>
                 </div>
 <?php
                 if ($image_name == "")
