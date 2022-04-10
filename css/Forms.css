@@ -310,3 +310,10 @@
     margin: 0 20px 45px 36px;
     text-align: center;
 }
+
+.updateform {
+    width: 250px;
+    height: 40px;
+    margin: 7px 0 7px 200px;
+
+}
