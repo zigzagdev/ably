@@ -2,14 +2,14 @@
 
 <html>
   <head>
-    <title>TopPage</title>
+    <title>ManageAcccount</title>
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
     <div class="main">
-      <div style="text-align: center; margin: 0 230px">
-      <h1>Manage Your Account</h1>
+      <div style="margin: 0 230px">
+        <div style="text-align: center"><h1>Manage Your Account</h1></div>
 <?php
         if(isset($_SESSION['add']))
         {
@@ -63,17 +63,17 @@
                   <div style="margin-top: 55px">
                     <div style="padding: 10px 0">
                       <b style="font-size: 27px; margin:0 240px 0 20px">User Name</b>
-                      <b style="font-size: 20px"><?php echo $username ?></b>
+                      <div style="text-align: center; display: inline-block"><b style="font-size: 20px"><?php echo $username ?></b></div>
                       <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
                     </div>
-                    <div style="padding: 10px 0;">
-                      <b style="font-size: 27px; margin:0 0 0 20px; display:inline-block">Email</b>
-                      <b style="display:inline-block; margin-left: 320px"><?php echo $email ?></b>
-                    </div>
-                    <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
                     <div style="padding: 10px 0">
-                      <b style="font-size: 27px; margin:0 194px 0 20px">Self Introduce</b>
-                      <b style="font-size: 20px"><?php echo $content ?></b>
+                      <div style="display: inline-block"><b style="font-size: 27px; margin:0 0 0 20px">Email</b></div>
+                      <div style="display: inline-block; text-align: center"><?php echo $email ?></div>
+                      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+                    </div>
+                    <div style="padding: 10px 0">
+                      <b style="font-size: 27px; margin:0 240px 0 20px">Self Introduce</b>
+                      <div style="text-align: center; display: inline-block"><b style="font-size: 20px"><?php echo $content ?></b></div>
                       <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
                     </div>
                   </div>
@@ -86,14 +86,14 @@
               }
             }
           }
-        ?>
-      </div>
-        <div style="margin-top: 60px; text-align: center">
-          <div style="margin: 0 10px 20px 10px">
-            <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id<?= $account_id=$_GET['account_id']?>">
+?>
+    </div>
+    <div style="margin-top: 60px; text-align: center">
+      <div style="margin: 0 10px 20px 10px">
+        <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">
               Update your Account
             </a>
-            <a class="btn-secondary" style="margin: 0 7px 0 7px" href="DeleteAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">
+            <a class="btn-secondary" style="margin: 0 7px 0 7px" href="DeleteAccount.php?account_id=<?=$account_id=$_GET['account_id']?>">
               Delete your Account
             </a>
             <a href="" class="btn-primary" style="margin: 0 7px 0 7px">Update your Password</a>

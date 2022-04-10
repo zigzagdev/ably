@@ -1,7 +1,8 @@
 <?php  include('partials/Header.blade.php'); ?>
 
 <?php
-if(isset($_GET['account_id'])) {
+  if(isset($_GET['account_id']))
+  {
     $account_id = $_GET['account_id'];
     $sql = "SELECT * FROM tbl_account WHERE account_id=$account_id";
     $rec = mysqli_query($connect, $sql);
@@ -9,29 +10,33 @@ if(isset($_GET['account_id'])) {
     if ($rec == true)
     {
       $count = mysqli_num_rows($rec);
-        if ($count == 1)
-        {
-          $row = mysqli_fetch_assoc($rec);
-          $account_id = $row['account_id'];
-          $username = $row['username'];
-          $current_image = $row['image_name'];
-          $image_name = $row['image_name'];
-          $email = $row['email'];
-          $content = $row['content'];
-
-        } else {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-        }
+      if ($count == 1)
+      {
+        $row = mysqli_fetch_assoc($rec);
+        $account_id = $row['account_id'];
+        $username = $row['username'];
+        $current_image = $row['image_name'];
+        $image = $row['image_name'];
+        $email = $row['email'];
+        $content = $row['content'];
+      } else {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+      }
     }
-}
+  }
 ?>
-    <div class="main2">
-        <div class="wrapper">
-            <div class="inner">
-                <h1>Update your Account</h1>
-                <br/><br/>
-
-                <form action="" method="post" enctype="multipart/form-data">
+<html>
+  <head>
+    <title>UpdatePage</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <div class="main">
+      <div>
+        <div>
+          <h1>Update your Account</h1>
+          <form action="" method="post" enctype="multipart/form-data">
                     <table class="tbl-30">
                         <tr>
                             <td class="text-white">Username:</td>
@@ -44,7 +49,7 @@ if(isset($_GET['account_id'])) {
                             <td >Current Image: </td>
                             <td>
                                 <?php
-                                if($image_name == "")
+                                if($image == "")
                                 {
                                     echo "<div class='error'>Image not Available.</div>";
 
@@ -52,7 +57,7 @@ if(isset($_GET['account_id'])) {
                                 else
                                 {
                                     ?>
-                                    <img src="../images/profile/<?php echo $image_name; ?>" width="150px">
+                                    <img src="../images/profile/<?php echo $image; ?>" width="150px">
                                     <?php
                                 }
                                 ?>
@@ -93,7 +98,7 @@ if(isset($_GET['account_id'])) {
             </div>
         </div>
     </div>
-
+  </body>
 <?php
 if(isset($_POST['submit']))
 {
@@ -105,13 +110,13 @@ if(isset($_POST['submit']))
 
     if(isset($_FILES['image']['name']))
     {
-        $image_name = $_FILES['image']['name'];
+        $image = $_FILES['image']['name'];
 
-        if($image_name != "")
+        if($image != "")
         {
 
             $source_path = $_FILES['image']['tmp_name'];
-            $destination_path = "../images/profile/".$image_name;
+            $destination_path = "../images/profile/".$image;
             $upload = move_uploaded_file($source_path, $destination_path);
 
             if($upload==false)
@@ -136,14 +141,14 @@ if(isset($_POST['submit']))
         }
         else
         {
-            $image_name = $current_image;
+            $image = $current_image;
         }
     }
     else
     {
-        $image_name = $current_image;
+        $image = $current_image;
     }
-    $sql = "UPDATE tbl_account SET username='$username',image_name='$image_name',email='$email',
+    $sql = "UPDATE tbl_account SET username='$username',image_name='$image',email='$email',
              content='$content' WHERE account_id=$account_id ";
     $rec = mysqli_query($connect, $sql);
 
