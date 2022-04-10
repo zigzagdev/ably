@@ -1,5 +1,12 @@
 <?php include('../account/partials/HeaderInfo.blade.php'); ?>
 
+<html>
+  <head>
+    <title>ManageForm</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
     <div class="main">
         <div class="wrapper">
             <div class="inner">
@@ -93,6 +100,8 @@
             </div>
         </div>
     </div>
+  </body>
+</html>
     <!--Main Section -->
 
 <?php include('../account/partials/Footer.tpl') ?>

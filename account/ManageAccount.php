@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>ManageAcccount</title>
+    <title>ManageAccount</title>
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>

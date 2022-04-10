@@ -40,13 +40,17 @@
             <input type="text" name="username" class="updateform" value="<?php echo $username; ?>">
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <b style="font-size: 20px; margin-left: 50px">Email</b>
-            <input type="text" name="username" class="updateform" style="margin-left: 255px" value="<?php echo $username; ?>">
+            <input type="text" name="username" class="updateform" style="margin-left: 255px" value="<?php echo $email; ?>">
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-            <b style="font-size: 20px; margin-left: 50px">Content</b>
-            <input type="text" name="username" class="updateform" style="margin-left: 227px" value="<?php echo $username; ?>">
+            <b style="font-size: 20px; margin-left: 50px;">Content</b>
+            <textarea style="margin-left: 227px" name="content" cols="60" rows="3" value="<?php echo $content; ?>"></textarea>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-<!--            <input type="submit" name="submit" value="Update your Account" class="btn-secondary">-->
-
+            <b style="font-size: 20px; margin-left: 50px">User Image</b>
+            <input type="file" name="username" class="updateform" style="margin-left: 192px" value="<?php echo $content; ?>">
+            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+            <div style="text-align: center">
+              <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
+            </div>
           </form>
       </div>
     </div>
