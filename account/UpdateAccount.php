@@ -36,8 +36,10 @@
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 40px 0; padding-top: 20px">Update your Account</h1>
           <form action="" method="post" enctype="multipart/form-data">
-            <b style="font-size: 20px; margin-left: 50px">UserName</b>
-            <input type="text" name="username" class="updateform" value="<?php echo $username; ?>">
+            <div>
+            <b style="font-size: 20px; margin-left: 50px; display: inline-block;">UserName</b>
+            <input type="text" name="username"  style="display: inline-block;" value="<?php echo $username; ?>">
+            </div>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <b style="font-size: 20px; margin-left: 50px">Email</b>
             <input type="text" name="username" class="updateform" style="margin-left: 255px" value="<?php echo $email; ?>">
