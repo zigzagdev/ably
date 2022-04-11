@@ -7,8 +7,6 @@ if(isset($_GET['form_id'])) {
     $sql2 = "SELECT * FROM tbl_form  where form_id = $form_id";
     $rec2 = mysqli_query($connect, $sql2);
 
-
-
     if ($rec2 == true) {
         $count = mysqli_num_rows($rec2);
         if ($count == 1) {
@@ -28,40 +26,33 @@ if(isset($_GET['form_id'])) {
 
 ?>
 
-<section class="food-search">
-    <div class="container2"><br/>
-        <h2 class="text-center">Update your information.</h2><br/>
-        <form action="UpdateForm.php?lesson_id=$lesson_id&form_id=$form_id" method="POST" class="order" style="text-align: center" >
-            <fieldset class="fieldset">
-                <legend class="legend-center">Your information</legend>
-                <div class="order-label text-white" >Full Name</div>
-                <input type="text"  name="name" placeholder="Test" class="input-responsive" required><br/>
-                <div class="order-label text-white">Phone Number</div>
-                <input type="tel" name="telephone" placeholder="090-1234-1234" class="input-responsive" required><br/>
-                <div class="order-label ">Email</div>
-                <input type="email" name="email" placeholder="1234aa@test.com" class="input-responsive" required><br/>
-                <div class="order-label ">Sex</div>
-                <select name= "sex">
-                    <option value = "male">Male</option>
-                    <option value = "female">Female</option>
-                </select><br/>
-            </fieldset>
-            <input type="hidden" name="lesson_id" value="<?php echo $lesson_id; ?>">
-            <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
-            <input type="submit" name="submit" value="送信" class="btn btn-third">
+<html>
+  <head>
+    <title>UpdateLessonForm</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <section class="food-search">
+      <div class="container2">
+        <h2 style="text-align: center">Fill this form to confirm.</h2>
+        <form action="ReserveForm.php?lesson_id=$lesson_id" method="POST" class="order" style="text-align: center">
+          <fieldset class="fieldset">
+          </fieldset>
+          <input type="hidden" name="lesson_id" value="<?php echo $lesson_id; ?>">
+          <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
+          <input type="submit" name="submit" value="送信" class="btn btn-third">
         </form>
-    </div>
-</section>
-
+      </div>
+    </section>
+  </body>
+</html>
 
 <?php
 $host = 'localhost';
 $username = 'root';
 $pass = 'root';
 $dbname = 'overcome';
-
-$lesson_id = $_GET['lesson_id'];
-$form_id = $_GET['form_id'];
 
 
 if(isset($_POST['submit']))

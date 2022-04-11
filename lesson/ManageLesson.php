@@ -1,6 +1,11 @@
 <?php include('../account/partials/Header.blade.php'); ?>
 
-<!--Main Section -->
+<html>
+<head>
+  <title>ManageReserveForm</title>
+  <link rel="stylesheet" href="../css/Account.css">
+  <link rel="stylesheet" href="../css/Forms.css">
+</head>
 <div class="main">
     <div class="wrapper">
         <div class="inner">
@@ -41,7 +46,6 @@
 <!--              Add others Lessons-->
 <!--            </a>-->
 
-            <br/><br/><br/>
             <table class="tbl-full">
                 <tr>
                     <th style="text-align: center" >Course</th>
@@ -105,6 +109,7 @@
         </div>
     </div>
 </div>
+</html>
 <!--Main Section -->
 
 <?php include('../account/partials/Footer.tpl') ?>

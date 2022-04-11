@@ -38,7 +38,7 @@
           <form action="" method="post" enctype="multipart/form-data">
             <div>
             <b style="font-size: 20px; margin-left: 50px; display: inline-block;">UserName</b>
-            <input type="text" name="username"  style="display: inline-block;" value="<?php echo $username; ?>">
+            <input type="text" name="username"style="display: inline-block" value="<?php echo $username; ?>">
             </div>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <b style="font-size: 20px; margin-left: 50px">Email</b>
