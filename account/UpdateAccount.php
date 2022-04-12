@@ -34,8 +34,8 @@
   <body>
     <div style="margin: 0 230px">
       <div class="mainaccount">
-        <h1 style="text-align: center; margin: 55px 0 40px 0; padding-top: 20px">Update your Account</h1>
-          <form action="" method="post" enctype="multipart/form-data" >
+        <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Account</h1>
+          <form action="" method="post" enctype="multipart/form-data" style="">
             <li style="list-style: none;  margin:17px 0 17px 30px">
               <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
                 UserName
@@ -57,6 +57,12 @@
               <textarea type="content" name="name" cols="60" rows="4"></textarea>
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+            <li style="list-style: none;  margin:17px 0 17px 30px">
+              <b style="font-size: 20px;width:100px ;margin-right:200px; float: left;">
+                Image
+              </b>
+              <input type="text" name="email" placeholder="abc@com" size="40">
+            </li>
           </form>
       </div>
     </div>
