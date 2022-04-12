@@ -35,24 +35,43 @@
     <div style="margin: 0 230px">
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 40px 0; padding-top: 20px">Update your Account</h1>
-          <form action="" method="post" enctype="multipart/form-data">
-            <div>
-            <b style="font-size: 20px; margin-left: 50px; display: inline-block;">UserName</b>
-            <input type="text" name="username"style="display: inline-block" value="<?php echo $username; ?>">
-            </div>
+          <form action="" method="post" enctype="multipart/form-data" >
+            <ul>
+              <li style="list-style: none">
+                <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+                  UserName
+                </b>
+                <input id="name" type="text" name="name" placeholder="miku honda" size="60">
+              </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-            <b style="font-size: 20px; margin-left: 50px">Email</b>
-            <input type="text" name="username" class="updateform" style="margin-left: 255px" value="<?php echo $email; ?>">
-            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-            <b style="font-size: 20px; margin-left: 50px;">Content</b>
-            <textarea style="margin-left: 227px" name="content" cols="60" rows="3" value="<?php echo $content; ?>"></textarea>
-            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-            <b style="font-size: 20px; margin-left: 50px">User Image</b>
-            <input type="file" name="username" class="updateform" style="margin-left: 192px" value="<?php echo $content; ?>">
-            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-            <div style="text-align: center">
-              <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
-            </div>
+              <li style="list-style: none">
+                <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+                  UserName
+                </b>
+                <input id="name" type="text" name="name" placeholder="miku honda" size="60">
+              </li>
+              <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+              <li style="list-style: none">
+                <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+                  Content
+                </b>
+                <textarea id="name" type="text" name="name" rows="4"></textarea>
+              </li>
+              <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+
+<!--            <b style="font-size: 20px; margin-left: 50px">Email</b>-->
+<!--            <input type="text" name="username" class="updateform" style="margin-left: 255px" value="--><?php //echo $email; ?><!--">-->
+<!--            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">-->
+<!--            <b style="font-size: 20px; margin-left: 50px;">Content</b>-->
+<!--            <textarea style="margin-left: 227px" name="content" cols="60" rows="3" value="--><?php //echo $content; ?><!--"></textarea>-->
+<!--            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">-->
+<!--            <b style="font-size: 20px; margin-left: 50px">User Image</b>-->
+<!--            <input type="file" name="username" class="updateform" style="margin-left: 192px" value="--><?php //echo $content; ?><!--">-->
+<!--            <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">-->
+<!--            <div style="text-align: center">-->
+<!--              <input type="submit" name="submit" value="Update your Account" class="btn-secondary">-->
+<!--            </div>-->
+            </ul>
           </form>
       </div>
     </div>
