@@ -1,66 +1,48 @@
 <?php include('partials/Header.blade.php'); ?>
 
-<head>
-  <title>AdminRegistration</title>
-  <link rel="stylesheet" href="../css/Account.css">
-</head>
-<body style="background-color: whitesmoke">
-  <div class="formline" style="background-color: lightgray">
-    <div class="form">
-      <h1 style="padding-top: 50px; text-align: center">Add your account</h1>
-      <?php
-        if(isset($_SESSION['add']))
-          {
-            echo  $_SESSION['add'];
-            unset($_SESSION['add']);
-          }
-      ?>
-      <form action="" method="post" enctype="multipart/form-data" >
-        <table class="tbl-30">
-          <tr>
-            <td>UserName:</td>
-            <td>
-              <input type="text" name="user_name" placeholder="Enter your username">
-            </td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td>
-              <input type="password" name="password" placeholder="Enter your password">
-            </td>
-          </tr>
-          <tr>
-            <td>Password Again:</td>
-            <td>
-              <input type="password" name="password2" placeholder="Password again">
-            </td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td>
-              <input type="email" name="email" placeholder="Enter your email">
-            </td>
-          </tr>
-          <tr>
-            <td>Post an Image:</td>
-            <td>
-              <input type="file" name="image">
-            </td>
-          </tr>
-          <tr>
-            <td>Content:</td>
-            <td>
-              <textarea name="content" cols="30" rows="5" placeholder="Describe yourself"></textarea>
-            </td>
-          </tr>
-        </table>
-        <div style="text-align: center">
-          <input type="submit" name="submit" value="Add an account" class="btn-secondary">
-        </div>
-      </form>
+<html>
+  <head>
+    <title>AddAccount</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <div style="margin: 0 230px">
+      <div class="mainaccount">
+        <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Add your Account</h1>
+        <form action="" method="post" enctype="multipart/form-data" style="">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              UserName
+            </b>
+            <input id="name" type="text" name="name" placeholder="miku honda" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Email
+            </b>
+            <input type="text" name="email" placeholder="abc@com" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Content
+            </b>
+            <textarea type="text" name="content" cols="60" rows="4"></textarea>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px ;margin-right:200px; float: left;">
+              Image
+            </b>
+            <input type="file" name="image">
+          </li>
+        </form>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
+</html>
 <?php
 $host = 'localhost';
 $username = 'root';

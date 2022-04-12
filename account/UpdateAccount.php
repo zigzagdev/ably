@@ -54,7 +54,7 @@
               <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
                 Content
               </b>
-              <textarea type="content" name="name" cols="60" rows="4"></textarea>
+              <textarea type="text" name="content" cols="60" rows="4"></textarea>
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -77,11 +77,11 @@
 
           if(isset($_FILES['image']['name']))
           {
-            $image = $_FILES['image']['name'];
-            if($image != "")
+            $image_name = $_FILES['image']['name'];
+            if($image_name != "")
             {
               $source_path = $_FILES['image']['tmp_name'];
-              $destination_path = "../images/profile/".$image;
+              $destination_path = "../images/profile/".$image_name;
               $upload = move_uploaded_file($source_path, $destination_path);
               if($upload!=true)
               {
@@ -104,15 +104,15 @@
               }
             } else
             {
-              $image = $current_image;
+              $image_name = $current_image;
             }
           } else
           {
-            $image = $current_image;
+            $image_name = $current_image;
           }
           $sql = "UPDATE tbl_account SET 
                          username='$username'
-                         ,image_name='$image'
+                         ,image_name='$image_name'
                          ,email='$email'
                          ,content='$content' 
                   WHERE account_id=$account_id ";
