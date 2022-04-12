@@ -61,7 +61,7 @@
               <b style="font-size: 20px;width:100px ;margin-right:200px; float: left;">
                 Image
               </b>
-              <input type="text" name="email" placeholder="abc@com" size="40">
+              <input type="file" name="image">
             </li>
           </form>
       </div>
