@@ -13,7 +13,7 @@
             <legend style="text-align: center;">Fill this form to confirm.</legend>
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              UserName
+              FullName
             </b>
             <input id="name" type="text" name="name" placeholder="miku honda" size="40">
           </li>
@@ -22,25 +22,34 @@
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
               Email
             </b>
-            <input type="text" name="email" placeholder="abc@com" size="40">
+            <input type="email" name="email" placeholder="abc@com" class="input-responsive" required size="40px">
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              Content
+              PhoneNumber
             </b>
-            <textarea type="text" name="content" cols="60" rows="4"></textarea>
+            <input type="tel" name="telephone" placeholder="090-1234-1234" class="input-responsive" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px ;margin-right:200px; float: left;">
-              Image
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Sex
             </b>
-            <input type="file" name="image">
+            <select name= "sex">
+              <option value = "male">Male</option>
+              <option value = "female">Female</option>
+              <option value = "others">Others</option>
+            </select>
           </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           </fieldset>
+          <div style="text-align: center; margin-bottom: 30px">
+          <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
+          <input type="submit" name="submit" value="Submit" class="btn btn-third">
+          </div>
+        </div>
         </form>
-      </div>
   </body>
 </html>
 
