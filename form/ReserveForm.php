@@ -10,26 +10,26 @@
       <form action="" method="post" enctype="multipart/form-data" style="">
       <div>
           <fieldset class="mainaccount" style="margin 0 100px">
-            <legend style="text-align: center;">Fill this form to confirm.</legend>
+            <legend style="text-align: center;"><b style="color: darkblue">Lesson Reservation Form</b></legend>
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
               FullName
             </b>
-            <input id="name" type="text" name="name" placeholder="miku honda" size="40">
+            <input type="text" name="name" placeholder="Michel Smith" style="width: 240px; height: 30px">
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
               Email
             </b>
-            <input type="email" name="email" placeholder="abc@com" class="input-responsive" required size="40px">
+            <input type="email" name="email" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
               PhoneNumber
             </b>
-            <input type="tel" name="telephone" placeholder="090-1234-1234" class="input-responsive" required>
+            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
