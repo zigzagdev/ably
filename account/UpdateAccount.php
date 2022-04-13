@@ -40,21 +40,21 @@
               <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
                 UserName
               </b>
-              <input id="name" type="text" name="name" placeholder="miku honda" size="40">
+              <input id="name" type="text" name="name" placeholder="Your Name" size="40" value="<?php echo $username; ?>">
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <li style="list-style: none;  margin:17px 0 17px 30px">
               <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
                 Email
               </b>
-              <input type="text" name="email" placeholder="abc@com" size="40">
+              <input type="text" name="email" placeholder="abc@com" value="<?php echo $email; ?>" size="40">
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <li style="list-style: none;  margin:17px 0 17px 30px">
-              <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              <b style="font-size: 20px;width:100px;margin-right:207px; vertical-align: 90%">
                 Content
               </b>
-              <textarea type="text" name="content" cols="60" rows="4"></textarea>
+              <textarea type="text" name="content" cols="60" rows="4"><?php echo $content; ?></textarea>
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -63,6 +63,10 @@
               </b>
               <input type="file" name="image">
             </li>
+            <div style="text-align: center">
+            <input type="hidden" name="account_id" value="<?php echo $account_id; ?>">
+            <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
+            </div>
           </form>
       </div>
     </div>
