@@ -7,15 +7,40 @@
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <section class="food-search">
-      <div class="container2">
-        <h2 class="text-center">Fill this form to confirm.</h2><br/>
-        <form action="ReserveForm.php?lesson_id=$lesson_id" method="POST" class="order" style="text-align: center">
-          <fieldset class="fieldset">
+      <form action="" method="post" enctype="multipart/form-data" style="">
+      <div>
+          <fieldset class="mainaccount" style="margin 0 100px">
+            <legend style="text-align: center;">Fill this form to confirm.</legend>
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              UserName
+            </b>
+            <input id="name" type="text" name="name" placeholder="miku honda" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Email
+            </b>
+            <input type="text" name="email" placeholder="abc@com" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Content
+            </b>
+            <textarea type="text" name="content" cols="60" rows="4"></textarea>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px ;margin-right:200px; float: left;">
+              Image
+            </b>
+            <input type="file" name="image">
+          </li>
           </fieldset>
         </form>
       </div>
-    </section>
   </body>
 </html>
 
