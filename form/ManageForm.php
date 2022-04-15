@@ -29,7 +29,6 @@
     unset($_SESSION['change-form']);
   }
   $form_id = $_GET['form_id'];
-  $lesson_id = $_GET['lesson_id'];
 
   $sql2 = "SELECT * FROM tbl_form where form_id ='$form_id'";
   $rec2 = mysqli_query($connect, $sql2);
@@ -45,6 +44,7 @@
         $phone = $rows['telephone'];
         $address = $rows['email'];
         $sex = $rows['sex'];
+        $lesson_id = $rows['lesson_id'];
       }
     } else
     {
@@ -55,7 +55,7 @@
 
 <html>
   <head>
-    <title>ManageAccount</title>
+    <title>ManageReserveForm</title>
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
@@ -63,14 +63,13 @@
     <div style="margin: 0 230px">
       <div class="mainaccount">
         <li style="list-style: none;  margin:27px 0 17px 40px; padding-top: 20px">
-          <img src="../images/profile/<?php echo $image_name; ?>" width="90px" height="90px" style="border-radius: 50%; margin-right: 200px; vertical-align: center">
-          <b style="font-size: 20px;width:100px;margin-right:200px; vertical-align: 70%">Manage your Account</b>
+          <b style="font-size: 20px;width:100px;">Manage ReserveForm</b>
         </li>
         <li style="list-style: none;  margin:47px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             UserName
           </b>
-          <b style="font-size: 20px"><?php echo $username ?></b>
+          <b style="font-size: 20px"><?php echo $name ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -86,29 +85,17 @@
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
-    </div>
-    <div style="margin:60px 0; text-align: center">
-      <div style="margin: 0 10px 20px 10px">
-        <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">
-          Update your Account
-        </a>
-        <a class="btn-secondary" style="margin: 0 7px 0 7px" href="DeleteAccount.php?account_id=<?=$account_id=$_GET['account_id']?>">
-          Delete your Account
-        </a>
-        <a href="" class="btn-primary" style="margin: 0 7px 0 7px">Update your Password</a>
-        <a class="btn-secondary" style="margin: 0 7px 0 7px" href="../lesson/ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">
-          Check your register Lessons.
+      <div style="margin:60px 0; text-align: center">
+        <a class="btn-primary"
+           href="UpdateForm.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+          Update your Information</a>
+        <a id="destroy" class="btn-secondary"
+           href="DeleteForm.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+          Delete your Information
         </a>
       </div>
-      <a class="btn-primary"
-        href="UpdateForm.php?lesson_id=<?= $lesson_id = $_GET['lesson_id'] ?>&form_id=<?= $form_id = $_GET['form_id'] ?>">
-        Update your Information</a>
-  <a id="destroy" class="btn-secondary"
-     href="DeleteForm.php?lesson_id=<?= $lesson_id = $_GET['lesson_id'] ?>&form_id=<?= $form_id = $_GET['form_id'] ?>">
-    Delete your Information
-  </a>
-</div>
-</body>
+    </div>
+  </body>
 </html>
 
 <?php include('../account/partials/Footer.tpl') ?>
