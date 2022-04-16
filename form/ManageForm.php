@@ -90,7 +90,7 @@
             <a href="UpdateNameForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">Edit</a>
           </button>
         </li>
-        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">c
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             Content
