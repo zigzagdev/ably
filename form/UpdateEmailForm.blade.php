@@ -91,5 +91,5 @@ if(isset($_POST['submit']))
     header('Location:' .$url,true , 401);
   }
 }
-include('../account/partials/Footer.tpl');
+include('../account/partials/ClientFooter.tpl');
 ?>

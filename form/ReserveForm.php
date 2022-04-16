@@ -121,4 +121,4 @@
     }
 ?>
 
-<?php include('../account/partials/Footer.tpl'); ?>
+<?php include('../account/partials/ClientFooter.tpl'); ?>

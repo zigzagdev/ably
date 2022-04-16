@@ -21,5 +21,5 @@ else
     header('Location:' .$url,true , 401);//ページへのリダイレクトをif~else文にて行っている。
 }
 
-include('../account/partials/Footer.tpl');
+include('../account/partials/ClientFooter.tpl');
 ?>
