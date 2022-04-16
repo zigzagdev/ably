@@ -70,22 +70,25 @@ if(isset($_POST['submit']))
   $lesson_id = $_POST['lesson_id'];
   $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
 
-  $sql3 = "UPDATE tbl_form SET name = '$name',telephone = '$telephone',
-           email = '$email',sex = '$sex'where form_id= '$form_id' " ;
-
+  $sql3 = "UPDATE tbl_form SET
+           name = '$name'
+           ,telephone = '$telephone'
+           ,email = '$email'
+           ,sex = '$sex'
+           WHERE form_id= '$form_id'";
   $rec3=mysqli_query($connect,$sql3);
   if($rec3 == true)
   {
     $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-    $url = "http://localhost:8001/form/ManageForm.php?lesson_id=$lesson_id&form_id=$form_id";
+    $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
     header('Location:' .$url,true , 302);
   }
   else
   {
     $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-    $url = "http://localhost:8001/form/UpdateForm.php?lesson_id=$lesson_id&form_id=$form_id";
+    $url = "http://localhost:8001/form/UpdatePhoneNumber.blade.php?form_id=$form_id";
     header('Location:' .$url,true , 401);
   }
 }
+include('../account/partials/Footer.tpl');
 ?>
-<?php include('../account/partials/Footer.tpl'); ?>

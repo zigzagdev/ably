@@ -42,7 +42,7 @@
       {
         $name = $rows['name'];
         $phone = $rows['telephone'];
-        $address = $rows['email'];
+        $email = $rows['email'];
         $sex = $rows['sex'];
         $lesson_id = $rows['lesson_id'];
       }
@@ -60,7 +60,7 @@
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 180px">
+    <div style="margin: 0 130px">
       <div class="mainaccount">
         <li style="list-style: none;  margin:27px 0 17px 40px; padding-top: 20px">
           <b style="font-size: 20px;width:100px;">Manage ReserveForm</b>
@@ -69,31 +69,41 @@
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             Name
           </b>
-          <b style="font-size: 20px; margin-right: 110px"><?php echo $name ?></b>
-          <button class="btn-third">
-            <a href="UpdateNameForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">Edit</a>
-          </button>
+          <b style="font-size: 20px; margin-right: 170px"><?php echo $name ?></b>
+          <b style="font-size: 20px; margin-right: 50px; float: right">
+            <button class="btn-third" style="width: 50px;">
+              <a class="btn-third" href="UpdateNameForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+                Edit
+              </a>
+            </button>
+          </b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             PhoneNumber
           </b>
-          <b style="font-size: 20px"><?php echo $phone ?></b>
+          <b style="font-size: 20px; margin-right: 170px"><?php echo $phone ?></b>
+          <b style="font-size: 20px; margin-right: 50px; float: right">
+            <button class="btn-third" style="width: 50px">
+              <a class="btn-third" href="UpdatePhoneNumberForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+                Edit
+              </a>
+            </button>
+          </b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             Email
           </b>
-          <button class="btn-third">
-            <a href="UpdateNameForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">Edit</a>
-          </button>
-        </li>
-        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-        <li style="list-style: none;  margin:17px 0 17px 30px">
-          <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-            Content
+          <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
+          <b style="font-size: 20px; margin-right: 50px; float: right">
+            <button class="btn-third" style="width: 50px">
+              <a class="btn-third" href="UpdateEmailForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+                Edit
+              </a>
+            </button>
           </b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
