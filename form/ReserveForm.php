@@ -41,6 +41,7 @@
               <option value = "female">Female</option>
               <option value = "others">Others</option>
             </select>
+            (can't change whatever reasons.)
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           </fieldset>
