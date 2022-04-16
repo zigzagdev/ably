@@ -1,34 +1,6 @@
 <?php
 include('../account/partials/HeaderInfo.blade.php');
 
-if (isset($_SESSION['add']))
-{
-  echo $_SESSION['add'];
-  unset($_SESSION['add']);
-}
-if (isset($_SESSION['delete']))
-{
-  echo $_SESSION['delete'];
-  unset($_SESSION['delete']);
-}
-
-if (isset($_SESSION['update']))
-{
-  echo $_SESSION['update'];
-  unset($_SESSION['update']);
-}
-if (isset($_SESSION['form-not-found']))
-{
-  echo $_SESSION['form-not-found'];
-  unset($_SESSION['form-not-found']);
-}
-
-  if (isset($_SESSION['change-form']))
-  {
-    echo $_SESSION['change-form'];
-    unset($_SESSION['change-form']);
-  }
-
   $form_id= $_GET['form_id'];
 
   $sql2= "SELECT * FROM tbl_form WHERE form_id=$form_id";
@@ -88,8 +60,8 @@ if (isset($_SESSION['form-not-found']))
         </form>
       </div>
       <div style="margin-bottom:40px ; text-align: center">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn-secondary" style="margin-right: 10px" value="Are you sure to delete ?">
+        <form action="" method="post">
+          <input type="submit" class="btn-secondary" style="margin-right: 10px" value="Are you sure to delete ?">
         <?php
           $hostname = $_SERVER['HTTP_HOST'];
           if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
@@ -97,6 +69,7 @@ if (isset($_SESSION['form-not-found']))
             echo '<a href="' . $_SERVER['HTTP_REFERER'] . '" class="btn-primary" style="margin-left: 10px">Return</a>';
           }
         ?>
+        </form>
       </div>
     </div>
   </body>
@@ -108,24 +81,19 @@ if (isset($_SESSION['form-not-found']))
   $pass = 'root';
   $dbname = 'overcome';
 
-  $form_id = $_GET['form_id'];
-
-  if(isset($_POST['submit']))
+  $sql3 = " DELETE from tbl_form WHERE form_id= '$form_id'" ;
+  $rec3=mysqli_query($connect,$sql3);
+  if($rec3 == TRUE)
   {
-    $sql3 = " DELETE from tbl_form WHERE form_id= '$form_id'" ;
-    $rec3=mysqli_query($connect,$sql3);
-    var_dump($sql3);
-    if($rec3 == TRUE)
-    {
-      $_SESSION['delete'] = "<div class='success'>Delete Lesson Successfully.</div>";
-      $url = "http://localhost:8001/Index.php";
-      header('Location:' .$url,true , 302);
-    } else
-    {
-      $_SESSION['delete'] = "<div class='error'>Failed to Delete lesson.</div>";
-      $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
-      header('Location:' .$url,true , 401);
-    }
+    $_SESSION['delete'] = "<div style='color: #ff6666'>Delete Lesson Successfully.</div>";
+    $url = "http://localhost:8001/Index.php";
+    header('Location:' .$url,true , 302);
+  } else
+  {
+    $_SESSION['delete'] = "<div class='error'>Failed to Delete lesson.</div>";
+    $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
+    header('Location:' .$url,true , 401);
   }
+
 include('../account/partials/ClientFooter.tpl');
 ?>
