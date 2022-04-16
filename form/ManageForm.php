@@ -109,10 +109,7 @@
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div style="margin:60px 0; text-align: center">
-        <a class="btn-primary"
-           href="UpdateForm.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
-          Update your Information</a>
-        <a id="destroy" class="btn-secondary"
+        <a id="destroy" class="btn-secondary" style="background-color: red"
            href="DeleteForm.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
           Delete your Information
         </a>

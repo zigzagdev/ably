@@ -1,124 +1,93 @@
-<?php include('../account/partials/HeaderInfo.blade.php');?>
+<?php
+include('../account/partials/HeaderInfo.blade.php');
+
+  if(isset($_GET['form_id']))
+  {
+    $form_id = $_GET['form_id'];
+    $sql2 = "SELECT * FROM tbl_form  where form_id = $form_id";
+    $rec2 = mysqli_query($connect, $sql2);
+    if ($rec2 == true) {
+      $count = mysqli_num_rows($rec2);
+      if ($count == 1) {
+        $row       = mysqli_fetch_assoc($rec2);
+        $telephone = $row['telephone'];
+        $name      = $row['name'];
+        $email     = $row['email'];
+        $sex       = $row['sex'];
+        $lesson_id = $row['lesson_id'];
+      } else {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+      }
+    }
+  }
+?>
 
 <html>
-<head>
-  <title>UpdateNameForm</title>
-  <link rel="stylesheet" href="../css/Account.css">
-  <link rel="stylesheet" href="../css/Forms.css">
-</head>
-<body>
-<form action="" method="post" enctype="multipart/form-data" style="">
-  <div>
-    <fieldset class="mainaccount" style="margin 0 100px">
-      <legend style="text-align: center;"><b style="color: darkblue">Lesson Reservation Form</b></legend>
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          FullName
-        </b>
-        <input type="text" name="name" placeholder="Michel Smith" style="width: 240px; height: 30px">
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          Email
-        </b>
-        <input type="email" name="email" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          PhoneNumber
-        </b>
-        <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          Sex
-        </b>
-        <select name= "sex">
-          <option value = "male">Male</option>
-          <option value = "female">Female</option>
-          <option value = "others">Others</option>
-        </select>
-        (can't change whatever reasons.)
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-    </fieldset>
-    <div style="text-align: center; margin-bottom: 30px">
-      <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
-      <input type="submit" name="submit" value="Submit" class="btn btn-third">
-    </div>
-  </div>
-</form>
-</body>
+  <head>
+    <title>UpdatePhoneNumberForm</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <section class="food-search">
+      <div class="container2">
+        <h2 style="text-align: center">ChangePhoneNumber</h2>
+        <form action="" method="POST" class="order" style="text-align: center">
+          <fieldset class="mainaccount" style="margin: 0 310px">
+            <legend>Change YourName</legend>
+            <p style="font-size: 20px; margin-bottom: 30px">You can change your phone name at below.</p>
+            <li style="list-style: none;  margin:17px 0 17px 140px">
+              <b style="font-size: 20px;width:80px;margin-right:50px; float: left;">
+                YourName
+              </b>
+              <input type="text" name="name"  placeholder="Steave Smith" class="input-responsive" required>
+            </li>
+          </fieldset>
+          <input type="hidden" name="lesson_id" value="<?php echo $lesson_id; ?>">
+          <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
+          <input type="submit" name="submit" value="送信" class="btn btn-third" style="margin-top: 40px">
+        </form>
+      </div>
+    </section>
+  </body>
 </html>
 
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = 'root';
-$dbname = 'overcome';
+  $host = 'localhost';
+  $username = 'root';
+  $pass = 'root';
+  $dbname = 'overcome';
 
-if(isset($_POST['submit']))
-{
-  $lesson_id = $_POST['lesson_id'];
-  $name = $_POST['name'];
-  $telephone = $_POST['telephone'];
-  $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
-  if(preg_match($tel_boolean,$telephone))
+  if(isset($_POST['submit']))
   {
-    print  'write down your phone number correctly !';
-  }
-  else
-  {
-    //
-  }
-
-  if(isset($_POST['email'])) {
-    $email = $_POST['email'];
-    $mysqli = mysqli_connect($host,$username,$pass,$dbname);
-    $sql = ("SELECT * FROM tbl_form where email='$email'");
-    $rec = mysqli_query($mysqli,$sql);
-    $rec2 = mysqli_num_rows($rec);
-    if ($rec2 >= 1) {
-      echo  "<div class style='color: #ff6b81; text-align: center' >Email exist　Push the DashBoard button !</div>";
-      die();
+    $name = $_POST['name'];
+    $name_boolean = "/^[a-zA-Z-' ]*$/";
+    if(preg_match($name_boolean,$name))
+    {
+      print  'write down your name correctly(Only can use Alphabet.) !';
     }
-  }
-  $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
-  if(preg_match($contents_mail,$email))
-  {
-    print 'write down your email correctly ! ';
-  }
-  else
-  {
-    //
-  }
-  $sex = $_POST['sex'];
+    $lesson_id = $_POST['lesson_id'];
+    $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
 
-  $sql3 = "INSERT INTO tbl_form SET
+    $sql3 = "UPDATE tbl_form SET
              name = '$name'
              ,telephone = '$telephone'
              ,email = '$email'
              ,sex = '$sex'
-             ,lesson_id= '$lesson_id'";
-
-  $rec3=mysqli_query($mysqli,$sql3);
-  $url = "http://localhost:8001/account/Index.php";
-  if($rec3 == true)
-  {
-    $_SESSION['form'] = "<div class='success text-center'>Form order Successfully.</div>";
-    $form_id = mysqli_insert_id($mysqli);
-    $url = "http://localhost:8001/form/ManageForm.php?lesson_id=$lesson_id&form_id=$form_id";
-    header('Location:' .$url,true , 302);
+             WHERE form_id= '$form_id'";
+    $rec3=mysqli_query($connect,$sql3);
+    if($rec3 == true)
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Name was Updated.</div>";
+      $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
+      header('Location:' .$url,true , 302);
+    }
+    else
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
+      $url = "http://localhost:8001/form/UpdateNameForm.blade.php?form_id=$form_id";
+      header('Location:' .$url,true , 401);
+    }
   }
-  else
-  {
-    $_SESSION['form'] = "<div class='success text-center'>Form order Failed.</div>";
-    header('Location:' .$url,true , 401);
-  }
-}
+include('../account/partials/Footer.tpl');
 ?>
-
-<?php include('../account/partials/Footer.tpl'); ?>
