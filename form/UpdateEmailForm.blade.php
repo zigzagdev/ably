@@ -53,20 +53,34 @@ if(isset($_GET['form_id']))
 </html>
 
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = 'root';
-$dbname = 'overcome';
+  $host = 'localhost';
+  $username = 'root';
+  $pass = 'root';
+  $dbname = 'overcome';
 
 
-if(isset($_POST['submit']))
-{
-  $email = $_POST['email'];
-  $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
-  if(preg_match($contents_mail,$email))
+  if(isset($_POST['submit']))
   {
-    print 'write down your email correctly ! ';
-  }
+    $email = $_POST['email'];
+    $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
+    if(preg_match($contents_mail,$email))
+    {
+      print 'write down your email correctly ! ';
+    }
+
+    $accountsearch = ("SELECT email FROM tbl_account where email='$email'");
+    $accountconnect = mysqli_query($mysqli,$accountsearch);
+    $accountconnect2 = mysqli_num_rows($accountconnect);
+
+    $formsearch = ("SELECT email FROM tbl_form where email='$email'");
+    $formconnect = mysqli_query($mysqli,$formsearch);
+    $formconnect2 = mysqli_num_rows($formconnect);
+
+    if ($accountconnect2 >= 1 || $formconnect2 >= 1)
+    {
+      $error_message[] = ' Your Input Address was already .';
+    }
+
   $lesson_id = $_POST['lesson_id'];
   $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
 
