@@ -1,0 +1,10 @@
+{
+  "require": {
+    "zendframework/zend-cache": "2.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "apigen/apigen": "*",
+    "phpstan/phpstan": "^1.5"
+  }
+}

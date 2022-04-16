@@ -1,6 +1,11 @@
 <?php include('../account/partials/Header.blade.php'); ?>
 
-<!--Main Section -->
+<html>
+<head>
+  <title>ManageReserveForm</title>
+  <link rel="stylesheet" href="../css/Account.css">
+  <link rel="stylesheet" href="../css/Forms.css">
+</head>
 <div class="main">
     <div class="wrapper">
         <div class="inner">
@@ -37,9 +42,10 @@
             ?>
             <br/><br/>
             <!---button--->
-            <a class="btn-danger" href="AddLesson.php?account_id=<?= $account_id=$_GET['account_id']?>"> Add others Lessons</a>
+<!--            <a class="btn-danger" href="AddLesson.php?account_id=--><?//=$account_id=$_GET['account_id']?><!--">-->
+<!--              Add others Lessons-->
+<!--            </a>-->
 
-            <br/><br/><br/>
             <table class="tbl-full">
                 <tr>
                     <th style="text-align: center" >Course</th>
@@ -50,11 +56,11 @@
                 </tr>
 
                 <?php
+                $lesson_id = $_GET['lesson_id'];
 
-
-                $sql2 = "SELECT * FROM tbl_lesson where account_id = $account_id ";        // where means selected by each account
-                $sql3 =  " select f.1lesson_id,count(1) from tbl_form f inner join tbl_lesson l on l.lesson_id = f.lesson_id 
-                           where l.account_id = 19 group by f.lesson_id ;";
+//                $sql2 = "SELECT * FROM tbl_lesson where lesson_id = $lesson_id ";        // where means selected by each account
+//                $sql3 =  " select f.1lesson_id,count(1) from tbl_form f inner join tbl_lesson l on l.lesson_id = f.lesson_id
+//                           where l.account_id = 19 group by f.lesson_id ;";
 
 
                 $rec2 = mysqli_query($connect, $sql2);
@@ -81,9 +87,12 @@
                                 <td style="text-align: center"><?php echo $day; ?></td>
                                 <td style="text-align: center"><?php echo $lesson?></td>
                                 <td style="text-align: center">
-                                    <a class="btn-primary" href="UpdateLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Update your Lesson</a>
-                                    <a class="btn-secondary" onclick="return confirm('Are you sure you want to delete this item')"
-                                       href="DeleteLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>"> Delete your Lesson</a>
+                                    <a class="btn-primary" href="UpdateLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>">
+                                      Update your Lesson
+                                    </a>
+                                    <a id="destroy" class="btn-secondary" href="DeleteLesson.php?account_id=<?= $account_id=$_GET['account_id']?>&lesson_id=<?= $lesson_id?>">
+                                      Delete your Lesson
+                                    </a>
 
                                 </td>
                             </tr>
@@ -100,6 +109,7 @@
         </div>
     </div>
 </div>
+</html>
 <!--Main Section -->
 
 <?php include('../account/partials/Footer.tpl') ?>

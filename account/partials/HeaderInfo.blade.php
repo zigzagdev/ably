@@ -4,7 +4,6 @@
 
 <html>
   <head>
-    <title>PresentationForm</title>
     <link rel="stylesheet" href="../../css/Account.css">
   </head>
   <body style="background-color: ghostwhite">

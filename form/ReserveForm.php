@@ -1,34 +1,58 @@
 <?php include('../account/partials/HeaderInfo.blade.php');?>
 
-<head>
-  <title>ReserveLessonForm</title>
-  <link rel="stylesheet" href="../css/Account.css">
-</head>
-<body>
-  <section class="food-search">
-    <div class="container2"><br/>
-      <h2 class="text-center">Fill this form to confirm.</h2><br/>
-      <form action="ReserveForm.php?lesson_id=$lesson_id" method="POST" class="order" style="text-align: center" >
-        <fieldset class="fieldset">
-          <legend class="legend-center">Your information</legend>
-          <div class="order-label text-white" >Full Name</div>
-          <input type="text"  name="name" placeholder="Test" class="input-responsive" required><br/>
-          <div class="order-label text-white">Phone Number</div>
-          <input type="telephone" name="telephone" placeholder="090-1234-1234" class="input-responsive" required><br/>
-          <label class="order-label ">Email</label>
-          <input type="email" name="email" placeholder="1234aa@test.com" class="input-responsive" required><br/>
-          <label class="order-label ">Sex</label>
-          <select name="sex">
-            <option value="male" >Male</option>
-            <option value="female">Female</option>
-          </select><br/>
-        </fieldset>
-        <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
-        <input type="submit" name="submit" value="送信" class="btn btn-third">
-      </form>
-    </div>
-  </section>
-</body>
+<html>
+  <head>
+    <title>ReserveLessonForm</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+      <form action="" method="post" enctype="multipart/form-data" style="">
+      <div>
+          <fieldset class="mainaccount" style="margin 0 100px">
+            <legend style="text-align: center;"><b style="color: darkblue">Lesson Reservation Form</b></legend>
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              FullName
+            </b>
+            <input type="text" name="name" placeholder="Michel Smith" style="width: 240px; height: 30px">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Email
+            </b>
+            <input type="email" name="email" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              PhoneNumber
+            </b>
+            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              Sex
+            </b>
+            <select name= "sex">
+              <option value = "male">Male</option>
+              <option value = "female">Female</option>
+              <option value = "others">Others</option>
+            </select>
+            (can't change whatever reasons.)
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          </fieldset>
+          <div style="text-align: center; margin-bottom: 30px">
+          <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
+          <input type="submit" name="submit" value="Submit" class="btn btn-third">
+          </div>
+        </div>
+        </form>
+  </body>
+</html>
 
 <?php
   $host = 'localhost';

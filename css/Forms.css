@@ -310,3 +310,17 @@
     margin: 0 20px 45px 36px;
     text-align: center;
 }
+
+.updateform {
+    width: 250px;
+    height: 40px;
+    margin: 7px 0 7px 200px;
+
+}
+
+.mainaccount {
+    background-color: #d9edf7;
+    margin:0 210px 70px 210px;
+    padding-bottom: 30px;
+
+}

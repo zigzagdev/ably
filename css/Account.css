@@ -36,13 +36,13 @@
 /*table tr td{*/
 /*    padding: 1%;*/
 /*}*/
-/*.btn-primary{*/
-/*    background-color: dodgerblue;*/
-/*    padding: 1%;*/
-/*    color: white;*/
-/*    text-decoration: none;*/
-/*    font-weight: bold;*/
-/*}*/
+.btn-primary{
+    background-color: dodgerblue;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 /*.btn-primary:hover{*/
 /*    background-color: orangered;*/
 /*}*/
@@ -64,15 +64,14 @@
 /*    text-decoration: none;*/
 /*    font-weight: bold;*/
 /*}*/
-/*.btn-third{*/
-/*    border-radius: 100vh;*/
-/*    background-color: aquamarine;*/
-/*    padding: 1%;*/
-/*    color: black;*/
-/*    text-decoration: none;*/
-/*    font-weight: bold;*/
-
-/*}*/
+.btn-third{
+    border-radius: 100vh;
+    background-color: aquamarine;
+    padding: 1%;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
 /*.btn-danger:hover{*/
 /*    background-color: blue;*/
 /*}*/
@@ -300,4 +299,10 @@ footer {
 
 .wrapper-inner {
     margin: 0 20px 0 20px;
+}
+
+.mainaccount {
+  background-color: #d9edf7;
+  margin-bottom: 70px;
+  padding-bottom: 30px;
 }

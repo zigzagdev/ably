@@ -2,6 +2,7 @@
 include('../account/partials/Header.blade.php');
 
 $lesson_id= $_GET['lesson_id'];
+$account_id= $_GET['account_id'];
 
 $sql2= "DELETE FROM tbl_lesson WHERE lesson_id=$lesson_id";
 $rec2= mysqli_query($connect, $sql2);
