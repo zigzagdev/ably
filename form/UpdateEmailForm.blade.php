@@ -43,37 +43,36 @@ if(isset($_GET['form_id'])) {
 </html>
 
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = 'root';
-$dbname = 'overcome';
+  $host = 'localhost';
+  $username = 'root';
+  $pass = 'root';
+  $dbname = 'overcome';
 
-if(isset($_POST['submit']))
-{
-  $email = $_POST['email'];
-  $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
-  if(preg_match($contents_mail,$email))
+  if(isset($_POST['submit']))
   {
-    print 'write down your email correctly ! ';
-  }
-  $lesson_id = $_POST['lesson_id'];
-  $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
+    $email = $_POST['email'];
+    $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
+    if(preg_match($contents_mail,$email))
+    {
+      print 'write down your email correctly ! ';
+    }
+    $lesson_id = $_POST['lesson_id'];
+    $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
+    $sql3 = "UPDATE tbl_form SET email = '$email' where form_id= '$form_id' " ;
 
-  $sql3 = "UPDATE tbl_form SET email = '$email' where form_id= '$form_id' " ;
-
-  $rec3=mysqli_query($connect,$sql3);
-  if($rec3 == true)
-  {
-    $_SESSION['order'] = "<div class='success text-center'>Email Updated correctly.</div>";
-    $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
-    header('Location:' .$url,true , 302);
+    $rec3=mysqli_query($connect,$sql3);
+    if($rec3 == true)
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Email Updated correctly.</div>";
+      $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
+      header('Location:' .$url,true , 302);
+    }
+    else
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Can't update Email correctly.</div>";
+      $url = "http://localhost:8001/form/UpdateEmailForm.blade.php?form_id=$form_id";
+      header('Location:' .$url,true , 401);
+    }
   }
-  else
-  {
-    $_SESSION['order'] = "<div class='success text-center'>Can't update Email correctly.</div>";
-    $url = "http://localhost:8001/form/UpdateEmailForm.blade.php?form_id=$form_id";
-    header('Location:' .$url,true , 401);
-  }
-}
+  include('../account/partials/Footer.tpl');
 ?>
-<?php include('../account/partials/Footer.tpl'); ?>
