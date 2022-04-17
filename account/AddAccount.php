@@ -67,9 +67,13 @@ if(isset($_POST['submit']))
             die("Fail to connect your database.");
         }
         $sql = ("SELECT * FROM tbl_account where email='$email'");
+        $formsql = ("SELECT * FROM tbl_form where email='$email'");
         $rec = mysqli_query($mysqli,$sql);
+        $formrec = mysqli_query($mysqli,$formsql);
         $rec2 = mysqli_num_rows($rec);
-        if ($rec2 >= 1) {
+        $formrec2 = mysqli_num_rows($rec2);
+
+        if ($rec2 >= 1 || $formrec2 >= 1) {
             $errors =  "<div class style='color: #ff6b81; text-align: center' >user exists</div>";
             die();
         }
