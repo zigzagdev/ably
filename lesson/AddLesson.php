@@ -1,4 +1,35 @@
-<?php include('../account/partials/Header.blade.php'); ?>
+<?php
+include('../account/partials/LoginAccount.blade.php');
+
+if(isset($_POST['submit']))
+{
+  $course = $_POST['course'];
+  $content = $_POST['content'];
+  $day = $_POST['day'];
+  $account_id= $_GET['account_id'];
+
+  if (empty($course) || empty($content) || empty($day) )
+  {
+    die('Please fill all required fields!');
+  }
+
+  $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day',account_id='$account_id' ";
+  $rec2=mysqli_query($connect,$sql2);
+
+  if($rec2 == true)
+  {
+    $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
+    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+    header('Location:' .$url,true , 302);
+  } else
+  {
+    $_SESSION['add'] = "<div class='error'>Failed to Create Account.</div>";
+    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
+    die();
+  }
+}
+?>
 
 <div class="main">
 <div class="wrapper">
@@ -42,38 +73,6 @@
 
             </table>
         </form>
-
-        <?php
-        if(isset($_POST['submit']))
-        {
-            $course = $_POST['course'];
-            $content = $_POST['content'];
-            $day = $_POST['day'];
-
-            if (empty($course) || empty($content) || empty($day) ){
-                die('Please fill all required fields!');
-            }
-
-
-            $sql2 = " INSERT INTO tbl_lesson SET course = '$course',content = '$content',day = '$day',account_id='$account_id' ";
-            $rec2=mysqli_query($connect,$sql2) ;
-
-
-            if($rec2 == true)
-            {
-                $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
-                $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-                header('Location:' .$url,true , 302);
-            }
-            else
-            {
-                $_SESSION['add'] = "<div class='error'>Failed to Create Account.</div>";
-                $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-                header('Location:' .$url,true , 401);
-                die();
-            }
-        }
-        ?>
     </div>
 </div>
 
