@@ -61,7 +61,7 @@
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 110px">
+    <div style="margin: 0 100px">
       <div class="mainaccount">
         <li style="list-style: none;  margin:27px 0 17px 40px; padding-top: 20px">
           <b style="font-size: 20px;width:100px;">Delete ReserveForm</b>
