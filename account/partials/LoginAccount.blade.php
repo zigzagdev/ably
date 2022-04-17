@@ -13,8 +13,8 @@ include ('../config/Constants.blade.php')
       </div>
       <div class="account text-center">
         <div class="wrapper">
-          <a href = "../Logout.php" style="text-decoration: none; color: black" class="wrapper-inner">Logout</a>
-          <a href = "" style="text-decoration: none; color: black" class="wrapper-inner">UpdatePassword</a>
+          <a href = "../account/Login.blade.php" style="text-decoration: none; color: black" class="wrapper-inner">Logout</a>
+          <a href = "../account/ManageAccount.php" style="text-decoration: none; color: black" class="wrapper-inner">UpdatePassword</a>
          <a href = "../../Index.php" style="text-decoration: none; color: black" class="wrapper-inner">TopPage</a>
         </div>
       </div>
