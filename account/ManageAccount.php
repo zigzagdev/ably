@@ -97,12 +97,11 @@
         <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">
           Update your Account
         </a>
-        <a class="btn-secondary" style="margin: 0 7px 0 7px" href="DeleteAccount.blade.php?account_id=<?=$account_id=$_GET['account_id']?>">
-          Delete your Account
-        </a>
-        <a href="" class="btn-primary" style="margin: 0 7px 0 7px">Update your Password</a>
         <a class="btn-secondary" style="margin: 0 7px 0 7px" href="../lesson/ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">
           Check your register Lessons.
+        </a>
+        <a class="btn-third" style="margin: 0 7px 0 7px; background-color: red" href="DeleteAccount.blade.php?account_id=<?=$account_id=$_GET['account_id']?>">
+          Delete your Account
         </a>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-include ('./partials/Header.blade.php');
+include ('./partials/LoginAccount.blade.php');
 
   $account_id = $_GET['account_id'];
   $sql= "SELECT * FROM tbl_account WHERE account_id = $account_id";

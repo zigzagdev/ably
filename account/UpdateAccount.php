@@ -1,4 +1,4 @@
-<?php  include('partials/Header.blade.php'); ?>
+<?php  include('partials/LoginAccount.blade.php'); ?>
 
 <?php
   if(isset($_GET['account_id']))
