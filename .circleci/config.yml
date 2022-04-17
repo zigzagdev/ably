@@ -29,6 +29,6 @@ jobs:
             sudo docker-php-ext-install gd
 
       - run:
-          name composer install
+          name: composer install
           command: |
             sudo composer install -n --prefer-dist
