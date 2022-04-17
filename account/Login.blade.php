@@ -1,5 +1,6 @@
-<?php include
-('../config/Constants.blade.php');
+<?php
+include('../config/Constants.blade.php');
+include ('./partials/Header.blade.php');
 ?>
 
 <html>

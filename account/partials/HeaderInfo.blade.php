@@ -15,9 +15,9 @@
       </div>
       <div class="account text-center">
         <div class="wrapper">
-          <a href="../account/index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
-          <a href="../account/index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
-          <a href="../account/index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
+          <a href = "../../Index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
+          <a href = "../../Index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
+          <a href = "../../Index.php" style="text-decoration: none; color: black" class="wrapper-inner">DashBoard</a>
         </div>
       </div>
     </div>

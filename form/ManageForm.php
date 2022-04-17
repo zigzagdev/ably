@@ -40,6 +40,7 @@
     {
       while ($rows = mysqli_fetch_array($rec2))
       {
+
         $name = $rows['name'];
         $phone = $rows['telephone'];
         $email = $rows['email'];
@@ -60,10 +61,10 @@
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 130px">
+    <div style="margin: 0 100px">
       <div class="mainaccount">
         <li style="list-style: none;  margin:27px 0 17px 40px; padding-top: 20px">
-          <b style="font-size: 20px;width:100px;">Manage ReserveForm</b>
+          <b style="font-size: 20px;width:100px;">Delete ReserveForm</b>
         </li>
         <li style="list-style: none;  margin:47px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
@@ -99,8 +100,8 @@
           </b>
           <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
-            <button class="btn-third" style="width: 50px">
-              <a class="btn-third" href="UpdateEmailForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+            <button class="btn-third" style="width: 50px;">
+              <a class="btn-third"  href="UpdateEmailForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
                 Edit
               </a>
             </button>
@@ -109,8 +110,8 @@
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div style="margin:60px 0; text-align: center">
-        <a id="destroy" class="btn-secondary" style="background-color: red"
-           href="DeleteForm.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+        <a class="btn-secondary" style="background-color: red"
+           href="DeleteForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
           Delete your Information
         </a>
       </div>
@@ -118,5 +119,5 @@
   </body>
 </html>
 
-<?php include('../account/partials/Footer.tpl') ?>
+<?php include('../account/partials/ClientFooter.tpl') ?>
 

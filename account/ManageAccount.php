@@ -1,4 +1,4 @@
-<?php include('partials/Header.blade.php');
+<?php include('partials/LoginAccount.blade.php');
 
   if(isset($_SESSION['add']))
   {
@@ -42,7 +42,7 @@
       while ($rows = mysqli_fetch_assoc($rec))
       {
         $account_id = $rows['account_id'];
-        $username = $rows['username'];
+        $user_name = $rows['user_name'];
         $password = $rows['password'];
         $image_name = $rows['image_name'];
         $email = $rows['email'];
@@ -63,17 +63,17 @@
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 230px">
+    <div style="margin: 0 190px">
       <div class="mainaccount">
-        <li style="list-style: none;  margin:27px 0 17px 40px; padding-top: 20px">
-          <img src="../images/profile/<?php echo $image_name; ?>" width="90px" height="90px" style="border-radius: 50%; margin-right: 200px; vertical-align: center">
-          <b style="font-size: 20px;width:100px;margin-right:200px; vertical-align: 70%">Manage your Account</b>
+        <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
+          <img src="../images/profile/<?php echo $image_name; ?>" width="90px" height="90px" style="border-radius: 50%; margin-right: 160px; vertical-align: center">
+          <b style="font-size: 20px;width:70px;margin-right:10px; vertical-align: 70%">Manage your Account</b>
         </li>
         <li style="list-style: none;  margin:47px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             UserName
           </b>
-          <b style="font-size: 20px"><?php echo $username ?></b>
+          <b style="font-size: 20px"><?php echo $user_name ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -97,12 +97,11 @@
         <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id=<?= $account_id=$_GET['account_id']?>">
           Update your Account
         </a>
-        <a class="btn-secondary" style="margin: 0 7px 0 7px" href="DeleteAccount.php?account_id=<?=$account_id=$_GET['account_id']?>">
-          Delete your Account
-        </a>
-        <a href="" class="btn-primary" style="margin: 0 7px 0 7px">Update your Password</a>
         <a class="btn-secondary" style="margin: 0 7px 0 7px" href="../lesson/ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">
           Check your register Lessons.
+        </a>
+        <a class="btn-third" style="margin: 0 7px 0 7px; background-color: red" href="DeleteAccount.blade.php?account_id=<?=$account_id=$_GET['account_id']?>">
+          Delete your Account
         </a>
       </div>
     </div>

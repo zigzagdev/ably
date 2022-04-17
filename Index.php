@@ -1,4 +1,4 @@
-<?php include('./account/partials/IndexHeader.blade.php') ?>
+<?php include('./account/partials/ClientHeader.blade.php') ?>
 
 <!--Main Section -->
 <html>
