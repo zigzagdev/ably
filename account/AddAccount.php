@@ -88,8 +88,6 @@ include('partials/Header.blade.php');
     $email = $_POST['email'];
     $content = $_POST['content'];
 
-
-
     if(isset($_FILES['image']['name']))
     {
       $image_name = $_FILES['image']['name'];
@@ -117,6 +115,21 @@ include('partials/Header.blade.php');
     if ($password !== $password)
     {
       $error_message = 'Passwords should the same one. !';
+      die();
+    }
+
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
+      $error_message[] = "Only English is valid.";
+      die();
+    }
+
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password)) {
+      $error_message[] = "パスワードの形式が正しくありません。";
+      die();
+    }
+
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password2)) {
+      $error_message[] = "確認用パスワードの形式が正しくありません。";
       die();
     }
 

@@ -1,4 +1,4 @@
-<?php include('partials/Header.blade.php');
+<?php include('partials/LoginAccount.blade.php');
 
   if(isset($_SESSION['add']))
   {
