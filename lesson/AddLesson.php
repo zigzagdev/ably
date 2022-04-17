@@ -54,21 +54,21 @@ if(isset($_POST['submit']))
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             LessonName
           </b>
-          <input type="text" name="name" placeholder="Michel Smith" style="width: 240px; height: 30px">
+          <input type="text" name="course" placeholder="Michel Smith" style="width: 240px; height: 30px">
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             Content
           </b>
-          <input type="email" name="email" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
+          <input type="text" name="content" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             DeadLine
           </b>
-          <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
+          <input type="date" name="deadline" class="input-responsive" required>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         </fieldset>
