@@ -7,7 +7,7 @@
     <div class="inner">
         <div class="footer_left">
       <span class="c-inner">
-        <a href="" style="text-decoration: none; color: black">Login</a>
+        <a href="../account/Login.blade.php" style="text-decoration: none; color: black">Login</a>
       </span>
         </div>
     </div>

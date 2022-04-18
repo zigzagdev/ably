@@ -20,19 +20,12 @@ include ('./partials/ClientHeader.tpl');
     <link rel="stylesheet" href="../css/Account.css">
   </head>
   <body>
-    <div class="login">
-      <h2 class="text-center">Sign In</h2>
-      <form action="" method="post" class="text-center">
-        Username:
-        <input type="text" name="username" placeholder="  enter your username"><br/><br/>
-        Password:<br/>
-        <input type="password" name="password" placeholder="  enter your password"><br/><br/>
-        <input type="submit" name="submit" value="login" class="btn-primary">
-        <br/><br/>
-    </form>
-    <p class="text-center">Havn't create an account ?</p>
-    <div class="create">
-    <a href="AddAccount.php">Create</a>
+  <div style="text-align: right; margin-right: 160px">
+    <p style="color: darkcyan">Haven't create an account ?<a href="AddAccount.php" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></p>
+  </div>
+    <div style="margin: 50px 400px 25px 400px">
+      <div class="mainaccount" style="background-color: whitesmoke">
+      <h2 style="text-align: center; padding-top: 18px">Sign In</h2>
     </div>
 </div>
 </body>
