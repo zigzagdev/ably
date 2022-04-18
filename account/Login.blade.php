@@ -20,24 +20,38 @@ include ('./partials/ClientHeader.tpl');
     <link rel="stylesheet" href="../css/Account.css">
   </head>
   <body>
-  <div style="text-align: right; margin-right: 160px">
-    <p style="color: darkcyan">Haven't create an account ?<a href="AddAccount.php" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></p>
-  </div>
+    <div style="text-align: right; margin:30px 160px 0 0">
+      <strong>Haven't create an account ?<a href="AddAccount.php" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></strong>
+    </div>
     <div style="margin: 50px 400px 25px 400px">
       <div class="mainaccount" style="background-color: whitesmoke">
       <h2 style="text-align: center; padding-top: 18px">Sign In</h2>
+      <form>
+        <li style="list-style: none;  margin:17px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin:0 30px 0 100px; float: left;">
+            E-mail
+          </b>
+          <input type="email" required name="email" size="40px" style="height: 35px">
+        </li>
+        <li style="list-style: none;  margin:17px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;float: left;">
+            Password
+          </b>
+            <input type="email" required name="email" size="40px" style="height: 35px">
+        </li>
+      </form>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
 
 <?php
   if(isset($_POST['submit']))
   {
-    $user_name = $_POST['user_name'];
+    $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    $sql = "SELECT * FROM tbl_account WHERE user_name='$user_name' AND password='$password'";
+    $sql = "SELECT * FROM tbl_account WHERE user_name='$email' AND password='$password'";
     $rec = mysqli_query($connect, $sql);
     $count = mysqli_num_rows($rec);
 
@@ -46,7 +60,7 @@ include ('./partials/ClientHeader.tpl');
       $row = mysqli_fetch_assoc($rec);
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$row[id]";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-      $_SESSION['user'] = $user_name;
+      $_SESSION['email'] = $email;
 
       header('Location:' .$url,true , 302);
       exit();
