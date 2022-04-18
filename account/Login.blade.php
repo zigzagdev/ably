@@ -26,18 +26,28 @@ include ('./partials/ClientHeader.tpl');
     <div style="margin: 50px 400px 25px 400px">
       <div class="mainaccount" style="background-color: whitesmoke">
       <h2 style="text-align: center; padding-top: 18px">Sign In</h2>
-      <form>
-        <li style="list-style: none;  margin:17px 0 17px 30px">
+      <form method="post" action="">
+        <li style="list-style: none;  margin:22px 0 22px 30px">
           <b style="font-size: 20px;width:100px;margin:0 30px 0 100px; float: left;">
             E-mail
           </b>
           <input type="email" required name="email" size="40px" style="height: 35px">
         </li>
-        <li style="list-style: none;  margin:17px 0 17px 30px">
+        <li style="list-style: none;  margin:22px 0 22px 30px">
           <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;float: left;">
             Password
           </b>
-            <input type="email" required name="email" size="40px" style="height: 35px">
+            <input type="password" required name="password" size="40px" style="height: 35px">
+        </li>
+        <li style="list-style: none;  margin:22px 0 22px 30px">
+          <a href="" class="passwordforgot">
+            Forgot your password?
+          </a>
+        </li>
+        <li style="list-style: none;  margin:42px 0 22px 30px">
+          <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;">
+            <input type="submit" name="submit" value="Login" class="btn-third">
+          </b>
         </li>
       </form>
       </div>
@@ -45,20 +55,22 @@ include ('./partials/ClientHeader.tpl');
   </body>
 </html>
 
+
 <?php
   if(isset($_POST['submit']))
   {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    $sql = "SELECT * FROM tbl_account WHERE user_name='$email' AND password='$password'";
+    $sql = "SELECT * FROM tbl_account WHERE email='$email' AND password='$password'";
     $rec = mysqli_query($connect, $sql);
     $count = mysqli_num_rows($rec);
 
     if($count==1)
     {
       $row = mysqli_fetch_assoc($rec);
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$row[id]";
+      $id = $row['account_id'];
+      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$id";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
       $_SESSION['email'] = $email;
 

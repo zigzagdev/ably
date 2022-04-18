@@ -52,7 +52,6 @@
     color: black;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 30px;
 }
 /*.btn-secondary:hover{*/
 /*    background-color: lightcyan;*/
@@ -71,6 +70,7 @@
     color: black;
     text-decoration: none;
     font-weight: bold;
+    width: 90px;
 }
 /*.btn-danger:hover{*/
 /*    background-color: blue;*/
@@ -307,6 +307,15 @@ footer {
   padding-bottom: 30px;
 }
 
-.loginform {
-    
+.passwordforgot{
+    text-decoration: white;
+    margin:0 30px 0 100px;
+    color: darkcyan
 }
+
+.passwordforgot:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+
