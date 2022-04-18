@@ -80,14 +80,14 @@
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             Email
           </b>
-          <?php echo $email ?>
+          <b style="font-size: 20px"><?php echo $email ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             Content
           </b>
-          <b style="font-size: 20px"><?php echo $content ?></b>
+          <b style="font-size: 20px"><?php echo mb_strimwidth( strip_tags( $content ), 0, 20, '…', 'UTF-8' ); ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>

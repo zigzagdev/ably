@@ -72,7 +72,7 @@ include ('./partials/ClientHeader.tpl');
       $id = $row['account_id'];
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$id";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-      $_SESSION['email'] = $email;
+      $_SESSION['email'] = $email;a
 
       header('Location:' .$url,true , 302);
       exit();

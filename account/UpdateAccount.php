@@ -14,7 +14,7 @@
       {
         $row = mysqli_fetch_assoc($rec);
         $account_id = $row['account_id'];
-        $username = $row['username'];
+        $user_name = $row['user_name'];
         $current_image = $row['image_name'];
         $image = $row['image_name'];
         $email = $row['email'];
@@ -27,7 +27,7 @@
 ?>
 <html>
   <head>
-    <title>UpdatePage</title>
+    <title>UpdateAccount</title>
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
@@ -40,7 +40,7 @@
               <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
                 UserName
               </b>
-              <input id="name" type="text" name="name" placeholder="Your Name" size="40" value="<?php echo $username; ?>">
+              <input id="name" type="text" name="name" placeholder="Your Name" size="40" value="<?php echo $user_name; ?>">
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -75,7 +75,7 @@
           if(isset($_POST['submit']))
           {
             $account_id = $_GET['account_id'];
-            $username = $_POST['username'];
+            $user_name = $_POST['user_name'];
             $email = $_POST['email'];
             $content = $_POST['content'];
 
@@ -115,12 +115,26 @@
             $image_name = $current_image;
           }
           $sql = "UPDATE tbl_account SET 
-                         username='$username'
+                         user_name='$user_name'
                          ,image_name='$image_name'
                          ,email='$email'
                          ,content='$content' 
                   WHERE account_id=$account_id ";
           $rec = mysqli_query($connect, $sql);
+
+            if($rec==true)
+            {
+              $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+              $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
+              header('Location:' .$url,true , 302);
+            }
+            else
+            {
+              $_SESSION['update'] = "<div class='error'>Failed to Update Account.</div>";
+              $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
+              header('Location:' .$url,true , 401);
+              die();
+            }
 }
 ?>
 <?php include('partials/Footer.tpl'); ?>
