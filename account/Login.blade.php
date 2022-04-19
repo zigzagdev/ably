@@ -24,7 +24,7 @@ include ('./partials/ClientHeader.tpl');
       <strong>Haven't create an account ?<a href="AddAccount.php" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></strong>
     </div>
     <div style="margin: 50px 400px 25px 400px">
-      <div class="mainaccount" style="background-color: whitesmoke">
+      <div class="mainaccount">
       <h2 style="text-align: center; padding-top: 18px">Sign In</h2>
       <form method="post" action="">
         <li style="list-style: none;  margin:22px 0 22px 30px">
