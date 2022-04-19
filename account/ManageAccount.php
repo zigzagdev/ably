@@ -41,12 +41,12 @@
     {
       while ($rows = mysqli_fetch_assoc($rec))
       {
-        $account_id = $rows['account_id'];
-        $user_name = $rows['user_name'];
-        $password = $rows['password'];
-        $image_name = $rows['image_name'];
-        $email = $rows['email'];
-        $content = $rows['content'];
+        $account_id  = $rows['account_id'];
+        $user_name   = $rows['user_name'];
+        $password    = $rows['password'];
+        $image_name  = $rows['image_name'];
+        $email       = $rows['email'];
+        $content     = $rows['content'];
         if ($image_name == "")
         {
           echo "<div class='error'>Image not Added.</div>";

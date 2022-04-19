@@ -85,8 +85,8 @@ include('partials/Header.blade.php');
     $user_name = $_POST['user_name'];
     $password  = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $email     = $_POST['email'];
+    $content   = $_POST['content'];
 
     if(isset($_FILES['image']['name']))
     {

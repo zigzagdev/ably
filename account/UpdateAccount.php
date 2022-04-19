@@ -1,6 +1,6 @@
-<?php  include('partials/LoginAccount.blade.php'); ?>
-
 <?php
+include('partials/LoginAccount.blade.php');
+
   if(isset($_GET['account_id']))
   {
     $account_id = $_GET['account_id'];
@@ -13,13 +13,14 @@
       if ($count == 1)
       {
         $row = mysqli_fetch_assoc($rec);
-        $account_id = $row['account_id'];
-        $user_name = $row['user_name'];
+        $account_id    = $row['account_id'];
+        $user_name     = $row['user_name'];
         $current_image = $row['image_name'];
-        $image = $row['image_name'];
-        $email = $row['email'];
-        $content = $row['content'];
-      } else {
+        $image         = $row['image_name'];
+        $email         = $row['email'];
+        $content       = $row['content'];
+      } else
+      {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
       }
     }
@@ -40,7 +41,7 @@
               <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
                 UserName
               </b>
-              <input id="name" type="text" name="name" placeholder="Your Name" size="40" value="<?php echo $user_name; ?>">
+              <input type="text" name="name" placeholder="Your Name" size="40" value="<?php echo $user_name; ?>">
             </li>
             <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
             <li style="list-style: none;  margin:17px 0 17px 30px">
