@@ -59,14 +59,8 @@ include ('./partials/LoginAccount.blade.php');
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <div style="text-align: center; margin-top: 30px">
             <input type="hidden" name="account_id" value="<?php echo $account_id; ?>">
-            <input type="submit" name="submit" value="Update your Account" class="btn-secondary" style="border: 1.2px solid">
-<?php
-            $hostname = $_SERVER['HTTP_HOST'];
-            if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
-            {
-              echo '<a href="' . $_SERVER['HTTP_REFERER'] . '" class="btn-secondary" style="margin:1px 0 0 10px; border: 1.2px solid">Return</a>';
-            }
-?>
+            <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
+            <button type="button" onclick=history.back() class="btn-secondary">Return</button>
           </div>
         </form>
       </div>
