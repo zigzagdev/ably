@@ -62,18 +62,18 @@
     background-color: black;
 }
 
-/*.btn-third{*/
-/*    background-color: lightblue;*/
-/*    padding: 1%;*/
-/*    color: black;*/
-/*    text-decoration: none;*/
-/*    font-weight: bold;*/
-/*}*/
-/*.btn-third:hover{*/
-/*    color: whitesmoke;*/
-/*    text-decoration: underline;*/
-/*    background-color: mediumvioletred;*/
-/*}*/
+.btn-third{
+    background-color: lightblue;
+    padding: 1%;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.btn-third:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+    background-color: lightcoral;
+}
 
 .btn-delete{
     background-color: lightpink;

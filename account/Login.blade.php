@@ -72,13 +72,13 @@ include ('./partials/ClientHeader.tpl');
       $id = $row['account_id'];
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$id";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-      $_SESSION['email'] = $email;a
+      $_SESSION['email'] = $email;
 
       header('Location:' .$url,true , 302);
       exit();
     } else
     {
-      $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
+      $_SESSION['login'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
       header('Location:Login.blade.php');
     }
   }

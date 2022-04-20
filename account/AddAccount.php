@@ -123,12 +123,12 @@ include('partials/Header.blade.php');
       die();
     }
 
-    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password)) {
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
       $error_message[] = "パスワードの形式が正しくありません。";
       die();
     }
 
-    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password2)) {
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
       $error_message[] = "確認用パスワードの形式が正しくありません。";
       die();
     }

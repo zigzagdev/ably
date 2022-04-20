@@ -34,6 +34,13 @@ include ('./partials/LoginAccount.blade.php');
   <body>
     <div style="margin: 0 230px">
       <div class="mainaccount">
+<?php if( !empty($error_message) ): ?>
+        <ul class="error_message">
+<?php foreach( $error_message as $value ): ?>
+          <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
+<?php endforeach; ?>
+        </ul>
+<?php endif; ?>
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Password</h1>
         <form action="" method="post" enctype="multipart/form-data" style="">
           <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -76,46 +83,44 @@ include ('./partials/LoginAccount.blade.php');
 
   if(isset($_POST['submit']))
   {
-    $email = $_POST['email'];
-    $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
-    if(preg_match($contents_mail,$email))
+    $password  = md5($_POST['password']);
+    $password2 = md5($_POST['password2']);
+    if ($password !== $password)
     {
-      print 'write down your email correctly ! ';
+      $error_message = 'Passwords should the same one. !';
+      die();
+    }
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
+      $error_message[] = "パスワードの形式が正しくありません。";
+      die();
     }
 
-    $accountsearch = ("SELECT email FROM tbl_account where email='$email'");
-    $accountconnect = mysqli_query($mysqli,$accountsearch);
-    $accountconnect2 = mysqli_num_rows($accountconnect);
-
-    if ($accountconnect2 >= 1 )
-    {
-      $error_message[] = ' Your Input Address was already .';
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
+      $error_message[] = "確認用パスワードの形式が正しくありません。";
+      die();
     }
-
-    $lesson_id = $_POST['lesson_id'];
-    $form_id = $_POST['form_id'];
 
     $sql = "UPDATE tbl_account SET
                    user_name='$user_name'
                    ,image_name='$image_name'
                    ,email='$email'
                    ,content='$content'
+                   ,password='$password'
              WHERE
                    account_id=$account_id ";
     $rec = mysqli_query($connect, $sql);
 
-  if($rec3 == true)
-  {
-    $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-    $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
-    header('Location:' .$url,true , 302);
+    if($rec == true)
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Your Password was Updated.</div>";
+      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+      header('Location:' .$url,true , 302);
+    } else
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
+      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
+      header('Location:' .$url,true , 401);
+    }
   }
-  else
-  {
-    $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-    $url = "http://localhost:8001/form/UpdateEmailForm.blade.php?form_id=$form_id";
-    header('Location:' .$url,true , 401);
-  }
-}
-include('../account/partials/Footer.tpl');
+  include('../account/partials/Footer.tpl');
 ?>
