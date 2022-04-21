@@ -54,15 +54,15 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <form action="" method="post" enctype="multipart/form-data" style="">
+    <form action="" method="post" enctype="multipart/form-data" style="margin: 0 170px">
     <div>
-      <fieldset class="mainaccount" style="margin 0 100px">
+      <fieldset class="mainaccount" style="margin: 0 100px">
         <legend style="text-align: center;"><b style="color: darkblue">LessonCreate Form</b></legend>
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             LessonName(Title)
           </b>
-          <select name="course" style="margin-left: 30px">
+          <select name="course">
             <option value="">Select your first native language</option>
             <option value="English(British accent)">English(British accent)</option>
             <option value="English(American accent)">English(American accent)</option>
@@ -86,10 +86,10 @@ if(isset($_POST['submit']))
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
-          <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-            Content
+          <b style="font-size: 20px;width:100px;margin-right:157px; vertical-align: 110%">
+            LessonDetail
           </b>
-          <input type="text" name="content" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
+          <textarea name="content" class="input-responsive" cols="60" rows="4"></textarea>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
