@@ -12,13 +12,23 @@ if(isset($_POST['submit']))
   if (empty($course) || empty($content) || empty($deadline))
   {
     $_SESSION['add'] = "<div class='error'>Please fill your Registration.</div>";
-    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+    $url = "http://localhost:8001/lesson/AddLesson.blade.php?account_id=$account_id";
     header('Location:' .$url,true , 401);
     die();
   }
 
-  if (!preg_match("/^[a-zA-Z-' ]*$/", $course)) {
-    $error_message[] = "Only English is valid.";
+  if (count($content)<= 10 || count($content)>= 200)
+  {
+    $_SESSION['add'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
+    $url = "http://localhost:8001/lesson/AddLesson.blade.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
+    die();
+  }
+
+  if ($deadline <= $created_at) {
+    $_SESSION['add'] = "<div class='error'>Can't set Deadline before today .</div>";
+    $url = "http://localhost:8001/lesson/AddLesson.blade.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
     die();
   }
 
