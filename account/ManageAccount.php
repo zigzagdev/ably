@@ -41,12 +41,12 @@
     {
       while ($rows = mysqli_fetch_assoc($rec))
       {
-        $account_id = $rows['account_id'];
-        $user_name = $rows['user_name'];
-        $password = $rows['password'];
-        $image_name = $rows['image_name'];
-        $email = $rows['email'];
-        $content = $rows['content'];
+        $account_id  = $rows['account_id'];
+        $user_name   = $rows['user_name'];
+        $password    = $rows['password'];
+        $image_name  = $rows['image_name'];
+        $email       = $rows['email'];
+        $content     = $rows['content'];
         if ($image_name == "")
         {
           echo "<div class='error'>Image not Added.</div>";
@@ -80,14 +80,14 @@
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             Email
           </b>
-          <?php echo $email ?>
+          <b style="font-size: 20px"><?php echo $email ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             Content
           </b>
-          <b style="font-size: 20px"><?php echo $content ?></b>
+          <b style="font-size: 20px"><?php echo mb_strimwidth( strip_tags( $content ), 0, 20, '…', 'UTF-8' ); ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
@@ -100,7 +100,7 @@
         <a class="btn-secondary" style="margin: 0 7px 0 7px" href="../lesson/ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">
           Check your register Lessons.
         </a>
-        <a class="btn-third" style="margin: 0 7px 0 7px; background-color: red" href="DeleteAccount.blade.php?account_id=<?=$account_id=$_GET['account_id']?>">
+        <a class="btn-delete" style="margin: 0 7px 0 7px;" href="DeleteAccount.blade.php?account_id=<?=$account_id=$_GET['account_id']?>">
           Delete your Account
         </a>
       </div>

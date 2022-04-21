@@ -9,15 +9,18 @@ if(isset($_POST['submit']))
   $account_id = $_GET['account_id'];
   $created_at = time();
 
-  if (empty($course) || empty($content) || empty($deadline) )
+  if (empty($course) || empty($content) || empty($deadline))
   {
-    die('Please fill all required fields!');
+    $_SESSION['add'] = "<div class='error'>Please fill your Registration.</div>";
+    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
+    die();
   }
 
   $sql2 = " INSERT INTO tbl_lesson 
             SET 
               course      = '$course'
-              , content   = '$content'
+              ,content    = '$content'
               ,deadline   = '$deadline'
               ,account_id = '$account_id'
               ,created_at = '$created_at' 
@@ -31,7 +34,7 @@ if(isset($_POST['submit']))
     header('Location:' .$url,true , 302);
   } else
   {
-    $_SESSION['add'] = "<div class='error'>Failed to Create Account.</div>";
+    $_SESSION['add'] = "<div class='error'>Failed to Register your Lesson.</div>";
     $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
     header('Location:' .$url,true , 401);
     die();
@@ -52,9 +55,9 @@ if(isset($_POST['submit']))
         <legend style="text-align: center;"><b style="color: darkblue">LessonCreate Form</b></legend>
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-            LessonName
+            LessonName(Title)
           </b>
-          <input type="text" name="course" placeholder="Michel Smith" style="width: 240px; height: 30px">
+          <input type="text" name="course" placeholder="Write your Lesson Name." style="width: 240px; height: 30px">
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">

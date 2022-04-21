@@ -85,8 +85,8 @@ include('partials/Header.blade.php');
     $user_name = $_POST['user_name'];
     $password  = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $email     = $_POST['email'];
+    $content   = $_POST['content'];
 
     if(isset($_FILES['image']['name']))
     {
@@ -123,12 +123,12 @@ include('partials/Header.blade.php');
       die();
     }
 
-    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password)) {
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
       $error_message[] = "パスワードの形式が正しくありません。";
       die();
     }
 
-    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i", $password2)) {
+    if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
       $error_message[] = "確認用パスワードの形式が正しくありません。";
       die();
     }
@@ -148,7 +148,7 @@ include('partials/Header.blade.php');
       header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
     } else
     {
-      $_SESSION['add'] = "<div style='text-align: center; color: #ff6666; font-size: 20px' '>Failed to add your account.</div>";
+      $_SESSION['add'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
       header("location: http://localhost:8001/account/AddAccount.php");
     }
   }

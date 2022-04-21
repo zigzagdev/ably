@@ -66,18 +66,28 @@ if(isset($_GET['lesson_id'])) {
 </div>
 
 <?php
-if(isset($_POST['submit']))
-{
-    $course = $_POST['course'];
-    $content = $_POST['content'];
-    $day = $_POST['day'];
-
-    if (empty($course) || empty($content) || empty($day) ){
-        die('Please fill all required fields!');
+  if(isset($_POST['submit']))
+  {
+    $course     = $_POST['course'];
+    $content    = $_POST['content'];
+    $day        = $_POST['day'];
+    $created_at = time();
+    if (empty($course) || empty($content) || empty($day) )
+    {
+      $_SESSION['submit'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Lesson. </div>";
+      $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id";
+      header('Location:'.$url,true , 401);
+      die();
     }
 
-    $sql2 = " UPDATE tbl_lesson SET  course = '$course',content = '$content',day = '$day' 
-              where lesson_id=$lesson_id" ;         // Not to change the columns in mysql everything. why lesson_id is here.
+    $sql2 = " UPDATE tbl_lesson SET  
+                     course      = '$course'
+                     ,content    = '$content'
+                     ,day        = '$day' 
+                     ,created_at = '$created_at'
+               WHERE 
+                     lesson_id=$lesson_id
+            ";
     $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
 
 
@@ -95,7 +105,7 @@ if(isset($_POST['submit']))
         die();
     }
 }
-?>
-<?php include('../account/partials/Footer.tpl'); ?>
+
+include('../account/partials/Footer.tpl'); ?>
 
 

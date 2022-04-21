@@ -1,25 +1,27 @@
-<?php  include('../account/partials/HeaderInfo.blade.php'); ?>
-
 <?php
-if(isset($_GET['form_id']))
-{
-  $form_id = $_GET['form_id'];
-  $sql2 = "SELECT * FROM tbl_form  where form_id = $form_id";
-  $rec2 = mysqli_query($connect, $sql2);
-  if ($rec2 == true) {
-    $count = mysqli_num_rows($rec2);
-    if ($count == 1) {
-      $row       = mysqli_fetch_assoc($rec2);
-      $telephone = $row['telephone'];
-      $name      = $row['name'];
-      $email     = $row['email'];
-      $sex       = $row['sex'];
-      $lesson_id = $row['lesson_id'];
-    } else {
-      header('Location: ' . $_SERVER['HTTP_REFERER']);
+include('../account/partials/HeaderInfo.blade.php');
+  if(isset($_GET['form_id']))
+  {
+    $form_id = $_GET['form_id'];
+    $sql2 = "SELECT * FROM tbl_form  where form_id = $form_id";
+    $rec2 = mysqli_query($connect, $sql2);
+    if ($rec2 == true)
+    {
+      $count = mysqli_num_rows($rec2);
+      if ($count == 1)
+      {
+        $row       = mysqli_fetch_assoc($rec2);
+        $telephone = $row['telephone'];
+        $name      = $row['name'];
+        $email     = $row['email'];
+        $sex       = $row['sex'];
+        $lesson_id = $row['lesson_id'];
+      } else
+      {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+      }
     }
   }
-}
 ?>
 
 <html>
@@ -53,42 +55,42 @@ if(isset($_GET['form_id']))
 </html>
 
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = 'root';
-$dbname = 'overcome';
+  $host = 'localhost';
+  $username = 'root';
+  $pass = 'root';
+  $dbname = 'overcome';
 
+  if(isset($_POST['submit']))
+  {
+    $telephone = $_POST['telephone'];
+    $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
+    if(preg_match($tel_boolean,$telephone))
+    {
+      print  'write down your mobilephone number correctly !';
+    }
+    $lesson_id = $_POST['lesson_id'];
+    $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
 
-if(isset($_POST['submit']))
-{
-  $telephone = $_POST['telephone'];
-  $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
-  if(preg_match($tel_boolean,$telephone))
-  {
-    print  'write down your phone number correctly !';
-  }
-  $lesson_id = $_POST['lesson_id'];
-  $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
+    $sql3 = "UPDATE tbl_form SET
+               name = '$name'
+               ,telephone = '$telephone'
+               ,email = '$email'
+               ,sex = '$sex'
+             WHERE
+               form_id= '$form_id'";
 
-  $sql3 = "UPDATE tbl_form SET
-           name = '$name'
-           ,telephone = '$telephone'
-           ,email = '$email'
-           ,sex = '$sex'
-           WHERE form_id= '$form_id'";
-  $rec3=mysqli_query($connect,$sql3);
-  if($rec3 == true)
-  {
-    $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-    $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
-    header('Location:' .$url,true , 302);
+    $rec3=mysqli_query($connect,$sql3);
+    if($rec3 == true)
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
+      $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
+      header('Location:' .$url,true , 302);
+    } else
+    {
+      $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
+      $url = "http://localhost:8001/form/UpdatePhoneNumber.blade.php?form_id=$form_id";
+      header('Location:' .$url,true , 401);
+    }
   }
-  else
-  {
-    $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-    $url = "http://localhost:8001/form/UpdatePhoneNumber.blade.php?form_id=$form_id";
-    header('Location:' .$url,true , 401);
-  }
-}
 include('../account/partials/ClientFooter.tpl');
 ?>

@@ -1,4 +1,7 @@
-<?php include('./account/partials/ClientHeader.blade.php') ?>
+<?php
+  include('./account/partials/ClientHeader.tpl');
+  include ('./config/Constants.blade.php');
+?>
 
 <!--Main Section -->
 <html>

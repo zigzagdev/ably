@@ -39,45 +39,60 @@
 .btn-primary{
     background-color: dodgerblue;
     padding: 1%;
-    color: white;
+    color: yellow;
     text-decoration: none;
     font-weight: bold;
 }
-/*.btn-primary:hover{*/
-/*    background-color: orangered;*/
-/*}*/
+.btn-primary:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+    background-color: black;
+}
 .btn-secondary{
-    background-color: aquamarine;
+    background-color: lightblue;
     padding: 1%;
     color: black;
     text-decoration: none;
     font-weight: bold;
-    margin-top: 30px;
 }
-/*.btn-secondary:hover{*/
-/*    background-color: lightcyan;*/
-/*}*/
-/*.btn-danger{*/
-/*    background-color: dodgerblue;*/
-/*    padding: 1%;*/
-/*    color: black;*/
-/*    text-decoration: none;*/
-/*    font-weight: bold;*/
-/*}*/
+
+.btn-secondary:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+    background-color: black;
+}
+
 .btn-third{
-    border-radius: 100vh;
-    background-color: aquamarine;
+    background-color: lightblue;
     padding: 1%;
     color: black;
     text-decoration: none;
     font-weight: bold;
 }
-/*.btn-danger:hover{*/
-/*    background-color: blue;*/
-/*}*/
-/*.success{*/
-/*    color: hotpink;*/
-/*}*/
+.btn-third:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+    background-color: lightcoral;
+}
+
+.btn-delete{
+    background-color: lightpink;
+    padding: 1%;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.btn-delete:hover{
+    color: whitesmoke;
+    text-decoration: underline ;
+    background-color: red;
+}
+.success{
+    color: red;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
 
 /*.error{*/
 /*    color: goldenrod;*/
@@ -306,3 +321,16 @@ footer {
   margin-bottom: 70px;
   padding-bottom: 30px;
 }
+
+.passwordforgot{
+    text-decoration: white;
+    margin:0 30px 0 100px;
+    color: darkcyan
+}
+
+.passwordforgot:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+

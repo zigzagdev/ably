@@ -1,4 +1,4 @@
-<?php include('../account/partials/HeaderInfo.blade.php');?>
+<?php include('../account/partials/ClientHeader.tpl');?>
 
 <html>
   <head>
@@ -8,7 +8,7 @@
   </head>
   <body>
       <form action="" method="post" enctype="multipart/form-data" style="">
-      <div>
+      <div style="margin-top: 60px">
           <fieldset class="mainaccount" style="margin 0 100px">
             <legend style="text-align: center;"><b style="color: darkblue">Lesson Reservation Form</b></legend>
           <li style="list-style: none;  margin:17px 0 17px 30px">
