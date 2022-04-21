@@ -17,6 +17,11 @@ if(isset($_POST['submit']))
     die();
   }
 
+  if (!preg_match("/^[a-zA-Z-' ]*$/", $course)) {
+    $error_message[] = "Only English is valid.";
+    die();
+  }
+
   $sql2 = " INSERT INTO tbl_lesson 
             SET 
               course      = '$course'
@@ -57,7 +62,27 @@ if(isset($_POST['submit']))
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             LessonName(Title)
           </b>
-          <input type="text" name="course" placeholder="Write your Lesson Name." style="width: 240px; height: 30px">
+          <select name="course" style="margin-left: 30px">
+            <option value="">Select your first native language</option>
+            <option value="English(British accent)">English(British accent)</option>
+            <option value="English(American accent)">English(American accent)</option>
+            <option value="English(Australia accent)">English(Australia accent)</option>
+            <option value="English(NZ accent)">English(NZ accent)</option>
+            <option value="English(French accent)">English(French accent)</option>
+            <option value="English(Canada accent)">English(Canada accent)</option>
+            <option value="French(advanced)">French(advanced)</option>
+            <option value="French(intermediate)">French(intermediate)</option>
+            <option value="French(beginner,)">French(beginner)</option>
+            <option value="Spanish(advanced)">Spanish(advanced)</option>
+            <option value="Spanish(intermediate)">Spanish(intermediate)</option>
+            <option value="Spanish(beginner)">Spanish(beginner)</option>
+            <option value="German(advanced)">German(advanced)</option>
+            <option value="German(intermediate)">German(intermediate)</option>
+            <option value="German(beginner)">German(beginner)</option>
+            <option value="Japanese(advanced)">Japanese(advanced)</option>
+            <option value="Japanese(intermediate)">japanese(intermediate)</option>
+            <option value="Japanese(beginner)">Japanese(beginner)</option>
+          </select>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
