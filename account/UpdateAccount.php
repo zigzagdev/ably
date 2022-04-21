@@ -73,69 +73,68 @@ include('partials/LoginAccount.blade.php');
     </div>
   </body>
 <?php
-          if(isset($_POST['submit']))
-          {
-            $account_id = $_GET['account_id'];
-            $user_name = $_POST['user_name'];
-            $email = $_POST['email'];
-            $content = $_POST['content'];
+  if(isset($_POST['submit']))
+  {
+    $account_id = $_GET['account_id'];
+    $user_name = $_POST['user_name'];
+    $email = $_POST['email'];
+    $content = $_POST['content'];
 
-          if(isset($_FILES['image']['name']))
+    if(isset($_FILES['image']['name']))
+    {
+      $image_name = $_FILES['image']['name'];
+      if($image_name != "")
+      {
+        $source_path = $_FILES['image']['tmp_name'];
+        $destination_path = "../images/profile/".$image_name;
+        $upload = move_uploaded_file($source_path, $destination_path);
+        if($upload!=true)
+        {
+          $_SESSION['upload'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Image. </div>";
+          $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
+          header('Location:'.$url,true , 401);
+          die();
+        }
+        if($current_image!="")
+        {
+          $remove_path = "../images/profile/".$current_image;
+          $remove = unlink($remove_path);
+          if($remove==false)
           {
-            $image_name = $_FILES['image']['name'];
-            if($image_name != "")
-            {
-              $source_path = $_FILES['image']['tmp_name'];
-              $destination_path = "../images/profile/".$image_name;
-              $upload = move_uploaded_file($source_path, $destination_path);
-              if($upload!=true)
-              {
-                $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div>";
-                $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
-                header('Location:'.$url,true , 401);
-                die();
-              }
-              if($current_image!="")
-              {
-                $remove_path = "../images/profile/".$current_image;
-                $remove = unlink($remove_path);
-                if($remove==false)
-                {
-                  $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current Image.</div>";
-                  $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
-                  header('Location:' .$url,true , 401);
-                  die();
-                }
-              }
-            } else
-            {
-              $image_name = $current_image;
-            }
-          } else
-          {
-            $image_name = $current_image;
+            $_SESSION['failed-remove'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to remove current Image.</div>";
+            $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
+            header('Location:' .$url,true , 401);
+            die();
           }
-          $sql = "UPDATE tbl_account SET 
-                         user_name='$user_name'
-                         ,image_name='$image_name'
-                         ,email='$email'
-                         ,content='$content' 
-                  WHERE account_id=$account_id ";
-          $rec = mysqli_query($connect, $sql);
+        }
+      } else
+      {
+        $image_name = $current_image;
+      }
+    } else
+    {
+      $image_name = $current_image;
+    }
+    $sql = "UPDATE tbl_account SET 
+                   user_name='$user_name'
+                   ,image_name='$image_name'
+                   ,email='$email'
+                   ,content='$content' 
+            WHERE account_id=$account_id ";
+    $rec = mysqli_query($connect, $sql);
 
-            if($rec==true)
-            {
-              $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
-              $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
-              header('Location:' .$url,true , 302);
-            }
-            else
-            {
-              $_SESSION['update'] = "<div class='error'>Failed to Update Account.</div>";
-              $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
-              header('Location:' .$url,true , 401);
-              die();
-            }
-}
+    if($rec==true)
+    {
+      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+      $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
+      header('Location:' .$url,true , 302);
+    } else
+    {
+      $_SESSION['update'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Update Account.</div>";
+      $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
+      header('Location:' .$url,true , 401);
+      die();
+    }
+  }
+  include('partials/Footer.tpl');
 ?>
-<?php include('partials/Footer.tpl'); ?>

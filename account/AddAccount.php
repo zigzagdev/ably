@@ -148,7 +148,7 @@ include('partials/Header.blade.php');
       header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
     } else
     {
-      $_SESSION['add'] = "<div style='text-align: center; color: #ff6666; font-size: 20px' '>Failed to add your account.</div>";
+      $_SESSION['add'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
       header("location: http://localhost:8001/account/AddAccount.php");
     }
   }
