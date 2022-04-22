@@ -30,17 +30,20 @@
     unset($_SESSION['change-lesson']);
   }
 
-  $sql2 = "SELECT * FROM tbl_lesson inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id'";
-  $rec2 = mysqli_query($connect, $sql2);
+  $sql = "SELECT * FROM tbl_lesson inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id'";
+  $rec = mysqli_query($connect, $sql);
 
-  if($rec2 == TRUE) {
-    $count = mysqli_num_rows($rec2);
-    if ($count >= 0) {
-      while ($rows = mysqli_fetch_array($rec2)) {
-        $course = $rows['course'];
-        $content = $rows['content'];
-        $day = $rows['day'];
-        $lesson_id = $rows['lesson_id'];
+  if($rec == TRUE)
+  {
+    $count = mysqli_num_rows($rec);
+    if ($count >= 0)
+    {
+      while ($rows = mysqli_fetch_array($rec))
+      {
+        $course     = $rows['course'];
+        $content    = $rows['content'];
+        $deadline   = $rows['deadline'];
+        $lesson_id  = $rows['lesson_id'];
         $created_at = $rows['created_at'];
       }
     }
@@ -59,7 +62,7 @@
             <h1>Manage Your Lesson</h1>
             <br/>
             <br/><br/>
-          <?php var_dump($sql2);  ?>
+          <?php var_dump($sql);  ?>
         </div>
     </div>
 </div>

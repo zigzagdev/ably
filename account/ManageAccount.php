@@ -1,10 +1,11 @@
 <?php include('partials/LoginAccount.blade.php');
 
-  if(isset($_SESSION['add']))
-  {
-    echo $_SESSION['add'];
-    unset($_SESSION['add']);
-  }
+if(isset($_SESSION['login']))
+{
+  echo $_SESSION['login'];
+  unset($_SESSION['login']);
+}
+
   if(isset($_SESSION['delete']))
   {
     echo $_SESSION['delete'];

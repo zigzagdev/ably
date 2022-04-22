@@ -1,59 +1,9 @@
-<?php
-include('../account/partials/LoginAccount.blade.php');
+<?php include('../account/partials/LoginAccount.blade.php');
 
-if(isset($_POST['submit']))
+if(isset($_SESSION['fail_lesson']))
 {
-  $course     = $_POST['course'];
-  $content    = $_POST['content'];
-  $deadline   = $_POST['deadline'];
-  $account_id = $_GET['account_id'];
-  $created_at = time();
-
-  if (empty($course) || empty($content) || empty($deadline))
-  {
-    $_SESSION['add'] = "<div class='error'>Please fill your Registration.</div>";
-    $url = "http://localhost:8001/lesson/AddLesson.blade.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
-    die();
-  }
-
-  if (count($content)<= 10 || count($content)>= 200)
-  {
-    $_SESSION['add'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
-    $url = "http://localhost:8001/lesson/AddLesson.blade.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
-    die();
-  }
-
-  if ($deadline <= $created_at) {
-    $_SESSION['add'] = "<div class='error'>Can't set Deadline before today .</div>";
-    $url = "http://localhost:8001/lesson/AddLesson.blade.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
-    die();
-  }
-
-  $sql2 = " INSERT INTO tbl_lesson 
-            SET 
-              course      = '$course'
-              ,content    = '$content'
-              ,deadline   = '$deadline'
-              ,account_id = '$account_id'
-              ,created_at = '$created_at' 
-          ";
-  $rec2=mysqli_query($connect,$sql2);
-
-  if($rec2 == true)
-  {
-    $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
-    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-    header('Location:' .$url,true , 302);
-  } else
-  {
-    $_SESSION['add'] = "<div class='error'>Failed to Register your Lesson.</div>";
-    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
-    die();
-  }
+  echo $_SESSION['fail_lesson'];
+  unset($_SESSION['fail_lesson']);
 }
 ?>
 
@@ -64,7 +14,7 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <form action="" method="post" enctype="multipart/form-data" style="margin: 0 170px">
+    <form action="" method="post" style="margin: 0 170px">
     <div>
       <fieldset class="mainaccount" style="margin: 0 100px">
         <legend style="text-align: center;"><b style="color: darkblue">LessonCreate Form</b></legend>
@@ -109,14 +59,74 @@ if(isset($_POST['submit']))
           <input type="date" name="deadline" class="input-responsive" required>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-        </fieldset>
-        <div style="text-align: center; margin-bottom: 30px">
-          <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
+        <div style="text-align: center; margin: 30px 0 20px 0">
           <input type="submit" name="submit" value="Submit" class="btn btn-third">
+          <button type="button" onclick=history.back() class="btn-secondary">Return</button>
         </div>
+        </fieldset>
       </div>
     </form>
   </body>
 </html>
 
-<?php include('../account/partials/Footer.tpl'); ?>
+<?php
+include('../account/partials/Footer.tpl');
+
+$account_id = $_GET['account_id'];
+
+if(isset($_POST['submit']))
+{
+  $course     = $_POST['course'];
+  $content    = $_POST['content'];
+  $deadline   = $_POST['deadline'];
+  $created_at = date('Y-m-d H:i:s');
+
+  if (empty($course) || empty($content) || empty($deadline))
+  {
+    $_SESSION['add'] = "<div class='error'>Please fill your Registration.</div>";
+    $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
+    die();
+  }
+
+  if (mb_strlen($content, 'UTF-8')<= 10 || mb_strlen($content, 'UTF-8')>= 200)
+  {
+    $_SESSION['add'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
+    $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
+    die();
+  }
+
+  if ($deadline <= $created_at) {
+    $_SESSION['add'] = "<div class='error'>Can't set Deadline before today .</div>";
+    $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+    header('Location:' .$url,true , 401);
+    die();
+  }
+
+  $sql2 = " INSERT INTO tbl_lesson
+            SET
+              course      = '$course'
+              ,content    = '$content'
+              ,deadline   = '$deadline'
+              ,created_at = '$created_at'
+              ,account_id  = '$account_id'
+          ";
+  $rec2=mysqli_query($connect,$sql2);
+
+  if($rec2 == true)
+  {
+    $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
+    $lesson_id = mysqli_insert_id($connect);
+    $url = "http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id";
+    header('Location:' . $url, true ,302);
+  } else
+  {
+    $_SESSION['fail_lesson'] = "<div class='error'>Failed to Register your Lesson.</div>";
+    $url = "http://localhost:8001/lesson/AddLesson.php?account_id=$account_id";
+    header('Location:' . $url, true , 401);
+    die();
+  }
+}
+
+?>

@@ -2,11 +2,6 @@
 include('../config/Constants.blade.php');
 include ('./partials/ClientHeader.tpl');
 
-  if(isset($_SESSION['login']))
-  {
-    echo $_SESSION['login'];
-    unset($_SESSION['login']);
-  }
   if(isset($_SESSION['no-login-message']))
   {
     echo $_SESSION['no-login-message'];
