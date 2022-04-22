@@ -12,10 +12,10 @@
     unset($_SESSION['delete']);
   }
 
-  if(isset($_SESSION['update']))
+  if(isset($_SESSION['lesson-upd']))
   {
-    echo $_SESSION['update'];
-    unset($_SESSION['update']);
+    echo $_SESSION['lesson-upd'];
+    unset($_SESSION['lesson-upd']);
   }
 
   if(isset($_SESSION['lesson-not-found']))

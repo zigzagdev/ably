@@ -1,6 +1,16 @@
-<?php  include('../account/partials/Header.blade.php'); ?>
-
 <?php
+include('../account/partials/Header.blade.php');
+  if(isset($_SESSION['fail-lesson']))
+  {
+    echo $_SESSION['fail-lesson'];
+    unset($_SESSION['fail-lesson']);
+  }
+  if(isset($_SESSION['lesson-upd-fail']))
+  {
+    echo $_SESSION['lesson-upd-fail'];
+    unset($_SESSION['lesson-upd-fail']);
+  }
+
 if(isset($_GET['lesson_id'])) {
 
     $lesson_id = $_GET['lesson_id'];
@@ -70,11 +80,12 @@ if(isset($_GET['lesson_id'])) {
   {
     $course     = $_POST['course'];
     $content    = $_POST['content'];
-    $day        = $_POST['day'];
-    $created_at = time();
-    if (empty($course) || empty($content) || empty($day) )
+    $deadline       = $_POST['deadline'];
+    $created_at = date('Y-m-d H:i:s');
+
+    if (empty($course) || empty($content) || empty($deadline) )
     {
-      $_SESSION['submit'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Lesson. </div>";
+      $_SESSION['fail-lesson'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Lesson. </div>";
       $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id";
       header('Location:'.$url,true , 401);
       die();
@@ -94,12 +105,12 @@ if(isset($_GET['lesson_id'])) {
     if($rec2 == true)
     {
         $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-        $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
+        $_SESSION['lesson-upd'] = "<div class='success'>Account Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
     else
     {
-        $_SESSION['update'] = "<div class='error'>Failed to Update Account.</div>";
+        $_SESSION['lesson-upd-fail'] = "<div class='error'>Failed to Update Account.</div>";
         $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id&lesson_id=$lesson_id";
         header('Location:' .$url,true , 401);
         die();
