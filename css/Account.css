@@ -338,9 +338,9 @@ footer {
 }
 
 .card {
-    width: 221px;
-    height: 256px;
-    background-color: red;
+    width: 296px;
+    height: 221px;
+    background-color: lightpink;
     margin-left: 110px;
     border-radius: 5%;
 }
@@ -350,5 +350,10 @@ footer {
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 31px;
+}
+
+.course {
+  margin: 20px 15px 0 35px;
+
 }
 

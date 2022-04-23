@@ -33,7 +33,7 @@ include('../account/partials/LoginAccount.blade.php');
         $content    = $rows['content'];
         $deadline   = $rows['deadline'];
         $lesson_id  = $rows['lesson_id'];
-        $created_at = $rows['created_at'];
+        $user_name  = $rows['user_name'];
       }
     }
   }
@@ -50,8 +50,11 @@ include('../account/partials/LoginAccount.blade.php');
       <div class="cardline">
 <?php foreach($rec as $key => $val ){
 ?>      <div class="card">
-<?php  echo $deadline ;
-?>
+          <div class="course">
+            <strong style="font-size: 16px; ">Course Level</strong><br/>
+            <i style="font-size: 17px; color: darkblue"><?php  echo $course ;
+?></i>
+           </div>
          </div>
 <?php } ?>
       </div>
