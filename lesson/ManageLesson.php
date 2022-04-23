@@ -1,16 +1,5 @@
 <?php
-  include('../account/partials/LoginAccount.blade.php');
-
-  if(isset($_SESSION['add']))
-  {
-    echo $_SESSION['add'];
-    unset($_SESSION['add']);
-  }
-  if(isset($_SESSION['delete']))
-  {
-    echo $_SESSION['delete'];
-    unset($_SESSION['delete']);
-  }
+include('../account/partials/LoginAccount.blade.php');
 
   if(isset($_SESSION['lesson-upd']))
   {
@@ -30,7 +19,7 @@
     unset($_SESSION['change-lesson']);
   }
 
-  $sql = "SELECT * FROM tbl_lesson inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id'";
+  $sql = "SELECT * FROM tbl_lesson inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)
@@ -51,21 +40,12 @@
 ?>
 
 <html>
-<head>
-  <title>ManageLesson</title>
-  <link rel="stylesheet" href="../css/Account.css">
-  <link rel="stylesheet" href="../css/Forms.css">
-</head>
-<div class="main">
-    <div class="wrapper">
-        <div class="inner">
-            <h1>Manage Your Lesson</h1>
-            <br/>
-            <br/><br/>
-          <?php var_dump($sql);  ?>
-        </div>
-    </div>
-</div>
+  <head>
+    <title>ManageLesson</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+
 </html>
 <!--Main Section -->
 
