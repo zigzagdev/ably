@@ -337,3 +337,18 @@ footer {
     text-align: center;
 }
 
+.card {
+    width: 221px;
+    height: 256px;
+    background-color: red;
+    margin-left: 110px;
+    border-radius: 5%;
+}
+
+.cardline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 31px;
+}
+

@@ -11,7 +11,7 @@ $rec2= mysqli_query($connect, $sql2);
 if($rec2 == TRUE) {
 
     $_SESSION['delete'] = "<div class='success'>Delete Lesson Successfully.</div>";
-    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+    $url = "http://localhost:8001/lesson/ManageLesson.blade.php?account_id=$account_id";
     header('Location:' .$url,true , 302);
 }
 else

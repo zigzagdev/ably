@@ -45,7 +45,18 @@ include('../account/partials/LoginAccount.blade.php');
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
-
+  <body>
+    <div style="margin: 0 90px">
+      <div class="cardline">
+<?php foreach($rec as $key => $val ){
+?>      <div class="card">
+<?php  echo $deadline ;
+?>
+         </div>
+<?php } ?>
+      </div>
+    </div>
+  </body>
 </html>
 <!--Main Section -->
 

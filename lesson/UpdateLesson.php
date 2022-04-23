@@ -41,7 +41,7 @@ include('../account/partials/Header.blade.php');
         <div class="inner">
             <h1>Update your Lesson</h1>
             <br/><br/>
-            <a class="btn-secondary" href="ManageLesson.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
+            <a class="btn-secondary" href="ManageLesson.blade.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
             <br/>
 
             <form action="" method="post" >
@@ -110,7 +110,7 @@ include('../account/partials/Header.blade.php');
 
     if($rec2 == true)
     {
-        $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+        $url = "http://localhost:8001/lesson/ManageLesson.blade.php?account_id=$account_id";
         $_SESSION['lesson-upd'] = "<div class='success'>Account Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
