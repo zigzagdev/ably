@@ -11,8 +11,8 @@ include('../account/partials/Header.blade.php');
     unset($_SESSION['lesson-upd-fail']);
   }
 
-if(isset($_GET['lesson_id'])) {
-
+  if(isset($_GET['lesson_id']))
+  {
     $lesson_id = $_GET['lesson_id'];
     $sql2 = "SELECT * FROM tbl_lesson  where lesson_id= $lesson_id";
     $rec2 = mysqli_query($connect, $sql2);
@@ -31,6 +31,11 @@ if(isset($_GET['lesson_id'])) {
     }
 }
 ?>
+<head>
+  <title>UpdateLesson</title>
+  <link rel="stylesheet" href="../css/Account.css">
+  <link rel="stylesheet" href="../css/Forms.css">
+</head>
 <div class="main2">
     <div class="wrapper">
         <div class="inner">
@@ -81,11 +86,12 @@ if(isset($_GET['lesson_id'])) {
     $course     = $_POST['course'];
     $content    = $_POST['content'];
     $deadline       = $_POST['deadline'];
-    $created_at = date('Y-m-d H:i:s');
+    $updated_at = date('Y-m-d H:i:s');
+
 
     if (empty($course) || empty($content) || empty($deadline) )
     {
-      $_SESSION['fail-lesson'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Lesson. </div>";
+      $_SESSION['fail-lesson'] = "<div class='fail'>Failed to Upload Lesson. </div>";
       $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id";
       header('Location:'.$url,true , 401);
       die();
@@ -95,7 +101,7 @@ if(isset($_GET['lesson_id'])) {
                      course      = '$course'
                      ,content    = '$content'
                      ,day        = '$day' 
-                     ,created_at = '$created_at'
+                     ,updated_att= '$updated_at'
                WHERE 
                      lesson_id=$lesson_id
             ";
@@ -110,7 +116,7 @@ if(isset($_GET['lesson_id'])) {
     }
     else
     {
-        $_SESSION['lesson-upd-fail'] = "<div class='error'>Failed to Update Account.</div>";
+        $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Account.</i></div>";
         $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id&lesson_id=$lesson_id";
         header('Location:' .$url,true , 401);
         die();
