@@ -41,7 +41,7 @@ include('../account/partials/LoginAccount.blade.php');
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 70px">
+    <div style="margin: 0 180px">
       <div class="cardline">
 <?php foreach($rec as $key => $val ){
 ?>      <div class="card">
@@ -57,7 +57,7 @@ include('../account/partials/LoginAccount.blade.php');
               </i>
             </div>
             <strong style="font-size: 16px;">Course Deadline</strong><br>
-            <i style="font-size: 17px; color: darkblue; padding-left: 80px">〜 <?php  echo $created_at ;?></i>
+            <i style="font-size: 17px; color: darkblue; padding-left: 5px"><?php  echo $deadline ;?></i>
           </div>
         </div>
 <?php } ?>
@@ -65,6 +65,5 @@ include('../account/partials/LoginAccount.blade.php');
     </div>
   </body>
 </html>
-<!--Main Section -->
 
 <?php include('../account/partials/Footer.tpl') ?>

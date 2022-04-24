@@ -31,55 +31,15 @@ include('../account/partials/Header.blade.php');
     }
 }
 ?>
-<head>
-  <title>UpdateLesson</title>
-  <link rel="stylesheet" href="../css/Account.css">
-  <link rel="stylesheet" href="../css/Forms.css">
-</head>
-<div class="main2">
-    <div class="wrapper">
-        <div class="inner">
-            <h1>Update your Lesson</h1>
-            <br/><br/>
-            <a class="btn-secondary" href="ManageLesson.blade.php?account_id=<?= $account_id=$_GET['account_id']?>">To Lesson Page</a>
-            <br/>
-
-            <form action="" method="post" >
-                <table class="tbl-30">
-                    <tr>
-                        <td class="text-white" style="text-align: center">Course:</td>
-                        <td>
-                            <input name="course" name="name" value="<?php echo $course; ?>">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="text-align: center">Content:</td>
-                        <td>
-                            <textarea name="content" cols="30" rows="3"><?php echo $content; ?></textarea>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="text-align: center">Lesson Day:</td>
-                        <td>
-                            <input type="datetime-local" name="day"　value="<?php echo $day; ?>">
-                        </td>
-                    </tr>
-
-                    <br/><br/><br/>
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" name="submit" value="Update your Lesson" class="btn-secondary">
-                        </td>
-                    </tr>
-
-                </table>
-            </form>
-        </div>
-    </div>
-</div>
-
+<html>
+  <head>
+    <title>UpdateLesson</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+  </body>
+</html>
 <?php
   if(isset($_POST['submit']))
   {
