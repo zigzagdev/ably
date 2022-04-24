@@ -14,22 +14,22 @@ include('../account/partials/Header.blade.php');
   if(isset($_GET['lesson_id']))
   {
     $lesson_id = $_GET['lesson_id'];
-    $sql2 = "SELECT * FROM tbl_lesson  where lesson_id= $lesson_id";
-    $rec2 = mysqli_query($connect, $sql2);
-
-    if ($rec2 == true) {
-        $count = mysqli_num_rows($rec2);
-        if ($count == 1) {
-            $row = mysqli_fetch_assoc($rec2);
-            $course = $row['course'];
-            $content = $row['content'];
-            $day = $row['day'];
-
-        } else {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
-        }
+    $sql = "SELECT * FROM tbl_lesson  where lesson_id= $lesson_id";
+    $rec = mysqli_query($connect, $sql);
+    if ($rec == true)
+    {
+      $count = mysqli_num_rows($rec);
+      if ($count == 1)
+      {
+        $row = mysqli_fetch_assoc($rec);
+        $course = $row['course'];
+        $content = $row['content'];
+        $deadline = $row['deadline'];
+      } else {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+      }
     }
-}
+  }
 ?>
 <html>
   <head>
@@ -51,7 +51,7 @@ include('../account/partials/Header.blade.php');
     if (empty($course) || empty($content) || empty($deadline) )
     {
       $_SESSION['fail-lesson'] = "<div class='fail'>Failed to Upload Lesson. </div>";
-      $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id";
+      $url = "http://localhost:8001/lesson/UpdateLesson.php?lesson_id=$lesson_id";
       header('Location:'.$url,true , 401);
       die();
     }
@@ -59,7 +59,7 @@ include('../account/partials/Header.blade.php');
     $sql2 = " UPDATE tbl_lesson SET  
                      course      = '$course'
                      ,content    = '$content'
-                     ,day        = '$day' 
+                     ,deadline        = '$deadline' 
                      ,updated_att= '$updated_at'
                WHERE 
                      lesson_id=$lesson_id

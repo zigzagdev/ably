@@ -52,7 +52,7 @@ include('../account/partials/LoginAccount.blade.php');
             <strong style="font-size: 16px;">Course Description</strong>
             <div style="margin: 3px 5px 7px 5px">
               <i style="font-size: 17px; color: darkblue; overflow-wrap: break-word;">
-                <?php  echo mb_strimwidth( strip_tags( $key['content'] ), 0, 60, '…', 'UTF-8' ); ;?>
+                <?php  echo mb_strimwidth( strip_tags( $key['content'] ), 0, 60, 'etc…', 'UTF-8' ); ;?>
               </i>
             </div>
             <strong style="font-size: 16px;">Course Deadline</strong><br>
