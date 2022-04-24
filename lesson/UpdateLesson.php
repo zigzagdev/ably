@@ -38,6 +38,63 @@ include('../account/partials/Header.blade.php');
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
+<?php if( !empty($error_message) ): ?>
+        <ul class="error_message">
+<?php foreach( $error_message as $value ): ?>
+          <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
+<?php endforeach; ?>
+        </ul>
+<?php endif; ?>
+        <form action="" method="post" style="margin: 50px 170px">
+          <fieldset class="mainaccount" style="margin: 0 100px">
+       <legend style="text-align: center;"><b style="color: darkblue">LessonUpdate Form</b></legend>
+      <li style="list-style: none;  margin:17px 0 17px 30px">
+        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+          LessonName(Title)
+        </b>
+        <select name="course">
+          <option value="">Select your first native language</option>
+          <option value="English(British accent)">English(British accent)</option>
+          <option value="English(American accent)">English(American accent)</option>
+          <option value="English(Australia accent)">English(Australia accent)</option>
+          <option value="English(NZ accent)">English(NZ accent)</option>
+          <option value="English(French accent)">English(French accent)</option>
+          <option value="English(Canada accent)">English(Canada accent)</option>
+          <option value="French(advanced)">French(advanced)</option>
+          <option value="French(intermediate)">French(intermediate)</option>
+          <option value="French(beginner,)">French(beginner)</option>
+          <option value="Spanish(advanced)">Spanish(advanced)</option>
+          <option value="Spanish(intermediate)">Spanish(intermediate)</option>
+          <option value="Spanish(beginner)">Spanish(beginner)</option>
+          <option value="German(advanced)">German(advanced)</option>
+          <option value="German(intermediate)">German(intermediate)</option>
+          <option value="German(beginner)">German(beginner)</option>
+          <option value="Japanese(advanced)">Japanese(advanced)</option>
+          <option value="Japanese(intermediate)">japanese(intermediate)</option>
+          <option value="Japanese(beginner)">Japanese(beginner)</option>
+        </select>
+      </li>
+      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+      <li style="list-style: none;  margin:17px 0 17px 30px">
+        <b style="font-size: 20px;width:100px;margin-right:157px; vertical-align: 110%">
+          LessonDetail
+        </b>
+        <textarea name="content" class="input-responsive" cols="60" rows="4"><?php echo $content ?></textarea>
+      </li>
+      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+      <li style="list-style: none;  margin:17px 0 17px 30px">
+        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+          DeadLine
+        </b>
+        <input type="date" name="deadline" class="input-responsive" value="<?php echo $deadline ?>" required>
+      </li>
+      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+      <div style="text-align: center; margin: 30px 0 20px 0">
+        <input type="submit" name="submit" value="Submit" class="btn btn-third">
+        <button type="button" onclick=history.back() class="btn-secondary">Return</button>
+      </div>
+    </fieldset>
+</form>
   </body>
 </html>
 <?php
