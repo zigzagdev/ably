@@ -79,7 +79,7 @@ if(isset($_POST['submit']))
   $course     = $_POST['course'];
   $content    = $_POST['content'];
   $deadline   = $_POST['deadline'];
-  $created_at = date('Y-m-d H:i:s');
+  $created_at = date('Y-m-d H:i');
 
   if (empty($course) || empty($content) || empty($deadline))
   {
