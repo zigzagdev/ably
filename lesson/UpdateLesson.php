@@ -45,9 +45,8 @@ include('../account/partials/Header.blade.php');
   {
     $course     = $_POST['course'];
     $content    = $_POST['content'];
-    $deadline       = $_POST['deadline'];
-    $updated_at = date('Y-m-d H:i:s');
-
+    $deadline   = $_POST['deadline'];
+    $updated_at = date('Y-m-d H:i');
 
     if (empty($course) || empty($content) || empty($deadline) )
     {

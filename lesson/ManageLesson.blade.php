@@ -13,7 +13,7 @@ include('../account/partials/LoginAccount.blade.php');
     unset($_SESSION['change-lesson']);
   }
 
-  $sql = "SELECT * FROM tbl_lesson inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id";
+  $sql = "SELECT * FROM tbl_lesson ";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)
@@ -27,7 +27,6 @@ include('../account/partials/LoginAccount.blade.php');
         $content    = $rows['content'];
         $deadline   = $rows['deadline'];
         $lesson_id  = $rows['lesson_id'];
-        $user_name  = $rows['user_name'];
         $created_at = $rows['created_at'];
       }
     }
@@ -43,23 +42,23 @@ include('../account/partials/LoginAccount.blade.php');
   <body>
     <div style="margin: 0 180px">
       <div class="cardline">
-<?php foreach($rec as $key => $val ){
-?>      <div class="card">
+<?php foreach($rec as $key ){
+?>      <a href="UpdateLesson.php?lesson_id=<?=$key['lesson_id']?>" class="card" style="margin-bottom: 7px; text-decoration: none; color: black">
           <div class="course" style="margin-bottom: 7px">
             <strong style="font-size: 16px;">Course Level</strong>
-            <i style="font-size: 17px; color: darkblue; padding-left: 5px"><?php  echo $course ;?></i>
+            <i style="font-size: 17px; color: darkblue; padding-left: 5px"><?php  echo $key['course'] ;?></i>
           </div>
           <div class="content">
             <strong style="font-size: 16px;">Course Description</strong>
             <div style="margin: 3px 5px 7px 5px">
               <i style="font-size: 17px; color: darkblue; overflow-wrap: break-word;">
-                <?php  echo mb_strimwidth( strip_tags( $content ), 0, 60, '…', 'UTF-8' ); ;?>
+                <?php  echo mb_strimwidth( strip_tags( $key['content'] ), 0, 60, '…', 'UTF-8' ); ;?>
               </i>
             </div>
             <strong style="font-size: 16px;">Course Deadline</strong><br>
-            <i style="font-size: 17px; color: darkblue; padding-left: 5px"><?php  echo $deadline ;?></i>
+            <i style="font-size: 17px; color: darkblue; padding-left: 5px"><?php echo $key['deadline'] ;?></i>
           </div>
-        </div>
+        </a>
 <?php } ?>
       </div>
     </div>
