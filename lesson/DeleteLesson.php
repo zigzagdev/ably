@@ -16,7 +16,7 @@ if($rec2 == TRUE) {
 }
 else
 {
-    $_SESSION['lesson-dlt'] = "<div class='error'>Failed to Delete lesson.</div>";
+    $_SESSION['lesson-dlt-error'] = "<div class='error'>Failed to Delete lesson.</div>";
     $url = "http://localhost:8001/lesson/ManageAccount.php?id=$account_id";
     header('Location:' .$url,true , 401);
 }

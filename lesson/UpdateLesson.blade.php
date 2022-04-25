@@ -91,11 +91,18 @@ include('../account/partials/LoginAccount.blade.php');
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <div style="text-align: center; margin: 30px 0 20px 0">
-          <input type="submit" name="submit" value="Submit" class="btn btn-third">
+          <input type="submit" name="submit" value="Submit" class="btn-primary">
           <button type="button" onclick=history.back() class="btn-secondary">Return</button>
         </div>
       </fieldset>
     </form>
+    <div style="margin:60px 0; text-align: center">
+      <div style="margin: 0 10px 20px 10px">
+        <a class="lesson-btn-delete" style="margin: 0 7px 0 7px;" href="DeleteLesson.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>">
+          Delete your Lesson
+        </a>
+      </div>
+    </div>
   </body>
 </html>
 <?php

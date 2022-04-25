@@ -360,3 +360,15 @@ footer {
   margin:0 20px;
 }
 
+.lesson-btn-delete{
+    background-color: blue;
+    padding: 1%;
+    color: whitesmoke;
+    text-decoration: none;
+    font-weight: bold;
+}
+.lesson-btn-delete:hover{
+    color: whitesmoke;
+    text-decoration: underline ;
+    background-color: red;
+}
