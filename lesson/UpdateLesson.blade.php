@@ -1,5 +1,6 @@
 <?php
-include('../account/partials/Header.blade.php');
+include('../account/partials/LoginAccount.blade.php');
+
   if(isset($_SESSION['fail-lesson']))
   {
     echo $_SESSION['fail-lesson'];
@@ -108,7 +109,7 @@ include('../account/partials/Header.blade.php');
     if (empty($course) || empty($content) || empty($deadline) )
     {
       $_SESSION['fail-lesson'] = "<div class='fail'>Failed to Upload Lesson. </div>";
-      $url = "http://localhost:8001/lesson/UpdateLesson.php?lesson_id=$lesson_id";
+      $url = "http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id";
       header('Location:'.$url,true , 401);
       die();
     }
@@ -116,24 +117,23 @@ include('../account/partials/Header.blade.php');
     $sql2 = " UPDATE tbl_lesson SET  
                      course      = '$course'
                      ,content    = '$content'
-                     ,deadline        = '$deadline' 
-                     ,updated_att= '$updated_at'
+                     ,deadline   = '$deadline'
+                     ,updated_at = '$updated_at'
                WHERE 
                      lesson_id=$lesson_id
             ";
     $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
 
-
     if($rec2 == true)
     {
-        $url = "http://localhost:8001/lesson/ManageLesson.blade.php?account_id=$account_id";
-        $_SESSION['lesson-upd'] = "<div class='success'>Account Updated Successfully.</div>";
+        $url = "http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id";
+        $_SESSION['lesson-upd'] = "<div class='success' style='font-size: 30px'> on Updated Successfully.</div>";
         header('Location:' .$url,true , 302);
     }
     else
     {
         $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Account.</i></div>";
-        $url = "http://localhost:8001/lesson/UpdateLesson.php?account_id=$account_id&lesson_id=$lesson_id";
+        $url = "http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id";
         header('Location:' .$url,true , 401);
         die();
     }

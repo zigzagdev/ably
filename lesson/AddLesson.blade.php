@@ -118,7 +118,7 @@ if(isset($_POST['submit']))
   {
     $_SESSION['add'] = "<div class='success'>Lesson add Successfully.</div>";
     $lesson_id = mysqli_insert_id($connect);
-    $url = "http://localhost:8001/lesson/ManageLesson.blade.php?lesson_id=$lesson_id";
+    $url = "http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id";
     header('Location:' . $url, true ,302);
   } else
   {
