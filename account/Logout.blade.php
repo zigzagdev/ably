@@ -7,6 +7,7 @@ if (isset($_COOKIE["PHPSESSID"])) {
 }
 
 session_destroy();
+print 'Logout was successed.'
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>
