@@ -16,18 +16,13 @@
     echo $_SESSION['user-not-found'];
     unset($_SESSION['user-not-found']);
   }
-  if(isset($_SESSION['lesson-dlt']))
-  {
-    echo $_SESSION['lesson-dlt'];
-    unset($_SESSION['lesson-dlt']);
-  }
 
-
-if(isset($_SESSION['change-pwd']))
+  if(isset($_SESSION['change-pwd']))
   {
     echo $_SESSION['change-pwd'];
     unset($_SESSION['change-pwd']);
   }
+
   $account_id = $_GET['account_id'];
   $sql = "SELECT * FROM tbl_account where account_id=$account_id";
   $rec = mysqli_query($connect, $sql);

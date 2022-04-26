@@ -12,6 +12,12 @@ include('./header/LessonHeader.blade.php');
     unset($_SESSION['lesson-upd-fail']);
   }
 
+  if(isset($_SESSION['lesson-dlt-error']))
+  {
+    echo $_SESSION['lesson-dlt-error'];
+    unset($_SESSION['lesson-dlt-error']);
+  }
+
   if(isset($_GET['lesson_id']))
   {
     $lesson_id = $_GET['lesson_id'];

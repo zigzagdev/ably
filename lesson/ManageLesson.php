@@ -12,6 +12,11 @@ include('../account/partials/LoginAccount.blade.php');
     echo $_SESSION['change-lesson'];
     unset($_SESSION['change-lesson']);
   }
+  if(isset($_SESSION['lesson-dlt']))
+  {
+    echo $_SESSION['lesson-dlt'];
+    unset($_SESSION['lesson-dlt']);
+  }
 
   $sql = "SELECT * FROM tbl_lesson ";
   $rec = mysqli_query($connect, $sql);
