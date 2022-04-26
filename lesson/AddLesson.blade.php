@@ -50,7 +50,7 @@
   if($rec2 == true)
   {
     $account_id = $_GET['account_id'];
-    $_SESSION['lesson_add'] = "<div class='success'>Lesson add Successfully.</div>";
+    $_SESSION['lesson_add'] = "<div class='success'>Lesson was added correctly!</div>";
     header("location: http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id");
     exit();
   } else

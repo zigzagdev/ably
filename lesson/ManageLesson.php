@@ -8,8 +8,8 @@ include('./header/LessonHeader.blade.php');
   }
   if(isset($_SESSION['lesson_add']))
   {
-    echo $_SESSION['lesson-add'];
-    unset($_SESSION['lesson-add']);
+    echo $_SESSION['lesson_add'];
+    unset($_SESSION['lesson_add']);
   }
 
   if(isset($_SESSION['change-lesson']))
@@ -17,14 +17,14 @@ include('./header/LessonHeader.blade.php');
     echo $_SESSION['change-lesson'];
     unset($_SESSION['change-lesson']);
   }
-  if(isset($_SESSION['lesson-dlt']))
+  if(isset($_SESSION['lesson_dlt']))
   {
-    echo $_SESSION['lesson-dlt'];
-    unset($_SESSION['lesson-dlt']);
+    echo $_SESSION['lesson_dlt'];
+    unset($_SESSION['lesson_dlt']);
   }
 
   $account_id = $_GET['account_id'];
-  $sql = "SELECT * FROM `tbl_lesson`  where account_id = $account_id";
+  $sql = "SELECT * FROM `tbl_lesson` inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id  WHERE tbl_lesson.account_id=$account_id";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)
