@@ -1,5 +1,5 @@
 <?php
-include('../account/partials/LoginAccount.blade.php');
+include('./header/LessonHeader.blade.php');
 
   if(isset($_SESSION['fail-lesson']))
   {
@@ -48,7 +48,7 @@ include('../account/partials/LoginAccount.blade.php');
 <?php endif; ?>
     <form action="" method="post" style="margin: 50px 170px">
       <fieldset class="mainaccount" style="margin: 0 100px">
-        <legend style="text-align: center;"><b style="color: darkblue">LessonUpdate Form</b></legend>
+        <legend style="text-align: center;"><b style="color: darkblue; font-size: 25px">LessonUpdate Form</b></legend>
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             LessonName(Title)
