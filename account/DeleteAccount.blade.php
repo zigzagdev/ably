@@ -79,7 +79,7 @@ include ('./partials/LoginAccount.blade.php');
   $account_id= $_GET['account_id'];
 
   $sql2= "DELETE FROM tbl_account WHERE account_id=$account_id";
-  $rec2= mysqli_query($connect, $sql);
+  $rec2= mysqli_query($connect, $sql2);
 
 if($rec2 == TRUE) {
     $_SESSION['add'] = "<div class='success'>Delete Account Successfully.</div>";

@@ -1,8 +1,8 @@
 <?php
 include ('./header/LessonHeader.blade.php');
 
-  $account_id = $_GET['account_id'];
-  $sql= "SELECT * FROM tbl_lesson WHERE account_id = $account_id";
+  $lesson_id = $_GET['lesson_id'];
+  $sql= "SELECT * FROM tbl_lesson WHERE lesson_id = $lesson_id";
   $rec = mysqli_query($connect, $sql);
   if ($rec == TRUE)
   {
@@ -12,9 +12,10 @@ include ('./header/LessonHeader.blade.php');
     {
       while ($rows = mysqli_fetch_array($rec))
       {
-        $course   = $rows['course'];
-        $content  = $rows['content'];
-        $deadline = $rows['deadline'];
+        $course     = $rows['course'];
+        $content    = $rows['content'];
+        $deadline   = $rows['deadline'];
+        $account_id = $rows['account_id'];
       }
     }
   }
@@ -34,27 +35,24 @@ include ('./header/LessonHeader.blade.php');
           </li>
           <li style="list-style: none;  margin:47px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Name
+              CourseName
             </b>
             <b style="font-size: 20px; margin-right: 170px"><?php echo $course ?></b>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Email
-            </b>
-            <b style="font-size: 20px; margin-right: 170px"></b>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-             Content
-            </b>
-            <b style="font-size: 20px; margin-right: 170px">
+              Content
             </b>
             <b style="font-size: 20px; margin-right: 170px"><?php echo $content ?></b>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
+              Deadline
+            </b>
+            <b style="font-size: 20px; margin-right: 170px"><?php echo $deadline ?></b>
+          </li>
         </form>
       </div>
       <div style="margin-bottom:40px ; text-align: center">
@@ -82,18 +80,6 @@ include('../account/partials/Footer.tpl');
   $sql2= "DELETE FROM tbl_lesson WHERE lesson_id=$lesson_id";
   $rec2= mysqli_query($connect, $sql2);
 
-  if($rec2 == TRUE)
-  {
-    $account_id = $_GET['account_id'];
-    $_SESSION['lesson_dlt'] = "<div class='success'>Delete Lesson Successfully.</div>";
-    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-    header('Location:' .$url,true , 302);
-  } else
-  {
-    $_SESSION['lesson-dlt-error'] = "<div class='error'>Failed to Delete lesson.</div>";
-    $url = "http://localhost:8001/lesson/UpdateLesson.php?lesson_id=$lesson_id";
-    header('Location:' .$url,true , 401);
-  }
 ?>
 
 
