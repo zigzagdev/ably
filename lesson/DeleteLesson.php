@@ -10,7 +10,7 @@ include('../account/partials/Header.blade.php');
   if($rec2 == TRUE)
   {
     $_SESSION['lesson-dlt'] = "<div class='success'>Delete Lesson Successfully.</div>";
-    $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
+    $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
     header('Location:' .$url,true , 302);
   } else
   {

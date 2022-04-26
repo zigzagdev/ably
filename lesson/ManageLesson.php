@@ -1,10 +1,15 @@
 <?php
-include('../account/partials/LoginAccount.blade.php');
+include('./header/LessonHeader.blade.php');
 
   if(isset($_SESSION['lesson-upd']))
   {
     echo $_SESSION['lesson-upd'];
     unset($_SESSION['lesson-upd']);
+  }
+  if(isset($_SESSION['lesson_add']))
+  {
+    echo $_SESSION['lesson-add'];
+    unset($_SESSION['lesson-add']);
   }
 
   if(isset($_SESSION['change-lesson']))
@@ -18,7 +23,8 @@ include('../account/partials/LoginAccount.blade.php');
     unset($_SESSION['lesson-dlt']);
   }
 
-  $sql = "SELECT * FROM tbl_lesson ";
+  $account_id = $_GET['account_id'];
+  $sql = "SELECT * FROM `tbl_lesson`  where account_id = $account_id";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)
@@ -45,7 +51,7 @@ include('../account/partials/LoginAccount.blade.php');
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 180px">
+    <div style="margin: 0 210px">
       <div class="cardline">
 <?php foreach($rec as $key ){
 ?>      <a href="UpdateLesson.blade.php?lesson_id=<?=$key['lesson_id']?>" class="card" style="margin-bottom: 7px; text-decoration: none; color: black">

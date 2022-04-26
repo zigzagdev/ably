@@ -27,8 +27,9 @@ include ('../config/Constants.blade.php');
       </div>
       <div class="account text-center">
         <div class="wrapper">
-          <a href = "../account/ManageAccount.php<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">Profile</a>
-          <a href = "../DeleteLesson.php" style="text-decoration: none; color: black" class="wrapper-inner">DeleteLesson</a>
+          <a href = "../account/ManageAccount.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">Profile</a>
+          <a href = "../lesson/DeleteLesson.php" style="text-decoration: none; color: black" class="wrapper-inner">DeleteLesson</a>
+          <a href = "../lesson/AddLesson.blade.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">AddLesson</a>
         </div>
       </div>
     </div>
