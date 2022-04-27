@@ -102,13 +102,6 @@ include('./header/LessonHeader.blade.php');
         </div>
       </fieldset>
     </form>
-    <div style="margin:60px 0; text-align: center">
-      <div style="margin: 0 10px 20px 10px">
-        <a class="lesson-btn-delete" style="margin: 0 7px 0 7px;" href="DeleteLesson.php?lesson_id=<?= $lesson_id=$_GET['lesson_id']?>">
-          Delete your Lesson
-        </a>
-      </div>
-    </div>
   </body>
 </html>
 <?php

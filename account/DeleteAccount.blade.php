@@ -12,10 +12,10 @@ include ('./partials/LoginAccount.blade.php');
     {
       while ($rows = mysqli_fetch_array($rec))
       {
-        $name = $rows['username'];
-        $content = $rows['content'];
-        $image = $rows['image_name'];
-        $email = $rows['email'];
+        $name       = $rows['username'];
+        $content    = $rows['content'];
+        $image      = $rows['image_name'];
+        $email      = $rows['email'];
       }
     }
   }

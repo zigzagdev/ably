@@ -6,6 +6,12 @@
     unset($_SESSION['fail_lesson']);
   }
 
+  if(isset($_SESSION['validation']))
+  {
+    echo $_SESSION['validation'];
+    unset($_SESSION['validation']);
+  }
+
   $account_id = $_GET['account_id'];
 
   if(isset($_POST['submit']))
@@ -17,22 +23,22 @@
 
     if (empty($course) || empty($content) || empty($deadline))
     {
-      $_SESSION['add'] = "<div class='error'>Please fill your Registration.</div>";
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+      $_SESSION['validation'] = "<div class='error'>Please fill your Registration.</div>";
+      $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
       header('Location:' .$url,true , 401);
       die();
     }
     if (mb_strlen($content, 'UTF-8')<= 10 || mb_strlen($content, 'UTF-8')>= 200)
     {
-      $_SESSION['add'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+      $_SESSION['validation'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
+      $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
       header('Location:' .$url,true , 401);
       die();
     }
     if ($deadline <= $created_at)
     {
-      $_SESSION['add'] = "<div class='error'>Can't set Deadline before today .</div>";
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+      $_SESSION['validation'] = "<div class='error'>Can't set Deadline before today .</div>";
+      $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
       header('Location:' .$url,true , 401);
       die();
     }
@@ -56,7 +62,7 @@
   } else
   {
     $_SESSION['fail_lesson'] = "<div class='error'>Failed to Register your Lesson.</div>";
-    $url = "localhost:8001/lesson/AddLesson.php?account_id=$account_id";
+    $url = "localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
     header('Location:' . $url, true , 401);
     die();
   }
