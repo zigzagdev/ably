@@ -51,8 +51,8 @@ include "./header/LessonHeader.blade.php";
         <li style="list-style: none;  margin:17px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             Content
-          </b>
-          <b style="font-size: 20px; margin-right: 170px"><?php echo $content ?></b>
+          </b><br><br>
+          <b style="font-size: 20px;overflow-wrap: break-word;"><?php echo $content ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -65,13 +65,10 @@ include "./header/LessonHeader.blade.php";
       <div style="margin:60px 0; text-align: center">
         <div style="margin: 0 10px 20px 10px">
           <a class="btn-primary" style="margin: 0 7px 0 7px">
-            Update your Account
-          </a>
-          <a class="btn-secondary" style="margin: 0 7px 0 7px">
-            Check your register Lessons.
+            Update your Lesson
           </a>
           <a class="btn-delete" style="margin: 0 7px 0 7px;">
-            Delete your Account
+            Delete your Lesson
           </a>
         </div>
       </div>
