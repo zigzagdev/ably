@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      TZ: "Asia/Tokyo"
     docker:
       # specify the version you desire here
       - image: circleci/php:8.0-node-browsers
@@ -32,3 +34,8 @@ jobs:
           name: composer install
           command: |
             sudo composer install -n --prefer-dist
+
+      - run:
+          name: run phpstan
+          working_directory: overcom,e
+          command: ./vendor/bin/phpstan --memory-limit=1G analyse
