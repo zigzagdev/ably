@@ -22,9 +22,17 @@ include('./header/LessonHeader.blade.php');
     echo $_SESSION['lesson_dlt'];
     unset($_SESSION['lesson_dlt']);
   }
+  if(isset($_SESSION['delete_lesson']))
+  {
+    echo $_SESSION['delete_lesson'];
+    unset($_SESSION['delete_lesson']);
+  }
 
   $account_id = $_GET['account_id'];
-  $sql = "SELECT * FROM `tbl_lesson` inner join tbl_account on tbl_lesson.account_id = tbl_account.account_id  WHERE tbl_lesson.account_id=$account_id";
+  $sql = "SELECT * FROM `tbl_lesson` 
+          INNER JOIN tbl_account 
+            ON tbl_lesson.account_id = tbl_account.account_id 
+          WHERE tbl_lesson.account_id=$account_id";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)
@@ -34,11 +42,11 @@ include('./header/LessonHeader.blade.php');
     {
       while ($rows = mysqli_fetch_array($rec))
       {
-        $course     = $rows['course'];
-        $content    = $rows['content'];
-        $deadline   = $rows['deadline'];
-        $lesson_id  = $rows['lesson_id'];
-        $created_at = $rows['created_at'];
+        $course      = $rows['course'];
+        $description = $rows['description'];
+        $deadline    = $rows['deadline'];
+        $lesson_id   = $rows['lesson_id'];
+        $created_at  = $rows['created_at'];
       }
     }
   }
@@ -63,7 +71,7 @@ include('./header/LessonHeader.blade.php');
             <strong style="font-size: 16px;">Course Description</strong>
             <div style="margin: 3px 5px 7px 5px">
               <i style="font-size: 17px; color: darkblue; overflow-wrap: break-word;">
-                <?php  echo mb_strimwidth( strip_tags( $key['content'] ), 0, 60, 'etc…', 'UTF-8' ); ;?>
+                <?php  echo mb_strimwidth( strip_tags( $key['description'] ), 0, 60, 'etc…', 'UTF-8' ); ;?>
               </i>
             </div>
             <strong style="font-size: 16px;">Course Deadline</strong><br>

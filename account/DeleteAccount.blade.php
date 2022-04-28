@@ -1,12 +1,18 @@
 <?php
 include ('./partials/LoginAccount.blade.php');
 
+  if(isset($_SESSION['admin_failed']))
+  {
+    echo $_SESSION['admin_failed'];
+    unset($_SESSION['admin_failed']);
+  }
+
   $account_id = $_GET['account_id'];
   $sql= "SELECT * FROM tbl_account WHERE account_id = $account_id";
   $rec = mysqli_query($connect, $sql);
   if ($rec == TRUE)
   {
-    $count = mysqli_num_rows($rec); // Function to get all the rows in database
+    $count = mysqli_num_rows($rec);
     $on = 1;
     if ($count > 0)
     {
@@ -29,35 +35,33 @@ include ('./partials/LoginAccount.blade.php');
   <body>
     <div style="margin: 0 130px">
       <div class="mainaccount">
-        <form method="post" action="/">
-          <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
-            <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" style="border-radius: 50%; margin-right: 160px; vertical-align: center">
-            <b style="font-size: 20px;width:70px;margin-right:10px; vertical-align: 70%">Delete your Account</b>
-          </li>
-          <li style="list-style: none;  margin:47px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Name
-            </b>
-            <b style="font-size: 20px; margin-right: 170px"><?php echo $name ?></b>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Email
-            </b>
-            <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Content
-            </b>
-            <b style="font-size: 20px; margin-right: 170px">
-              <?php echo mb_strimwidth( strip_tags( $content ), 0, 20, '…', 'UTF-8' ); ?>
-            </b>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-        </form>
+        <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
+          <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" style="border-radius: 50%; margin-right: 160px; vertical-align: center">
+          <b style="font-size: 20px;width:70px;margin-right:10px; vertical-align: 70%">Delete your Account</b>
+        </li>
+        <li style="list-style: none;  margin:47px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
+            Name
+          </b>
+          <b style="font-size: 20px; margin-right: 170px"><?php echo $name ?></b>
+        </li>
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+        <li style="list-style: none;  margin:17px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
+            Email
+          </b>
+          <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
+        </li>
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+        <li style="list-style: none;  margin:17px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
+            Content
+          </b>
+          <b style="font-size: 20px; margin-right: 170px"><br>
+            <?php echo mb_strimwidth( strip_tags( $content ), 0, 20, '…', 'UTF-8' ); ?>
+          </b>
+        </li>
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div style="margin-bottom:40px ; text-align: center">
         <form action="" method="post">
@@ -88,7 +92,7 @@ if($rec2 == TRUE) {
 }
 else
 {
-    $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div>";
+    $_SESSION['admin_failed'] = "<div class='error'>Failed to Add Admin.</div>";
     $url = "http://localhost:8001/account/DeleteAccount.blade.php?id=$account_id";
     header('Location:' .$url,true , 401);
 }

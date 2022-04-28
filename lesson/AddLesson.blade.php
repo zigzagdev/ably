@@ -16,19 +16,19 @@
 
   if(isset($_POST['submit']))
   {
-    $course     = $_POST['course'];
-    $content    = $_POST['content'];
-    $deadline   = $_POST['deadline'];
-    $created_at = date('Y-m-d H:i');
+    $course      = $_POST['course'];
+    $description = $_POST['description'];
+    $deadline    = $_POST['deadline'];
+    $created_at  = date('Y-m-d H:i');
 
-    if (empty($course) || empty($content) || empty($deadline))
+    if (empty($course) || empty($description) || empty($deadline))
     {
       $_SESSION['validation'] = "<div class='error'>Please fill your Registration.</div>";
       $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
       header('Location:' .$url,true , 401);
       die();
     }
-    if (mb_strlen($content, 'UTF-8')<= 10 || mb_strlen($content, 'UTF-8')>= 200)
+    if (mb_strlen($description, 'UTF-8')<= 10 || mb_strlen($description, 'UTF-8')>= 200)
     {
       $_SESSION['validation'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
       $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
@@ -45,10 +45,10 @@
 
   $sql2 = " INSERT INTO tbl_lesson
             SET
-              course      = '$course'
-              ,content    = '$content'
-              ,deadline   = '$deadline'
-              ,created_at = '$created_at'
+              course       = '$course'
+              ,description = '$description'
+              ,deadline    = '$deadline'
+              ,created_at  = '$created_at'
               ,account_id  = '$account_id'
           ";
   $rec2=mysqli_query($connect,$sql2);
@@ -112,7 +112,7 @@
           <b style="font-size: 20px;width:100px;margin-right:157px; vertical-align: 110%">
             LessonDetail
           </b>
-          <textarea name="content" class="input-responsive" cols="60" rows="4"></textarea>
+          <textarea name="description" class="input-responsive" cols="60" rows="4"></textarea>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">

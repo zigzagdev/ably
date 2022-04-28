@@ -91,7 +91,7 @@ include('partials/Header.blade.php');
       if($image_name != " ")
       {
         $src = $_FILES['image']['tmp_name'];
-        $dst ="../images/profile".$image_name;
+        $dst ="../images/profile/".$image_name;
         $upload = move_uploaded_file($src, $dst);
         if ($upload == false)
         {
