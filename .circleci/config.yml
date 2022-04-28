@@ -38,4 +38,4 @@ jobs:
       - run:
           name: run phpstan
           working_directory: overcome
-          command: ./vendor/bin/phpstan --memory-limit=1G analyse
+          command: ../vendor/bin/phpstan --memory-limit=1G analyse
