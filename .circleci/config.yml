@@ -36,5 +36,5 @@ jobs:
             sudo composer install -n --prefer-dist
 
       - run:
-          name: Run PHPStan
-          command:  ./vendor/bin/phpstan analyse resources
+          name: php lint
+          command: git diff --name-only --diff-filter=ACMR origin/develop..origin/${CIRCLE_BRANCH} -- '*.php' | xargs -r composer phpstan analyze
