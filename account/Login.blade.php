@@ -2,15 +2,10 @@
 include('../config/Constants.blade.php');
 include ('./partials/ClientHeader.tpl');
 
-  if(isset($_SESSION['login']))
+  if(isset($_SESSION['pwd-not-match']))
   {
-    echo $_SESSION['login'];
-    unset($_SESSION['login']);
-  }
-  if(isset($_SESSION['no-login-message']))
-  {
-    echo $_SESSION['no-login-message'];
-    unset($_SESSION['no-login-message']);
+    echo $_SESSION['pwd-not-match'];
+    unset($_SESSION['pwd-not-match']);
   }
 ?>
 
@@ -77,7 +72,7 @@ include ('./partials/ClientHeader.tpl');
       exit();
     } else
     {
-      $_SESSION['login'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
+      $_SESSION['pwd-not-match'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
       header('Location:Login.blade.php');
     }
   }

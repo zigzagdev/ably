@@ -7,6 +7,6 @@ if (isset($_COOKIE["PHPSESSID"])) {
 }
 
 session_destroy();
-header('Location: ' . $_SERVER['HTTP_REFERER']);
-
+print "Logout successed.";
+header('Location:Login.blade.php');
 ?>

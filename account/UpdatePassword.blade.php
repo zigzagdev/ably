@@ -80,6 +80,7 @@ include ('./partials/LoginAccount.blade.php');
   $username = 'root';
   $pass = 'root';
   $dbname = 'overcome';
+  $error_message = [];
 
   if(isset($_POST['submit']))
   {
@@ -112,12 +113,12 @@ include ('./partials/LoginAccount.blade.php');
 
     if($rec == true)
     {
-      $_SESSION['order'] = "<div class='success text-center'>Your Password was Updated.</div>";
+      $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password was Updated.</div>";
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
       header('Location:' .$url,true , 302);
     } else
     {
-      $_SESSION['order'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
+      $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
       $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
       header('Location:' .$url,true , 401);
     }

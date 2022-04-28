@@ -90,8 +90,9 @@
 .success{
     color: red;
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
     margin-bottom: 25px;
+    font-family: Arial;
 }
 
 /*.error{*/
@@ -333,4 +334,42 @@ footer {
     text-decoration: underline;
 }
 
+.fail {
+    text-align: center;
+}
 
+.card {
+    width: 306px;
+    height: 241px;
+    background-color: lightpink;
+    margin:20px 0 10px 20px;
+    border-radius: 5%;
+}
+
+.cardline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 21px 0;
+}
+
+.course {
+  margin: 20px 20px 0 20px;
+}
+
+.content {
+  margin:0 20px;
+}
+
+.lesson-btn-delete{
+    background-color: blue;
+    padding: 1%;
+    color: whitesmoke;
+    text-decoration: none;
+    font-weight: bold;
+}
+.lesson-btn-delete:hover{
+    color: whitesmoke;
+    text-decoration: underline ;
+    background-color: red;
+}

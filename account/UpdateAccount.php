@@ -1,6 +1,12 @@
 <?php
 include('partials/LoginAccount.blade.php');
 
+  if(isset($_SESSION['update-fail']))
+  {
+    echo $_SESSION['update-fail'];
+    unset($_SESSION['update-fail']);
+  }
+
   if(isset($_GET['account_id']))
   {
     $account_id = $_GET['account_id'];
@@ -35,6 +41,13 @@ include('partials/LoginAccount.blade.php');
   <body>
     <div style="margin: 0 230px">
       <div class="mainaccount">
+<?php if( !empty($error_message) ): ?>
+        <ul class="error_message">
+<?php foreach( $error_message as $value ): ?>
+          <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
+<?php endforeach; ?>
+        </ul>
+<?php endif; ?>
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Account</h1>
           <form action="" method="post" enctype="multipart/form-data" style="">
             <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -73,6 +86,7 @@ include('partials/LoginAccount.blade.php');
     </div>
   </body>
 <?php
+  $error_message = [];
   if(isset($_POST['submit']))
   {
     $account_id = $_GET['account_id'];
@@ -130,7 +144,7 @@ include('partials/LoginAccount.blade.php');
       header('Location:' .$url,true , 302);
     } else
     {
-      $_SESSION['update'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Update Account.</div>";
+      $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Update Account.</div>";
       $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
       header('Location:' .$url,true , 401);
       die();

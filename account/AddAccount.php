@@ -1,6 +1,10 @@
 <?php
 include('partials/Header.blade.php');
-
+  if(isset($_SESSION['add']))
+  {
+    echo  $_SESSION['add'];
+    unset($_SESSION['add']);
+  }
 ?>
 
 <html>
@@ -13,13 +17,6 @@ include('partials/Header.blade.php');
     <div style="margin: 0 200px">
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Add your Account</h1>
-<?php
-  if(isset($_SESSION['add']))
-    {
-      echo  $_SESSION['add'];
-      unset($_SESSION['add']);
-    }
-?>
 <?php if( !empty($error_message) ): ?>
           <ul class="error_message">
 <?php foreach( $error_message as $value ): ?>
@@ -94,7 +91,7 @@ include('partials/Header.blade.php');
       if($image_name != " ")
       {
         $src = $_FILES['image']['tmp_name'];
-        $dst ="../images/profile".$image_name;
+        $dst ="../images/profile/".$image_name;
         $upload = move_uploaded_file($src, $dst);
         if ($upload == false)
         {

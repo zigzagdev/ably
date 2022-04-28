@@ -174,14 +174,13 @@
     height: 221px;
     width: 346px;
     background-color: lightcoral;
-
 }
 
 .cardoutline {
     display: inline-block;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 20px 45px 36px;
+    margin: 0 20px 45px 20px;
     text-align: center;
 }
 
