@@ -1,6 +1,9 @@
 <?php
 include ('../config/Constants.blade.php');
-  $sql = "SELECT * FROM tbl_account ";
+  $sql = "SELECT * FROM tbl_lesson
+          INNER  JOIN  tbl_account
+            ON tbl_lesson.account_id = tbl_account.account_id
+          ";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)
@@ -11,6 +14,7 @@ include ('../config/Constants.blade.php');
       while ($rows = mysqli_fetch_array($rec))
       {
         $account_id = $rows['account_id'];
+        $lesson_id  = $rows['lesson_id'];
       }
     }
   }
@@ -28,7 +32,7 @@ include ('../config/Constants.blade.php');
       <div class="account text-center">
         <div class="wrapper">
           <a href = "../account/ManageAccount.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">Profile</a>
-          <a href = "../lesson/DeleteLesson.php" style="text-decoration: none; color: black" class="wrapper-inner">DeleteLesson</a>
+          <a href = "../lesson/ManageLesson.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">ManageLesson</a>
           <a href = "../lesson/AddLesson.blade.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">AddLesson</a>
         </div>
       </div>
