@@ -37,4 +37,4 @@ jobs:
 
       - run:
           name: php lint
-          command: git diff --name-only --diff-filter=ACMR origin/develop..origin/${CIRCLE_BRANCH} -- '*.php' | xargs -r composer phpstan analyze
+          command: ./vendor/bin/phpstan analyze --level 3 account
