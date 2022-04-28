@@ -37,4 +37,4 @@ jobs:
 
       - run:
           name: php lint
-          command: ./vendor/bin/phpstan analyze --level 3 account
+          command: ./vendor/bin/phpstan analyze --level 2 account
