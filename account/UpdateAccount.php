@@ -1,6 +1,18 @@
 <?php
 include('partials/LoginAccount.blade.php');
 
+session_start();
+
+define('SITEURL', 'localhost:8001');
+define('LOCALHOST', '127.0.0.1');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'root');
+define('DB_NAME', 'overcome');
+
+$connect = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error($connect));
+$db_select = mysqli_select_db($connect, DB_NAME) or die(mysqli_error($connect));
+date_default_timezone_set('Asia/Tokyo');
+
   if(isset($_SESSION['update-fail']))
   {
     echo $_SESSION['update-fail'];
@@ -89,10 +101,11 @@ include('partials/LoginAccount.blade.php');
   $error_message = [];
   if(isset($_POST['submit']))
   {
-    $account_id = $_GET['account_id'];
-    $user_name = $_POST['user_name'];
-    $email = $_POST['email'];
-    $content = $_POST['content'];
+    $account_id     = $_GET['account_id'];
+    $user_name      = $_POST['user_name'];
+    $email          = $_POST['email'];
+    $content        = $_POST['content'];
+    $current_image  = $_GET['cuurent_image'];
 
     if(isset($_FILES['image']['name']))
     {

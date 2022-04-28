@@ -2,7 +2,6 @@
 
 session_start();
 
-
 define('SITEURL', 'localhost:8001');
 define('LOCALHOST', '127.0.0.1');
 define('DB_USERNAME', 'root');
