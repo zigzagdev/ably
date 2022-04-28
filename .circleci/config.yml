@@ -38,3 +38,4 @@ jobs:
       - run:
           name: php lint
           command: ./vendor/bin/phpstan analyze --level 2 account
+                   ./vendor/bin/phpstan analyze --level 2 lesson
