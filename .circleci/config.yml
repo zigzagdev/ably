@@ -36,6 +36,5 @@ jobs:
             sudo composer install -n --prefer-dist
 
       - run:
-          name: run phpstan
-          working_directory: overcome
-          command: ../vendor/bin/phpstan
+          name: Run PHPStan
+          command:  ./vendor/bin/phpstan analyse resources
