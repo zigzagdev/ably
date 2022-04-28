@@ -101,6 +101,13 @@ include ('./partials/LoginAccount.blade.php');
       die();
     }
 
+    $user_name  = $_GET['user_name'];
+    $image_name = $_GET['image_name'];
+    $email      = $_GET['email'];
+    $content    = $_GET['content'];
+    $account_id = $_GET['account_id'];
+
+
     $sql = "UPDATE tbl_account SET
                    user_name='$user_name'
                    ,image_name='$image_name'

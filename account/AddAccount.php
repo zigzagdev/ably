@@ -104,7 +104,7 @@ include('partials/Header.blade.php');
     {
       $image_name= "";
     }
-    if (empty($user_name) || empty($password) || empty($password2) || empty($email))
+    if (empty($user_name) || empty($email))
     {
       $error_message = 'Please fill all required fields!';
       die();

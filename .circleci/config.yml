@@ -4,7 +4,6 @@ jobs:
     environment:
       TZ: "Asia/Tokyo"
     docker:
-      # specify the version you desire here
       - image: circleci/php:8.0-node-browsers
         environment:
           MYSQL_ROOT_PASSWORD: root
@@ -36,8 +35,8 @@ jobs:
             sudo composer install -n --prefer-dist
 
       - run:
-          name: php lint
-          command: ./vendor/bin/phpstan analyze --level 2 account
+          name: PHP Stan(Account)
+          command: ./vendor/bin/phpstan analyze --level 1 account
       - run:
-          name: php lint
-          command: ./vendor/bin/phpstan analyze --level 2 lesson
+          name: PHP Stan(Lesson)
+          command: ./vendor/bin/phpstan analyze --level 1 lesson
