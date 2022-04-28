@@ -77,6 +77,8 @@ include('partials/Header.blade.php');
 </html>
 
 <?php
+$connect = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error());
+
   if(isset($_POST['submit']))
   {
     $user_name = $_POST['user_name'];
