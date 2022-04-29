@@ -61,7 +61,7 @@ include('./account/partials/ClientHeader.tpl');
               <p style="padding-top: 15px"><?php echo $course ?></p><br/>
               <?php echo $description ?><br/>
               <?php echo $deadline ?><br/>
-              <a href="./form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
+              <a href="client/form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
             </div>
           </div>
         <?php

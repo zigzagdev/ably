@@ -25,8 +25,8 @@ if(isset($_GET['form_id']))
 <html>
   <head>
     <title>UpdateEmail</title>
-    <link rel="stylesheet" href="../css/Account.css">
-    <link rel="stylesheet" href="../css/Forms.css">
+    <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
     <section class="food-search">

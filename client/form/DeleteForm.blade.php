@@ -26,8 +26,8 @@ include('../account/partials/HeaderInfo.blade.php');
 <html>
   <head>
     <title>ManageReserveForm</title>
-    <link rel="stylesheet" href="../css/Account.css">
-    <link rel="stylesheet" href="../css/Forms.css">
+    <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
     <div style="margin: 0 130px">

@@ -49,5 +49,5 @@ jobs:
           command: ./vendor/bin/phpstan analyze --level 1 Search.php
 
       - run:
-          name: PHPStan
+          name: PHPStan(Account)
           command: ./vendor/bin/phpstan analyze --level 1 account

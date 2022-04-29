@@ -3,8 +3,8 @@
 <html>
   <head>
     <title>ReserveLessonForm</title>
-    <link rel="stylesheet" href="../css/Account.css">
-    <link rel="stylesheet" href="../css/Forms.css">
+    <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
       <form action="" method="post" enctype="multipart/form-data" style="">
