@@ -11,4 +11,3 @@ parameters:
         - 'Variable $user_name might not be defined.'
         - 'Variable $email might not be defined.'
         - 'Variable $content might not be defined.'
-        - 'Variable $account_id might not be defined.'
