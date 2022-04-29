@@ -35,14 +35,13 @@ jobs:
             sudo composer install -n --prefer-dist
 
       - run:
-          name: Accountt
+          name: PHPStan
           command: ./vendor/bin/phpstan analyze --level 1 account
 
+        - run:
+            name: Lesson
+            command: ./vendor/bin/phpstan analyze --level 1 lesson
 
-      - run:
-          name: Lesson
-          command: ./vendor/bin/phpstan analyze --level 1 lesson
-
-      - run:
-          name: Index
-          command: ./vendor/bin/phpstan analyze --level 1 Index.php
+          - run:
+            name: Index
+            command: ./vendor/bin/phpstan analyze --level 1 Index.php
