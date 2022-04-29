@@ -14,7 +14,7 @@
   <div class="inner">
     <div class="footer_left">
       <span class="c-inner">
-        <a href="/" style="text-decoration: none; color: black">Search Lesson</a>
+        <a href="/Index.php" style="text-decoration: none; color: black">Search Lesson</a>
       </span>
     </div>
   </div>
