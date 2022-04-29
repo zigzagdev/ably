@@ -1,6 +1,5 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Variable $connect might not be defined..$#"
-			count: 1
+			message: "Variable $connect might not be defined."
 			path: account
