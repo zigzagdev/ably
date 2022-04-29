@@ -1,7 +1,6 @@
-parametersSchema:
-	earlyTerminatingMethodCalls: arrayOf(listOf(string()))
-	earlyTerminatingFunctionCalls: listOf(string())
-	memoryLimitFile: string()
-	staticReflectionClassNamePatterns: listOf(string())
-	dynamicConstantNames: listOf(string())
-	customRulesetUsed: bool()
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Variable $connect might not be defined..$#"
+			count: 1
+			path: account
