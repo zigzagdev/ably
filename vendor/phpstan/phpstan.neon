@@ -1,0 +1,10 @@
+parameters:
+    level: 2
+    paths:
+        - Index.php
+        - Search.php
+        - account
+        - lesson
+        - client
+    ignoreErrors:
+        - 'Variable $[a-zA-Z0-9\\_] might not be defined. '

@@ -2,11 +2,17 @@
 include('../config/Constants.blade.php');
 include ('./partials/ClientHeader.tpl');
 
-  if(isset($_SESSION['pwd-not-match']))
+  if(isset($_SESSION['pwd_notmatch']))
   {
-    echo $_SESSION['pwd-not-match'];
-    unset($_SESSION['pwd-not-match']);
+    echo $_SESSION['pwd_notmatch'];
+    unset($_SESSION['pwd_notmatch']);
   }
+  if(isset($_SESSION['ac_logout']))
+  {
+    echo $_SESSION['ac_logout'];
+    unset($_SESSION['ac_logout']);
+  }
+
 ?>
 
 <html>
@@ -84,8 +90,8 @@ date_default_timezone_set('Asia/Tokyo');
       exit();
     } else
     {
-      $_SESSION['pwd-not-match'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
-      header('Location:Login.blade.php');
+      $_SESSION['pwd_notmatch'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
+      header('Location:SLogin.blade.php');
     }
   }
 include ('./partials/ClientFooter.tpl');
