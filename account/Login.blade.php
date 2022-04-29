@@ -51,24 +51,36 @@ include ('./partials/ClientHeader.tpl');
 </html>
 
 <?php
+session_start();
+
+define('SITEURL', 'localhost:8001');
+define('LOCALHOST', '127.0.0.1');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', 'root');
+define('DB_NAME', 'overcome');
+
+$connect   = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error($connect));
+$db_select = mysqli_select_db($connect, DB_NAME) or die(mysqli_error($connect));
+date_default_timezone_set('Asia/Tokyo');
+
   if(isset($_POST['submit']))
   {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    $sql = "SELECT * FROM tbl_account WHERE email='$email' AND password='$password'";
-    $rec = mysqli_query($connect, $sql);
+    $sql   = "SELECT * FROM tbl_account WHERE email='$email' AND password='$password'";
+    $rec   = mysqli_query($connect, $sql);
     $count = mysqli_num_rows($rec);
 
     if($count==1)
     {
       $row = mysqli_fetch_assoc($rec);
-      $id = $row['account_id'];
+      $id  = $row['account_id'];
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$id";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
       $_SESSION['email'] = $email;
 
-      header('Location:' .$url,true , 302);
+      header('Location:'.$url, true, 302);
       exit();
     } else
     {
