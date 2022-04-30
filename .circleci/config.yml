@@ -42,12 +42,12 @@ jobs:
 
       - run:
           name: PHPStan(Index.php)
-          command: ./vendor/bin/phpstan analyze --level 1 Index.php
+          command: ./vendor/bin/phpstan analyze --level 0 Index.php
 
       - run:
           name: PHPStan(Search.php)
-          command: ./vendor/bin/phpstan analyze --level 1 Search.php
+          command: ./vendor/bin/phpstan analyze --level 0 Search.php
 
       - run:
           name: PHPStan(Account)
-          command: ./vendor/bin/phpstan analyze --level 1 account
+          command: ./vendor/bin/phpstan analyze --level 0 account
