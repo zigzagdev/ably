@@ -10,6 +10,6 @@ if (isset($_COOKIE["PHPSESSID"])) {
 }
 
 session_destroy();
-$_SESSION['ac_logout'] = "<div class='success'>Login Successful.</div>";
+$_SESSION = "<div class='success'>Login Successful.</div>";
 header('Location:SLogin.blade.php');
 ?>
