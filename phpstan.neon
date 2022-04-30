@@ -1,5 +1,3 @@
 parameters:
 	ignoreErrors:
-		-
-			message: " might not be defined."
-			path: account
+
