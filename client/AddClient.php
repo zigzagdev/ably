@@ -47,7 +47,7 @@ include('../account/partials/ClientHeader.tpl');
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Password Again
+              PasswordAgain
             </b>
             <input type="password" name="password2"  size="40">
           </li>
@@ -59,13 +59,17 @@ include('../account/partials/ClientHeader.tpl');
             <textarea type="text" name="content" cols="60" rows="4"></textarea>
           </li>
           <hr color="#a9a9a9" width="94%" size="1" style="margin: 8px 5px 0 8px ;">
-          <p style="font-size: 20px; color: #0062cc; display: inline-block; margin-left: 18px">Sex:</p>
-          <select name="sex" style="margin-left: 30px">
-            <option value="">Please Select</option>
-            <option value="man">man</option>
-            <option value="woman">woman</option>
-            <option value="others">other</option>
-          </select>
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              Sex
+            </b>
+            <select name="sex">
+              <option value="">Please Select(Only select here)</option>
+              <option value="man">man</option>
+              <option value="woman">woman</option>
+              <option value="others">other</option>
+            </select>
+          </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px ;margin-right:150px; float: left;">
@@ -92,6 +96,7 @@ if(isset($_POST['submit']))
   $password2 = md5($_POST['password2']);
   $email     = $_POST['email'];
   $content   = $_POST['content'];
+  $sex       = $_POST['sex'];
 
   if(isset($_FILES['image']['name']))
   {
@@ -112,7 +117,7 @@ if(isset($_POST['submit']))
   {
     $image_name= "";
   }
-  if (empty($user_name) || empty($email))
+  if (empty($user_name) || empty($email) || empty($sex))
   {
     $_SESSION['add_fail_c'] =  "<div class='success'>Please fill all required fields!</div>";
     die();
@@ -127,6 +132,8 @@ if(isset($_POST['submit']))
     $_SESSION['add_fail_c'] =  "<div class='success'>Only English is valid.!</div>";
     die();
   }
+
+//  select the email whether duplicated it
   $sql = "SELECT 
                    tbl_account.email , tbl_client.email 
               FROM 
@@ -161,6 +168,8 @@ if(isset($_POST['submit']))
             ,image_name = '$image_name'
             ,email      = '$email'
             ,content    = '$content' 
+            ,sex        = '$sex'
+           
           ";
 
   $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
