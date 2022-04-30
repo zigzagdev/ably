@@ -184,7 +184,7 @@ if(isset($_POST['submit']))
   }
 
   $sql = "INSERT INTO 
-            tbl_account 
+            tbl_client
           SET 
             name        = '$name'
             , password  = '$password'
@@ -200,12 +200,12 @@ if(isset($_POST['submit']))
   if($rec == TRUE)
   {
     $_SESSION['cli_add'] = "<div class='success'>Your account Added Successfully.</div>";
-    $account_id = mysqli_insert_id($connect);
-    header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
+    $id = mysqli_insert_id($connect);
+    header("location: http://localhost:8001/client/ClientPage.php?id=$id");
   } else
   {
     $_SESSION['cli_fal'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
-    header("location: http://localhost:8001/account/AddAccount.php");
+    header("location: http://localhost:8001/client/AddClient.php");
   }
 }
 include('../account/partials/ClientFooter.tpl');
