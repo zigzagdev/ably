@@ -23,13 +23,6 @@ include('../account/partials/ClientHeader.tpl');
     <div style="margin: 0 200px">
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Start learning at here !!</h1>
-<?php if( !empty($error_message) ): ?>
-        <ul class="error_message">
-<?php foreach( $error_message as $value ): ?>
-          <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
-<?php endforeach; ?>
-        </ul>
-<?php endif; ?>
         <form action="" method="post" enctype="multipart/form-data" style="">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
@@ -113,17 +106,17 @@ if(isset($_POST['submit']))
   }
   if (empty($user_name) || empty($email))
   {
-    $error_message = 'Please fill all required fields!';
+    $_SESSION['add_fail_c'] =  "<div class='success'>Please fill all required fields!</div>";
     die();
   }
-  if ($password !== $password)
+  if ($password !== $password2)
   {
-    $error_message = 'Passwords should the same one. !';
+    $_SESSION['add_fail_c'] =  "<div class='success'>Passwords should the same one.!</div>";
     die();
   }
 
   if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
-    $error_message[] = "Only English is valid.";
+    $_SESSION['add_fail_c'] =  "<div class='success'>Only English is valid.!</div>";
     die();
   }
   $sql = "SELECT 
@@ -143,22 +136,25 @@ if(isset($_POST['submit']))
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-    $error_message[] = "パスワードの形式が正しくありません。";
+    $_SESSION['add_fail_c'] =  "<div class='success'>Password format is not correctly !</div>";
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-    $error_message[] = "確認用パスワードの形式が正しくありません。";
+    $_SESSION['add_fail_c'] =  "<div class='success'>Password format is not correctly !</div>";
     die();
   }
 
-  $sql = "INSERT INTO tbl_account SET 
-          user_name='$user_name'
-          , password ='$password'
-          ,image_name = '$image_name'
-          ,email = '$email'
-          ,content = '$content' 
+  $sql = "INSERT INTO 
+            tbl_account 
+          SET 
+            user_name   = '$user_name'
+            , password  = '$password'
+            ,image_name = '$image_name'
+            ,email      = '$email'
+            ,content    = '$content' 
           ";
+
   $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
   if($rec == TRUE)
   {
