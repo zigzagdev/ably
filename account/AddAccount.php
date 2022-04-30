@@ -116,6 +116,21 @@ include('partials/Header.blade.php');
       die();
     }
 
+    $sql = "SELECT 
+                   tbl_account.email , tbl_client.email 
+              FROM 
+                   tbl_account 
+            LEFT OUTER JOIN 
+                   tbl_client 
+              ON 
+                   tbl_account.email= tbl_client.email
+           ";
+    $rec = mysqli_query($connect,$sql);
+    $rec2 = mysqli_num_rows($rec);
+    if ($rec2 >= 1) {
+      $_SESSION['add_fail'] =  "<div class='success'>User already exists</div>";
+      die();
+    }
 
 
     if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
