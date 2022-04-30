@@ -6,6 +6,11 @@ include('../account/partials/ClientHeader.tpl');
     echo  $_SESSION['cli_fal'];
     unset($_SESSION['cli_fal']);
   }
+  if(isset($_SESSION['add_fail_c']))
+  {
+    echo  $_SESSION['add_fail_c'];
+    unset($_SESSION['add_fail_c']);
+  }
 ?>
 
 <html>
@@ -78,17 +83,6 @@ include('../account/partials/ClientHeader.tpl');
 </html>
 
 <?php
-session_start();
-
-define('SITEURL', 'localhost:8001');
-define('LOCALHOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_NAME', 'overcome');
-
-$connect = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error($connect));
-$db_select = mysqli_select_db($connect, DB_NAME) or die(mysqli_error($connect));
-date_default_timezone_set('Asia/Tokyo');
 
 if(isset($_POST['submit']))
 {
@@ -130,6 +124,21 @@ if(isset($_POST['submit']))
 
   if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
     $error_message[] = "Only English is valid.";
+    die();
+  }
+  $sql = "SELECT 
+                   tbl_account.email , tbl_client.email 
+              FROM 
+                   tbl_account 
+            LEFT OUTER JOIN 
+                   tbl_client 
+              ON 
+                   tbl_account.email= tbl_client.email
+           ";
+  $rec  = mysqli_query($connect,$sql);
+  $rec2 = mysqli_num_rows($rec);
+  if ($rec2 >= 1) {
+    $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
     die();
   }
 
