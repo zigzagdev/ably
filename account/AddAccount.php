@@ -1,9 +1,9 @@
 <?php
 include('partials/Header.blade.php');
-  if(isset($_SESSION['add']))
+  if(isset($_SESSION['add_fail']))
   {
-    echo  $_SESSION['add'];
-    unset($_SESSION['add']);
+    echo  $_SESSION['add_fail'];
+    unset($_SESSION['add_fail']);
   }
 ?>
 
@@ -48,7 +48,7 @@ include('partials/Header.blade.php');
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Password Again
+              PasswordConfirm
             </b>
             <input type="password" name="password2"  size="40">
           </li>
@@ -77,17 +77,6 @@ include('partials/Header.blade.php');
 </html>
 
 <?php
-session_start();
-
-define('SITEURL', 'localhost:8001');
-define('LOCALHOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_NAME', 'overcome');
-
-$connect = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error($connect));
-$db_select = mysqli_select_db($connect, DB_NAME) or die(mysqli_error($connect));
-date_default_timezone_set('Asia/Tokyo');
 
   if(isset($_POST['submit']))
   {
@@ -107,8 +96,8 @@ date_default_timezone_set('Asia/Tokyo');
         $upload = move_uploaded_file($src, $dst);
         if ($upload == false)
         {
-          $_SESSION['upload'] = "<div class='error'>Failed to Upload Image.</div>";
-          header('location:/account/add-client.php');
+          $_SESSION['add_fail'] = "<div class='success'>Failed to Upload Image.</div>";
+          header('location:/account/AddAccount.php');
           die();
         }
       }
@@ -127,6 +116,8 @@ date_default_timezone_set('Asia/Tokyo');
       die();
     }
 
+
+
     if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
       $error_message[] = "Only English is valid.";
       die();
@@ -142,12 +133,13 @@ date_default_timezone_set('Asia/Tokyo');
       die();
     }
 
-    $sql = "INSERT INTO tbl_account SET 
-          user_name='$user_name'
-          , password ='$password'
-          ,image_name = '$image_name'
-          ,email = '$email'
-          ,content = '$content' 
+    $sql = "INSERT INTO tbl_account
+            SET 
+              user_name   = '$user_name'
+              ,password   = '$password'
+              ,image_name = '$image_name'
+              ,email      = '$email'
+              ,content    = '$content' 
           ";
     $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
     if($rec == TRUE)
@@ -157,7 +149,7 @@ date_default_timezone_set('Asia/Tokyo');
       header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
     } else
     {
-      $_SESSION['add'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
+      $_SESSION['add_fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
       header("location: http://localhost:8001/account/AddAccount.php");
     }
   }

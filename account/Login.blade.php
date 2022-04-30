@@ -26,52 +26,40 @@ include ('./partials/ClientHeader.tpl');
     </div>
     <div style="margin: 50px 400px 25px 400px">
       <div class="mainaccount">
-      <h2 style="text-align: center; padding-top: 18px">Sign In</h2>
-      <form method="post" action="">
-        <li style="list-style: none;  margin:22px 0 22px 30px">
-          <b style="font-size: 20px;width:100px;margin:0 30px 0 100px; float: left;">
-            E-mail
-          </b>
-          <input type="email" required name="email" size="40px" style="height: 35px">
-        </li>
-        <li style="list-style: none;  margin:22px 0 22px 30px">
-          <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;float: left;">
-            Password
-          </b>
+        <h2 style="text-align: center; padding-top: 18px">Sign In</h2>
+        <form method="post" action="">
+          <li style="list-style: none;  margin:22px 0 22px 30px">
+            <b style="font-size: 20px;width:100px;margin:0 30px 0 100px; float: left;">
+              E-mail
+            </b>
+            <input type="email" required name="email" size="40px" style="height: 35px">
+          </li>
+          <li style="list-style: none;  margin:22px 0 22px 30px">
+            <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;float: left;">
+              Password
+            </b>
             <input type="password" required name="password" size="40px" style="height: 35px">
-        </li>
-        <li style="list-style: none;  margin:22px 0 22px 30px">
-          <a href="" class="passwordforgot">
-            Forgot your password?
-          </a>
-        </li>
-        <li style="list-style: none;  margin:42px 0 22px 30px">
-          <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;">
-            <input type="submit" name="submit" value="Login" class="btn-third">
-          </b>
-        </li>
-      </form>
+          </li>
+          <li style="list-style: none;  margin:22px 0 22px 30px">
+            <a href="" class="passwordforgot">
+              Forgot your password?
+            </a>
+          </li>
+          <li style="list-style: none;  margin:42px 0 22px 30px">
+            <b style="font-size: 20px;width:100px;margin:0 30px 0 100px;">
+              <input type="submit" name="submit" value="Login" class="btn-third">
+            </b>
+          </li>
+        </form>
       </div>
     </div>
   </body>
 </html>
 
 <?php
-session_start();
-
-define('SITEURL', 'localhost:8001');
-define('LOCALHOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_NAME', 'overcome');
-
-$connect   = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error($connect));
-$db_select = mysqli_select_db($connect, DB_NAME) or die(mysqli_error($connect));
-date_default_timezone_set('Asia/Tokyo');
-
   if(isset($_POST['submit']))
   {
-    $email = $_POST['email'];
+    $email    = $_POST['email'];
     $password = md5($_POST['password']);
 
     $sql   = "SELECT * FROM tbl_account WHERE email='$email' AND password='$password'";
