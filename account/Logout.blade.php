@@ -1,5 +1,7 @@
 <?php
 include ('../config/Constants.blade.php');
+include ('../css/Account.css');
+
 
 session_start();
 $_SESSION = array();
