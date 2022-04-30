@@ -28,7 +28,7 @@ include('../account/partials/ClientHeader.tpl');
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               UserName
             </b>
-            <input id="name" type="text" name="user_name" placeholder="Steve Smith" size="40">
+            <input id="name" type="text" name="name" placeholder="Steve Smith" size="40">
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -72,6 +72,13 @@ include('../account/partials/ClientHeader.tpl');
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              PhoneNumber
+            </b>
+            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px ;margin-right:150px; float: left;">
               Image
             </b>
@@ -91,17 +98,18 @@ include('../account/partials/ClientHeader.tpl');
 
 if(isset($_POST['submit']))
 {
-  $user_name = $_POST['user_name'];
+  $name      = $_POST['name'];
   $password  = md5($_POST['password']);
   $password2 = md5($_POST['password2']);
   $email     = $_POST['email'];
   $content   = $_POST['content'];
   $sex       = $_POST['sex'];
+  $telephone = $_POST['telephone'];
 
   if(isset($_FILES['image']['name']))
   {
     $image_name = $_FILES['image']['name'];
-    if($image_name != " ")
+    if($image_name != "")
     {
       $src = $_FILES['image']['tmp_name'];
       $dst ="../images/profile/".$image_name;
@@ -117,23 +125,23 @@ if(isset($_POST['submit']))
   {
     $image_name= "";
   }
-  if (empty($user_name) || empty($email) || empty($sex))
+  if (empty($name) || empty($email) || empty($sex) || empty($telephone))
   {
-    $_SESSION['add_fail_c'] =  "<div class='success'>Please fill all required fields!</div>";
+    $_SESSION['add_fail_c'] = "<div class='success'>Please fill all required fields!</div>";
     die();
   }
   if ($password !== $password2)
   {
-    $_SESSION['add_fail_c'] =  "<div class='success'>Passwords should the same one.!</div>";
+    $_SESSION['add_fail_c'] = "<div class='success'>Passwords should the same one.!</div>";
     die();
   }
 
-  if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
-    $_SESSION['add_fail_c'] =  "<div class='success'>Only English is valid.!</div>";
+  if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+    $_SESSION['add_fail_c'] = "<div class='success'>Only English is valid.!</div>";
     die();
   }
 
-//  select the email whether duplicated it
+//  select the email and phonenumber whether duplicated it
   $sql = "SELECT 
                    tbl_account.email , tbl_client.email 
               FROM 
@@ -146,29 +154,45 @@ if(isset($_POST['submit']))
   $rec  = mysqli_query($connect,$sql);
   $rec2 = mysqli_num_rows($rec);
   if ($rec2 >= 1) {
-    $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
+    $_SESSION['add_fail_c'] = "<div class='success'>User already exists</div>";
+    die();
+  }
+  $sqltel = " SELECT telephone FROM tbl_client ";
+
+  $rectel  = mysqli_query($connect,$sqltel);
+  $rec2tel = mysqli_num_rows($rectel);
+  if ($rec2tel >= 1) {
+    $_SESSION['add_fail_c'] = "<div class='success'>Your PhoneNumber was already registered.!</div>";
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-    $_SESSION['add_fail_c'] =  "<div class='success'>Password format is not correctly !</div>";
+    $_SESSION['add_fail_c'] = "<div class='success'>Password format is not correctly !</div>";
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-    $_SESSION['add_fail_c'] =  "<div class='success'>Password format is not correctly !</div>";
+    $_SESSION['add_fail_c'] = "<div class='success'>Password format is not correctly !</div>";
+    die();
+  }
+
+  $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
+  if(preg_match($tel_boolean,$telephone))
+  {
+    $_SESSION['add_fail_c'] = "<div class='success'>Write down your phone number correctly !</div>";
     die();
   }
 
   $sql = "INSERT INTO 
             tbl_account 
           SET 
-            user_name   = '$user_name'
+            name        = '$name'
             , password  = '$password'
             ,image_name = '$image_name'
             ,email      = '$email'
             ,content    = '$content' 
             ,sex        = '$sex'
+            ,telephone  = '$telephone'
            
           ";
 
