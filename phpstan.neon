@@ -1,5 +1,5 @@
 parameters:
 	ignoreErrors:
 		-
-			message: " $connect might not be defined."
+			message: " might not be defined."
 			path: account
