@@ -1,7 +1,5 @@
 <?php
 include ('../config/Constants.blade.php');
-include "../css/Account.css";
-include "../css/Forms.css"
 
 session_start();
 $_SESSION = array();
@@ -11,6 +9,6 @@ if (isset($_COOKIE["PHPSESSID"])) {
 }
 
 session_destroy();
-$_SESSION['ac_logout'] = "<div class='success'>Login Successful.</div>";
-header('Location:SLogin.blade.php');
+$_SESSION['ac_logout'] = "<div class='success'>Logout Successful.</div>";
+header('Location:Login.blade.php');
 ?>
