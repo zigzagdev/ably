@@ -58,6 +58,14 @@ include('../account/partials/ClientHeader.tpl');
             </b>
             <textarea type="text" name="content" cols="60" rows="4"></textarea>
           </li>
+          <hr color="#a9a9a9" width="94%" size="1" style="margin: 8px 5px 0 8px ;">
+          <p style="font-size: 20px; color: #0062cc; display: inline-block; margin-left: 18px">Sex:</p>
+          <select name="sex" style="margin-left: 30px">
+            <option value="">Please Select</option>
+            <option value="man">man</option>
+            <option value="woman">woman</option>
+            <option value="others">other</option>
+          </select>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px ;margin-right:150px; float: left;">
