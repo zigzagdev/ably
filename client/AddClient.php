@@ -28,42 +28,42 @@ include('../account/partials/ClientHeader.tpl');
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               UserName
             </b>
-            <input id="name" type="text" name="name" placeholder="Steve Smith" size="40">
+            <input id="name" type="text" name="name" placeholder="Steve Smith" size="40" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               Email
             </b>
-            <input type="text" name="email" placeholder="abc@com" size="40">
+            <input type="text" name="email" placeholder="abc@com" size="40" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               Password
             </b>
-            <input type="password" name="password"  size="40">
+            <input type="password" name="password"  size="40" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               PasswordAgain
             </b>
-            <input type="password" name="password2"  size="40">
+            <input type="password" name="password2"  size="40" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               Content
             </b>
-            <textarea type="text" name="content" cols="60" rows="4"></textarea>
+            <textarea type="text" name="content" cols="60" rows="4" required></textarea>
           </li>
           <hr color="#a9a9a9" width="94%" size="1" style="margin: 8px 5px 0 8px ;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               Sex
             </b>
-            <select name="sex">
+            <select name="sex" required>
               <option value="">Please Select(Only select here)</option>
               <option value="man">man</option>
               <option value="woman">woman</option>
@@ -75,14 +75,14 @@ include('../account/partials/ClientHeader.tpl');
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
               PhoneNumber
             </b>
-            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive">
+            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px ;margin-right:150px; float: left;">
               Image
             </b>
-            <input type="file" name="image">
+            <input type="file" name="image" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -125,12 +125,8 @@ if(isset($_POST['submit']))
   {
     $image_name= "";
   }
-  if (empty($name) || empty($email) || empty($sex) || empty($telephone))
-  {
-    $_SESSION['add_fail_c'] = "<div class='success'>Please fill all required fields!</div>";
-    die();
-  }
 
+//  correct words validation
   if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
     $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
     die();
@@ -144,14 +140,10 @@ if(isset($_POST['submit']))
     die();
   }
 
+//  password correctly
   if ($password !== $password2)
   {
     $_SESSION['add_fail_c'] = "<div class='success'>Passwords should the same one.!</div>";
-    die();
-  }
-
-  if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Only English is valid.!</div>";
     die();
   }
 
@@ -178,6 +170,12 @@ if(isset($_POST['submit']))
   $rec2tel = mysqli_num_rows($rectel);
   if ($rec2tel >= 1) {
     $_SESSION['add_fail_c'] = "<div class='success'>Your PhoneNumber was already registered.!</div>";
+    die();
+  }
+
+//  preg_match
+  if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+    $_SESSION['add_fail_c'] = "<div class='success'>Only English is valid.!</div>";
     die();
   }
 
