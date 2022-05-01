@@ -6,6 +6,12 @@ include  "./partials/HeaderEd.tpl";
     unset($_SESSION['cli_add']);
   }
 
+  if(isset($_SESSION['s_login']))
+  {
+    echo  $_SESSION['s_login'];
+    unset($_SESSION['s_login']);
+  }
+
   $client_id = $_GET['client_id'];
   $sql = "SELECT * FROM tbl_account where client_id=$client_id";
   $rec = mysqli_query($connect, $sql);
