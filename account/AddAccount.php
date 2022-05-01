@@ -133,10 +133,14 @@ include('partials/Header.blade.php');
                    tbl_client 
               ON 
                    tbl_account.email= tbl_client.email
+            WHERE 
+                    tbl_account.email='$email'
+              OR 
+                    tbl_client.email='$email'
            ";
-    $rec = mysqli_query($connect,$sql);
+    $rec  = mysqli_query($connect,$sql);
     $rec2 = mysqli_num_rows($rec);
-    if ($rec2 >= 1) {
+    if ($rec2 > 0) {
       $_SESSION['add_fail'] =  "<div class='success'>User already exists</div>";
       header('location:/account/AddAccount.php');
       die();
@@ -155,14 +159,14 @@ include('partials/Header.blade.php');
       die();
     }
 
-    if( 10 > mb_strlen($user_name, 'UTF-8') || 50 < mb_strlen($user_name, 'UTF-8') ) {
-      $_SESSION['add_fail'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+    if( 4 > mb_strlen($user_name, 'UTF-8') || 100 < mb_strlen($user_name, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your email in 4~100 words. !</div>";
       header('location:/account/AddAccount.php');
       die();
     }
 
-    if( 10 > mb_strlen($email, 'UTF-8') || 50 < mb_strlen($email, 'UTF-8') ) {
-      $_SESSION['add_fail'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+    if( 5 > mb_strlen($email, 'UTF-8') || 150 < mb_strlen($email, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your email in 5~150 words. !</div>";
       header('location:/account/AddAccount.php');
       die();
     }

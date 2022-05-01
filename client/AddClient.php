@@ -167,6 +167,7 @@ if(isset($_POST['submit']))
   $rec2 = mysqli_num_rows($rec);
   if ($rec2 >= 1) {
     $_SESSION['add_fail_c'] = "<div class='success'>User already exists</div>";
+
     header('location:/client/AddClient.php');
     die();
   }
