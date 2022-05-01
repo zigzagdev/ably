@@ -105,14 +105,23 @@ include('partials/Header.blade.php');
     {
       $image_name= "";
     }
-    if (empty($user_name) || empty($email))
-    {
-      $error_message = 'Please fill all required fields!';
+
+    if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
+    if (empty($user_name) || empty($email))
+    {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill all required fields!</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
     if ($password !== $password)
     {
-      $error_message = 'Passwords should the same one. !';
+      $_SESSION['add_fail'] = "<div class='success'>Passwords should the same one. !</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
@@ -129,22 +138,38 @@ include('partials/Header.blade.php');
     $rec2 = mysqli_num_rows($rec);
     if ($rec2 >= 1) {
       $_SESSION['add_fail'] =  "<div class='success'>User already exists</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
 
     if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
-      $error_message[] = "Only English is valid.";
+      $_SESSION['add_fail'] =  "<div class='success'>Only English is valid .</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-      $error_message[] = "パスワードの形式が正しくありません。";
+      $_SESSION['add_fail'] =  "<div class='success'>Password form is incorrectly.</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+    if( 10 > mb_strlen($user_name, 'UTF-8') || 50 < mb_strlen($user_name, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+    if( 10 > mb_strlen($email, 'UTF-8') || 50 < mb_strlen($email, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-      $error_message[] = "確認用パスワードの形式が正しくありません。";
+      $_SESSION['add_fail'] =  "<div class='success'>Password form is incorrectly.</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 

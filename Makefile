@@ -14,3 +14,6 @@ install: ~/.php/$(version)
 
 .PHONY: reinstall
 reinstall: uninstall clean install
+
+.PHONY: composer install
+install: ~/.php/composer install

@@ -98,13 +98,14 @@ include('../account/partials/ClientHeader.tpl');
 
 if(isset($_POST['submit']))
 {
-  $name      = $_POST['name'];
-  $password  = md5($_POST['password']);
-  $password2 = md5($_POST['password2']);
-  $email     = $_POST['email'];
-  $content   = $_POST['content'];
-  $sex       = $_POST['sex'];
-  $telephone = $_POST['telephone'];
+  $name       = $_POST['name'];
+  $password   = md5($_POST['password']);
+  $password2  = md5($_POST['password2']);
+  $email      = $_POST['email'];
+  $content    = $_POST['content'];
+  $sex        = $_POST['sex'];
+  $telephone  = $_POST['telephone'];
+  $created_at = date("Y-m-d");
 
   if(isset($_FILES['image']['name']))
   {
@@ -129,6 +130,9 @@ if(isset($_POST['submit']))
   {
     $_SESSION['add_fail_c'] = "<div class='success'>Please fill all required fields!</div>";
     die();
+  }
+  if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
+    $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
   }
   if ($password !== $password2)
   {
