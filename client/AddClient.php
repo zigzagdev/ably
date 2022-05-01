@@ -72,10 +72,10 @@ include('../account/partials/ClientHeader.tpl');
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
               PhoneNumber
             </b>
-            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
+            <input type="tel" name="telephone"  size="20" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -85,7 +85,7 @@ include('../account/partials/ClientHeader.tpl');
             <input type="file" name="image" required>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
+          <li style="list-style: none;  margin:17px 0 5px 250px">
             <input type="submit" name="submit" value="Add an account" class="btn-secondary">
           </li>
         </form>
@@ -95,6 +95,7 @@ include('../account/partials/ClientHeader.tpl');
 </html>
 
 <?php
+
 if(isset($_POST['submit']))
 {
   $name       = $_POST['name'];
@@ -221,4 +222,5 @@ if(isset($_POST['submit']))
     header("location: http://localhost:8001/client/AddClient.php");
   }
 }
+include "./partials/FooterEd.tpl";
 ?>
