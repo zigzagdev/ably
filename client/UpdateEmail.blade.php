@@ -25,8 +25,8 @@ if(isset($_GET['form_id']))
 <html>
   <head>
     <title>UpdateEmail</title>
-    <link rel="stylesheet" href="../../css/Account.css">
-    <link rel="stylesheet" href="../../css/Forms.css">
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
     <section class="food-search">
@@ -101,7 +101,7 @@ if(isset($_GET['form_id']))
   else
   {
     $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-    $url = "http://localhost:8001/form/UpdateEmailForm.blade.php?form_id=$form_id";
+    $url = "http://localhost:8001/form/UpdateEmail.blade.php?form_id=$form_id";
     header('Location:' .$url,true , 401);
   }
 }
