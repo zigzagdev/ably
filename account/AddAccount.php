@@ -107,7 +107,7 @@ include('partials/Header.blade.php');
     }
 
     if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
-      $_SESSION['add_fail'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your Content in 10~150 words. !</div>";
       header('location:/account/AddAccount.php');
       die();
     }
@@ -124,6 +124,28 @@ include('partials/Header.blade.php');
       header('location:/account/AddAccount.php');
       die();
     }
+
+    $sql = "SELECT 
+                   tbl_account.password , tbl_client.password
+              FROM 
+                   tbl_account 
+            LEFT OUTER JOIN 
+                   tbl_client 
+              ON 
+                   tbl_account.password= tbl_client.password
+            WHERE 
+                    tbl_account.password='$password'
+              OR 
+                    tbl_client.password='$password'
+           ";
+    $rec  = mysqli_query($connect,$sql);
+    $rec2 = mysqli_num_rows($rec);
+    if ($rec2 > 0) {
+      $_SESSION['add_fail'] =  "<div class='success'>Password already exists</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
 
     $sql = "SELECT 
                    tbl_account.email , tbl_client.email 
