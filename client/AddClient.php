@@ -95,7 +95,6 @@ include('../account/partials/ClientHeader.tpl');
 </html>
 
 <?php
-
 if(isset($_POST['submit']))
 {
   $name       = $_POST['name'];
@@ -131,9 +130,20 @@ if(isset($_POST['submit']))
     $_SESSION['add_fail_c'] = "<div class='success'>Please fill all required fields!</div>";
     die();
   }
+
   if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
     $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
+    die();
   }
+  if( 4 > mb_strlen($name, 'UTF-8') || 50 < mb_strlen($name, 'UTF-8') ) {
+    $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
+    die();
+  }
+  if( 4 > mb_strlen($email, 'UTF-8') || 50 < mb_strlen($email, 'UTF-8') ) {
+    $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
+    die();
+  }
+
   if ($password !== $password2)
   {
     $_SESSION['add_fail_c'] = "<div class='success'>Passwords should the same one.!</div>";
@@ -161,6 +171,7 @@ if(isset($_POST['submit']))
     $_SESSION['add_fail_c'] = "<div class='success'>User already exists</div>";
     die();
   }
+
   $sqltel = " SELECT telephone FROM tbl_client ";
 
   $rectel  = mysqli_query($connect,$sqltel);
@@ -212,5 +223,4 @@ if(isset($_POST['submit']))
     header("location: http://localhost:8001/client/AddClient.php");
   }
 }
-include('../account/partials/ClientFooter.tpl');
 ?>
