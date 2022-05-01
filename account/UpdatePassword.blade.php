@@ -1,22 +1,10 @@
 <?php
 include ('./partials/LoginAccount.blade.php');
 
-session_start();
-
-define('SITEURL', 'localhost:8001');
-define('LOCALHOST', '127.0.0.1');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_NAME', 'overcome');
-
-$connect = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error($connect));
-$db_select = mysqli_select_db($connect, DB_NAME) or die(mysqli_error($connect));
-date_default_timezone_set('Asia/Tokyo');
-
   if(isset($_GET['account_id']))
   {
     $account_id = $_GET['account_id'];
-    $sql = "SELECT * FROM tbl_account WHERE account_id=$account_id";
+    $sql = "SELECT password, account_id FROM tbl_account WHERE account_id=$account_id";
     $rec = mysqli_query($connect, $sql);
 
     if ($rec == true)
@@ -26,10 +14,6 @@ date_default_timezone_set('Asia/Tokyo');
       {
         $row = mysqli_fetch_assoc($rec);
         $account_id  = $row['account_id'];
-        $user_name   = $row['user_name'];
-        $email       = $row['email'];
-        $content     = $row['content'];
-        $image_name  = $row['image_name'];
       } else
       {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -98,6 +82,12 @@ date_default_timezone_set('Asia/Tokyo');
   {
     $password  = md5($_POST['password']);
     $password2 = md5($_POST['password2']);
+    $user_name  = $_GET['user_name'];
+    $image_name = $_GET['image_name'];
+    $email      = $_GET['email'];
+    $content    = $_GET['content'];
+    $account_id = $_GET['account_id'];
+
     if ($password !== $password)
     {
       $error_message = 'Passwords should the same one. !';
@@ -113,21 +103,8 @@ date_default_timezone_set('Asia/Tokyo');
       die();
     }
 
-    $user_name  = $_GET['user_name'];
-    $image_name = $_GET['image_name'];
-    $email      = $_GET['email'];
-    $content    = $_GET['content'];
-    $account_id = $_GET['account_id'];
 
-
-    $sql = "UPDATE tbl_account SET
-                   user_name='$user_name'
-                   ,image_name='$image_name'
-                   ,email='$email'
-                   ,content='$content'
-                   ,password='$password'
-             WHERE
-                   account_id=$account_id ";
+    $sql = "UPDATE tbl_account SET password='$password' WHERE account_id=$account_id ";
     $rec = mysqli_query($connect, $sql);
 
     if($rec == true)
