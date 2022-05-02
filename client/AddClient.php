@@ -103,37 +103,30 @@ if(isset($_POST['submit']))
   $password   = md5($_POST['password']);
   $password2  = md5($_POST['password2']);
   $email      = $_POST['email'];
-  $content    = $_POST['content'];
   $sex        = $_POST['sex'];
   $telephone  = $_POST['telephone'];
-  $created_at = date("Y-m-d");
 
   if(isset($_FILES['image']['name']))
   {
-    $image_name = $_FILES['image']['name'];
-    if($image_name != "")
+    $image = $_FILES['image']['name'];
+    if($image != "")
     {
       $src = $_FILES['image']['tmp_name'];
-      $dst ="../images/profile/".$image_name;
+      $dst ="../images/profile/".$image;
       $upload = move_uploaded_file($src, $dst);
       if ($upload == false)
       {
-        $_SESSION['upload'] = "<div class='error'>Failed to Upload Image.</div>";
+        $_SESSION['add_fail_c'] = "<div class='error'>Failed to Upload Image.</div>";
         header('location:/client/AddClient.php');
         die();
       }
     }
   } else
   {
-    $image_name= "";
+    $image = "";
   }
 
 //  correct words validation
-  if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 10~150 words. !</div>";
-    header('location:/client/AddClient.php');
-    die();
-  }
   if( 4 > mb_strlen($name, 'UTF-8') || 50 < mb_strlen($name, 'UTF-8') ) {
     $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header('location:/client/AddClient.php');
@@ -239,9 +232,8 @@ if(isset($_POST['submit']))
           SET 
             name        = '$name'
             , password  = '$password'
-            ,image_name = '$image_name'
+            ,image      = '$image'
             ,email      = '$email'
-            ,content    = '$content' 
             ,sex        = '$sex'
             ,telephone  = '$telephone'
            

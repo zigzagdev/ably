@@ -373,3 +373,13 @@ footer {
     text-decoration: underline ;
     background-color: red;
 }
+
+.client_update{
+    text-decoration: none;
+    color: darkblue;
+}
+.client_update:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+    background-color: darkblue;
+}
