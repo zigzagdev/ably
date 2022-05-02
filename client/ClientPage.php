@@ -1,6 +1,5 @@
 <?php
-include "./partials/HeaderEd.tpl";
-include "../config/Constants.blade.php";
+include "./partials/HeaderEd.blade.php";
 
   if(isset($_SESSION['cli_add']))
   {
@@ -45,7 +44,7 @@ include "../config/Constants.blade.php";
   </head>
   <body>
     <div style="margin: 0 190px">
-      <div class="mainaccount">
+      <div class="mainaccount" style="background-color: lightgray">
         <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
           <a href="./UpdateImage.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none">
             <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" style="border-radius: 50%; margin-right: 160px; vertical-align: center">
