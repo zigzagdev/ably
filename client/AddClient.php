@@ -155,6 +155,28 @@ if(isset($_POST['submit']))
 
 //  select the email and phonenumber whether duplicated it
   $sql = "SELECT 
+                   tbl_account.password , tbl_client.password
+              FROM 
+                   tbl_account 
+            LEFT OUTER JOIN 
+                   tbl_client 
+              ON 
+                   tbl_account.password= tbl_client.password
+            WHERE 
+                    tbl_account.password='$password'
+              OR 
+                    tbl_client.password='$password'
+           ";
+  $rec  = mysqli_query($connect,$sql);
+  $rec2 = mysqli_num_rows($rec);
+  if ($rec2 > 0) {
+    $_SESSION['add_fail_c'] =  "<div class='success'>Password already exists</div>";
+    header('location:/client/AddClient.php');
+    die();
+  }
+
+
+  $sql_1 = "SELECT 
                    tbl_account.email , tbl_client.email 
               FROM 
                    tbl_account 
@@ -162,17 +184,20 @@ if(isset($_POST['submit']))
                    tbl_client 
               ON 
                    tbl_account.email= tbl_client.email
+            WHERE 
+                    tbl_account.email='$email'
+              OR 
+                    tbl_client.email='$email'
            ";
-  $rec  = mysqli_query($connect,$sql);
-  $rec2 = mysqli_num_rows($rec);
-  if ($rec2 >= 1) {
-    $_SESSION['add_fail_c'] = "<div class='success'>User already exists</div>";
-
+  $rec_1  = mysqli_query($connect,$sql_1);
+  $rec_2 = mysqli_num_rows($rec_1);
+  if ($rec_2 > 0) {
+    $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
     header('location:/client/AddClient.php');
     die();
   }
 
-  $sqltel = " SELECT telephone FROM tbl_client ";
+  $sqltel = " SELECT telephone FROM tbl_client WHERE telephone='$telephone'";
 
   $rectel  = mysqli_query($connect,$sqltel);
   $rec2tel = mysqli_num_rows($rectel);

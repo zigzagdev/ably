@@ -147,7 +147,7 @@ include('partials/Header.blade.php');
     }
 
 
-    $sql = "SELECT 
+    $sql_1 = "SELECT 
                    tbl_account.email , tbl_client.email 
               FROM 
                    tbl_account 
@@ -160,9 +160,9 @@ include('partials/Header.blade.php');
               OR 
                     tbl_client.email='$email'
            ";
-    $rec  = mysqli_query($connect,$sql);
-    $rec2 = mysqli_num_rows($rec);
-    if ($rec2 > 0) {
+    $rec_1  = mysqli_query($connect,$sql_1);
+    $rec_2 = mysqli_num_rows($rec_1);
+    if ($rec_2 > 0) {
       $_SESSION['add_fail'] =  "<div class='success'>User already exists</div>";
       header('location:/account/AddAccount.php');
       die();
