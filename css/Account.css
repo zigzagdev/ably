@@ -383,3 +383,14 @@ footer {
     text-decoration: underline;
     background-color: darkblue;
 }
+
+.c_inner {
+    display:inline-block;
+    padding: 36px 5px 0 5px;
+    vertical-align: top;
+}
+
+.pencil {
+    width: 40px;
+    height: 30px;
+}

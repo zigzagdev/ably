@@ -43,7 +43,7 @@ include "./partials/HeaderEd.blade.php";
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 190px">
+    <div style="margin: 0 140px">
       <div class="mainaccount" style="background-color: lightgray">
         <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
           <a href="./UpdateImage.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none">
@@ -56,6 +56,11 @@ include "./partials/HeaderEd.blade.php";
             UserName
           </b>
           <b style="font-size: 20px"><?php echo $name ?></b>
+          <a href="./UpdateName.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none">
+            <b style="float: right; margin-right: 40px">
+              <img src="../images/pencil.png" style="width: 40px; height: 30px">
+            </b>
+          </a>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -63,6 +68,11 @@ include "./partials/HeaderEd.blade.php";
             Email
           </b>
           <b style="font-size: 20px"><?php echo $email ?></b>
+          <a href="./UpdateEmail.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none">
+            <b style="float: right; margin-right: 40px;">
+              <img src="../images/pencil.png" class="pencil">
+            </b>
+          </a>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
