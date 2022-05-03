@@ -44,7 +44,6 @@ include('../account/partials/HeaderInfo.blade.php');
             </li>
           </fieldset>
           <input type="hidden" name="lesson_id" value="<?php echo $lesson_id; ?>">
-          <input type="hidden" name="form_id" value="<?php echo $form_id; ?>">
           <input type="submit" name="submit" value="送信" class="btn btn-third" style="margin-top: 40px">
         </form>
       </div>

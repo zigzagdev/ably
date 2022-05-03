@@ -50,7 +50,7 @@ include "./partials/HeaderEd.blade.php";
           <a href="./UpdateImage.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none;">
             <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" class="c_img">
             <b style="font-size: 20px;width:70px;margin-right:10px; vertical-align: 70%" class="client_update">
-              Manage your Account
+              Account
             </b>
             <p style="margin-left: 30px; line-height: 1px">Edit</p>
           </a>
