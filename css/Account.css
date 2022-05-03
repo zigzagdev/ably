@@ -394,3 +394,9 @@ footer {
     width: 40px;
     height: 30px;
 }
+
+.c_img {
+    border-radius: 50%;
+    margin-right: 200px;
+    vertical-align: center;
+}
