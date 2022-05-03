@@ -79,7 +79,7 @@ include('../account/partials/HeaderInfo.blade.php');
   $host = 'localhost';
   $username = 'root';
   $pass = 'root';
-  $dbname = 'overcome';
+  $dbname = 'ably';
 
   $sql3 = " DELETE from tbl_form WHERE form_id= '$form_id'" ;
   $rec3=mysqli_query($connect,$sql3);

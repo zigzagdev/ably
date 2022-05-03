@@ -11,5 +11,5 @@ if (isset($_COOKIE["PHPSESSID"])) {
 
 session_destroy();
 $_SESSION['ac_logout'] = "<div class='success'>Logout Successful.</div>";
-header('Location:Login.blade.php');
+header('Location:BIndex.blade.php');
 ?>

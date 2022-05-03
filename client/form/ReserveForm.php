@@ -58,7 +58,7 @@
   $host = 'localhost';
   $username = 'root';
   $pass = 'root';
-  $dbname = 'overcome';
+  $dbname = 'ably';
 
   if(isset($_POST['submit']))
     {

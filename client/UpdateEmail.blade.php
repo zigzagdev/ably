@@ -56,7 +56,7 @@ if(isset($_GET['form_id']))
   $host = 'localhost';
   $username = 'root';
   $pass = 'root';
-  $dbname = 'overcome';
+  $dbname = 'ably';
 
 
   if(isset($_POST['submit']))

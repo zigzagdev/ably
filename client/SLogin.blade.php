@@ -65,6 +65,8 @@ if(isset($_POST['submit']))
   {
     $row = mysqli_fetch_assoc($rec);
     $client_id  = $row['client_id'];
+    $name       = $row['name']
+
     $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
     $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
     $_SESSION['email'] = $email;

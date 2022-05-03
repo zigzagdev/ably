@@ -75,7 +75,7 @@ include ('./partials/LoginAccount.blade.php');
   $host = 'localhost';
   $username = 'root';
   $pass = 'root';
-  $dbname = 'overcome';
+  $dbname = 'ably';
   $error_message = [];
 
   if(isset($_POST['submit']))
