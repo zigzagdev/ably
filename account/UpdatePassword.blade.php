@@ -1,6 +1,12 @@
 <?php
 include ('./partials/LoginAccount.blade.php');
 
+  if(isset($_SESSION['add_fail_up']))
+  {
+    echo  $_SESSION['add_fail_up'];
+    unset($_SESSION['add_fail_up']);
+  }
+
   if(isset($_GET['account_id']))
   {
     $account_id = $_GET['account_id'];
@@ -75,31 +81,33 @@ include ('./partials/LoginAccount.blade.php');
   $host = 'localhost';
   $username = 'root';
   $pass = 'root';
-  $dbname = 'ably';
+  $dbname = 'overcome';
   $error_message = [];
 
   if(isset($_POST['submit']))
   {
-    $password  = md5($_POST['password']);
-    $password2 = md5($_POST['password2']);
-    $user_name  = $_GET['user_name'];
-    $image_name = $_GET['image_name'];
-    $email      = $_GET['email'];
-    $content    = $_GET['content'];
+    $password   = md5($_POST['password']);
+    $password2  = md5($_POST['password2']);
     $account_id = $_GET['account_id'];
 
-    if ($password !== $password)
+    if ($password != $password2)
     {
-      $error_message = 'Passwords should the same one. !';
+      $_SESSION['add_fail_up'] = "<div class='error'>Passwords should the same one !</div>";
+      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
+      header('Location:' .$url,true , 401);
       die();
     }
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-      $error_message[] = "パスワードの形式が正しくありません。";
+      $_SESSION['add_fail_up'] = "<div class='error'>Password form isn't right form !</div>";
+      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
+      header('Location:' .$url,true , 401);
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-      $error_message[] = "確認用パスワードの形式が正しくありません。";
+      $_SESSION['add_fail_up'] = "<div class='error'>Confirm Password form isn't right form !</div>";
+      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
+      header('Location:' .$url,true , 401);
       die();
     }
 

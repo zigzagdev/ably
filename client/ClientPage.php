@@ -12,6 +12,11 @@ include "./partials/HeaderEd.blade.php";
     echo  $_SESSION['s_login'];
     unset($_SESSION['s_login']);
   }
+  if(isset($_SESSION['order_tel']))
+  {
+    echo  $_SESSION['order_tel'];
+    unset($_SESSION['order_tel']);
+  }
 
   $client_id = $_GET['client_id'];
   $sql = "SELECT * FROM tbl_client where client_id=$client_id";

@@ -10,7 +10,7 @@ $client_id = $_GET['client_id']
   <body style="background-color: ghostwhite">
     <div class="infooutline">
       <div class="logo">
-        <h1 class="hchar" style="color: #125EAE">Learn here..!</h1>
+        <h1 class="hchar" style="color: #125EAE">Learn at here..!</h1>
       </div>
       <div class="account text-center">
         <div class="wrapper">
