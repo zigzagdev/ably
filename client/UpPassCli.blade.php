@@ -1,16 +1,16 @@
 <?php
 include ('./partials/HeaderEd.blade.php');
 
-if(isset($_SESSION['add_fail_up']))
+if(isset($_SESSION['add_fail_up_c']))
 {
-  echo  $_SESSION['add_fail_up'];
-  unset($_SESSION['add_fail_up']);
+  echo  $_SESSION['add_fail_up_c'];
+  unset($_SESSION['add_fail_up_c']);
 }
 
-if(isset($_GET['account_id']))
+if(isset($_GET['client_id']))
 {
-  $account_id = $_GET['account_id'];
-  $sql = "SELECT password, account_id FROM tbl_account WHERE account_id=$account_id";
+  $client_id = $_GET['client_id'];
+  $sql = "SELECT password FROM tbl_client WHERE client_id=$client_id";
   $rec = mysqli_query($connect, $sql);
 
   if ($rec == true)
@@ -36,13 +36,6 @@ if(isset($_GET['account_id']))
 <body>
 <div style="margin: 0 230px">
   <div class="mainaccount">
-    <?php if( !empty($error_message) ): ?>
-    <ul class="error_message">
-      <?php foreach( $error_message as $value ): ?>
-      <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
-      <?php endforeach; ?>
-    </ul>
-    <?php endif; ?>
     <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Password</h1>
     <form action="" method="post" enctype="multipart/form-data" style="">
       <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -78,52 +71,47 @@ if(isset($_GET['account_id']))
 </html>
 
 <?php
-$host = 'localhost';
-$username = 'root';
-$pass = 'root';
-$dbname = 'overcome';
-$error_message = [];
 
 if(isset($_POST['submit']))
 {
-  $password   = md5($_POST['password']);
-  $password2  = md5($_POST['password2']);
-  $account_id = $_GET['account_id'];
+  $password  = md5($_POST['password']);
+  $password2 = md5($_POST['password2']);
+  $client_id = $_GET['client_id'];
 
   if ($password != $password2)
   {
-    $_SESSION['add_fail_up'] = "<div class='error'>Passwords should the same one !</div>";
-    $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
+    $_SESSION['add_fail_up_c'] = "<div class='error'>Passwords should the same one !</div>";
+    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
+    header('Location:' .$url, true , 401);
     die();
   }
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-    $_SESSION['add_fail_up'] = "<div class='error'>Password form isn't right form !</div>";
-    $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
+    $_SESSION['add_fail_up_c'] = "<div class='error'>Password form isn't right form !</div>";
+    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
+    header('Location:' .$url, true , 401);
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-    $_SESSION['add_fail_up'] = "<div class='error'>Confirm Password form isn't right form !</div>";
-    $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-    header('Location:' .$url,true , 401);
+    $_SESSION['add_fail_up_c'] = "<div class='error'>Confirm Password form isn't right form !</div>";
+    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
+    header('Location:' .$url, true , 401);
     die();
   }
 
 
-  $sql = "UPDATE tbl_account SET password='$password' WHERE account_id=$account_id ";
+  $sql = "UPDATE tbl_client SET password='$password' WHERE client_id=$client_id ";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == true)
   {
-    $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password was Updated.</div>";
-    $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
+    $_SESSION['change_pwd_c'] = "<div class='success text-center'>Your Password was Updated.</div>";
+    $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
     header('Location:' .$url,true , 302);
   } else
   {
     $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
-    $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
+    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
     header('Location:' .$url,true , 401);
   }
 }

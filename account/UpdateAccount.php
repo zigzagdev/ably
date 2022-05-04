@@ -19,7 +19,7 @@ include('partials/LoginAccount.blade.php');
       $count = mysqli_num_rows($rec);
       if ($count==1)
       {
-        $row           = mysqli_fetch_assoc($rec);
+        $row = mysqli_fetch_assoc($rec);
         $account_id    = $row['account_id'];
         $user_name     = $row['user_name'];
         $current_image = $row['image_name'];

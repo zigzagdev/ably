@@ -18,6 +18,12 @@ include "./partials/HeaderEd.blade.php";
     unset($_SESSION['order_tel']);
   }
 
+  if(isset($_SESSION['change_pwd_c']))
+  {
+    echo  $_SESSION['change_pwd_c'];
+    unset($_SESSION['change_pwd_c']);
+  }
+
   $client_id = $_GET['client_id'];
   $sql = "SELECT * FROM tbl_client where client_id=$client_id";
   $rec = mysqli_query($connect, $sql);
@@ -52,6 +58,7 @@ include "./partials/HeaderEd.blade.php";
     <div style="margin: 0 140px">
       <div class="mainaccount" style="background-color: lightgray">
         <li style="list-style: none;  margin:47px 10px 7px 30px; padding-top: 20px">
+          <form action="" method="post" enctype="multipart/form-data">
           <a href="./UpdateImage.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none;">
             <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" class="c_img">
             <b style="font-size: 20px;width:70px;margin-right:10px; vertical-align: 70%" class="client_update">
@@ -59,6 +66,7 @@ include "./partials/HeaderEd.blade.php";
             </b>
             <p style="margin-left: 30px; line-height: 1px">Edit</p>
           </a>
+          </form>
         </li>
         <li style="list-style: none;  margin:37px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
