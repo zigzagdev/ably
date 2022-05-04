@@ -58,10 +58,6 @@ include('../account/partials/HeaderInfo.blade.php');
 </html>
 
 <?php
-  $host = 'localhost';
-  $username = 'root';
-  $pass = 'root';
-  $dbname = 'overcome';
 
   if(isset($_POST['submit']))
   {
