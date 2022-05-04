@@ -86,7 +86,7 @@ include('../account/partials/HeaderInfo.blade.php');
     {
       $_SESSION['order_f_p'] = "<div class='success text-center'>PhoneNumber Update Failed.</div>";
       $url = "http://localhost:8001/form/UpdatePhoneNumber.blade.php?client_id=$client_id";
-      header('Location:' .$url,true , 401);
+      header('Location:' .$url, true , 401);
     }
   }
 include('../account/partials/ClientFooter.tpl');
