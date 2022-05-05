@@ -88,21 +88,18 @@ include ('./partials/LoginAccount.blade.php');
     if ($password != $password2)
     {
       $_SESSION['add_fail_up'] = "<div class='error'>Passwords should the same one !</div>";
-      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header("http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id");
       die();
     }
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
       $_SESSION['add_fail_up'] = "<div class='error'>Password form isn't right form !</div>";
-      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header("http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id");
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
       $_SESSION['add_fail_up'] = "<div class='error'>Confirm Password form isn't right form !</div>";
-      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header("http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id");
       die();
     }
 
