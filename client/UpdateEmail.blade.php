@@ -1,4 +1,5 @@
-<?php  include('../account/partials/HeaderInfo.blade.php');
+<?php
+include('./partials/HeaderEd.blade.php');
 
   if(isset($_SESSION['order_f']))
   {
@@ -16,7 +17,6 @@ if(isset($_GET['client_id']))
     if ($count == 1) {
       $row       = mysqli_fetch_assoc($rec2);
       $email     = $row['email'];
-      $client_id = $row['client_id'];
     } else {
       header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
@@ -96,7 +96,7 @@ if(isset($_GET['client_id']))
   if($rec3 == true)
   {
     $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-    $url = "http://localhost:8001/client/Client.php?client_id=$client_id";
+    $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
     header('Location:' .$url,true , 302);
   }
   else
