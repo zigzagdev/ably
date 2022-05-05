@@ -106,9 +106,8 @@ include('partials/LoginAccount.blade.php');
         $upload           = move_uploaded_file($source_path, $destination_path);
         if($upload!=true)
         {
-          $_SESSION['upload'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Image. </div>";
-          $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
-          header('Location:'.$url,true , 401);
+          $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Upload Image. </div>";
+          header("Location:http://localhost:8001/account/UpdateAccount.php?account_id=$account_id");
           die();
         }
         if($current_image!="")
@@ -117,9 +116,8 @@ include('partials/LoginAccount.blade.php');
           $remove      = unlink($remove_path);
           if($remove==false)
           {
-            $_SESSION['failed-remove'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to remove current Image.</div>";
-            $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
-            header('Location:' .$url,true , 401);
+            $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to remove current Image.</div>"
+            header("Location:http://localhost:8001/account/UpdateAccount.php?account_id=$account_id");
             die();
           }
         }
@@ -142,14 +140,13 @@ include('partials/LoginAccount.blade.php');
 
     if($rec==true)
     {
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
       $_SESSION['update'] = "<div class='success'>Account Updated Successfully.</div>";
-      header('Location:' .$url,true , 302);
+      header("Location:http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
+      die();
     } else
     {
       $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to Update Account.</div>";
-      $url = "http://localhost:8001/account/UpdateAccount.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header("Location:http://localhost:8001/account/UpdateAccount.php?account_id=$account_id");
       die();
     }
   }
