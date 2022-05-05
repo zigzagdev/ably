@@ -66,7 +66,7 @@ if(isset($_GET['client_id']))
     $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
     if(preg_match($contents_mail,$email))
     {
-      print 'write down your email correctly ! ';
+      print 'write down your email correctly !';
     }
 
     $sql_1 = "SELECT
@@ -104,7 +104,7 @@ if(isset($_GET['client_id']))
 
   if($rec3 == true)
   {
-    $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
+    $_SESSION['order'] = "<div class='success text-center'>Your Email Updated.</div>";
     header("http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     die();
   }
