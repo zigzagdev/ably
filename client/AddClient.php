@@ -7,11 +7,6 @@ include "../config/Constants.blade.php";
     echo  $_SESSION['cli_fal'];
     unset($_SESSION['cli_fal']);
   }
-  if(isset($_SESSION['add_fail_c']))
-  {
-    echo  $_SESSION['add_fail_c'];
-    unset($_SESSION['add_fail_c']);
-  }
 ?>
 
 <html>
@@ -116,7 +111,7 @@ if(isset($_POST['submit']))
       $upload = move_uploaded_file($src, $dst);
       if ($upload == false)
       {
-        $_SESSION['add_fail_c'] = "<div class='error'>Failed to Upload Image.</div>";
+        $_SESSION['cli_add'] = "<div class='error'>Failed to Upload Image.</div>";
         header('location:/client/AddClient.php');
         die();
       }
@@ -128,12 +123,12 @@ if(isset($_POST['submit']))
 
 //  correct words validation
   if( 4 > mb_strlen($name, 'UTF-8') || 50 < mb_strlen($name, 'UTF-8') ) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
+    $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header('location:/client/AddClient.php');
     die();
   }
   if( 4 > mb_strlen($email, 'UTF-8') || 50 < mb_strlen($email, 'UTF-8') ) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
+    $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header('location:/client/AddClient.php');
     die();
   }
@@ -141,29 +136,38 @@ if(isset($_POST['submit']))
 //  password correctly
   if ($password !== $password2)
   {
-    $_SESSION['add_fail_c'] = "<div class='success'>Passwords should the same one.!</div>";
+    $_SESSION['cli_fal'] = "<div class='success'>Passwords should the same one.!</div>";
     header('location:/client/AddClient.php');
     die();
   }
 
 //  select the email and phonenumber whether duplicated it
   $sql = "SELECT 
-                   tbl_account.password , tbl_client.password
-              FROM 
-                   tbl_account 
-            LEFT OUTER JOIN 
-                   tbl_client 
-              ON 
-                   tbl_account.password= tbl_client.password
+              tbl_account.password
+            FROM 
+              tbl_account 
+          LEFT JOIN 
+              tbl_client 
+            ON 
+              tbl_account.password= tbl_client.password
             WHERE 
-                    tbl_account.password='$password'
-              OR 
-                    tbl_client.password='$password'
+              tbl_account.password='$password'
+          UNION   
+          SELECT 
+              tbl_client.password
+            FROM 
+              tbl_account
+          RIGHT JOIN 
+              tbl_client
+            ON 
+              tbl_account.password= tbl_client.password
+          WHERE 
+              tbl_client.password='$password'
            ";
   $rec  = mysqli_query($connect,$sql);
   $rec2 = mysqli_num_rows($rec);
   if ($rec2 > 0) {
-    $_SESSION['add_fail_c'] =  "<div class='success'>Password already exists</div>";
+    $_SESSION['add_fail_client'] =  "<div class='success'>Password already exists</div>";
     header('location:/client/AddClient.php');
     die();
   }
@@ -187,7 +191,6 @@ if(isset($_POST['submit']))
   if ($rec_2 > 0) {
     $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
     header('location:/client/AddClient.php');
-    die();
   }
 
   $sqltel = " SELECT telephone FROM tbl_client WHERE telephone='$telephone'";
@@ -195,35 +198,32 @@ if(isset($_POST['submit']))
   $rectel  = mysqli_query($connect,$sqltel);
   $rec2tel = mysqli_num_rows($rectel);
   if ($rec2tel >= 1) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Your PhoneNumber was already registered.!</div>";
-    header('location:/client/AddClient.php');
-    die();
+    $_SESSION['cli_fal'] = "<div class='success'>Your PhoneNumber was already registered.!</div>";
+    header("location: http://localhost:8001/client/AddClient.php");
   }
 
 //  preg_match
   if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Only English is valid.!</div>";
-    header('location:/client/AddClient.php');
-    die();
+    $_SESSION['cli_fal'] = "<div class='success'>Only English is valid.!</div>";
+    header("location: http://localhost:8001/client/AddClient.php");
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Password format is not correctly !</div>";
-    header('location:/client/AddClient.php');
-    die();
+    $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
+    header("location: http://localhost:8001/client/AddClient.php");
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-    $_SESSION['add_fail_c'] = "<div class='success'>Password format is not correctly !</div>";
-    header('location:/client/AddClient.php');
+    $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
+    header("location: http://localhost:8001/client/AddClient.php");
     die();
   }
 
   $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
   if(preg_match($tel_boolean,$telephone))
   {
-    $_SESSION['add_fail_c'] = "<div class='success'>Write down your phone number correctly !</div>";
-    header('location:/client/AddClient.php');
+    $_SESSION['cli_fal'] = "<div class='success'>Write down your phone number correctly !</div>";
+    header("location: http://localhost:8001/client/AddClient.php");
     die();
   }
 
@@ -243,8 +243,8 @@ if(isset($_POST['submit']))
   if($rec == TRUE)
   {
     $_SESSION['cli_add'] = "<div class='success'>Your account Added Successfully.</div>";
-    $id = mysqli_insert_id($connect);
-    header("location: http://localhost:8001/client/ClientPage.php?id=$id");
+    $client_id = mysqli_insert_id($connect);
+    header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
   } else
   {
     $_SESSION['cli_fal'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";

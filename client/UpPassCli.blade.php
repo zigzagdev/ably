@@ -78,6 +78,27 @@ if(isset($_POST['submit']))
   $password2 = md5($_POST['password2']);
   $client_id = $_GET['client_id'];
 
+  $sql = "SELECT
+                   tbl_account.password, tbl_client.password
+              FROM
+                   tbl_account
+            LEFT OUTER JOIN
+                   tbl_client
+              ON
+                   tbl_account.password = tbl_client.password
+            WHERE
+                    tbl_account.password = '$password'
+              OR
+                    tbl_client.password = '$password'
+           ";
+  $rec  = mysqli_query($connect,$sql);
+  $rec2 = mysqli_num_rows($rec);
+  if ($rec2 > 0) {
+    $_SESSION['add_fail_up_c'] =  "<div class='success'>Password already exists</div>";
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
+    die();
+  }
+
   if ($current != $nowpassword)
   {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Your now Password isn't match !</div>";
@@ -104,10 +125,10 @@ if(isset($_POST['submit']))
   }
 
 
-  $sql = "UPDATE tbl_client SET password='$password' WHERE client_id=$client_id ";
-  $rec = mysqli_query($connect, $sql);
+  $upsql = "UPDATE tbl_client SET password='$password' WHERE client_id=$client_id ";
+  $uprec = mysqli_query($connect, $upsql);
 
-  if($rec == true)
+  if($uprec == true)
   {
     $_SESSION['change_pwd_c'] = "<div class='success text-center'>Your Password was Updated.</div>";
     $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";

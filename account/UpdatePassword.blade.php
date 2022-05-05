@@ -78,10 +78,6 @@ include ('./partials/LoginAccount.blade.php');
 </html>
 
 <?php
-  $host = 'localhost';
-  $username = 'root';
-  $pass = 'root';
-  $dbname = 'overcome';
   $error_message = [];
 
   if(isset($_POST['submit']))

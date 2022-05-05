@@ -146,7 +146,6 @@ include('partials/Header.blade.php');
       die();
     }
 
-
     $sql_1 = "SELECT 
                    tbl_account.email , tbl_client.email 
               FROM 
