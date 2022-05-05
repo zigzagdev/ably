@@ -63,11 +63,12 @@ include('./partials/HeaderEd.blade.php');
   {
     $telephone = $_POST['telephone'];
     $tel_boolean="/^0[0-9]{1,4}-[0-9]{1,4}-[0-9]{3,4}\z/";
-    if(preg_match($tel_boolean,$telephone))
+
+    if(preg_match($telephone,$tel_boolean))
     {
-      $_SESSION['order_f_p'] = "<div class='success text-center'>Form Update Failed.</div>";
+      $_SESSION['order_f_p'] = "<div class='success text-center'>TelePhone Number Failed.</div>";
       $url = "http://localhost:8001/client/UpdatePhoneNumber.blade.php?client_id=$client_id";
-      header('Location:' .$url, true , 401);
+      header('Location:' .$url, true, 401);
     }
 
     $sql3 = "UPDATE tbl_client SET telephone = '$telephone'WHERE client_id= '$client_id'";
@@ -77,12 +78,12 @@ include('./partials/HeaderEd.blade.php');
     {
       $_SESSION['order_tel'] = "<div class='success text-center'>PhoneNumber Updated.</div>";
       $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
-      header('Location:' .$url, true , 302);
+      header('Location:' .$url, true, 302);
     } else
     {
       $_SESSION['order_f_p'] = "<div class='success text-center'>PhoneNumber Update Failed.</div>";
       $url = "http://localhost:8001/form/UpdatePhoneNumber.blade.php?client_id=$client_id";
-      header('Location:' .$url, true , 401);
+      header('Location:' .$url, true, 401);
     }
   }
 include('../account/partials/ClientFooter.tpl');
