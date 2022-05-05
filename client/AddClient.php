@@ -174,17 +174,26 @@ if(isset($_POST['submit']))
 
 
   $sql_1 = "SELECT 
-                   tbl_account.email , tbl_client.email 
+                tbl_account.email
               FROM 
-                   tbl_account 
-            LEFT OUTER JOIN 
-                   tbl_client 
-              ON 
-                   tbl_account.email= tbl_client.email
-            WHERE 
-                    tbl_account.email='$email'
-              OR 
-                    tbl_client.email='$email'
+                tbl_account 
+             LEFT JOIN 
+                 tbl_client 
+               ON 
+                 tbl_account.email = tbl_client.email
+             WHERE 
+                 tbl_account.email ='$email'
+             UNION   
+             SELECT 
+                 tbl_client.email
+               FROM 
+                 tbl_account
+             RIGHT JOIN 
+                 tbl_client
+               ON 
+                 tbl_account.email = tbl_client.email
+               WHERE 
+                 tbl_client.email = '$email'
            ";
   $rec_1  = mysqli_query($connect,$sql_1);
   $rec_2 = mysqli_num_rows($rec_1);
@@ -198,7 +207,7 @@ if(isset($_POST['submit']))
   $rectel  = mysqli_query($connect,$sqltel);
   $rec2tel = mysqli_num_rows($rectel);
   if ($rec2tel >= 1) {
-    $_SESSION['cli_fal'] = "<div class='success'>Your PhoneNumber was already registered.!</div>";
+    $_SESSION['cli_fal'] = "<div class='success'>PhoneNumber was already registered.!</div>";
     header("location: http://localhost:8001/client/AddClient.php");
   }
 
@@ -220,7 +229,7 @@ if(isset($_POST['submit']))
   }
 
   $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
-  if(preg_match($tel_boolean,$telephone))
+  if(preg_match($tel_boolean, $telephone))
   {
     $_SESSION['cli_fal'] = "<div class='success'>Write down your phone number correctly !</div>";
     header("location: http://localhost:8001/client/AddClient.php");
@@ -231,12 +240,11 @@ if(isset($_POST['submit']))
             tbl_client
           SET 
             name        = '$name'
-            , password  = '$password'
+            ,password   = '$password'
             ,image      = '$image'
             ,email      = '$email'
             ,sex        = '$sex'
             ,telephone  = '$telephone'
-           
           ";
 
   $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
