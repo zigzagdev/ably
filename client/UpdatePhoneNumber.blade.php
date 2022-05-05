@@ -1,5 +1,5 @@
 <?php
-include('../account/partials/HeaderInfo.blade.php');
+include('./partials/HeaderEd.blade.php');
 
   if(isset($_SESSION['order_f_p']))
   {
