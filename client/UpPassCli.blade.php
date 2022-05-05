@@ -19,7 +19,7 @@ if(isset($_GET['client_id']))
     if ($count == 1)
     {
       $row = mysqli_fetch_assoc($rec);
-      $account_id  = $row['account_id'];
+      $nowpassword = $row['password'];
     } else
     {
       header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -42,7 +42,7 @@ if(isset($_GET['client_id']))
         <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
           CurrentPassword
         </b>
-        <input type="password" name="password" size="40">
+        <input type="password" name="current" size="40">
       </li>
       <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -60,7 +60,6 @@ if(isset($_GET['client_id']))
       </li>
       <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       <div style="text-align: center; margin-top: 30px">
-        <input type="hidden" name="account_id" value="<?php echo $account_id; ?>">
         <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
         <button type="button" onclick=history.back() class="btn-secondary">Return</button>
       </div>
@@ -74,28 +73,33 @@ if(isset($_GET['client_id']))
 
 if(isset($_POST['submit']))
 {
+  $current   = md5($_POST['current']);
   $password  = md5($_POST['password']);
   $password2 = md5($_POST['password2']);
   $client_id = $_GET['client_id'];
 
+  if ($current != $nowpassword)
+  {
+    $_SESSION['add_fail_up_c'] = "<div class='error'>Your now Password isn't match !</div>";
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
+    die();
+  }
+
   if ($password != $password2)
   {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Passwords should the same one !</div>";
-    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
-    header('Location:' .$url, true, 401);
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
     die();
   }
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Password form isn't right form !</div>";
-    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
-    header('Location:' .$url, true , 401);
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Confirm Password form isn't right form !</div>";
-    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
-    header('Location:' .$url, true, 401);
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
     die();
   }
 
