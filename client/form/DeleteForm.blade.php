@@ -26,8 +26,8 @@ include('../account/partials/HeaderInfo.blade.php');
 <html>
   <head>
     <title>ManageReserveForm</title>
-    <link rel="stylesheet" href="../css/Account.css">
-    <link rel="stylesheet" href="../css/Forms.css">
+    <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
     <div style="margin: 0 130px">
@@ -79,7 +79,7 @@ include('../account/partials/HeaderInfo.blade.php');
   $host = 'localhost';
   $username = 'root';
   $pass = 'root';
-  $dbname = 'overcome';
+  $dbname = 'ably';
 
   $sql3 = " DELETE from tbl_form WHERE form_id= '$form_id'" ;
   $rec3=mysqli_query($connect,$sql3);

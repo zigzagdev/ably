@@ -1,8 +1,8 @@
 <?php
 include ('../config/Constants.blade.php');
 
-
 session_start();
+
 $_SESSION = array();
 
 if (isset($_COOKIE["PHPSESSID"])) {
@@ -10,6 +10,6 @@ if (isset($_COOKIE["PHPSESSID"])) {
 }
 
 session_destroy();
-$_SESSION['ac_logout'] = "<div class='success'>Logout Successful.</div>";
-header('Location:LIndex.blade.php');
+$_SESSION['ac_logout'] = "<div style='text-align: center;font-size: 20px;color: #ff6666 '>Logout Successful.</div>";
+header('Location:Index.php');
 ?>

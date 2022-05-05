@@ -1,10 +1,16 @@
 <?php
 include ('./partials/LoginAccount.blade.php');
 
+  if(isset($_SESSION['add_fail_up']))
+  {
+    echo  $_SESSION['add_fail_up'];
+    unset($_SESSION['add_fail_up']);
+  }
+
   if(isset($_GET['account_id']))
   {
     $account_id = $_GET['account_id'];
-    $sql = "SELECT * FROM tbl_account WHERE account_id=$account_id";
+    $sql = "SELECT password, account_id FROM tbl_account WHERE account_id=$account_id";
     $rec = mysqli_query($connect, $sql);
 
     if ($rec == true)
@@ -13,11 +19,6 @@ include ('./partials/LoginAccount.blade.php');
       if ($count == 1)
       {
         $row = mysqli_fetch_assoc($rec);
-        $account_id  = $row['account_id'];
-        $user_name   = $row['user_name'];
-        $email       = $row['email'];
-        $content     = $row['content'];
-        $image_name  = $row['image_name'];
       } else
       {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -76,51 +77,76 @@ include ('./partials/LoginAccount.blade.php');
 </html>
 
 <?php
-  $host = 'localhost';
-  $username = 'root';
-  $pass = 'root';
-  $dbname = 'overcome';
   $error_message = [];
 
   if(isset($_POST['submit']))
   {
-    $password  = md5($_POST['password']);
-    $password2 = md5($_POST['password2']);
-    if ($password !== $password)
+    $password   = md5($_POST['password']);
+    $password2  = md5($_POST['password2']);
+    $account_id = $_GET['account_id'];
+
+    if ($password != $password2)
     {
-      $error_message = 'Passwords should the same one. !';
+      $_SESSION['add_fail_up'] = "<div class='error'>Passwords should the same one !</div>";
+      header("http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id");
       die();
     }
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-      $error_message[] = "パスワードの形式が正しくありません。";
+      $_SESSION['add_fail_up'] = "<div class='error'>Password form isn't right form !</div>";
+      header("http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id");
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-      $error_message[] = "確認用パスワードの形式が正しくありません。";
+      $_SESSION['add_fail_up'] = "<div class='error'>Confirm Password form isn't right form !</div>";
+      header("http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id");
       die();
     }
 
-    $sql = "UPDATE tbl_account SET
-                   user_name='$user_name'
-                   ,image_name='$image_name'
-                   ,email='$email'
-                   ,content='$content'
-                   ,password='$password'
-             WHERE
-                   account_id=$account_id ";
-    $rec = mysqli_query($connect, $sql);
+    $sql ="SELECT
+              tbl_account.password
+            FROM
+              tbl_account
+          LEFT JOIN
+              tbl_client
+            ON
+              tbl_account.password= tbl_client.password
+            WHERE
+              tbl_account.password='$password'
+          UNION
+          SELECT
+              tbl_client.password
+            FROM
+              tbl_account
+          RIGHT JOIN
+              tbl_client
+            ON
+              tbl_account.password= tbl_client.password
+          WHERE
+              tbl_client.password='$password'
+           ";
+    $rec  = mysqli_query($connect,$sql);
+    $rec2 = mysqli_num_rows($rec);
+    if ($rec2 > 0) {
+      $_SESSION['add_fail_up'] =  "<div class='success'>Password already exists</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
 
-    if($rec == true)
+
+    $upsql = "UPDATE tbl_account SET password='$password' WHERE account_id=$account_id ";
+    $uprec = mysqli_query($connect, $upsql);
+
+    if($uprec == true)
     {
       $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password was Updated.</div>";
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
-      header('Location:' .$url,true , 302);
+      header('Location:' .$url, true, 302);
     } else
     {
-      $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
+      $_SESSION['add_fail_up'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
       $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header('Location:' .$url, true, 401);
     }
   }
   include('../account/partials/Footer.tpl');

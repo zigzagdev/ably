@@ -1,9 +1,9 @@
 <?php
 include('partials/Header.blade.php');
-  if(isset($_SESSION['add']))
+  if(isset($_SESSION['add_fail']))
   {
-    echo  $_SESSION['add'];
-    unset($_SESSION['add']);
+    echo  $_SESSION['add_fail'];
+    unset($_SESSION['add_fail']);
   }
 ?>
 
@@ -17,13 +17,6 @@ include('partials/Header.blade.php');
     <div style="margin: 0 200px">
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Add your Account</h1>
-<?php if( !empty($error_message) ): ?>
-          <ul class="error_message">
-<?php foreach( $error_message as $value ): ?>
-            <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
-<?php endforeach; ?>
-          </ul>
-<?php endif; ?>
         <form action="" method="post" enctype="multipart/form-data" style="">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
@@ -48,7 +41,7 @@ include('partials/Header.blade.php');
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Password Again
+              PasswordConfirm
             </b>
             <input type="password" name="password2"  size="40">
           </li>
@@ -77,6 +70,7 @@ include('partials/Header.blade.php');
 </html>
 
 <?php
+
   if(isset($_POST['submit']))
   {
     $user_name = $_POST['user_name'];
@@ -95,8 +89,8 @@ include('partials/Header.blade.php');
         $upload = move_uploaded_file($src, $dst);
         if ($upload == false)
         {
-          $_SESSION['upload'] = "<div class='error'>Failed to Upload Image.</div>";
-          header('location:/account/add-client.php');
+          $_SESSION['add_fail'] = "<div class='success'>Failed to Upload Image.</div>";
+          header('location:/account/AddAccount.php');
           die();
         }
       }
@@ -104,49 +98,135 @@ include('partials/Header.blade.php');
     {
       $image_name= "";
     }
-    if (empty($user_name) || empty($password) || empty($password2) || empty($email))
-    {
-      $error_message = 'Please fill all required fields!';
+
+    if( 10 > mb_strlen($content, 'UTF-8') || 150 < mb_strlen($content, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your Content in 10~150 words. !</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
-    if ($password !== $password)
+    if (empty($user_name) || empty($email))
     {
-      $error_message = 'Passwords should the same one. !';
+      $_SESSION['add_fail'] = "<div class='success'>Please fill all required fields!</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
+    if ($password !== $password)
+    {
+      $_SESSION['add_fail'] = "<div class='success'>Passwords should the same one. !</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+    $sql ="SELECT 
+              tbl_account.password
+            FROM 
+              tbl_account 
+          LEFT JOIN 
+              tbl_client 
+            ON 
+              tbl_account.password= tbl_client.password
+            WHERE 
+              tbl_account.password='$password'
+          UNION   
+          SELECT 
+              tbl_client.password
+            FROM 
+              tbl_account
+          RIGHT JOIN 
+              tbl_client
+            ON 
+              tbl_account.password= tbl_client.password
+          WHERE 
+              tbl_client.password='$password'
+           ";
+    $rec  = mysqli_query($connect,$sql);
+    $rec2 = mysqli_num_rows($rec);
+    if ($rec2 > 0) {
+      $_SESSION['add_fail'] =  "<div class='success'>Password already exists</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+    $sql_1 = "SELECT 
+                  tbl_account.email
+                FROM 
+                  tbl_account 
+              LEFT JOIN 
+                  tbl_client 
+                ON 
+                  tbl_account.email= tbl_client.email
+              WHERE 
+                  tbl_account.email = '$email'
+              UNION   
+              SELECT 
+                  tbl_client.email
+                FROM 
+                  tbl_account
+              RIGHT JOIN 
+                  tbl_client
+                ON 
+                  tbl_account.email= tbl_client.email
+              WHERE 
+                  tbl_client.email='$email'
+           ";
+    $rec_1  = mysqli_query($connect,$sql_1);
+    $rec_2 = mysqli_num_rows($rec_1);
+    if ($rec_2 > 0) {
+      $_SESSION['add_fail'] =  "<div class='success'>User already exists</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+
     if (!preg_match("/^[a-zA-Z-' ]*$/", $user_name)) {
-      $error_message[] = "Only English is valid.";
+      $_SESSION['add_fail'] =  "<div class='success'>Only English is valid .</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
-      $error_message[] = "パスワードの形式が正しくありません。";
+      $_SESSION['add_fail'] =  "<div class='success'>Password form is incorrectly.</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+    if( 4 > mb_strlen($user_name, 'UTF-8') || 100 < mb_strlen($user_name, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your email in 4~100 words. !</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
+
+    if( 5 > mb_strlen($email, 'UTF-8') || 150 < mb_strlen($email, 'UTF-8') ) {
+      $_SESSION['add_fail'] = "<div class='success'>Please fill your email in 5~150 words. !</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
     if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
-      $error_message[] = "確認用パスワードの形式が正しくありません。";
+      $_SESSION['add_fail'] =  "<div class='success'>Password form is incorrectly.</div>";
+      header('location:/account/AddAccount.php');
       die();
     }
 
-    $sql = "INSERT INTO tbl_account SET 
-          user_name='$user_name'
-          , password ='$password'
-          ,image_name = '$image_name'
-          ,email = '$email'
-          ,content = '$content' 
+    $sql = "INSERT INTO tbl_account
+            SET 
+              user_name   = '$user_name'
+              ,password   = '$password'
+              ,image_name = '$image_name'
+              ,email      = '$email'
+              ,content    = '$content' 
           ";
     $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
     if($rec == TRUE)
     {
       $_SESSION['add'] = "<div class='success'>Your account Added Successfully.</div>";
       $account_id = mysqli_insert_id($connect);
-      header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
+      header("location: http:/localhost:8001/account/ManageAccount.php?account_id=$account_id");
     } else
     {
-      $_SESSION['add'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
-      header("location: http://localhost:8001/account/AddAccount.php");
+      $_SESSION['add_fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
+      header("location: http:/localhost:8001/account/AddAccount.php");
     }
   }
   include('partials/Footer.tpl');

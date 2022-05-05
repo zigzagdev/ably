@@ -57,8 +57,8 @@
 <html>
   <head>
     <title>ManageReserveForm</title>
-    <link rel="stylesheet" href="../css/Account.css">
-    <link rel="stylesheet" href="../css/Forms.css">
+    <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
     <div style="margin: 0 100px">
@@ -73,7 +73,7 @@
           <b style="font-size: 20px; margin-right: 170px"><?php echo $name ?></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
             <button class="btn-third" style="width: 50px;">
-              <a class="btn-third" href="UpdateNameForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+              <a class="btn-third" href="../UpdateName.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
                 Edit
               </a>
             </button>
@@ -87,7 +87,7 @@
           <b style="font-size: 20px; margin-right: 170px"><?php echo $phone ?></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
             <button class="btn-third" style="width: 50px">
-              <a class="btn-third" href="UpdatePhoneNumberForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+              <a class="btn-third" href="../UpdatePhoneNumber.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
                 Edit
               </a>
             </button>
@@ -101,7 +101,7 @@
           <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
             <button class="btn-third" style="width: 50px;">
-              <a class="btn-third"  href="UpdateEmailForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+              <a class="btn-third"  href="../UpdateEmail.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
                 Edit
               </a>
             </button>

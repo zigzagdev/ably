@@ -90,7 +90,7 @@
 .success{
     color: red;
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
     margin-bottom: 25px;
     font-family: Arial;
 }
@@ -372,4 +372,31 @@ footer {
     color: whitesmoke;
     text-decoration: underline ;
     background-color: red;
+}
+
+.client_update{
+    text-decoration: none;
+    color: darkblue;
+}
+.client_update:hover{
+    color: whitesmoke;
+    text-decoration: underline;
+    background-color: darkblue;
+}
+
+.c_inner {
+    display:inline-block;
+    padding: 36px 5px 0 5px;
+    vertical-align: top;
+}
+
+.pencil {
+    width: 40px;
+    height: 30px;
+}
+
+.c_img {
+    border-radius: 50%;
+    margin-right: 200px;
+    vertical-align: center;
 }
