@@ -49,8 +49,8 @@ include('./partials/HeaderEd.blade.php');
             </li>
           </fieldset>
           <input type="hidden" name="client_id" value="<?php echo $client_id; ?>">
-          <input type="submit" name="submit" value="送信" class="btn btn-third" style="margin-top: 40px">
-          <button type="button" onclick=history.back() class="btn-secondary">Return</button>
+          <input type="submit" name="submit" value="送信" class="btn btn-third" style="margin-top: 41px; width: 110px; height: 54px">
+          <button type="button" onclick=history.back() class="btn-secondary" style="height: 53px; width: 103px;">Return</button>
         </form>
       </div>
     </section>
