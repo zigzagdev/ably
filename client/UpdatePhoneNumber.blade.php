@@ -75,7 +75,7 @@ include('./partials/HeaderEd.blade.php');
     $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
     {
-      $_SESSION['order_tel'] = "<div class='success text-center'>Form order Updated.</div>";
+      $_SESSION['order_tel'] = "<div class='success text-center'>PhoneNumber Updated.</div>";
       $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
       header('Location:' .$url, true , 302);
     } else
