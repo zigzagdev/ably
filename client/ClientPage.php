@@ -29,6 +29,12 @@ include "./partials/HeaderEd.blade.php";
     unset($_SESSION['change_pwd_c']);
   }
 
+  if(isset($_SESSION['order']))
+  {
+    echo  $_SESSION['order'];
+    unset($_SESSION['order']);
+  }
+
   $client_id = $_GET['client_id'];
   $sql = "SELECT * FROM tbl_client where client_id=$client_id";
   $rec = mysqli_query($connect, $sql);

@@ -70,23 +70,32 @@ if(isset($_GET['client_id']))
     }
 
     $sql_1 = "SELECT
-                   tbl_account.email , tbl_client.email
-              FROM
-                   tbl_account
-            LEFT OUTER JOIN
-                   tbl_client
-              ON
-                   tbl_account.email= tbl_client.email
-            WHERE
-                    tbl_account.email='$email'
-              OR
-                    tbl_client.email='$email'
+                  tbl_account.email
+                FROM
+                  tbl_account
+              LEFT JOIN
+                  tbl_client
+                ON
+                  tbl_account.email= tbl_client.email
+              WHERE
+                  tbl_account.email='$email'
+              UNION
+              SELECT
+                  tbl_client.email
+                FROM
+                  tbl_account
+              RIGHT JOIN
+                  tbl_client
+                ON
+                  tbl_account.email= tbl_client.email
+              WHERE
+              tbl_client.email='$email'
            ";
     $rec_1  = mysqli_query($connect,$sql_1);
     $rec_2 = mysqli_num_rows($rec_1);
     if ($rec_2 > 0) {
       $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
-      header('location:/client/AddClient.php');
+      header("http://localhost:8001/client/UpdateEmail.php?client_id=$client_id");
       die();
     }
 
@@ -96,14 +105,14 @@ if(isset($_GET['client_id']))
   if($rec3 == true)
   {
     $_SESSION['order'] = "<div class='success text-center'>Form order Updated.</div>";
-    $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
-    header('Location:' .$url,true , 302);
+    header("http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+    die();
   }
   else
   {
     $_SESSION['order_f'] = "<div class='success text-center'>Form Update Failed.</div>";
-    $url = "http://localhost:8001/form/UpdateEmail.blade.php?client_id=$client_id";
-    header('Location:' .$url,true , 401);
+    header("http://localhost:8001/client/UpdateEmail.php?client_id=$client_id");
+    die();
   }
 }
 include('../account/partials/ClientFooter.tpl');
