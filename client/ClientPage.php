@@ -6,6 +6,11 @@ include "./partials/HeaderEd.blade.php";
     echo  $_SESSION['cli_add'];
     unset($_SESSION['cli_add']);
   }
+  if(isset($_SESSION['name_s']))
+  {
+    echo  $_SESSION['name_s'];
+    unset($_SESSION['name_s']);
+  }
 
   if(isset($_SESSION['s_login']))
   {

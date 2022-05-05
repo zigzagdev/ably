@@ -1,5 +1,11 @@
 <?php
-include('../account/partials/HeaderInfo.blade.php');
+include('./partials/HeaderEd.blade.php');
+
+if(isset($_SESSION['name_error']))
+{
+  echo $_SESSION['name_error'];
+  unset($_SESSION['name_error']);
+}
 
   if(isset($_GET['client_id']))
   {
@@ -49,40 +55,32 @@ include('../account/partials/HeaderInfo.blade.php');
 </html>
 
 <?php
-  $host = 'localhost';
-  $username = 'root';
-  $pass = 'root';
-  $dbname = 'ably';
 
   if(isset($_POST['submit']))
   {
     $name = $_POST['name'];
-    $name_boolean = "/^[a-zA-Z-' ]*$/";
-    if(preg_match($name_boolean,$name))
-    {
-      print  'write down your name correctly(Only can use Alphabet.) !';
-    }
-    $lesson_id = $_POST['lesson_id'];
-    $form_id = $_POST['form_id'];     // Post means repost your correct variable again.
+    $client_id = $_GET['client_id'];
 
-    $sql3 = "UPDATE tbl_form SET
-             name = '$name'
-             ,telephone = '$telephone'
-             ,email = '$email'
-             ,sex = '$sex'
-             WHERE form_id= '$form_id'";
+    $name_boolean = "/^[a-zA-Z]*$/";
+    if(preg_match($name,$name_boolean))
+    {
+      $_SESSION['name_error'] = "<div class='success text-center'>write down your name correctly(Only can use Alphabet.)!</div>";
+      header('location:http://localhost:8001/client/UpdateName.php?client_id=$client_id',);
+      die();
+    }
+
+    $sql3 = "UPDATE tbl_client SET name = '$name' WHERE client_id= '$client_id'";
     $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
     {
-      $_SESSION['order'] = "<div class='success text-center'>Name was Updated.</div>";
-      $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
-      header('Location:' .$url,true , 302);
+      $_SESSION['name_s'] = "<div class='success'>Name was Updated.</div>";
+      header("location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     }
     else
     {
-      $_SESSION['order'] = "<div class='success text-center'>Form Update Failed.</div>";
-      $url = "http://localhost:8001/form/UpdateName.php?form_id=$form_id";
-      header('Location:' .$url,true , 401);
+      $_SESSION['name_error'] = "<div class='success'>Name Update was Failed.</div>";
+      header("location:http://localhost:8001/client/UpdateName.php?client_id=$client_id");
+      die();
     }
   }
 include('../account/partials/ClientFooter.tpl');

@@ -70,12 +70,11 @@ if(isset($_POST['submit']))
     $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
     $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
     $_SESSION['email'] = $email;
-
     header('Location:'.$url, true, 302);
     exit();
   } else
   {
-    $_SESSION['pwd_not_match'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
+    $_SESSION['pwd_error_client'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
     header('Location:SLogin.blade.php');
   }
 }
