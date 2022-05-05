@@ -110,7 +110,7 @@ if(isset($_POST['submit']))
 
   if ($current != $nowpassword)
   {
-    $_SESSION['add_fail_up_c'] = "<div class='error'>Your now Password isn't match !</div>";
+    $_SESSION['add_fail_up_c'] = "<div class='error'>Your now Password didn't match !</div>";
     header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
     die();
   }
@@ -140,13 +140,11 @@ if(isset($_POST['submit']))
   if($uprec == true)
   {
     $_SESSION['change_pwd_c'] = "<div class='success text-center'>Your Password was Updated.</div>";
-    $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
-    header('Location:' .$url, true , 302);
+    header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
   } else
   {
     $_SESSION['add_fail_up_c'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
-    $url = "http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id";
-    header('Location:' .$url, true, 401);
+    header("Location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
   }
 }
 include('./partials/FooterEd.tpl');
