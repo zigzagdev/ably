@@ -17,13 +17,6 @@ include('partials/Header.blade.php');
     <div style="margin: 0 200px">
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Add your Account</h1>
-<?php if( !empty($error_message) ): ?>
-          <ul class="error_message">
-<?php foreach( $error_message as $value ): ?>
-            <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
-<?php endforeach; ?>
-          </ul>
-<?php endif; ?>
         <form action="" method="post" enctype="multipart/form-data" style="">
           <li style="list-style: none;  margin:17px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
@@ -156,17 +149,26 @@ include('partials/Header.blade.php');
     }
 
     $sql_1 = "SELECT 
-                   tbl_account.email , tbl_client.email 
-              FROM 
-                   tbl_account 
-            LEFT OUTER JOIN 
-                   tbl_client 
-              ON 
-                   tbl_account.email= tbl_client.email
-            WHERE 
-                    tbl_account.email='$email'
-              OR 
-                    tbl_client.email='$email'
+                  tbl_account.email
+                FROM 
+                  tbl_account 
+              LEFT JOIN 
+                  tbl_client 
+                ON 
+                  tbl_account.email= tbl_client.email
+              WHERE 
+                  tbl_account.email = '$email'
+              UNION   
+              SELECT 
+                  tbl_client.email
+                FROM 
+                  tbl_account
+              RIGHT JOIN 
+                  tbl_client
+                ON 
+                  tbl_account.email= tbl_client.email
+              WHERE 
+                  tbl_client.email='$email'
            ";
     $rec_1  = mysqli_query($connect,$sql_1);
     $rec_2 = mysqli_num_rows($rec_1);
@@ -220,11 +222,11 @@ include('partials/Header.blade.php');
     {
       $_SESSION['add'] = "<div class='success'>Your account Added Successfully.</div>";
       $account_id = mysqli_insert_id($connect);
-      header("location: http://localhost:8001/account/ManageAccount.php?account_id=$account_id");
+      header("location: http:/localhost:8001/account/ManageAccount.php?account_id=$account_id");
     } else
     {
       $_SESSION['add_fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
-      header("location: http://localhost:8001/account/AddAccount.php");
+      header("location: http:/localhost:8001/account/AddAccount.php");
     }
   }
   include('partials/Footer.tpl');
