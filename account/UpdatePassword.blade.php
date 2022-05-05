@@ -19,7 +19,6 @@ include ('./partials/LoginAccount.blade.php');
       if ($count == 1)
       {
         $row = mysqli_fetch_assoc($rec);
-        $account_id  = $row['account_id'];
       } else
       {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -107,20 +106,50 @@ include ('./partials/LoginAccount.blade.php');
       die();
     }
 
+    $sql ="SELECT
+              tbl_account.password
+            FROM
+              tbl_account
+          LEFT JOIN
+              tbl_client
+            ON
+              tbl_account.password= tbl_client.password
+            WHERE
+              tbl_account.password='$password'
+          UNION
+          SELECT
+              tbl_client.password
+            FROM
+              tbl_account
+          RIGHT JOIN
+              tbl_client
+            ON
+              tbl_account.password= tbl_client.password
+          WHERE
+              tbl_client.password='$password'
+           ";
+    $rec  = mysqli_query($connect,$sql);
+    $rec2 = mysqli_num_rows($rec);
+    if ($rec2 > 0) {
+      $_SESSION['add_fail'] =  "<div class='success'>Password already exists</div>";
+      header('location:/account/AddAccount.php');
+      die();
+    }
 
-    $sql = "UPDATE tbl_account SET password='$password' WHERE account_id=$account_id ";
-    $rec = mysqli_query($connect, $sql);
 
-    if($rec == true)
+    $upsql = "UPDATE tbl_account SET password='$password' WHERE account_id=$account_id ";
+    $uprec = mysqli_query($connect, $upsql);
+
+    if($uprec == true)
     {
       $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password was Updated.</div>";
       $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
-      header('Location:' .$url,true , 302);
+      header('Location:' .$url, true, 302);
     } else
     {
       $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
       $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header('Location:' .$url, true, 401);
     }
   }
   include('../account/partials/Footer.tpl');

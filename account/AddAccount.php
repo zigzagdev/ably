@@ -125,18 +125,27 @@ include('partials/Header.blade.php');
       die();
     }
 
-    $sql = "SELECT 
-                   tbl_account.password , tbl_client.password
-              FROM 
-                   tbl_account 
-            LEFT OUTER JOIN 
-                   tbl_client 
-              ON 
-                   tbl_account.password= tbl_client.password
+    $sql ="SELECT 
+              tbl_account.password
+            FROM 
+              tbl_account 
+          LEFT JOIN 
+              tbl_client 
+            ON 
+              tbl_account.password= tbl_client.password
             WHERE 
-                    tbl_account.password='$password'
-              OR 
-                    tbl_client.password='$password'
+              tbl_account.password='$password'
+          UNION   
+          SELECT 
+              tbl_client.password
+            FROM 
+              tbl_account
+          RIGHT JOIN 
+              tbl_client
+            ON 
+              tbl_account.password= tbl_client.password
+          WHERE 
+              tbl_client.password='$password'
            ";
     $rec  = mysqli_query($connect,$sql);
     $rec2 = mysqli_num_rows($rec);
