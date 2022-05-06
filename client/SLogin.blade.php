@@ -35,7 +35,7 @@ include ('../account/partials/ClientHeader.tpl');
             <input type="password" required name="password" size="40px" style="height: 35px">
           </li>
           <li style="list-style: none;  margin:22px 0 22px 30px">
-            <a href="" class="passwordforgot">
+            <a href="./PassForget.blade.php" class="passwordforgot">
               Forgot your password?
             </a>
           </li>
@@ -67,10 +67,9 @@ if(isset($_POST['submit']))
     $client_id  = $row['client_id'];
     $name       = $row['name']
 
-    $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
     $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
     $_SESSION['email'] = $email;
-    header('Location:'.$url, true, 302);
+    header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else
   {
