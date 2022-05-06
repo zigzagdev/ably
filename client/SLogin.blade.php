@@ -57,7 +57,7 @@ if(isset($_POST['submit']))
   $email = $_POST['email'];
   $password = md5($_POST['password']);
 
-  $sql   = "SELECT email, password FROM tbl_client WHERE email='$email' AND password='$password'";
+  $sql   = "SELECT email, password, name FROM tbl_client WHERE email='$email' AND password='$password'";
   $rec   = mysqli_query($connect, $sql);
   $count = mysqli_num_rows($rec);
 
