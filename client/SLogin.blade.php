@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
   {
     $row = mysqli_fetch_assoc($rec);
     $client_id  = $row['client_id'];
-    $name       = $row['name']
+    $name       = $row['name'];
 
     $_SESSION['email'] = $email;
     $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
