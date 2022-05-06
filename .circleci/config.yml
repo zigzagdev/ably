@@ -58,5 +58,9 @@ jobs:
           command: ./vendor/bin/phpstan analyze --level 0 account
 
       - run:
+          name: PHPStan(client)
+          command: ./vendor/bin/phpstan analyze --level 0 client
+
+      - run:
           name: PHPUnit
           command: ./vendor/bin/phpunit account
