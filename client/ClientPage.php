@@ -157,7 +157,7 @@ include "./partials/HeaderEd.blade.php";
         </span>
         <br><br>
         <div class="cardcontent" style="background-color: whitesmoke">
-          <p ><?php echo $course ?></p>
+          <span style="padding-top: 15px; display: inline-block"><p><?php echo $course ?></p></span>
           <p ><?php echo $user_name ?></p>
         </div>
       </div>
