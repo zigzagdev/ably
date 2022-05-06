@@ -145,8 +145,8 @@ include "./partials/HeaderEd.blade.php";
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div class="cardoutline">
-        <div class="cardcontent">
-
+        <div class="cardcontent" style="background-color: whitesmoke">
+          <span style="padding-top: 20px;display: inline-block;"><strong style="color: darkblue;">-Your Reserved form(s)-</strong></span>
         </div>
       </div>
     </div>
