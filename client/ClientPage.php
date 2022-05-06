@@ -55,7 +55,6 @@ include "./partials/HeaderEd.blade.php";
         $name        = $rows['name'];
         $image       = $rows['image'];
         $email       = $rows['email'];
-        $sex         = $rows['sex'];
         $phone       = $rows['telephone'];
         if ($image == "")
         {
@@ -147,8 +146,7 @@ include "./partials/HeaderEd.blade.php";
       </div>
       <div class="cardoutline">
         <div class="cardcontent">
-          <?php echo $form_name ?><br/>
-          <?php echo $asking ?><br/>
+
         </div>
       </div>
     </div>
@@ -157,12 +155,6 @@ include "./partials/HeaderEd.blade.php";
 <!--        <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id=--><!--">-->
 <!--          Update your Account-->
 <!--        </a>-->
-        <a class="btn-secondary" style="margin: 0 7px 0 7px" href="./form/ManageForm.php?client_id=<?= $client_id=$_GET['client_id']?>">
-          Check your register forms.
-        </a>
-        <a class="btn-delete" style="margin: 0 7px 0 7px;" href="DeleteClient.php?client_id=<?=$client_id=$_GET['client_id']?>">
-          Delete your Account
-        </a>
       </div>
     </div>
   </body>

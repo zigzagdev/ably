@@ -15,10 +15,10 @@ if(isset($_SESSION['name_error']))
     if ($rec2 == true) {
       $count = mysqli_num_rows($rec2);
       if ($count == 1) {
-        $row       = mysqli_fetch_assoc($rec2);
-        $name      = $row['name'];
+        $row = mysqli_fetch_assoc($rec2);
+        $name = $row['name'];
       } else {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: '. $_SERVER['HTTP_REFERER']);
       }
     }
   }
