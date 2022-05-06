@@ -107,7 +107,7 @@ include('partials/LoginAccount.blade.php');
           $remove      = unlink($remove_path);
           if($remove==false)
           {
-            $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to remove current Image.</div>"
+            $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to remove current Image.</div>";
             header("Location:http://localhost:8001/account/UpdateAccount.php?account_id=$account_id");
             die();
           }
