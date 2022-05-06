@@ -67,8 +67,8 @@ if(isset($_POST['submit']))
     $client_id  = $row['client_id'];
     $name       = $row['name']
 
-    $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
     $_SESSION['email'] = $email;
+    $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
     header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else
