@@ -1,7 +1,4 @@
-<?php
-include ('../config/Constants.blade.php');
-
-?>
+<?php include ('../../config/Constants.blade.php');?>
 
 <html>
   <head>

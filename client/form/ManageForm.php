@@ -1,15 +1,10 @@
-<?php include('../account/partials/HeaderInfo.blade.php'); ?>
-
 <?php
-  if (isset($_SESSION['add']))
+include "../partials/HeaderEd.blade.php";
+
+  if (isset($_SESSION['form_s']))
   {
-    echo $_SESSION['add'];
-    unset($_SESSION['add']);
-  }
-  if (isset($_SESSION['delete']))
-  {
-    echo $_SESSION['delete'];
-    unset($_SESSION['delete']);
+    echo $_SESSION['form_s'];
+    unset($_SESSION['form_s']);
   }
 
   if (isset($_SESSION['update']))
@@ -28,9 +23,9 @@
     echo $_SESSION['change-form'];
     unset($_SESSION['change-form']);
   }
-  $form_id = $_GET['form_id'];
+  $client_id = $_GET['client_id'];
 
-  $sql2 = "SELECT * FROM tbl_form where form_id ='$form_id'";
+  $sql2 = "SELECT * FROM tbl_form where form_id ='$client_id'";
   $rec2 = mysqli_query($connect, $sql2);
   if ($rec2 == TRUE)
   {
@@ -40,16 +35,9 @@
     {
       while ($rows = mysqli_fetch_array($rec2))
       {
-
-        $name = $rows['name'];
-        $phone = $rows['telephone'];
-        $email = $rows['email'];
-        $sex = $rows['sex'];
-        $lesson_id = $rows['lesson_id'];
+        $name   = $rows['name'];
+        $asking = $rows['asking'];
       }
-    } else
-    {
-      //
     }
   }
 ?>
@@ -70,10 +58,10 @@
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             Name
           </b>
-          <b style="font-size: 20px; margin-right: 170px"><?php echo $name ?></b>
+          <b style="font-size: 20px; margin-right: 170px"></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
             <button class="btn-third" style="width: 50px;">
-              <a class="btn-third" href="../UpdateName.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+              <a class="btn-third" href="">
                 Edit
               </a>
             </button>
@@ -84,10 +72,10 @@
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             PhoneNumber
           </b>
-          <b style="font-size: 20px; margin-right: 170px"><?php echo $phone ?></b>
+          <b style="font-size: 20px; margin-right: 170px"></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
             <button class="btn-third" style="width: 50px">
-              <a class="btn-third" href="../UpdatePhoneNumber.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+              <a class="btn-third" href="">
                 Edit
               </a>
             </button>
@@ -98,10 +86,10 @@
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             Email
           </b>
-          <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
+          <b style="font-size: 20px; margin-right: 170px"></b>
           <b style="font-size: 20px; margin-right: 50px; float: right">
             <button class="btn-third" style="width: 50px;">
-              <a class="btn-third"  href="../UpdateEmail.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+              <a class="btn-third"  href="">
                 Edit
               </a>
             </button>
@@ -111,7 +99,7 @@
       </div>
       <div style="margin:60px 0; text-align: center">
         <a class="btn-secondary" style="background-color: red"
-           href="DeleteForm.blade.php?form_id=<?= $form_id = $_GET['form_id'] ?>">
+           href="">
           Delete your Information
         </a>
       </div>
@@ -119,5 +107,5 @@
   </body>
 </html>
 
-<?php include('../account/partials/ClientFooter.tpl') ?>
+<?php include('../partials/FooterEd.tpl') ?>
 

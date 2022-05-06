@@ -1,4 +1,13 @@
-<?php include('../account/partials/ClientHeader.tpl');?>
+<?php
+include('../partials/HeaderEd.blade.php');
+
+  if (isset($_SESSION['form_f']))
+  {
+    echo $_SESSION['form_f'];
+    unset($_SESSION['form_f']);
+  }
+
+?>
 
 <html>
   <head>
@@ -55,10 +64,10 @@
 </html>
 
 <?php
-  $host = 'localhost';
+  $host     = 'localhost';
   $username = 'root';
-  $pass = 'root';
-  $dbname = 'ably';
+  $pass     = 'root';
+  $dbname   = 'overcome';
 
   if(isset($_POST['submit']))
     {
@@ -108,14 +117,14 @@
     $url = "http://localhost:8001/account/Index.php";
     if($rec3 == true)
       {
-        $_SESSION['form'] = "<div class='success text-center'>Form order Successfully.</div>";
+        $_SESSION['form_s'] = "<div class='success text-center'>Form order Successfully.</div>";
         $form_id = mysqli_insert_id($mysqli);
         $url = "http://localhost:8001/form/ManageForm.php?lesson_id=$lesson_id&form_id=$form_id";
         header('Location:' .$url,true , 302);
       }
     else
       {
-        $_SESSION['form'] = "<div class='success text-center'>Form order Failed.</div>";
+        $_SESSION['form_f'] = "<div class='success text-center'>Form order Failed.</div>";
         header('Location:' .$url,true , 401);
       }
     }
