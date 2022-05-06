@@ -65,13 +65,17 @@ include "./partials/HeaderEd.blade.php";
   }
 //  form一覧
   $form_sql = "SELECT 
-                   name, asking, deadline, tbl_form.created_at 
+                   name, asking, deadline, tbl_form.created_at, course, user_name 
                  FROM 
                    tbl_form 
                LEFT JOIN 
                    tbl_lesson 
                  ON 
                    tbl_form.lesson_id = tbl_lesson.lesson_id 
+               LEFT JOIN
+                   tbl_account
+                 ON
+                   tbl_lesson.account_id= tbl_account.account_id
                WHERE 
                    tbl_lesson.deadline > tbl_form.created_at
           ";
@@ -86,6 +90,9 @@ include "./partials/HeaderEd.blade.php";
       {
         $form_name = $form_rows['name'];
         $asking    = $form_rows['asking'];
+        $deadline  = $form_rows['deadline'];
+        $course    = $form_rows['course'];
+        $user_name = $form_rows['user_name'];
       }
     }
   }
@@ -145,8 +152,13 @@ include "./partials/HeaderEd.blade.php";
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div class="cardoutline">
+        <span style="padding-top: 20px;">
+          <strong style="color: darkblue;text-align: center">-Your Reserved form(s)-</strong>
+        </span>
+        <br><br>
         <div class="cardcontent" style="background-color: whitesmoke">
-          <span style="padding-top: 20px;display: inline-block;"><strong style="color: darkblue;">-Your Reserved form(s)-</strong></span>
+          <p ><?php echo $course ?></p>
+          <p ><?php echo $user_name ?></p>
         </div>
       </div>
     </div>
