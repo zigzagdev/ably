@@ -68,6 +68,7 @@ include('../partials/FormHeader.blade.php');
   $username = 'root';
   $pass     = 'root';
   $dbname   = 'overcome';
+  $client_id = $_GET['client_id'];
 
   if(isset($_POST['submit']))
     {
@@ -125,7 +126,8 @@ include('../partials/FormHeader.blade.php');
     else
       {
         $_SESSION['form_f'] = "<div class='success text-center'>Form order Failed.</div>";
-        header('Location:' .$url,true , 401);
+        header("location: http://localhost:8001/client/form/ReserveForm.php?client_id=$client_id");
+        die();
       }
     }
 ?>
