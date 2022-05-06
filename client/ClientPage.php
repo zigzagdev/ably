@@ -35,6 +35,12 @@ include "./partials/HeaderEd.blade.php";
     unset($_SESSION['order']);
   }
 
+  if(isset($_SESSION['name_error']))
+  {
+    echo $_SESSION['name_error'];
+    unset($_SESSION['name_error']);
+  }
+
   $client_id = $_GET['client_id'];
   $sql = "SELECT * FROM tbl_client where client_id=$client_id";
   $rec = mysqli_query($connect, $sql);
@@ -80,7 +86,7 @@ include "./partials/HeaderEd.blade.php";
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
             UserName
           </b>
-          <b style="font-size: 20px"><?php echo $name ?></b>
+          <b style="font-size: 20px" onclick="clickname()"><?php echo $name ?></b>
           <a href="./UpdateName.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none">
             <b style="float: right; margin-right: 40px">
               <img src="../images/pencil.png" style="width: 40px; height: 30px">
