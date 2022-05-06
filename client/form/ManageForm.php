@@ -1,5 +1,5 @@
 <?php
-include "../partials/HeaderEd.blade.php";
+include('../partials/FormHeader.blade.php');
 
   if (isset($_SESSION['form_s']))
   {
@@ -25,11 +25,11 @@ include "../partials/HeaderEd.blade.php";
   }
   $client_id = $_GET['client_id'];
 
-  $sql2 = "SELECT * FROM tbl_form where form_id ='$client_id'";
+  $sql2 = "SELECT * FROM tbl_form where client_id ='$client_id'";
   $rec2 = mysqli_query($connect, $sql2);
   if ($rec2 == TRUE)
   {
-    $count = mysqli_num_rows($rec2); // Function to get all the rows in database
+    $count = mysqli_num_rows($rec2);
     $on = 1;
     if ($count > 0)
     {

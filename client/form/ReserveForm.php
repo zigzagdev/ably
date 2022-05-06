@@ -1,5 +1,5 @@
 <?php
-include('../partials/HeaderEd.blade.php');
+include('../partials/FormHeader.blade.php');
 
   if (isset($_SESSION['form_f']))
   {

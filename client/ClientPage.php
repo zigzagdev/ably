@@ -59,8 +59,34 @@ include "./partials/HeaderEd.blade.php";
         $phone       = $rows['telephone'];
         if ($image == "")
         {
-          echo "<div class='error'>Image not Added.</div>";
+          echo "<div class='success'>Image not Added.</div>";
         }
+      }
+    }
+  }
+//  form一覧
+  $form_sql = "SELECT 
+                   name, asking, deadline, tbl_form.created_at 
+                 FROM 
+                   tbl_form 
+               LEFT JOIN 
+                   tbl_lesson 
+                 ON 
+                   tbl_form.lesson_id = tbl_lesson.lesson_id 
+               WHERE 
+                   tbl_lesson.deadline > tbl_form.created_at
+          ";
+  $form_rec = mysqli_query($connect, $form_sql);
+
+  if($form_rec==TRUE)
+  {
+    $form_count = mysqli_num_rows($form_rec);
+    if($form_count>0)
+    {
+      while ($form_rows = mysqli_fetch_assoc($form_rec))
+      {
+        $form_name = $form_rows['name'];
+        $asking    = $form_rows['asking'];
       }
     }
   }
@@ -118,6 +144,12 @@ include "./partials/HeaderEd.blade.php";
           </a>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+      </div>
+      <div class="cardoutline">
+        <div class="cardcontent">
+          <?php echo $form_name ?><br/>
+          <?php echo $asking ?><br/>
+        </div>
       </div>
     </div>
     <div style="margin:60px 0; text-align: center">
