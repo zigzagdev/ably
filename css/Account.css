@@ -420,3 +420,9 @@ search_box {
 .search_box input {
     padding: 3px 0 3px 2em;
 }
+
+.reserveform {
+    display: inline-block;
+    float: right;
+    margin-left: 546px
+}

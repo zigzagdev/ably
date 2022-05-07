@@ -153,8 +153,10 @@ include "./partials/HeaderEd.blade.php";
       </div>
       <div class="cardoutline">
         <span style="padding-top: 20px;" class="search_box">
-          <strong style="color: darkblue;display: inline-block">-Your Reserved form(s)-</strong>
-          <input type="search" style=" margin-left: 600px; width: 169px;height: 30px" placeholder="  Name,Course">
+          <strong style="color: darkblue;">-Your Reserved form(s)-</strong>
+          <form class="reserveform" method="post" action="../client/form/ReserveForm.php?client_id=<?= $client_id ?>">
+            <input type="search" style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course">
+          </form>
         </span>
         <br><br>
         <div class="cardoutline2" style="display: inline-block; float: left">

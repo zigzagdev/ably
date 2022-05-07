@@ -7,6 +7,21 @@ include('../partials/FormHeader.blade.php');
     unset($_SESSION['form_f']);
   }
 
+  $client_id = $_GET['client_id'];
+  $sql = "SELECT name FROM tbl_client where client_id=$client_id";
+  $rec = mysqli_query($connect, $sql);
+
+  if($rec==TRUE)
+  {
+    $count = mysqli_num_rows($rec);
+    if($count>0)
+    {
+      while ($rows = mysqli_fetch_assoc($rec))
+      {
+        $name = $rows['name'];
+      }
+    }
+  }
 ?>
 
 <html>
@@ -24,7 +39,7 @@ include('../partials/FormHeader.blade.php');
             <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
               FullName
             </b>
-            <input type="text" name="name" placeholder="Michel Smith" style="width: 240px; height: 30px">
+             <?php  echo $name ?>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
           <li style="list-style: none;  margin:17px 0 17px 30px">
