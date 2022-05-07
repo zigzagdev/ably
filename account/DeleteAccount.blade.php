@@ -86,8 +86,8 @@ include ('./partials/LoginAccount.blade.php');
   $rec2= mysqli_query($connect, $sql2);
 
 if($rec2 == TRUE) {
-    $_SESSION['add'] = "<div class='success'>Delete Account Successfully.</div>";
-    $url = "http://localhost:8001/LIndex.blade.php";
+    $_SESSION['delete_ac'] = "<div class='success'>Delete Account Successfully.</div>";
+    $url = "http://localhost:8001/Index.blade.php";
     header('Location:' .$url,true , 302);
 }
 else

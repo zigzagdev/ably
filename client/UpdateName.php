@@ -75,6 +75,7 @@ if(isset($_SESSION['name_error']))
     {
       $_SESSION['name_s'] = "<div class='success'>Name was Updated.</div>";
       header("location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+      die();
     }
     else
     {
