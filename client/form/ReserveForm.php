@@ -8,6 +8,7 @@ include('../partials/FormHeader.blade.php');
   }
 
   $client_id = $_GET['client_id'];
+  var_dump($client_id);
   $sql = "SELECT name FROM tbl_client where client_id=$client_id";
   $rec = mysqli_query($connect, $sql);
 

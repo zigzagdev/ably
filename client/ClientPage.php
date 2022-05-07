@@ -107,12 +107,10 @@ include "./partials/HeaderEd.blade.php";
     <div style="margin: 0 140px">
       <div class="mainaccount" style="background-color: lightgray">
         <li style="list-style: none;  margin:47px 10px 7px 30px; padding-top: 20px">
-          <form action="" method="post" enctype="multipart/form-data">
           <a href="./UpdateImage.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none;">
             <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" class="c_img">
             <p style="margin-left: 30px; line-height: 1px">Edit</p>
           </a>
-          </form>
         </li>
         <li style="list-style: none;  margin:37px 0 17px 30px">
           <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
@@ -154,8 +152,10 @@ include "./partials/HeaderEd.blade.php";
       <div class="cardoutline">
         <span style="padding-top: 20px;" class="search_box">
           <strong style="color: darkblue;">-Your Reserved form(s)-</strong>
-          <form class="reserveform" method="post" action="../client/form/ReserveForm.php?client_id=<?= $client_id ?>">
-            <input type="search" style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course">
+          <form class="reserveform" method="get" action="../client/form/ReserveForm.php">
+            <strong style="color: #2f3542">Find a Tutor</strong><br>
+            <input type="hidden" name="client_id" value="<?php echo $client_id ?>"/>
+            <input style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course"  name="keyword"/>
           </form>
         </span>
         <br><br>

@@ -414,6 +414,7 @@ search_box {
     display: inline-block;
     position: absolute;
     right: 428px;
+    margin-top: 27px;
     padding-right: 18px;
 }
 
