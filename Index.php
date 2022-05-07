@@ -17,6 +17,10 @@ include('./account/partials/ClientHeader.tpl');
     echo $_SESSION['delete_ac'];
     unset($_SESSION['delete_ac']);
   }
-?>
+  if(isset($_SESSION['ac_logout']))
+  {
+    echo $_SESSION['ac_logout'];
+    unset($_SESSION['ac_logout']);
+  }
 
-<?php include "./account/partials/ClientFooter.tpl"?>
+ include "./account/partials/ClientFooter.tpl"?>
