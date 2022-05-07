@@ -152,15 +152,22 @@ include "./partials/HeaderEd.blade.php";
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div class="cardoutline">
-        <span style="padding-top: 20px;">
-          <strong style="color: darkblue;text-align: center">-Your Reserved form(s)-</strong>
+        <span style="padding-top: 20px;" class="search_box">
+          <strong style="color: darkblue;display: inline-block">-Your Reserved form(s)-</strong>
+          <input type="search" style=" margin-left: 600px; width: 169px;height: 30px" placeholder="  Name,Course">
         </span>
         <br><br>
-        <div class="cardcontent" style="background-color: whitesmoke">
-          <span style="padding-top: 15px; display: inline-block"><p><?php echo $course ?></p></span>
-          <p ><?php echo $user_name ?></p>
+        <div class="cardoutline2" style="display: inline-block; float: left">
+          <div style="padding: 15px 0 0 30px; text-align: left">
+            <strong style="color: darkblue">Teacher</strong>
+            <p style="padding-left: 10px"><?php echo $user_name ?></p>
+          </div>
+          <div style="padding: 15px 0 0 30px; text-align: left">
+            <p style=""><?php echo $course ?></p>
+          </div>
         </div>
       </div>
+
     </div>
     <div style="margin:60px 0; text-align: center">
       <div style="margin: 0 10px 20px 10px">

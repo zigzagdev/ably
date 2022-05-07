@@ -195,5 +195,11 @@
     background-color: #d9edf7;
     margin:0 210px 70px 210px;
     padding-bottom: 30px;
+}
+
+.cardoutline2 {
+    height: 221px;
+    width: 346px;
+    background-color: whitesmoke;
 
 }
