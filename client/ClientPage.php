@@ -155,7 +155,7 @@ include "./partials/HeaderEd.blade.php";
           <form class="reserveform" method="get" action="../client/form/ReserveForm.php">
             <strong style="color: #2f3542">Find a Tutor</strong><br>
             <input type="hidden" name="client_id" value="<?php echo $client_id ?>"/>
-            <input style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course"  name="keyword"/>
+            <input style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course" name="keyword"/>
           </form>
         </span>
         <br><br>
