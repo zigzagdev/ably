@@ -33,13 +33,13 @@ include('./account/partials/ClientHeader.blade.php');
     <div style="background-color: whitesmoke; height: 80%">
 
     </div>
-    <div style="background-color: yellow; height: 40%">
+    <div style="background-color: yellow; height: 55%">
 
     </div>
-    <div style="background-color: salmon; height: 40%">
+    <div style="background-color: #d9edf7; height: 60%">
 
     </div>
-    <div style="background-color: red; height: 40%">
+    <div style="background-color: salmon; height: 50%">
 
     </div>
   </body>
