@@ -7,7 +7,7 @@ include "./header/LessonHeader.blade.php";
     unset($_SESSION['fail_lesson']);
   }
   $lesson_id = $_GET['lesson_id'];
-  $sql = "SELECT * FROM `tbl_lesson`";
+  $sql = "SELECT * FROM tbl_lesson";
 
   $rec = mysqli_query($connect, $sql);
 
