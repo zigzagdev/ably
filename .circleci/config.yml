@@ -47,11 +47,15 @@ jobs:
 
       - run:
           name: PHPStan(Index.php)
-          command: ./vendor/bin/phpstan analyze --level 0 Index.php
+          command: ./vendor/bin/phpstan analyze --level 1 Index.php
 
       - run:
           name: PHPStan(Search.php)
-          command: ./vendor/bin/phpstan analyze --level 0 Search.php
+          command: ./vendor/bin/phpstan analyze --level 1 Search.php
+
+      - run:
+          name: PHPStan(LIndex.blade.php)
+          command: ./vendor/bin/phpstan analyze --level 1 LIndex.blade.php
 
       - run:
           name: PHPStan(Account)
