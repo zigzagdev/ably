@@ -1,6 +1,6 @@
 <?php
 include('../config/Constants.blade.php');
-include ('./partials/ClientHeader.tpl');
+include('./partials/ClientHeader.blade.php');
 
   if(isset($_SESSION['pwd_notmatch']))
   {

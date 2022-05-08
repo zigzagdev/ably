@@ -1,6 +1,6 @@
 <?php
 include('./config/Constants.blade.php');
-include('./account/partials/ClientHeader.tpl');
+include('./account/partials/ClientHeader.blade.php');
 
   if(isset($_SESSION['delete']))
   {

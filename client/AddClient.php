@@ -1,5 +1,5 @@
 <?php
-include('../account/partials/ClientHeader.tpl');
+include('../account/partials/ClientHeader.blade.php');
 include "../config/Constants.blade.php";
 
   if(isset($_SESSION['cli_fal']))

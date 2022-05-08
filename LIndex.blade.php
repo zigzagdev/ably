@@ -1,6 +1,6 @@
 <?php
 include('./config/Constants.blade.php');
-include('./account/partials/ClientHeader.tpl');
+include('./account/partials/ClientHeader.blade.php');
 
   if(isset($_SESSION['delete']))
   {
@@ -20,6 +20,7 @@ include('./account/partials/ClientHeader.tpl');
     <div>
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
 <?php
+  $client_id = $_GET['client_id'];
     $sql2 = "
               SELECT
                   *
@@ -50,7 +51,7 @@ include('./account/partials/ClientHeader.tpl');
             <p style="padding-top: 15px"><?php echo $course ?></p><br/>
             <?php echo $description ?><br/>
             <?php echo $deadline ?><br/>
-            <a href="./client/form/ReserveForm.php?lesson_id=<?= $lesson_id?>"> Reserve your form</a>
+            <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>"> Reserve your form</a>
           </div>
         </div>
 <?php
