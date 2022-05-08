@@ -65,7 +65,7 @@ include ('./header/LessonHeader.blade.php');
   $hostname = $_SERVER['HTTP_HOST'];
   if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
   {
-    echo   '<a href="' . $_SERVER['HTTP_REFERER'] . '" class="btn-primary" style="margin-left: 10px">Return</a>';
+    echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return</a>';
   }
 ?>
           </div>
@@ -75,9 +75,6 @@ include ('./header/LessonHeader.blade.php');
   </body>
 </html>
 
-<?php
-include('../account/partials/Footer.tpl');
-
-?>
+<?php include('../account/partials/Footer.tpl'); ?>
 
 
