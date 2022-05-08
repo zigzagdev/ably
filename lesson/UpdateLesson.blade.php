@@ -129,19 +129,17 @@ include('./header/LessonHeader.blade.php');
 
     if($rec2 == true)
     {
-        $url = "http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id";
-        $_SESSION['lesson-upd'] = "<div class='success' style='font-size: 30px'> Your Lesson was Updated Successfully.</div>";
-        header('Location:' .$url,true , 302);
+      $_SESSION['lesson-upd'] = "<div class='success' style='font-size: 30px'> Your Lesson was Updated Successfully.</div>";
+      header("Location:http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id", 302);
+      die();
     }
     else
     {
-        $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Lesson.</i></div>";
-        $url = "http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id";
-        header('Location:' .$url,true , 401);
-        die();
+      $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Lesson.</i></div>";
+      header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);
+      die();
     }
-}
-
+  }
 include('../account/partials/Footer.tpl'); ?>
 
 
