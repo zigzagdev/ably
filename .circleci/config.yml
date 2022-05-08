@@ -55,7 +55,7 @@ jobs:
 
       - run:
           name: PHPStan(LIndex.blade.php)
-          command: ./vendor/bin/phpstan analyze --level 1 LIndex.blade.php
+          command: ./vendor/bin/phpstan analyze --level 0 LIndex.blade.php
 
       - run:
           name: PHPStan(Account)
