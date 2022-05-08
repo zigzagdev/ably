@@ -20,16 +20,16 @@ include('./account/partials/ClientHeader.tpl');
     <div>
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
 <?php
-    $sql2 = "SELECT
-                    *
-                 FROM
-                    tbl_lesson
-                 WHERE
-                    NOW() > DATE_SUB(deadline, INTERVAL '13' DAY)
-                 ORDER BY
-                     created_at
-                 ASC
-                    ";
+    $sql2 = "
+              SELECT
+                  *
+              FROM
+                tbl_lesson
+              WHERE
+                NOW() > DATE_SUB(deadline, INTERVAL '13' DAY)
+              ORDER BY
+                created_at ASC
+             ";
 
     $rec2 = mysqli_query($connect, $sql2);
 
