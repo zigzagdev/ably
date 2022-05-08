@@ -72,10 +72,8 @@ include('./account/partials/ClientHeader.blade.php');
     <link rel="stylesheet" href="./css/Forms.css">
   </head>
   <body>
-  <div style="margin: 0 100px 0 100px">
-    <div>
+    <div style="margin: 0 100px 0 100px">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
-      <?php var_dump($rest) ?>
       <div class="cardoutline" style="display: flex;">
         <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
           <div class="cardcontent" style="margin: 0 10px;">
@@ -93,6 +91,23 @@ include('./account/partials/ClientHeader.blade.php');
           </div>
         </a>
       </div>
+      <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
+      <div class="cardoutline" style="display: flex;">
+        <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
+          <div class="cardcontent" style="margin: 0 10px;">
+            <span style="display: flex">
+              <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
+              <strong style="padding:28px 0 8px 40px"><?php echo $course ?></strong><br/>
+            </span>
+            <div style="margin: 20px 20px; text-align: left">
+              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $description ), 0, 80, '…', 'UTF-8' ); ?></strong>
+            </div>
+            <div style="margin: 50px 20px 20px 20px; text-align: center">
+              <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
+              <strong style="overflow-wrap: break-word; display: inline-block">Only <?php echo $rest ?> !!</strong>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </body>
