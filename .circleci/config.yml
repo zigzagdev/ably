@@ -68,3 +68,11 @@ jobs:
       - run:
           name: PHPUnit
           command: ./vendor/bin/phpunit account
+
+      - run:
+          name: PHPUnit
+          command: ./vendor/bin/phpunit client
+
+      - run:
+          name: PHPUnit
+          command: ./vendor/bin/phpunit lesson
