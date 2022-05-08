@@ -427,3 +427,12 @@ search_box {
     float: right;
     margin-left: 546px
 }
+.c_img_index {
+    border-radius: 50%;
+    float: left;
+    vertical-align: center;
+    margin-left: 10px;
+    width: 65px;
+    height: 65px;
+    margin-top: 8px;
+}

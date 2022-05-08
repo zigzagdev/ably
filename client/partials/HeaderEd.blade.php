@@ -1,8 +1,11 @@
-<?php include ('../config/Constants.blade.php');?>
+<?php include ('../config/Constants.blade.php');
+
+
+?>
 
 <html>
   <head>
-  <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Account.css">
   </head>
   <body style="background-color: ghostwhite">
     <div class="infooutline">
@@ -13,10 +16,10 @@
         <div class="wrapper">
           <a href = "../SLogout.blade.php" style="text-decoration: none; color: black" class="wrapper-inner">Logout</a>
           <a href = "../../LIndex.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none; color: black" class="wrapper-inner">Index</a>
-          <a href="./DeleteClient.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none; color: black">
+          <a href="../client/DeleteClient.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none; color: black">
             Delete your Account
           </a>
-          <a href = "./UpPassCli.blade.php?client_id=<?= $client_id=$_GET['client_id']?>" style="text-decoration: none; color: black" class="wrapper-inner">PasswordChange</a>
+          <a href = "../client/UpPassCli.blade.php?client_id=<?= $client_id=$_GET['client_id']?>" style="text-decoration: none; color: black" class="wrapper-inner">PasswordChange</a>
         </div>
       </div>
     </div>
