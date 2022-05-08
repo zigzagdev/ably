@@ -156,6 +156,52 @@ include "./partials/HeaderEd.blade.php";
             <strong style="color: #2f3542">Find a Tutor</strong><br>
             <input type="hidden" name="client_id" value="<?php echo $client_id ?>"/>
             <input style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course" name="keyword"/>
+            <?php
+
+            $sql =
+              "SELECT 
+                   user_name, deadline, course, remaining, description 
+                 FROM
+                   tbl_account 
+               LEFT JOIN 
+                   tbl_lesson
+                 ON 
+                   tbl_account.account_id=tbl_lesson.account_id
+               WHERE 
+                   deadline
+                 LIKE 
+                   '%".$_POST["keyword"]."%' 
+                 OR
+                   course
+                 LIKE 
+                   '%".$_POST["keyword"]."%'
+                 OR  
+                   remaining
+                 LIKE 
+                   '%".$_POST["keyword"]."%'
+                 OR                       
+                   user_name
+                 LIKE 
+                   '%".$_POST["keyword"]."%'  
+                 OR                       
+                   description
+                 LIKE 
+                   '%".$_POST["keyword"]."%'                                    
+                   ";
+            $rec = mysqli_query($connect, $sql);
+
+            if($rec==TRUE)
+            {
+              $count = mysqli_num_rows($rec);
+              if($count>0)
+              {
+                while ($rows = mysqli_fetch_assoc($rec))
+                {
+                  $name = $rows['name'];
+                }
+              }
+            }
+            ?>
           </form>
         </span>
         <br><br>
