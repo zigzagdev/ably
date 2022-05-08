@@ -21,7 +21,7 @@ include ('./partials/LoginAccount.blade.php');
         $row = mysqli_fetch_assoc($rec);
       } else
       {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        header('Location: '. $_SERVER['HTTP_REFERER']);
       }
     }
   }
@@ -35,13 +35,6 @@ include ('./partials/LoginAccount.blade.php');
   <body>
     <div style="margin: 0 230px">
       <div class="mainaccount">
-<?php if( !empty($error_message) ): ?>
-        <ul class="error_message">
-<?php foreach( $error_message as $value ): ?>
-          <p style="color: #d9534f; text-align: center"><?php echo $value; ?></p>
-<?php endforeach; ?>
-        </ul>
-<?php endif; ?>
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Password</h1>
         <form action="" method="post" enctype="multipart/form-data" style="">
           <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -77,7 +70,6 @@ include ('./partials/LoginAccount.blade.php');
 </html>
 
 <?php
-  $error_message = [];
 
   if(isset($_POST['submit']))
   {
@@ -133,8 +125,13 @@ include ('./partials/LoginAccount.blade.php');
       die();
     }
 
-
-    $upsql = "UPDATE tbl_account SET password='$password' WHERE account_id=$account_id ";
+    $upsql = "UPDATE
+                  tbl_account
+                SET
+                  password='$password'
+              WHERE
+                  account_id=$account_id
+               ";
     $uprec = mysqli_query($connect, $upsql);
 
     if($uprec == true)

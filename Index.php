@@ -22,5 +22,26 @@ include('./account/partials/ClientHeader.blade.php');
     echo $_SESSION['ac_logout'];
     unset($_SESSION['ac_logout']);
   }
+?>
+<html>
+  <head>
+    <title>English Conversation Online.</title>
+    <link rel="stylesheet" href="./css/Account.css">
+    <link rel="stylesheet" href="./css/Forms.css">
+  </head>
+  <body>
+    <div style="background-color: whitesmoke; height: 80%">
 
- include "./account/partials/ClientFooter.tpl"?>
+    </div>
+    <div style="background-color: yellow; height: 40%">
+
+    </div>
+    <div style="background-color: salmon; height: 40%">
+
+    </div>
+    <div style="background-color: red; height: 40%">
+
+    </div>
+  </body>
+</html>
+<?php include "./account/partials/ClientFooter.tpl"?>

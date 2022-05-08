@@ -120,13 +120,16 @@ include('partials/LoginAccount.blade.php');
     {
       $image_name = $current_image;
     }
-    $sql = "UPDATE tbl_account SET 
-                   user_name   ='$user_name'
-                   ,image_name ='$image_name'
-                   ,email      ='$email'
-                   ,content    ='$content' 
+    $sql = "UPDATE 
+                tbl_account 
+            SET 
+                user_name   ='$user_name'
+                ,image_name ='$image_name'
+                ,email      ='$email'
+                ,content    ='$content' 
             WHERE 
-                  account_id = $account_id ";
+              account_id = $account_id 
+            ";
     $rec = mysqli_query($connect, $sql);
 
     if($rec==true)
