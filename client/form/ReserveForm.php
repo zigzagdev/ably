@@ -7,18 +7,65 @@ include('../partials/FormHeader.blade.php');
     unset($_SESSION['form_f']);
   }
 
-  $client_id = $_GET['client_id'];
-  $sql = "SELECT name FROM tbl_client where client_id=$client_id";
-  $rec = mysqli_query($connect, $sql);
 
-  if($rec==TRUE)
+$sql =
+  "SELECT 
+                   user_name, deadline, course, remaining, description 
+                 FROM
+                   tbl_account 
+               LEFT JOIN 
+                   tbl_lesson
+                 ON 
+                   tbl_account.account_id=tbl_lesson.account_id
+               WHERE 
+                   deadline
+                 LIKE 
+                   '%" . $_GET['keyword'] . "%' 
+                 OR
+                   course
+                 LIKE 
+                   '%" . $_GET["keyword"] . "%'
+                 OR  
+                   remaining
+                 LIKE 
+                   '%" . $_GET["keyword"] . "%'
+                 OR                       
+                   user_name
+                 LIKE 
+                   '%" . $_GET["keyword"] . "%'  
+                 OR                       
+                   description
+                 LIKE 
+                   '%" . $_GET["keyword"] . "%'                                    
+                   ";
+$rec = mysqli_query($connect, $sql);
+
+if ($rec == TRUE) {
+  $count = mysqli_num_rows($rec);
+  if ($count > 0) {
+    while ($rows = mysqli_fetch_assoc($rec)) {
+      $user_name = $rows['user_name'];
+      $deadline = $rows['deadline'];
+      $course = $rows['course'];
+      $remaining = $rows['remaining'];
+      $description = $rows['description'];
+    }
+  }
+}
+
+
+$client_id = $_GET['client_id'];
+  $sql2 = "SELECT name FROM tbl_client where client_id=$client_id";
+  $rec2 = mysqli_query($connect, $sql2);
+
+  if($rec2 == TRUE)
   {
-    $count = mysqli_num_rows($rec);
-    if($count>0)
+    $count2 = mysqli_num_rows($rec2);
+    if($count2>0)
     {
-      while ($rows = mysqli_fetch_assoc($rec))
+      while ($rows2 = mysqli_fetch_assoc($rec2))
       {
-        $name = $rows['name'];
+        $name = $rows2['name'];
       }
     }
   }
@@ -31,24 +78,6 @@ include('../partials/FormHeader.blade.php');
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
-    <form action="" method="post" enctype="multipart/form-data" style="">
-      <div style="margin-top: 60px">
-          <fieldset class="mainaccount" style="margin 0 100px">
-            <legend style="text-align: center;"><b style="color: darkblue">Lesson Reservation Form</b></legend>
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              FullName
-            </b>
-             <?php  echo $name ?>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          </fieldset>
-          <div style="text-align: center; margin-bottom: 30px">
-          <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
-          <input type="submit" name="submit" value="Submit" class="btn btn-third">
-          </div>
-        </div>
-    </form>
   </body>
 </html>
 
