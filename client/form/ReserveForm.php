@@ -1,53 +1,35 @@
 <?php
 include('../partials/FormHeader.blade.php');
 
-  if (isset($_SESSION['form_f']))
-  {
-    echo $_SESSION['form_f'];
-    unset($_SESSION['form_f']);
-  }
-
-
 $sql =
   "SELECT 
-                   user_name, deadline, course, remaining, description 
-                 FROM
-                   tbl_account 
-               LEFT JOIN 
-                   tbl_lesson
-                 ON 
-                   tbl_account.account_id=tbl_lesson.account_id
-               WHERE 
-                   deadline
-                 LIKE 
-                   '%" . $_GET['keyword'] . "%' 
-                 OR
-                   course
-                 LIKE 
-                   '%" . $_GET["keyword"] . "%'
-                 OR  
-                   remaining
-                 LIKE 
-                   '%" . $_GET["keyword"] . "%'
-                 OR                       
-                   user_name
-                 LIKE 
-                   '%" . $_GET["keyword"] . "%'  
-                 OR                       
-                   description
-                 LIKE 
-                   '%" . $_GET["keyword"] . "%'                                    
-                   ";
+       user_name, deadline, course, remaining, description 
+   FROM
+       tbl_account 
+       LEFT JOIN tbl_lesson
+         ON tbl_account.account_id=tbl_lesson.account_id
+   WHERE 
+       deadline LIKE '%" .$_GET['keyword']. "%' 
+     OR
+       course LIKE '%" . $_GET["keyword"] . "%'
+     OR  
+       remaining LIKE '%" . $_GET["keyword"] . "%'
+     OR                       
+       user_name LIKE '%" . $_GET["keyword"] . "%'  
+     OR                       
+       description LIKE '%" . $_GET["keyword"] . "%'                                    
+   ";
+
 $rec = mysqli_query($connect, $sql);
 
 if ($rec == TRUE) {
   $count = mysqli_num_rows($rec);
   if ($count > 0) {
     while ($rows = mysqli_fetch_assoc($rec)) {
-      $user_name = $rows['user_name'];
-      $deadline = $rows['deadline'];
-      $course = $rows['course'];
-      $remaining = $rows['remaining'];
+      $user_name   = $rows['user_name'];
+      $deadline    = $rows['deadline'];
+      $course      = $rows['course'];
+      $remaining   = $rows['remaining'];
       $description = $rows['description'];
     }
   }
