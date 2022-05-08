@@ -52,33 +52,21 @@ include('./account/partials/ClientHeader.blade.php');
     <div>
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
       <div class="cardoutline" style="display: flex;">
-        <div class="cardcontent" style="margin: 0 10px">
-          <span style="display: flex">
-            <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
-            <p style="padding-top: 5px"><?php echo $course ?></p><br/>
-          </span>
-          <?php echo $description ?><br/>
-          <?php echo $deadline ?><br/>
-          <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>"> Reserve your form</a>
-        </div>
-        <div class="cardcontent" style="margin: 0 10px">
-          <span style="display: flex">
-            <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
-            <p style="padding-top: 5px"><?php echo $course ?></p><br/>
-          </span>
-          <?php echo $description ?><br/>
-          <?php echo $deadline ?><br/>
-          <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>"> Reserve your form</a>
-        </div>
-        <div class="cardcontent" style="margin: 0 10px">
-          <span style="display: flex">
-            <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
-            <p style="padding-top: 5px"><?php echo $course ?></p><br/>
-          </span>
-          <?php echo $description ?><br/>
-          <?php echo $deadline ?><br/>
-          <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>"> Reserve your form</a>
-        </div>
+        <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black">
+          <div class="cardcontent" style="margin: 0 10px;">
+            <span style="display: flex">
+              <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
+              <strong style="padding:28px 0 8px 40px"><?php echo $course ?></strong><br/>
+            </span>
+            <div style="margin: 20px 20px; text-align: left">
+              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $description ), 0, 80, '…', 'UTF-8' ); ?></strong>
+            </div>
+            <div style="margin: 50px 20px 20px 20px; text-align: center">
+              <strong style="float: left; margin-left: 30px">Deadline</strong><br>
+              <strong style="overflow-wrap: break-word; display: inline-block"><?php echo $deadline ?></strong>
+            </div>
+          </div>
+        </a>
       </div>
       </div>
     </div>
