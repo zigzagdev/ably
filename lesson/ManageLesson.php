@@ -29,10 +29,16 @@ include('./header/LessonHeader.blade.php');
   }
 
   $account_id = $_GET['account_id'];
-  $sql = "SELECT * FROM `tbl_lesson` 
-          INNER JOIN tbl_account 
-            ON tbl_lesson.account_id = tbl_account.account_id 
-          WHERE tbl_lesson.account_id=$account_id";
+  $sql = "
+           SELECT 
+               * 
+           FROM 
+               tbl_lesson 
+               INNER JOIN tbl_account 
+                 ON tbl_lesson.account_id = tbl_account.account_id 
+           WHERE 
+               tbl_lesson.account_id=$account_id
+          ";
   $rec = mysqli_query($connect, $sql);
 
   if($rec == TRUE)

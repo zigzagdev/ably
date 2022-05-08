@@ -61,6 +61,31 @@ $client_id = $_GET['client_id'];
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
+  <?php
+  if(!empty($_GET['keyword']))
+  { ?>
+    <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
+    <div class="cardoutline" style="display: flex;">
+      <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
+        <div class="cardcontent" style="margin: 0 10px;">
+            <span style="display: flex">
+              <img src="../images/profile/" class="c_img_index">
+              <strong style="padding:28px 0 8px 40px"></strong><br/>
+            </span>
+          <div style="margin: 20px 20px; text-align: left">
+            <strong style="overflow-wrap: break-word"></strong>
+          </div>
+          <div style="margin: 50px 20px 20px 20px; text-align: center">
+            <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
+            <strong style="overflow-wrap: break-word; display: inline-block">Only  !!</strong>
+          </div>
+        </div>
+      </a>
+    </div>
+ <?php }
+
+
+  ?>
   </body>
 </html>
 
@@ -69,8 +94,8 @@ $client_id = $_GET['client_id'];
 
   if(isset($_POST['submit']))
     {
-      $name = $_GET['name'];
-      $sql3 = "INSERT INTO tbl_form SET name = '$name'";
+      $asking = $_POST['asking'];
+      $sql3 = "INSERT INTO tbl_form SET asking = '$asking'";
 
     $rec3=mysqli_query($connect,$sql3);
     if($rec3 == true)
