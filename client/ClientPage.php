@@ -11,6 +11,11 @@ include "./partials/HeaderEd.blade.php";
     echo  $_SESSION['name_s'];
     unset($_SESSION['name_s']);
   }
+  if(isset($_SESSION['form_s']))
+  {
+    echo  $_SESSION['form_s'];
+    unset($_SESSION['form_s']);
+  }
 
   if(isset($_SESSION['s_login']))
   {
