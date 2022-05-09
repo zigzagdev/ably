@@ -31,17 +31,18 @@ include('./account/partials/ClientHeader.blade.php');
   </head>
   <body>
     <div style="background-color: whitesmoke; height: 80%">
-      <div style="padding: 170px 0 0 90px">
-        <strong style="font-size: 30px">
+      <div class="flex">
+        <img src="./images/world.webp" style="width: 500px; height: 400px; margin:100px 0 0 200px">
+        <div style="flex-flow: column; margin: 190px 0 0 50px;">
+        <strong style="font-size: 30px;">
           Say hello to your<br>
-          private English tutor
+          private English tutor<br>
         </strong>
-      </div>
-      <div style="padding: 10px 0 0 90px">
-        <strong style="font-size: 16px">
+        <strong style="font-size: 16px;padding-top: 10px; display: inline-block">
           Become fluent faster speaker lessons<br>
           tailored to your goals.
         </strong>
+        </div>
       </div>
     </div>
     <div style="background-color: yellow; height: 55%">
