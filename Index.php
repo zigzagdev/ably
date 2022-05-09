@@ -25,19 +25,18 @@ include('./account/partials/ClientHeader.blade.php');
 ?>
 <html>
   <head>
-    <title>English Conversation Online.</title>
+    <title>English Conversation Online</title>
     <link rel="stylesheet" href="./css/Account.css">
     <link rel="stylesheet" href="./css/Forms.css">
   </head>
   <body>
     <div style="background-color: whitesmoke; height: 80%">
       <div style="padding: 210px 0 0 90px">
-        <strong>
+        <strong style="font-size: 30px">
           Say hello to your private English tutor
         </strong>
       </div>
         Become fluent faster through one-on-one video chat lessons tailored to your goals.
-      </strong>
     </div>
     <div style="background-color: yellow; height: 55%">
 
