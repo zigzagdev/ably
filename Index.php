@@ -31,12 +31,18 @@ include('./account/partials/ClientHeader.blade.php');
   </head>
   <body>
     <div style="background-color: whitesmoke; height: 80%">
-      <div style="padding: 210px 0 0 90px">
+      <div style="padding: 170px 0 0 90px">
         <strong style="font-size: 30px">
-          Say hello to your private English tutor
+          Say hello to your<br>
+          private English tutor
         </strong>
       </div>
-        Become fluent faster through one-on-one video chat lessons tailored to your goals.
+      <div style="padding: 10px 0 0 90px">
+        <strong style="font-size: 16px">
+          Become fluent faster speaker lessons<br>
+          tailored to your goals.
+        </strong>
+      </div>
     </div>
     <div style="background-color: yellow; height: 55%">
 
