@@ -67,8 +67,8 @@ include('./header/LessonHeader.blade.php');
   <body>
     <div style="margin: 0 210px">
       <div class="cardline">
-<?php foreach($rec as $key ){
-?>      <a href="EachLesson.php?lesson_id=<?=$key['lesson_id']?>" class="card" style="margin-bottom: 7px; text-decoration: none; color: black">
+<?php foreach($rec as $key ){?>
+        <a href="EachLesson.php?lesson_id=<?=$key['lesson_id']?>" class="card" style="margin-bottom: 7px; text-decoration: none; color: black">
           <div class="course" style="margin-bottom: 7px">
             <strong style="font-size: 16px;">Course Level</strong><br>
             <i style="font-size: 17px; color: darkblue; padding-left: 5px"><?php  echo $key['course'] ;?></i>

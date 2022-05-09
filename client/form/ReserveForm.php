@@ -10,15 +10,15 @@ if(!empty($_GET['keyword'])) {
          LEFT JOIN tbl_lesson
            ON tbl_account.account_id=tbl_lesson.account_id
      WHERE 
-         deadline LIKE '%" . $_GET['keyword'] . "%' 
+         deadline LIKE '%". $_GET['keyword']. "%' 
        OR
-         course LIKE '%" . $_GET["keyword"] . "%'
+         course LIKE '%". $_GET["keyword"]. "%'
        OR  
-         remaining LIKE '%" . $_GET["keyword"] . "%'
+         remaining LIKE '%". $_GET["keyword"]. "%'
        OR                       
-         user_name LIKE '%" . $_GET["keyword"] . "%'  
+         user_name LIKE '%". $_GET["keyword"]. "%'  
        OR                       
-         description LIKE '%" . $_GET["keyword"] . "%'                                    
+         description LIKE '%". $_GET["keyword"]. "%'                                    
      ";
 
   $rec = mysqli_query($connect, $sql);
@@ -37,8 +37,10 @@ if(!empty($_GET['keyword'])) {
   }
 }
 
-$client_id = $_GET['client_id'];
-  $sql2 = "SELECT name FROM tbl_client where client_id=$client_id";
+//user名をとってくる為にSQL文を入力する。
+
+  $client_id = $_GET['client_id'];
+  $sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
   $rec2 = mysqli_query($connect, $sql2);
 
   if($rec2 == TRUE)
