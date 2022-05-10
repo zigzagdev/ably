@@ -50,9 +50,9 @@ include('./account/partials/ClientHeader.blade.php');
         </div>
       </div>
     </div>
-    <div style="height: 65%; background: linear-gradient(180deg, aliceblue 0%, gold 60%, gold 40%, palegoldenrod 100%);};">
+    <div style="height: 60%; background: linear-gradient(180deg, aliceblue 0%, gold 60%, gold 40%, palegoldenrod 100%);};">
       <div class="flex">
-        <img src="./images/chat.webp" style="width: 400px; height: 240px; margin:30px 0 0 320px">
+        <img src="./images/chat.webp" style="width: 400px; height: 240px; margin:50px 0 0 320px">
         <div style="flex-flow: column; margin: 90px 0 0 50px;">
           <strong style="font-size: 30px;">
             English immersion<br>
@@ -67,6 +67,14 @@ include('./account/partials/ClientHeader.blade.php');
       </div>
     </div>
     <div style="background-color: salmon; height: 70%">
+      <div style="display: flex; padding: 150px 0 0 250px">
+        <div style="width: 450px; height: 150px; border-radius: 10px; background-color: gold; margin: 0 20px">
+          aa
+        </div>
+        <div style="width: 450px; height: 150px; border-radius: 10px; background-color: gold; margin: 0 20px">
+          aa
+        </div>
+      </div>
     </div>
   </body>
 </html>
