@@ -35,7 +35,7 @@ include('./account/partials/ClientHeader.blade.php');
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   </head>
   <body>
-    <div style="background-color: whitesmoke; height: 80%">
+    <div style="height: 80%; background: linear-gradient(80deg, whitesmoke 20%,skyblue 40%, lightsteelblue 40%, powderblue 50%);">
       <div class="flex">
         <img src="./images/world.webp" style="width: 500px; height: 520px; margin:30px 0 0 200px">
         <div style="flex-flow: column; margin: 190px 0 0 50px;">
@@ -66,8 +66,8 @@ include('./account/partials/ClientHeader.blade.php');
         </div>
       </div>
     </div>
-    <div style="background-color: salmon; height: 70%">
-      <div style="display: flex; padding: 150px 0 0 250px">
+    <div style=" background: linear-gradient(40deg, salmon 20%, lightcoral 30%, lightsalmon 50%, palegoldenrod 100%);">
+      <div style="display: flex; padding: 150px 0 100px 250px">
         <div style="width: 450px; height: 150px; border-radius: 10px; background-color: gold; margin: 0 20px">
           aa
         </div>
