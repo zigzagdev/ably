@@ -43,18 +43,30 @@ include('./account/partials/ClientHeader.blade.php');
           Say hello to your<br>
           private English tutor<br>
         </strong>
-        <strong style="font-size: 16px;padding-top: 10px; display: inline-block">
+        <strong style="font-size: 16px;padding-top: 10px;margin-top: 16px; display: inline-block">
           Become fluent faster speaker lessons<br>
           tailored to your goals.
         </strong>
         </div>
       </div>
     </div>
-    <div style="background-color: yellow; height: 55%">
-
+    <div style="height: 65%; background: linear-gradient(180deg, aliceblue 0%, gold 60%, gold 40%, palegoldenrod 100%);};">
+      <div class="flex">
+        <img src="./images/chat.webp" style="width: 400px; height: 240px; margin:30px 0 0 320px">
+        <div style="flex-flow: column; margin: 90px 0 0 50px;">
+          <strong style="font-size: 30px;">
+            English immersion<br>
+            from anywhere<br>
+          </strong>
+          <strong style="font-size: 16px;padding-top: 10px;margin-top: 16px; display: inline-block">
+            Build English proficiency and confidence through real conversations<br>
+            with friendly tutors from the US, UK, Australia, and more. <br>
+            All you need is your device!
+          </strong>
+        </div>
+      </div>
     </div>
-    <div style="background-color: salmon; height: 50%">
-
+    <div style="background-color: salmon; height: 70%">
     </div>
   </body>
 </html>
