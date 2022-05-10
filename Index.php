@@ -69,14 +69,14 @@ include('./account/partials/ClientHeader.blade.php');
     <div style=" background: linear-gradient(40deg, salmon 20%, lightcoral 30%, lightsalmon 50%, palegoldenrod 100%);">
       <div class="flex" style=" padding: 150px 0 100px 250px">
         <div style="display: flex">
-          <a href = "" style="text-decoration: none; color: black">
+          <a href = "./client/AddClient.php" style="text-decoration: none; color: black">
             <div style="width: 450px; height: 180px; border-radius: 10px; background-color: lightpink; margin: 0 20px; display: inline-block">
               <div class="flex">
                 <img src="./images/business.svg" width="90px" height="90px" style="padding:40px 0 0 30px">
                 <div style="display: inline-block; margin-left: 20px">
-                <strong class="text" style="padding-top:30px; font-size: 25px; display: inline-block">For Tutors →</strong><br>
+                <strong class="text" style="padding-top:30px; font-size: 25px; display: inline-block">For Students →</strong><br>
                 <strong class="text" style="margin-top: 10px; ">
-                  Empower your team with practical, real-world English skills they need to excel in global business.
+                  With this service, you can learn English fluently.
                 </strong>
                 </div>
               </div>
