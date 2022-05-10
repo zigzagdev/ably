@@ -35,18 +35,18 @@ include('./account/partials/ClientHeader.blade.php');
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   </head>
   <body>
-    <div style="height: 80%; background: linear-gradient(80deg, whitesmoke 20%,skyblue 40%, lightsteelblue 40%, powderblue 50%);">
+    <div style="height: 80%; background: linear-gradient(80deg, whitesmoke 20%,lightsteelblue 40%, lightsteelblue 40%, powderblue 50%);">
       <div class="flex">
         <img src="./images/world.webp" style="width: 500px; height: 520px; margin:30px 0 0 200px">
         <div style="flex-flow: column; margin: 190px 0 0 50px;">
-        <strong style="font-size: 30px;">
-          Say hello to your<br>
-          private English tutor<br>
-        </strong>
-        <strong style="font-size: 16px;padding-top: 10px;margin-top: 16px; display: inline-block">
-          Become fluent faster speaker lessons<br>
-          tailored to your goals.
-        </strong>
+          <strong style="font-size: 30px;">
+            Say hello to your<br>
+           private English tutor<br>
+          </strong>
+          <strong style="font-size: 16px;padding-top: 10px;margin-top: 16px; display: inline-block">
+            Become fluent faster speaker lessons<br>
+            tailored to your goals.
+          </strong>
         </div>
       </div>
     </div>
@@ -67,12 +67,36 @@ include('./account/partials/ClientHeader.blade.php');
       </div>
     </div>
     <div style=" background: linear-gradient(40deg, salmon 20%, lightcoral 30%, lightsalmon 50%, palegoldenrod 100%);">
-      <div style="display: flex; padding: 150px 0 100px 250px">
-        <div style="width: 450px; height: 150px; border-radius: 10px; background-color: gold; margin: 0 20px">
-          aa
+      <div class="flex" style=" padding: 150px 0 100px 250px">
+        <div style="display: flex">
+          <a href = "" style="text-decoration: none; color: black">
+            <div style="width: 450px; height: 180px; border-radius: 10px; background-color: lightpink; margin: 0 20px; display: inline-block">
+              <div class="flex">
+                <img src="./images/business.svg" width="90px" height="90px" style="padding:40px 0 0 30px">
+                <div style="display: inline-block; margin-left: 20px">
+                <strong class="text" style="padding-top:30px; font-size: 25px; display: inline-block">For Tutors →</strong><br>
+                <strong class="text" style="margin-top: 10px; ">
+                  Empower your team with practical, real-world English skills they need to excel in global business.
+                </strong>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
-        <div style="width: 450px; height: 150px; border-radius: 10px; background-color: gold; margin: 0 20px">
-          aa
+        <div style="display: flex">
+          <a href = "" style="text-decoration: none; color: black">
+            <div style="width: 450px; height: 180px; border-radius: 10px; background-color: lightpink; margin: 0 20px; display: inline-block">
+              <div class="flex">
+                <img src="./images/business.svg" width="90px" height="90px" style="padding:40px 0 0 30px">
+                <div style="display: inline-block; margin-left: 20px">
+                  <strong class="text" style="padding-top:30px; font-size: 25px; display: inline-block">For Tutors →</strong><br>
+                  <strong class="text" style="margin-top: 10px; ">
+                    Empower your team with practical, real-world English skills they need to excel in global business.
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
