@@ -28,11 +28,16 @@ include('./account/partials/ClientHeader.blade.php');
     <title>English Conversation Online</title>
     <link rel="stylesheet" href="./css/Account.css">
     <link rel="stylesheet" href="./css/Forms.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   </head>
   <body>
     <div style="background-color: whitesmoke; height: 80%">
       <div class="flex">
-        <img src="./images/world.webp" style="width: 500px; height: 400px; margin:100px 0 0 200px">
+        <img src="./images/world.webp" style="width: 500px; height: 520px; margin:30px 0 0 200px">
         <div style="flex-flow: column; margin: 190px 0 0 50px;">
         <strong style="font-size: 30px;">
           Say hello to your<br>
