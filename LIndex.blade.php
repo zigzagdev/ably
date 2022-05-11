@@ -11,17 +11,15 @@ include('./account/partials/ClientHeader.blade.php');
   $client_id = $_GET['client_id'];
   $sql = "
            SELECT
-               deadline,user_name, course,remaining,description,image_name
+               deadline, user_name, course, remaining, description, image_name
            FROM
                tbl_lesson
-               LEFT JOIN tbl_account
-                 ON tbl_lesson.account_id = tbl_account.account_id
+               LEFT JOIN tbl_account ON tbl_lesson.account_id = tbl_account.account_id
            WHERE
                NOW() > DATE_SUB(deadline, INTERVAL '13' DAY)
-             ORDER BY
-               created_at
-             ASC
-           ";
+           ORDER BY
+               created_at ASC
+          ";
 
     $rec = mysqli_query($connect, $sql);
 
@@ -44,8 +42,7 @@ include('./account/partials/ClientHeader.blade.php');
                remaining - COUNT(tbl_form.lesson_id)
            FROM
                tbl_form
-               LEFT JOIN tbl_lesson
-                 ON tbl_form.lesson_id = tbl_lesson.lesson_id
+               LEFT JOIN tbl_lesson ON tbl_form.lesson_id = tbl_lesson.lesson_id
            GROUP BY
                tbl_form.lesson_id
            ";
