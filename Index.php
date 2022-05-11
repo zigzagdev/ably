@@ -52,7 +52,7 @@ include('./account/partials/ClientHeader.blade.php');
     </div>
     <div style="height: 60%; background: linear-gradient(180deg, aliceblue 0%, gold 60%, gold 40%, palegoldenrod 100%);};">
       <div class="flex">
-        <img src="./images/chat.webp" style="width: 400px; height: 240px; margin:50px 0 0 320px">
+        <img src="./images/chat.webp" style="width: 400px; height: 290px; margin:50px 0 0 320px">
         <div style="flex-flow: column; margin: 90px 0 0 50px;">
           <strong style="font-size: 30px;">
             English immersion<br>
@@ -90,7 +90,7 @@ include('./account/partials/ClientHeader.blade.php');
                 <img src="./images/business.svg" width="90px" height="90px" style="padding:40px 0 0 30px">
                 <div style="display: inline-block; margin-left: 20px">
                   <strong class="text" style="padding-top:30px; font-size: 25px; display: inline-block">For Tutors →</strong><br>
-                  <strong class="text" style="margin-top: 10px; ">
+                  <strong class="text" style="margin-top: 10px;">
                     Empower your team with practical, real-world English skills they need to excel in global business.
                   </strong>
                 </div>
