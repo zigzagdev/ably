@@ -17,11 +17,6 @@ include('./header/LessonHeader.blade.php');
     echo $_SESSION['change-lesson'];
     unset($_SESSION['change-lesson']);
   }
-  if(isset($_SESSION['lesson_dlt']))
-  {
-    echo $_SESSION['lesson_dlt'];
-    unset($_SESSION['lesson_dlt']);
-  }
   if(isset($_SESSION['delete_lesson']))
   {
     echo $_SESSION['delete_lesson'];
@@ -32,10 +27,12 @@ include('./header/LessonHeader.blade.php');
   $sql = "
            SELECT 
                * 
-           FROM 
+             FROM 
                tbl_lesson 
-               INNER JOIN tbl_account 
-                 ON tbl_lesson.account_id = tbl_account.account_id 
+           INNER JOIN 
+               tbl_account 
+             ON 
+               tbl_lesson.account_id = tbl_account.account_id 
            WHERE 
                tbl_lesson.account_id=$account_id
           ";

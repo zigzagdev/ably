@@ -110,8 +110,7 @@ include('./header/LessonHeader.blade.php');
     if (empty($course) || empty($content) || empty($deadline) )
     {
       $_SESSION['lesson-upd-fail'] = "<div class='fail'>Failed to Upload Lesson. </div>";
-      $url = "http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id";
-      header('Location:'.$url,true , 401);
+      header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);
       die();
     }
 
