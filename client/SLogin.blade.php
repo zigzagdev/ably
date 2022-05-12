@@ -16,7 +16,7 @@ include('../account/partials/ClientHeader.blade.php');
   </head>
   <body>
     <div style="text-align: right; margin:30px 160px 0 0">
-      <strong>Haven't create an account ?<a href="" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></strong>
+      <strong>Haven't create an account ?<a href="./AddClient.php" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></strong>
     </div>
     <div style="margin: 50px 400px 25px 400px">
       <div class="mainaccount">

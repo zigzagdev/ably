@@ -28,45 +28,45 @@ if(isset($_GET['client_id']))
 }
 ?>
 <html>
-<head>
-  <title>UpdatePassword</title>
-  <link rel="stylesheet" href="../css/Account.css">
-  <link rel="stylesheet" href="../css/Forms.css">
-</head>
-<body>
-<div style="margin: 0 230px">
-  <div class="mainaccount">
-    <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Password</h1>
-    <form action="" method="post" enctype="multipart/form-data" style="">
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          CurrentPassword
-        </b>
-        <input type="password" name="current" size="40">
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          NewPassword
-        </b>
-        <input type="password" name="password" size="40">
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-      <li style="list-style: none;  margin:17px 0 17px 30px">
-        <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-          NewPasswordAgain
-        </b>
-        <input type="password" name="password2" size="40">
-      </li>
-      <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-      <div style="text-align: center; margin-top: 30px">
-        <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
-        <button type="button" onclick=history.back() class="btn-secondary">Return</button>
+  <head>
+    <title>UpdatePassword</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <div style="margin: 0 230px">
+      <div class="mainaccount">
+        <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Password</h1>
+        <form action="" method="post" enctype="multipart/form-data" style="">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              CurrentPassword
+            </b>
+            <input type="password" name="current" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              NewPassword
+            </b>
+            <input type="password" name="password" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
+              NewPasswordAgain
+            </b>
+            <input type="password" name="password2" size="40">
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <div style="text-align: center; margin-top: 30px">
+            <input type="submit" name="submit" value="Update your Account" class="btn-secondary">
+            <button type="button" onclick=history.back() class="btn-secondary">Return</button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>
 
 <?php
@@ -102,19 +102,18 @@ if(isset($_POST['submit']))
            ";
   $rec  = mysqli_query($connect,$sql);
   $rec2 = mysqli_num_rows($rec);
+
   if ($rec2 > 0) {
     $_SESSION['add_fail_up_c'] =  "<div class='success'>Password already exists</div>";
     header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
     die();
   }
-
   if ($current != $nowpassword)
   {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Your now Password didn't match !</div>";
     header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
     die();
   }
-
   if ($password != $password2)
   {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Passwords should the same one !</div>";
@@ -126,13 +125,11 @@ if(isset($_POST['submit']))
     header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id", 302);
     die();
   }
-
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Confirm Password form isn't right form !</div>";
     header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id", 302);
     die();
   }
-
 
   $upsql = "UPDATE tbl_client SET password='$password' WHERE client_id=$client_id ";
   $uprec = mysqli_query($connect, $upsql);
