@@ -11,7 +11,7 @@ include('../account/partials/ClientHeader.blade.php');
 
 <html>
   <head>
-    <title>LogIn Page(Student)</title>
+    <title>Login Page(Student)</title>
     <link rel="stylesheet" href="../css/Account.css">
   </head>
   <body>
@@ -75,7 +75,6 @@ if(isset($_POST['submit']))
     $client_id  = $row['client_id'];
     $name       = $row['name'];
 
-    $_SESSION['email'] = $email;
     $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
     header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();

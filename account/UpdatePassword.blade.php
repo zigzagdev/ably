@@ -10,7 +10,7 @@ include ('./partials/LoginAccount.blade.php');
   if(isset($_GET['account_id']))
   {
     $account_id = $_GET['account_id'];
-    $sql = "SELECT password, account_id FROM tbl_account WHERE account_id=$account_id";
+    $sql = "SELECT password FROM tbl_account WHERE account_id=$account_id";
     $rec = mysqli_query($connect, $sql);
 
     if ($rec == true)

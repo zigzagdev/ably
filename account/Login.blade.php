@@ -17,7 +17,7 @@ include('./partials/ClientHeader.blade.php');
 
 <html>
   <head>
-    <title>LogIn Page</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="../css/Account.css">
   </head>
   <body>
