@@ -51,12 +51,12 @@ include('./account/partials/ClientHeader.blade.php');
 
   if($rec2==TRUE)
   {
-    $count = mysqli_num_rows($rec2);
-    if($count>0)
+    $count2 = mysqli_num_rows($rec2);
+    if($count2>0)
     {
-      while($rows=mysqli_fetch_assoc($rec2))
+      while($rows2 = mysqli_fetch_assoc($rec2))
       {
-        $rest  = $rows['remaining - COUNT(tbl_form.lesson_id)'];
+        $rest  = $rows2['remaining - COUNT(tbl_form.lesson_id)'];
       }
     }
   }
@@ -101,7 +101,11 @@ include('./account/partials/ClientHeader.blade.php');
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center">
               <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
+<?php
+      var_dump($rest) ?>
               <strong style="overflow-wrap: break-word; display: inline-block">Only <?php echo $rest ?> !!</strong>
+
+              <strong style="overflow-wrap: break-word; display: inline-block">Remaining <?php echo $rest ?> !</strong>
             </div>
           </div>
         </a>

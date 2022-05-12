@@ -70,11 +70,10 @@ include('./partials/ClientHeader.blade.php');
     {
       $row = mysqli_fetch_assoc($rec);
       $id  = $row['account_id'];
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$id";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
       $_SESSION['email'] = $email;
 
-      header('Location:'.$url, true, 302);
+      header("Location:http:/localhost:8001/account/ManageAccount.php?account_id=$id", 302);
       exit();
     } else
     {
