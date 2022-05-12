@@ -65,7 +65,7 @@ if(isset($_SESSION['name_error']))
     if(preg_match($name,$name_boolean))
     {
       $_SESSION['name_error'] = "<div class='success text-center'>Write down your name correctly(Only can use Alphabet.)!</div>";
-      header('location:http://localhost:8001/client/UpdateName.php?client_id=$client_id',);
+      header("location:http://localhost:8001/client/UpdateName.php?client_id=$client_id", 302);
       die();
     }
 

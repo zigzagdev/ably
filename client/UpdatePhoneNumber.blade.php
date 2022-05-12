@@ -77,12 +77,12 @@ include('./partials/HeaderEd.blade.php');
     if($rec3 == true)
     {
       $_SESSION['order_tel'] = "<div class='success text-center'>PhoneNumber Updated.</div>";
-      header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+      header("Location:http:/localhost:8001/client/ClientPage.php?client_id=$client_id", 201);
       die();
     } else
     {
       $_SESSION['order_f_p'] = "<div class='success text-center'>PhoneNumber Update Failed.</div>";
-      header("Location:http://localhost:8001/client/UpdatePhoneNumber.blade.php?client_id=$client_id");
+      header("Location:http:/localhost:8001/client/UpdatePhoneNumber.blade.php?client_id=$client_id", 302);
       die();
     }
   }

@@ -121,7 +121,7 @@ include ('./partials/LoginAccount.blade.php');
     $rec2 = mysqli_num_rows($rec);
     if ($rec2 > 0) {
       $_SESSION['add_fail_up'] =  "<div class='success'>Password already exists</div>";
-      header('location:/account/AddAccount.php');
+      header("Location:http:/localhost:8001/accountAddAccount.php");
       die();
     }
 
@@ -137,13 +137,13 @@ include ('./partials/LoginAccount.blade.php');
     if($uprec == true)
     {
       $_SESSION['change-pwd'] = "<div class='success text-center'>Your Password was Updated.</div>";
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$account_id";
-      header('Location:' .$url, true, 302);
+      header("Location:http:/localhost:8001/account/ManageAccount.php?account_id=$account_id", 302);
+      die();
     } else
     {
       $_SESSION['add_fail_up'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
-      $url = "http://localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id";
-      header('Location:' .$url, true, 401);
+      header("Location:http:/localhost:8001/account/UpdatePassword.blade.php?account_id=$account_id", 401);
+      die();
     }
   }
   include('../account/partials/Footer.tpl');

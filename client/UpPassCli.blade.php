@@ -123,13 +123,13 @@ if(isset($_POST['submit']))
   }
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Password form isn't right form !</div>";
-    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id", 302);
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
     $_SESSION['add_fail_up_c'] = "<div class='error'>Confirm Password form isn't right form !</div>";
-    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
+    header("location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id", 302);
     die();
   }
 
@@ -140,11 +140,11 @@ if(isset($_POST['submit']))
   if($uprec == true)
   {
     $_SESSION['change_pwd_c'] = "<div class='success text-center'>Your Password was Updated.</div>";
-    header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+    header("Location:http:/localhost:8001/client/ClientPage.php?client_id=$client_id", 201);
   } else
   {
     $_SESSION['add_fail_up_c'] = "<div class='success text-center'>Your Password Update was Failed.</div>";
-    header("Location:http://localhost:8001/client/UpPassCli.blade.php?client_id=$client_id");
+    header("Location:http:/localhost:8001/client/UpPassCli.blade.php?client_id=$client_id", 302);
   }
 }
 include('./partials/FooterEd.tpl');

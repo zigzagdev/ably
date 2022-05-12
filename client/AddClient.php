@@ -257,7 +257,7 @@ if(isset($_POST['submit']))
   } else
   {
     $_SESSION['cli_fal'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("location: http:/localhost:8001/client/AddClient.php");
     die();
   }
 }

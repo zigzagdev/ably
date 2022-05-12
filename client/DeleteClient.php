@@ -93,7 +93,7 @@ if($rec2 == TRUE) {
 else
 {
   $_SESSION['client_failed'] = "<div class='error'>Failed to Add Admin.</div>";
-  header("http://localhost:8001/account/DeleteAccount.blade.php?client_id=$client_id");
+  header("http:/localhost:8001/account/DeleteAccount.blade.php?client_id=$client_id");
   die();
 }
 ?>
