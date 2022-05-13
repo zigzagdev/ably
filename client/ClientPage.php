@@ -62,6 +62,7 @@ include "./partials/HeaderEd.blade.php";
         $image       = $rows['image'];
         $email       = $rows['email'];
         $phone       = $rows['telephone'];
+
         if ($image == "")
         {
           echo "<div class='success'>Image not Added.</div>";
@@ -71,7 +72,7 @@ include "./partials/HeaderEd.blade.php";
   }
 //  form一覧
   $form_sql = "SELECT 
-                   asking, deadline, tbl_form.created_at, course, user_name 
+                   asking, deadline, tbl_form.created_at, course, user_name, image_name 
                  FROM 
                    tbl_form 
                LEFT JOIN 
@@ -94,11 +95,11 @@ include "./partials/HeaderEd.blade.php";
     {
       while ($form_rows = mysqli_fetch_assoc($form_rec))
       {
-        $form_name = $form_rows['name'];
-        $asking    = $form_rows['asking'];
-        $deadline  = $form_rows['deadline'];
-        $course    = $form_rows['course'];
-        $user_name = $form_rows['user_name'];
+        $asking     = $form_rows['asking'];
+        $deadline   = $form_rows['deadline'];
+        $course     = $form_rows['course'];
+        $user_name  = $form_rows['user_name'];
+        $image_name = $form_rows['image_name'];
       }
     }
   }
@@ -165,23 +166,21 @@ include "./partials/HeaderEd.blade.php";
           </form>
         </span>
         <br><br>
-        <div class="cardoutline2" style="display: inline-block; float: left">
+<?php foreach($form_rec as $key ){?>
+        <div class="cardoutline2" style="display: inline-block; float: left; margin-top: 50px">
           <div style="padding: 15px 0 0 30px; text-align: left">
             <strong style="color: darkblue">Teacher</strong>
-            <p style="padding-left: 10px"><?php echo $user_name ?></p>
+            <span class="flex">
+              <p style="padding-left: 10px; margin-right: 70px;font-family: 'Apple LiSung'; font-size: 25px"><?php echo $key['user_name'] ?></p>
+              <img src="../images/profile/<?php echo $key['image_name']; ?>" style="width: 60px; height: 60px; border-radius: 50px">
+            </span>
           </div>
-          <div style="padding: 15px 0 0 30px; text-align: left">
-            <p style=""><?php echo $course ?></p>
+          <div style="padding: 6px 0 0 30px; text-align: left">
+            <strong style="color: darkblue">Course Name</strong>
+            <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px"><?php echo $key['course']?></p>
           </div>
         </div>
-      </div>
-
-    </div>
-    <div style="margin:60px 0; text-align: center">
-      <div style="margin: 0 10px 20px 10px">
-<!--        <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateAccount.php?account_id=--><!--">-->
-<!--          Update your Account-->
-<!--        </a>-->
+<?php } ?>
       </div>
     </div>
   </body>

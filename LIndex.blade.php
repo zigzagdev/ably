@@ -89,6 +89,7 @@ include('./account/partials/ClientHeader.blade.php');
         </a>
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
+<?php foreach($rec2 as $key ){?>
       <div class="cardoutline" style="display: flex;">
         <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
           <div class="cardcontent" style="margin: 0 10px;">
@@ -101,15 +102,13 @@ include('./account/partials/ClientHeader.blade.php');
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center">
               <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
-<?php
-      var_dump($rest) ?>
-              <strong style="overflow-wrap: break-word; display: inline-block">Only <?php echo $rest ?> !!</strong>
-
-              <strong style="overflow-wrap: break-word; display: inline-block">Remaining <?php echo $rest ?> !</strong>
+              <strong style="overflow-wrap: break-word; display: inline-block">Only <?php echo $key['remaining - COUNT(tbl_form.lesson_id)'] ?> !!</strong>
+              <strong style="overflow-wrap: break-word; display: inline-block">Remaining <?php echo $key['remaining - COUNT(tbl_form.lesson_id)'] ?> !</strong>
             </div>
           </div>
         </a>
       </div>
+<?php } ?>
     </div>
   </body>
 </html>
