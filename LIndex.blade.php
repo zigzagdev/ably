@@ -89,7 +89,7 @@ include('./account/partials/ClientHeader.blade.php');
         </a>
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
-
+<?php foreach($rec2 as $key ){?>
       <div class="cardoutline" style="display: flex;">
         <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
           <div class="cardcontent" style="margin: 0 10px;">
@@ -108,7 +108,7 @@ include('./account/partials/ClientHeader.blade.php');
           </div>
         </a>
       </div>
-
+<?php } ?>
     </div>
   </body>
 </html>
