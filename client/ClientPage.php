@@ -71,7 +71,7 @@ include "./partials/HeaderEd.blade.php";
   }
 //  form一覧
   $form_sql = "SELECT 
-                   name, asking, deadline, tbl_form.created_at, course, user_name 
+                   asking, deadline, tbl_form.created_at, course, user_name 
                  FROM 
                    tbl_form 
                LEFT JOIN 

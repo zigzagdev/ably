@@ -7,17 +7,13 @@ include('../account/partials/HeaderInfo.blade.php');
   $rec2= mysqli_query($connect, $sql2);
   if ($rec2 == TRUE)
   {
-    $count = mysqli_num_rows($rec2); // Function to get all the rows in database
+    $count = mysqli_num_rows($rec2);
     $on = 1;
     if ($count > 0)
     {
       while ($rows = mysqli_fetch_array($rec2))
       {
-        $name = $rows['name'];
-        $phone = $rows['telephone'];
-        $email = $rows['email'];
-        $sex = $rows['sex'];
-        $lesson_id = $rows['lesson_id'];
+        $asking = $rows['asking'];
       }
     }
   }
@@ -25,7 +21,7 @@ include('../account/partials/HeaderInfo.blade.php');
 
 <html>
   <head>
-    <title>ManageReserveForm</title>
+    <title>DeleteForm</title>
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
@@ -38,23 +34,9 @@ include('../account/partials/HeaderInfo.blade.php');
           </li>
           <li style="list-style: none;  margin:47px 0 17px 30px">
             <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Name
+              Asking
             </b>
-            <b style="font-size: 20px; margin-right: 170px"><?php echo $name ?></b>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              PhoneNumber
-            </b>
-            <b style="font-size: 20px; margin-right: 170px"><?php echo $phone ?></b>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
-              Email
-            </b>
-            <b style="font-size: 20px; margin-right: 170px"><?php echo $email ?></b>
+            <b style="font-size: 20px; margin-right: 170px"><?php echo $asking ?></b>
           </li>
           <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         </form>
