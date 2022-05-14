@@ -4,7 +4,7 @@ include('../partials/FormHeader.blade.php');
 if(!empty($_GET['keyword'])) {
   $sql =
     "SELECT 
-         user_name, deadline, course, remaining, description 
+         user_name, deadline, course, remaining, description, image_name 
      FROM
          tbl_account 
          LEFT JOIN tbl_lesson
@@ -32,12 +32,11 @@ if(!empty($_GET['keyword'])) {
         $course      = $rows['course'];
         $remaining   = $rows['remaining'];
         $description = $rows['description'];
+        $image_name  = $rows['image_name'];
       }
     }
   }
 }
-
-//user名をとってくる為にSQL文を入力する。
 
   $client_id = $_GET['client_id'];
   $sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
@@ -65,15 +64,15 @@ if(!empty($_GET['keyword'])) {
   <body>
   <?php
   if(!empty($_GET['keyword']))
-  { ?>
+  { foreach ($rec as $value) ?>
     <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
     <div class="cardoutline" style="display: flex;">
-      <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
+      <a href="./Asking.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
-            <span style="display: flex">
-              <img src="../images/profile/" class="c_img_index">
-              <strong style="padding:28px 0 8px 40px"></strong><br/>
-            </span>
+          <span style="display: flex">
+            <img src="../../images/profile/<?php echo $image_name; ?>" class="c_img_index">
+            <strong style="padding:28px 0 8px 40px"></strong><br/>
+          </span>
           <div style="margin: 20px 20px; text-align: left">
             <strong style="overflow-wrap: break-word"></strong>
           </div>

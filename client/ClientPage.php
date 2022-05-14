@@ -111,8 +111,8 @@ include "./partials/HeaderEd.blade.php";
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 0 140px">
-      <div class="mainaccount" style="background-color: lightgray">
+    <div style="margin: 140px;">
+      <div class="mainaccount" style="height: 60%; background: linear-gradient(180deg, whitesmoke 0%, floralwhite 60%, seashell 40%, snow 100%);};">
         <li style="list-style: none;  margin:47px 10px 7px 30px; padding-top: 20px">
           <a href="./UpdateImage.blade.php?client_id=<?=$client_id=$_GET['client_id']?>" style="text-decoration: none;">
             <img src="../images/profile/<?php echo $image; ?>" width="90px" height="90px" class="c_img">
