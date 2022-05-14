@@ -167,7 +167,7 @@ include "./partials/HeaderEd.blade.php";
         </span>
         <br><br>
 <?php foreach($form_rec as $key ){?>
-        <div class="cardoutline2" style="display: inline-block; float: left; margin-top: 50px">
+        <div class="cardoutline2" style="display: inline-block; float: left; margin: 50px 10px 20px 10px">
           <div style="padding: 15px 0 0 30px; text-align: left">
             <strong style="color: darkblue">Teacher</strong>
             <span class="flex">
