@@ -70,16 +70,17 @@ if(!empty($_GET['keyword'])) {
       <a href="./Asking.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
           <span style="display: flex">
-            <img src="../../images/profile/<?php echo $image_name; ?>" class="c_img_index">
-            <strong style="padding:28px 0 8px 40px"></strong><br/>
+            <strong style="padding:48px 30px 18px 50px"><?php echo $user_name; ?></strong>
+            <img src="../../images/profile/<?php echo $image_name; ?>" class="c_img_index" style="margin-top: 20px"><br/>
           </span>
-          <div style="margin: 20px 20px; text-align: left">
-            <strong style="overflow-wrap: break-word"></strong>
+          <strong style="color: darkblue; float: left; padding:20px 0 10px 20px"><?php echo $course; ?></strong><br><br>
+          <div style="margin: 10px 20px;">
+            <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $description ), 0, 20, '…', 'UTF-8' ); ?></strong>
           </div>
-          <div style="margin: 50px 20px 20px 20px; text-align: center">
-            <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
-            <strong style="overflow-wrap: break-word; display: inline-block">Only  !!</strong>
-          </div>
+<!--          <div style="margin: 50px 20px 20px 20px; text-align: center">-->
+<!--            <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>-->
+<!--            <strong style="overflow-wrap: break-word; display: inline-block">Only  !!</strong>-->
+<!--          </div>-->
         </div>
       </a>
     </div>
