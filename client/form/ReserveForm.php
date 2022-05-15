@@ -53,6 +53,29 @@ if(!empty($_GET['keyword'])) {
       }
     }
   }
+
+$sql3 = "
+           SELECT
+               remaining - COUNT(tbl_form.lesson_id)
+           FROM
+               tbl_form
+               LEFT JOIN tbl_lesson ON tbl_form.lesson_id = tbl_lesson.lesson_id
+           GROUP BY
+               tbl_form.lesson_id
+           ";
+
+  $rec3 = mysqli_query($connect, $sql3);
+  if($rec3 == TRUE)
+  {
+    $count3 = mysqli_num_rows($rec3);
+    if($count3 > 0)
+    {
+      while($rows3 = mysqli_fetch_assoc($rec3))
+      {
+        $rest  = $rows3['remaining - COUNT(tbl_form.lesson_id)'];
+      }
+    }
+  }
 ?>
 
 <html>
@@ -65,7 +88,7 @@ if(!empty($_GET['keyword'])) {
   <?php
   if(!empty($_GET['keyword']))
   { foreach ($rec as $value) ?>
-    <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
+    <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
     <div class="cardoutline" style="display: flex;">
       <a href="./Asking.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
@@ -77,10 +100,12 @@ if(!empty($_GET['keyword'])) {
           <div style="margin: 10px 20px;">
             <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $description ), 0, 20, '…', 'UTF-8' ); ?></strong>
           </div>
-<!--          <div style="margin: 50px 20px 20px 20px; text-align: center">-->
-<!--            <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>-->
-<!--            <strong style="overflow-wrap: break-word; display: inline-block">Only  !!</strong>-->
-<!--          </div>-->
+<?php { foreach ($rec3 as $value) ?>
+          <div style="margin: 50px 20px 20px 20px; text-align: center">
+            <strong style="float: left; margin-left: 30px">Rest Reservations<?php echo$value['remaining - COUNT(tbl_form.lesson_id)']?></strong><br>
+            <strong style="overflow-wrap: break-word; display: inline-block">Only  !!</strong>
+          </div>
+<?php } ?>
         </div>
       </a>
     </div>

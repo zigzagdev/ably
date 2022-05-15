@@ -30,9 +30,8 @@ include('./header/LessonHeader.blade.php');
              FROM 
                tbl_lesson 
            INNER JOIN 
-               tbl_account 
-             ON 
-               tbl_lesson.account_id = tbl_account.account_id 
+                   tbl_account 
+                 ON tbl_lesson.account_id = tbl_account.account_id 
            WHERE 
                tbl_lesson.account_id=$account_id
           ";

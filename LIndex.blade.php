@@ -16,7 +16,7 @@ include('./account/partials/ClientHeader.blade.php');
                tbl_lesson
                LEFT JOIN tbl_account ON tbl_lesson.account_id = tbl_account.account_id
            WHERE
-               NOW() > DATE_SUB(deadline, INTERVAL '13' DAY)
+               NOW() > DATE_SUB(deadline, INTERVAL '31' DAY)
            ORDER BY
                created_at ASC
           ";
@@ -34,6 +34,7 @@ include('./account/partials/ClientHeader.blade.php');
           $course      = $rows['course'];
           $description = $rows['description'];
           $deadline    = $rows['deadline'];
+          $image_name  = $rows['image_name'];
         }
       }
     }
@@ -71,48 +72,51 @@ include('./account/partials/ClientHeader.blade.php');
   <body>
     <div style="margin: 0 100px 0 100px">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
-      <div class="cardoutline" style="display: flex;">
-        <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
-          <div class="cardcontent" style="margin: 0 10px;">
+      <div class="cardoutline">
+        <a href="" style="text-decoration: none; color: black; margin: 13px 0">
+<?php foreach($rec as $value ){?>
+          <div class="cardcontent" style="margin: 10px;display: inline-block;">
             <span style="display: flex">
-              <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
-              <strong style="padding:28px 0 8px 40px"><?php echo $course ?></strong><br/>
+              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
+              <strong style="padding:28px 0 8px 40px"><?php echo $value['course'] ?></strong><br/>
             </span>
             <div style="margin: 20px 20px; text-align: left">
-              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $description ), 0, 80, '…', 'UTF-8' ); ?></strong>
+              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center">
               <strong style="float: left; margin-left: 30px">Deadline</strong><br>
-              <strong style="overflow-wrap: break-word; display: inline-block"><?php echo $deadline ?></strong>
+              <strong style="overflow-wrap: break-word; display: inline-block"><?php echo $value['deadline'] ?></strong>
             </div>
           </div>
+<?php } ?>
         </a>
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
-<?php foreach($rec2 as $key ){?>
-      <div class="cardoutline" style="display: inline-block;">
-        <a href="./client/form/ReserveForm.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
-          <div class="cardcontent" style="margin: 0 10px;">
-            <span style="display: flex">
-              <img src="../images/profile/<?php echo $image_name; ?>" class="c_img_index">
-              <strong style="padding:28px 0 8px 40px"><?php echo $course ?></strong><br/>
+      <div class="cardoutline" style="display: inline-block; margin: 10px 0">
+        <a href="" style="text-decoration: none; color: black; margin: 13px 0">
+<?php foreach($rec as $value ){?>
+          <div class="cardcontent" style="margin: 10px; display: inline-block">
+            <span style="display: inline-block">
+              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
+              <strong style="padding:28px 0 8px 40px"><?php echo $value['course']; ?></strong><br/>
             </span>
             <div style="margin: 20px 20px; text-align: left">
-              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $description ), 0, 80, '…', 'UTF-8' ); ?></strong>
+              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center">
-              <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
-<?php if ($key['remaining - COUNT(tbl_form.lesson_id)'] < 10) {?>
-              <strong style="overflow-wrap: break-word; display: inline-block">Only <?php echo $key['remaining - COUNT(tbl_form.lesson_id)'] ?> !!</strong>
-<?php } else {?>
-              <strong style="overflow-wrap: break-word; display: inline-block">Remaining <?php echo $key['remaining - COUNT(tbl_form.lesson_id)'] ?> !</strong>
-<?php } ?>
+<?php foreach($rec2 as $key ){?>
+                <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
+<?php if ($key['remaining - COUNT(tbl_form.lesson_id)'] < 10) { ?>
+                <strong>Only remain <?php echo$key['remaining - COUNT(tbl_form.lesson_id)'] ?> seats</strong>
+<?php }else{ ?>
+                <strong>Remains <?php echo$key['remaining - COUNT(tbl_form.lesson_id)'] ?> seats</strong>
+<?php }} ?>
             </div>
           </div>
+<?php } ?>
         </a>
       </div>
-<?php } ?>
     </div>
   </body>
 </html>
-<?php include "./account/partials/ClientFooter.tpl"?>
+<?php include "./account/partials/ClientFooter.tpl" ?>
