@@ -69,8 +69,8 @@ include('./account/partials/ClientHeader.blade.php');
     <link rel="stylesheet" href="./css/Account.css">
     <link rel="stylesheet" href="./css/Forms.css">
   </head>
-  <body>
-    <div style="margin: 0 100px 0 100px">
+  <body style="background: linear-gradient(100deg, gold 10%, floralwhite 60%, seashell 40%)">
+    <div style="margin: 0 100px 0 100px;">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
       <div class="cardoutline" style="display: flex">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
