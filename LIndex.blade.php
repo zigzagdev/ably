@@ -95,7 +95,7 @@ include('./account/partials/ClientHeader.blade.php');
         </a>
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
-      <div class="cardoutline" style="display: inline-block; margin: 10px 10px 55px 10px">
+      <div class="cardoutline" style="display: inline-block; margin: 10px 0 55px 0">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec2 as $key){?>
           <div class="cardcontent" style="margin: 12px; display: flex; float: left; flex-direction: column">
