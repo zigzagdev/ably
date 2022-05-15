@@ -108,7 +108,7 @@ include('./account/partials/ClientHeader.blade.php');
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center; margin-top: auto">
               <strong style="float: left;">Rest Reservations</strong><br>
-              <strong>Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
+              <strong style="float: left">Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
           </div>
 <?php } ?>
