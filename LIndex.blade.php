@@ -81,7 +81,7 @@ include('./account/partials/ClientHeader.blade.php');
               <strong style="color: darkblue; padding:20px 0 0 20px">
                 TeacherName<br>
                 <strong style="color: black; padding: 5px 0 0 5px; display: flex"><?php echo $value['user_name']?></strong>
-              </strong><br>
+              </strong><br><br>
             </span>
             <div style="margin: 20px 20px 30px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 60, '…', 'UTF-8' ); ?></strong>
