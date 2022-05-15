@@ -75,10 +75,10 @@ include('./account/partials/ClientHeader.blade.php');
       <div class="cardoutline">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec as $value ){?>
-          <div class="cardcontent" style="margin: 10px;display: inline-block;">
+          <div class="cardcontent" style="margin: 10px;display: inline-block; float: left">
             <span style="display: flex">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
-              <strong style="padding:28px 0 8px 40px"><?php echo $value['course'] ?></strong><br/>
+              <strong style="padding:28px 0 8px 40px"><?php echo $value['user_name'] ?></strong><br/>
             </span>
             <div style="margin: 20px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
@@ -95,12 +95,12 @@ include('./account/partials/ClientHeader.blade.php');
       <div class="cardoutline" style="display: inline-block; margin: 10px 0">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec as $value ){?>
-          <div class="cardcontent" style="margin: 10px; display: inline-block">
-            <span style="display: inline-block">
-              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
-              <strong style="padding:28px 0 8px 40px"><?php echo $value['course']; ?></strong><br/>
+          <div class="cardcontent" style="margin: 10px; display: inline-block; float: left">
+            <span class="flex">
+              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index" style="float: left">
+              <strong style="padding:38px 0 8px 20px; display: flex"><?php echo $value['user_name']; ?></strong><br/>
             </span>
-            <div style="margin: 20px 20px; text-align: left">
+            <div style="margin: 10px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center">
