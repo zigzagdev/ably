@@ -86,7 +86,7 @@ include('./account/partials/ClientHeader.blade.php');
             <div style="margin: 20px 20px 30px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 60, '…', 'UTF-8' ); ?></strong>
             </div>
-            <div style="text-align: center;margin-top:auto; padding-bottom: 25px">
+            <div style="text-align: center;margin-top:auto; padding-bottom: 24px">
               <strong style="float: left; margin-left: 30px;">Deadline</strong><br>
               <strong style="overflow-wrap: break-word; display: inline-block; "><?php echo $value['deadline'] ?></strong>
             </div>
