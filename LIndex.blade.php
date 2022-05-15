@@ -113,7 +113,7 @@ include('./account/partials/ClientHeader.blade.php');
               <strong style="float: left;">Rest Reservations</strong><br>
               <strong style="float: left">Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
-          </div
+          </div>
 <?php } ?>
         </a>
       </div>
