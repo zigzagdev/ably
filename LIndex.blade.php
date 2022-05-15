@@ -75,7 +75,7 @@ include('./account/partials/ClientHeader.blade.php');
       <div class="cardoutline" style="display: flex">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec as $value ){?>
-          <div class="cardcontent" style="margin: 10px;display: inline-block; float: left">
+          <div class="cardcontent" style="margin: 10px;display: flex; float: left; flex-direction: column;">
             <span class="flex" style="margin-top: 8px">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
               <strong style="color: darkblue; padding:20px 0 0 20px">
@@ -86,9 +86,9 @@ include('./account/partials/ClientHeader.blade.php');
             <div style="margin: 20px 20px 30px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 60, '…', 'UTF-8' ); ?></strong>
             </div>
-            <div style="text-align: center;display: flex">
-              <strong style="float: left; margin-left: 30px">Deadline</strong><br>
-              <strong style="overflow-wrap: break-word; display: inline-block"><?php echo $value['deadline'] ?></strong>
+            <div style="text-align: center;margin-top:auto; padding-bottom: 25px">
+              <strong style="float: left; margin-left: 30px;">Deadline</strong><br>
+              <strong style="overflow-wrap: break-word; display: inline-block; "><?php echo $value['deadline'] ?></strong>
             </div>
           </div>
 <?php } ?>
@@ -98,7 +98,7 @@ include('./account/partials/ClientHeader.blade.php');
       <div class="cardoutline" style="display: inline-block; margin: 10px 0">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec2 as $key){?>
-          <div class="cardcontent" style="margin: 10px; display: inline-block; float: left">
+          <div class="cardcontent" style="margin: 10px; display: flex; float: left; flex-direction: column">
             <span class="flex">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index" style="float: left">
               <strong style="padding:38px 0 8px 20px; display: flex"><?php echo $value['user_name']; ?></strong><br/>
@@ -106,9 +106,9 @@ include('./account/partials/ClientHeader.blade.php');
             <div style="margin: 10px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
-            <div style="margin: 50px 20px 20px 20px; text-align: center">
-              <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
-              <strong>Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
+            <div style="margin: 50px 20px 20px 20px; text-align: center;">
+              <strong style="float: left; margin-left: 30px; margin-top:auto">Rest Reservations</strong><br>
+              <strong style="margin-top:auto">Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
           </div>
 <?php } ?>
