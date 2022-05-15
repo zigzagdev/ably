@@ -72,21 +72,21 @@ include('./account/partials/ClientHeader.blade.php');
   <body>
     <div style="margin: 0 100px 0 100px">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
-      <div class="cardoutline">
+      <div class="cardoutline" style="display: flex">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec as $value ){?>
           <div class="cardcontent" style="margin: 10px;display: inline-block; float: left">
-            <span class="flex">
+            <span class="flex" style="margin-top: 8px">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
               <strong style="color: darkblue; padding:20px 0 0 20px">
                 TeacherName<br>
                 <strong style="color: black; padding: 5px 0 0 5px; display: flex"><?php echo $value['user_name']?></strong>
               </strong><br><br>
             </span>
-            <div style="margin: 20px 20px; text-align: left">
-              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
+            <div style="margin: 20px 20px 30px 20px; text-align: left">
+              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 60, '…', 'UTF-8' ); ?></strong>
             </div>
-            <div style="margin: 50px 20px 20px 20px; text-align: center">
+            <div style="text-align: center;display: flex">
               <strong style="float: left; margin-left: 30px">Deadline</strong><br>
               <strong style="overflow-wrap: break-word; display: inline-block"><?php echo $value['deadline'] ?></strong>
             </div>
@@ -97,7 +97,7 @@ include('./account/partials/ClientHeader.blade.php');
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
       <div class="cardoutline" style="display: inline-block; margin: 10px 0">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
-<?php foreach($rec as $value ){?>
+<?php foreach($rec2 as $key){?>
           <div class="cardcontent" style="margin: 10px; display: inline-block; float: left">
             <span class="flex">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index" style="float: left">
@@ -107,13 +107,8 @@ include('./account/partials/ClientHeader.blade.php');
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center">
-<?php foreach($rec2 as $key ){?>
-                <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
-<?php if ($key['remaining - COUNT(tbl_form.lesson_id)'] < 10) { ?>
-                <strong>Only remain <?php echo$key['remaining - COUNT(tbl_form.lesson_id)'] ?> seats</strong>
-<?php }else{ ?>
-                <strong>Remains <?php echo$key['remaining - COUNT(tbl_form.lesson_id)'] ?> seats</strong>
-<?php }} ?>
+              <strong style="float: left; margin-left: 30px">Rest Reservations</strong><br>
+              <strong>Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
           </div>
 <?php } ?>
