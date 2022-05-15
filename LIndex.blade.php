@@ -107,7 +107,7 @@ include('./account/partials/ClientHeader.blade.php');
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center; margin-top: auto">
-              <strong style="float: left; margin-left: 30px;">Rest Reservations</strong><br>
+              <strong style="float: left;">Rest Reservations</strong><br>
               <strong>Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
           </div>
