@@ -95,13 +95,16 @@ include('./account/partials/ClientHeader.blade.php');
         </a>
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
-      <div class="cardoutline" style="display: inline-block; margin: 10px 0 55px 0">
+      <div class="cardoutline" style="display: inline-block; margin: 10px 10px 55px 10px">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec2 as $key){?>
           <div class="cardcontent" style="margin: 12px; display: flex; float: left; flex-direction: column">
-            <span class="flex">
-              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index" style="float: left">
-              <strong style="padding:38px 0 8px 20px; display: flex"><?php echo $value['user_name']; ?></strong><br/>
+            <span class="flex" style="margin-top: 8px">
+              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
+              <strong style="color: darkblue; padding:20px 0 0 20px">
+                TeacherName<br>
+                <strong style="color: black; padding: 5px 0 0 5px; display: flex"><?php echo $value['user_name']?></strong>
+              </strong><br><br>
             </span>
             <div style="margin: 10px 20px; text-align: left">
               <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
@@ -110,7 +113,7 @@ include('./account/partials/ClientHeader.blade.php');
               <strong style="float: left;">Rest Reservations</strong><br>
               <strong style="float: left">Only remain <?php var_dump($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
-          </div>
+          </div
 <?php } ?>
         </a>
       </div>
