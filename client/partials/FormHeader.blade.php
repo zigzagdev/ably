@@ -1,8 +1,3 @@
-<?php
-include ('../../config/Constants.blade.php');
-$client_id = $_GET['client_id'];
-?>
-
 <html>
   <head>
     <link rel="stylesheet" href="../../css/Account.css">
