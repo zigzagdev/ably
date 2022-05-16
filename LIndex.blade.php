@@ -120,4 +120,5 @@ include('./account/partials/ClientHeader.blade.php');
     </div>
   </body>
 </html>
+
 <?php include "./client/partials/FooterEd.tpl" ?>
