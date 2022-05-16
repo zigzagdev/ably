@@ -1,9 +1,10 @@
+<?php include "../../config/Constants.blade.php"; ?>
 
 <html>
   <head>
     <link rel="stylesheet" href="../../css/Account.css">
   </head>
-  <body style="background-color: ghostwhite">
+  <header style="background-color: ghostwhite">
     <div class="infooutline">
       <div class="logo">
         <h1 class="hchar" style="color: #125EAE">Learn at here..!</h1>
@@ -16,5 +17,5 @@
         </div>
       </div>
     </div>
-  </body>
+  </header>
 </html>
