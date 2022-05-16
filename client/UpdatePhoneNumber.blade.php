@@ -34,7 +34,7 @@ include "../config/Constants.blade.php";
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
-  <body>
+  <body style="background: linear-gradient(90deg, ghostwhite 30%, lightcyan 40%, lightblue 60%); ">
     <section class="food-search">
       <div class="container2">
         <h2 style="text-align: center">ChangePhoneNumber</h2>
