@@ -97,7 +97,7 @@ include('./account/partials/ClientHeader.blade.php');
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
       <div class="cardoutline" style="display: inline-block; margin: 10px 10px 55px 10px">
         <a href="" style="text-decoration: none; color: black; margin: 13px 0">
-<?php foreach($rec2 as $key){?>
+<?php foreach($rec2 as $key){ if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
           <div class="cardcontent" style="margin: 12px; display: flex; float: left; flex-direction: column">
             <span class="flex" style="margin-top: 8px">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
@@ -114,7 +114,7 @@ include('./account/partials/ClientHeader.blade.php');
               <strong style="float: left">Only remain <?php echo($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
             </div>
           </div>
-<?php } ?>
+<?php }} ?>
         </a>
       </div>
     </div>
