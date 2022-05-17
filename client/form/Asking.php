@@ -20,4 +20,3 @@ include('../partials/FormHeader.blade.php');
 </html>
 
 <?php include('../../account/partials/ClientFooter.tpl'); ?>
-
