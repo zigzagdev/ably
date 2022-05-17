@@ -5,7 +5,6 @@ include('../partials/FormHeader.blade.php');
 
 ?>
 
-
 <html>
   <head>
     <title>ReservePage</title>
@@ -16,4 +15,5 @@ include('../partials/FormHeader.blade.php');
 
   </body>
 </html>
+
 <?php include('../../account/partials/ClientFooter.tpl'); ?>
