@@ -8,4 +8,8 @@ include('../partials/FormHeader.blade.php'); ?>
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
+  <body>
+
+  </body>
+</html>
 <?php include('../../account/partials/ClientFooter.tpl'); ?>
