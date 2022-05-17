@@ -85,7 +85,7 @@ $sql3 = "
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
-  <?php
+<?php
   if(!empty($_GET['keyword']))
   { foreach ($rec as $value) ?>
     <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
