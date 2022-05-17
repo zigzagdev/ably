@@ -3,12 +3,11 @@ include('../account/partials/HeaderInfo.blade.php');
 
   $form_id= $_GET['form_id'];
 
-  $sql2= "SELECT * FROM tbl_form WHERE form_id=$form_id";
-  $rec2= mysqli_query($connect, $sql2);
+  $sql2 = "SELECT asking FROM tbl_form WHERE form_id=$form_id";
+  $rec2 = mysqli_query($connect, $sql2);
   if ($rec2 == TRUE)
   {
     $count = mysqli_num_rows($rec2);
-    $on = 1;
     if ($count > 0)
     {
       while ($rows = mysqli_fetch_array($rec2))
