@@ -65,11 +65,13 @@ include('../account/partials/HeaderInfo.blade.php');
   {
     $_SESSION['delete'] = "<div style='color: #ff6666'>Delete Lesson Successfully.</div>";
     header("Location:http://localhost:8001/Index.php", 302);
+    die();
   } else
   {
     $_SESSION['delete'] = "<div class='error'>Failed to Delete lesson.</div>";
     header("Location:http://localhost:8001/form/ManageForm.php?form_id=$form_id", 401);
+    die();
   }
 
-include('../account/partials/ClientFooter.tpl');
+include "./client/partials/FooterEd.tpl";
 ?>

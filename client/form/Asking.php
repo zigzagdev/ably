@@ -1,5 +1,9 @@
 <?php
-include('../partials/FormHeader.blade.php'); ?>
+include('../partials/FormHeader.blade.php');
+ $client_id = $_GET['client_id'];
+
+
+?>
 
 
 <html>
