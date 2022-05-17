@@ -80,7 +80,7 @@ $sql3 = "
 
 <html>
   <head>
-    <title>ReserveLessonForm</title>
+    <title>ReserveLessonIndex</title>
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>

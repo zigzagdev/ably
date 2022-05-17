@@ -1,6 +1,11 @@
 <?php
-include('../partials/FormHeader.blade.php');
+include('../partials/FormHeader.blade.php'); ?>
 
 
-
-include('../../account/partials/ClientFooter.tpl'); ?>
+<html>
+  <head>
+    <title>ReservePage</title>
+    <link rel="stylesheet" href="../../css/Account.css">
+    <link rel="stylesheet" href="../../css/Forms.css">
+  </head>
+<?php include('../../account/partials/ClientFooter.tpl'); ?>
