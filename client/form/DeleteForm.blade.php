@@ -58,23 +58,17 @@ include('../account/partials/HeaderInfo.blade.php');
 </html>
 
 <?php
-  $host = 'localhost';
-  $username = 'root';
-  $pass = 'root';
-  $dbname = 'ably';
 
-  $sql3 = " DELETE from tbl_form WHERE form_id= '$form_id'" ;
+  $sql3 = " DELETE FROM tbl_form WHERE form_id= '$form_id'" ;
   $rec3=mysqli_query($connect,$sql3);
   if($rec3 == TRUE)
   {
     $_SESSION['delete'] = "<div style='color: #ff6666'>Delete Lesson Successfully.</div>";
-    $url = "http://localhost:8001/Index.php";
-    header('Location:' .$url,true , 302);
+    header("Location:http://localhost:8001/Index.php", 302);
   } else
   {
     $_SESSION['delete'] = "<div class='error'>Failed to Delete lesson.</div>";
-    $url = "http://localhost:8001/form/ManageForm.php?form_id=$form_id";
-    header('Location:' .$url,true , 401);
+    header("Location:http://localhost:8001/form/ManageForm.php?form_id=$form_id", 401);
   }
 
 include('../account/partials/ClientFooter.tpl');
