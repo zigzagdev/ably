@@ -28,4 +28,4 @@ if(isset($_SESSION['asking_f']))
   </body>
 </html>
 
-<?php include('./client/partials/FooterEd.tpl'); ?>
+<?php include('./client/partials/FooterEd.tpl');
