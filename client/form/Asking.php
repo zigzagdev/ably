@@ -1,5 +1,12 @@
 <?php
 include('../partials/FormHeader.blade.php');
+
+if(isset($_SESSION['asking_f']))
+{
+  echo  $_SESSION['asking_f'];
+  unset($_SESSION['asking_f']);
+}
+
  $client_id = $_GET['client_id'];
 
 ?>
