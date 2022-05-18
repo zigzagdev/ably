@@ -12,7 +12,9 @@ include('../partials/FormHeader.blade.php');
   </head>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, seashell 40%, snow 100%);">
     <div style="margin: 0 130px">
+      <div>
 
+      </div>
     </div>
   </body>
 </html>
