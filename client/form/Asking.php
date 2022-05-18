@@ -19,4 +19,4 @@ include('../partials/FormHeader.blade.php');
   </body>
 </html>
 
-<?php include('./client/partials/FooterEd.tpl'); ?>
+<?php include('./client/partials/FooterEd.tpl');
