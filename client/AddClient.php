@@ -127,7 +127,7 @@ if(isset($_POST['submit']))
     header('location:/client/AddClient.php');
     die();
   }
-  if( 4 > mb_strlen($email, 'UTF-8') || 50 < mb_strlen($email, 'UTF-8') ) {
+  if( 4 > mb_strlen($email, 'UTF-8') || 100 < mb_strlen($email, 'UTF-8') ) {
     $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header('location:/client/AddClient.php');
     die();
