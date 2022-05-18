@@ -6,9 +6,11 @@ if(isset($_SESSION['asking_f']))
   echo  $_SESSION['asking_f'];
   unset($_SESSION['asking_f']);
 }
-
  $client_id = $_GET['client_id'];
+ if(isset($_POST['submit']))
+ {
 
+ }
 ?>
 
 <html>
