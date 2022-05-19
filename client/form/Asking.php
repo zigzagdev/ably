@@ -24,13 +24,11 @@ include('../partials/FormHeader.blade.php');
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
-  <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, seashell 40%, snow 100%);">
-    <div style="margin: 0 130px">
-      <div>
+  <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
+    <div style="margin: 10px 130px">
 
-      </div>
     </div>
   </body>
 </html>
 
-<?php include('../../client/partials/FooterEd.tpl'); ?>
+<?php include('../partials/FooterEd.tpl'); ?>
