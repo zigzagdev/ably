@@ -1,5 +1,6 @@
 <?php
-include ('./partials/HeaderEd.blade.php');
+include "./partials/HeaderEd.blade.php";
+include "../config/Constants.blade.php";
 
 if(isset($_SESSION['add_fail_up_c']))
 {
@@ -33,7 +34,7 @@ if(isset($_GET['client_id']))
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
-  <body>
+  <body style="background-color: darkgray">
     <div style="margin: 0 230px">
       <div class="mainaccount">
         <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Update your Password</h1>

@@ -20,7 +20,7 @@
       </span>
     </div>
   </div>
-  <div class="inner" style="margin-left: 600px">
+  <div class="inner" style="margin-left: 650px">
     <div class="footer_right">
       <span>Matthew. © COPYRIGHT 2022. ALL RIGHTS RESERVED.</span>
     </div>
