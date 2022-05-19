@@ -199,7 +199,7 @@ if(isset($_POST['submit']))
   $rec_2 = mysqli_num_rows($rec_1);
   if ($rec_2 > 0) {
     $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
-    header('location:/client/AddClient.php');
+    header('Location:http://localhost:8001/client/AddClient.php');
   }
 
   $sqltel = " SELECT telephone FROM tbl_client WHERE telephone='$telephone'";
@@ -208,23 +208,23 @@ if(isset($_POST['submit']))
   $rec2tel = mysqli_num_rows($rectel);
   if ($rec2tel >= 1) {
     $_SESSION['cli_fal'] = "<div class='success'>PhoneNumber was already registered.!</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
   }
 
 //  preg_match
   if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
     $_SESSION['cli_fal'] = "<div class='success'>Only English is valid.!</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
     die();
   }
 
@@ -232,7 +232,7 @@ if(isset($_POST['submit']))
   if(preg_match($tel_boolean, $telephone))
   {
     $_SESSION['cli_fal'] = "<div class='success'>Write down your phone number correctly !</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
     die();
   }
 

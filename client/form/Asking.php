@@ -10,10 +10,14 @@ include('../partials/FormHeader.blade.php');
   if(isset($_POST['submit']))
   {
     $asking = $_POST['asking'];
-
     if (8 > mb_strlen($asking, 'UTF-8')|| 200 <  mb_strlen($asking, 'UTF-8'))
     {
       $_SESSION['asking_f'] = "<div class='success'>Please fill your asking comment in 8~200 words !</div>";
+    }
+    //  preg_match
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
+      $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
+      header("Location: http:/localhost:8001/client/form/Asking.php?client_id=$client_id");
     }
  }
 ?>
