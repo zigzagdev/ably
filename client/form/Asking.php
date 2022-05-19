@@ -30,9 +30,13 @@ include('../partials/FormHeader.blade.php');
   </head>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
     <div style="margin: 10px 130px">
-      <div class="mainaccount">
-
-      </div>
+      <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Asking questions to tutor at here !!</strong>
+      <form action="" method="post">
+        <li style="list-style: none">
+          <b style="font-size: 20px;width:100px; margin-left: 50px">Write something here..</b>
+        </li>
+        <textarea id="description" type="text" name="content" cols="100" rows="4" style="margin:15px 0 0 50px" required></textarea>
+      </form>
     </div>
   </body>
 </html>
