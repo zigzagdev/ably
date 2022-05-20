@@ -11,7 +11,7 @@ include('./client/partials/HeaderEd.blade.php');
   $client_id = $_GET['client_id'];
   $sql = "
            SELECT
-               deadline, user_name, course, remaining, description, image_name
+               deadline, user_name, course, remaining, description, image_name, lesson_id
            FROM
                tbl_lesson
                LEFT JOIN tbl_account ON tbl_lesson.account_id = tbl_account.account_id
@@ -35,12 +35,13 @@ include('./client/partials/HeaderEd.blade.php');
           $description = $rows['description'];
           $deadline    = $rows['deadline'];
           $image_name  = $rows['image_name'];
+          $lesson_id   = $rows['lesson_id'];
         }
       }
     }
   $sql2 = "
            SELECT
-               remaining - COUNT(tbl_form.lesson_id)
+               remaining - COUNT(tbl_form.lesson_id), tbl_form.lesson_id
            FROM
                tbl_form
                LEFT JOIN tbl_lesson ON tbl_form.lesson_id = tbl_lesson.lesson_id
@@ -57,7 +58,8 @@ include('./client/partials/HeaderEd.blade.php');
     {
       while($rows2 = mysqli_fetch_assoc($rec2))
       {
-        $rest  = $rows2['remaining - COUNT(tbl_form.lesson_id)'];
+        $rest      = $rows2['remaining - COUNT(tbl_form.lesson_id)'];
+        $lesson_id = $rows2['lesson_id'];
       }
     }
   }
@@ -73,7 +75,7 @@ include('./client/partials/HeaderEd.blade.php');
     <div style="margin: 0 100px 0 100px;">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
       <div class="cardoutline" style="display: flex">
-        <a href="./client/form/Asking.php?client_id=<?=$client_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
+        <a href="./client/form/Asking.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec as $value ){?>
           <div class="cardcontent" style="margin: 10px;display: flex; float: left; flex-direction: column;">
             <span class="flex" style="margin-top: 8px">
@@ -96,7 +98,7 @@ include('./client/partials/HeaderEd.blade.php');
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
       <div class="cardoutline" style="display: inline-block; margin: 10px 10px 55px 10px">
-        <a href="" style="text-decoration: none; color: black; margin: 13px 0">
+        <a href="./client/form/Asking.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec2 as $key){ if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
           <div class="cardcontent" style="margin: 12px; display: flex; float: left; flex-direction: column">
             <span class="flex" style="margin-top: 8px">
