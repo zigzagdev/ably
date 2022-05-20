@@ -75,4 +75,4 @@ jobs:
 
       - run:
           name: PHPStan(client)
-          command: ./vendor/bin/phpstan analyze --level 2 client
+          command: ./vendor/bin/phpstan analyze --level 1 client
