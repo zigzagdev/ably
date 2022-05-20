@@ -28,7 +28,6 @@ include('../partials/FormHeader.blade.php');
     die();
   }
 
-
   if(isset($_POST['submit']))
   {
     $asking = $_POST['asking'];
@@ -37,10 +36,10 @@ include('../partials/FormHeader.blade.php');
       $_SESSION['asking_f'] = "<div class='success'>Please fill your asking comment in 8~200 words !</div>";
     }
 
-    //  preg_match
+    //validation
     if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
       $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
-      header("Location: http:/localhost:8001/client/form/Asking.php?client_id=$client_id");
+      header("Location:Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
     }
  }
 ?>
