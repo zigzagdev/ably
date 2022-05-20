@@ -63,4 +63,4 @@ include('../partials/FormHeader.blade.php');
   </body>
 </html>
 
-<?php include('../partials/FooterEd.tpl'); ?>
+<?php include('../partials/FooterEd.tpl');
