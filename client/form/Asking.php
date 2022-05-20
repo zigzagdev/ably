@@ -15,7 +15,9 @@ include('../partials/FormHeader.blade.php');
            FROM
                tbl_form
            WHERE 
-               client_id='$client_id' AND lesson_id='$lesson_id'
+               client_id='$client_id' 
+             AND 
+               lesson_id='$lesson_id'
           ";
 
   $rec  = mysqli_query($connect,$sql);
@@ -34,6 +36,7 @@ include('../partials/FormHeader.blade.php');
     {
       $_SESSION['asking_f'] = "<div class='success'>Please fill your asking comment in 8~200 words !</div>";
     }
+
     //  preg_match
     if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
       $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
