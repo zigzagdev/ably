@@ -60,7 +60,7 @@ if($rec == TRUE) {
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             LessonContent
           </b><br><br>
-          <b style="font-size: 20px;overflow-wrap: break-word;"><?php echo $content ?>
+          <b style="font-size: 20px;overflow-wrap: break-word;"><?php echo $content ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
