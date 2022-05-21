@@ -55,9 +55,9 @@ include('../partials/FormHeader.blade.php');
     <div style="margin: 10px 130px">
       <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Asking questions to tutor at here !!</strong>
       <form action="" method="post">
-        <li style="list-style: none">
-          <textarea id="description" type="text" name="content" cols="100" rows="4"
-                    style="margin:15px 0 0 50px" placeholder="Write something .."></textarea>
+        <li style="list-style: none;">
+          <textarea id="description" type="text" name="content" cols="100" rows="6"
+                    style="margin:15px 0 0 50px" required placeholder="Write something .."></textarea>
         </li>
       </form>
     </div>
