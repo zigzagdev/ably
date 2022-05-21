@@ -1,32 +1,29 @@
 <?php
 include "./header/LessonHeader.blade.php";
 
-  if(isset($_SESSION['fail_lesson']))
-  {
-    echo $_SESSION['fail_lesson'];
-    unset($_SESSION['fail_lesson']);
-  }
-  $lesson_id = $_GET['lesson_id'];
+if(isset($_SESSION['fail_lesson']))
+{
+  echo $_SESSION['fail_lesson'];
+  unset($_SESSION['fail_lesson']);
+}
+$lesson_id = $_GET['lesson_id'];
 
-  $sql = "SELECT * FROM tbl_lesson WHERE lesson_id= '$lesson_id'";
+$sql = "SELECT * FROM tbl_lesson WHERE lesson_id= '$lesson_id'";
 
-  $rec = mysqli_query($connect, $sql);
+$rec = mysqli_query($connect, $sql);
 
-  if($rec == TRUE)
-  {
-    $count = mysqli_num_rows($rec);
-    if ($count >= 0)
-    {
-      while ($rows = mysqli_fetch_array($rec))
-      {
-        $course      = $rows['course'];
-        $description = $rows['description'];
-        $deadline    = $rows['deadline'];
-        $account_id  = $rows['account_id'];
-        $created_at  = $rows['created_at'];
-      }
+if($rec == TRUE) {
+  $count = mysqli_num_rows($rec);
+  if ($count >= 0) {
+    while ($rows = mysqli_fetch_array($rec)) {
+      $course      = $rows['course'];
+      $description = $rows['description'];
+      $deadline    = $rows['deadline'];
+      $account_id  = $rows['account_id'];
+      $created_at  = $rows['created_at'];
     }
   }
+}
 
 ?>
 

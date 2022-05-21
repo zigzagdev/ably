@@ -41,10 +41,15 @@ include('./client/partials/HeaderEd.blade.php');
     }
   $sql2 = "
            SELECT
-               remaining - COUNT(tbl_form.lesson_id), tbl_form.lesson_id
+               remaining - COUNT(tbl_form.lesson_id), tbl_form.lesson_id, user_name, description, image_name
            FROM
                tbl_form
-               LEFT JOIN tbl_lesson ON tbl_form.lesson_id = tbl_lesson.lesson_id
+               LEFT JOIN
+                 tbl_lesson
+                 ON tbl_form.lesson_id = tbl_lesson.lesson_id
+               LEFT JOIN
+                 tbl_account
+                 ON tbl_lesson.account_id = tbl_account.account_id
            GROUP BY
                tbl_form.lesson_id
            ";
@@ -71,7 +76,7 @@ include('./client/partials/HeaderEd.blade.php');
     <link rel="stylesheet" href="./css/Account.css">
     <link rel="stylesheet" href="./css/Forms.css">
   </head>
-  <body style="background: linear-gradient(90deg, gold 30%, floralwhite 70%, lightyellow 30%); height: 100%">
+  <body style="background: linear-gradient(90deg, gold 20%, floralwhite 50%, lightyellow 10%); height: 100%">
     <div style="margin: 0 100px 0 100px;">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
       <div class="cardoutline" style="display: flex">
@@ -99,21 +104,25 @@ include('./client/partials/HeaderEd.blade.php');
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
       <div class="cardoutline" style="display: inline-block; margin: 10px 10px 55px 10px">
         <a href="./client/ReserveDetail.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
-<?php foreach($rec2 as $key){ if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
+<?php foreach($rec2 as $key){ if($key['remaining - COUNT(tbl_form.lesson_id)']){?>
           <div class="cardcontent" style="margin: 12px; display: flex; float: left; flex-direction: column">
             <span class="flex" style="margin-top: 8px">
-              <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
+              <img src="../images/profile/<?php echo $key['image_name']; ?>" class="c_img_index">
               <strong style="color: darkblue; padding:20px 0 0 20px">
                 TeacherName<br>
-                <strong style="color: black; padding: 5px 0 0 5px; display: flex"><?php echo $value['user_name']?></strong>
+                <strong style="color: black; padding: 5px 0 0 5px; display: flex"><?php echo $key['user_name']?></strong>
               </strong><br><br>
             </span>
             <div style="margin: 10px 20px; text-align: left">
-              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
+              <strong style="overflow-wrap: break-word"><?php echo mb_strimwidth( strip_tags( $key['description'] ), 0, 80, '…', 'UTF-8' ); ?></strong>
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center; margin-top: auto">
               <strong style="float: left;">Rest Reservations</strong><br>
-              <strong style="float: left">Only remain <?php echo($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats</strong>
+<?php if($key['remaining - COUNT(tbl_form.lesson_id)'] < 12 )  {?>
+              <strong style="float: left">Only remain <?php echo($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats !!</strong>
+<?php } else{?>
+              <strong style="float: left">Seats are <?php echo($key['remaining - COUNT(tbl_form.lesson_id)']); ?> available!</strong>
+<?php } ?>
             </div>
           </div>
 <?php }} ?>
