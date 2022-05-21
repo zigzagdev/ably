@@ -45,7 +45,25 @@ if($rec == TRUE) {
   </head>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
     <div style="margin: 10px 130px">
-
+      <div class="mainaccount">
+        <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
+          <b style="font-size: 20px;width:70px;margin-left:150px; vertical-align: 70%; ">Lesson Detail</b>
+        </li>
+        <li style="list-style: none;  margin:27px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
+            CourseName
+          </b>
+          <b style="font-size: 20px; margin-right: 10px"><?php echo $course ?></b>
+        </li>
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+        <li style="list-style: none;  margin:17px 0 17px 30px">
+          <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
+            LessonContent
+          </b><br><br>
+          <b style="font-size: 20px;overflow-wrap: break-word;"><?php echo $content ?></b>
+        </li>
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+      </div>
     </div>
   </body>
 </html>
