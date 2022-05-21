@@ -75,8 +75,8 @@ include('./client/partials/HeaderEd.blade.php');
     <div style="margin: 0 100px 0 100px;">
       <h1 style="padding: 20px ; text-align:center">Upcoming Lessons</h1>
       <div class="cardoutline" style="display: flex">
-        <a href="./client/form/Asking.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
-<?php foreach($rec as $value ){?>
+        <a href="./client/ReserveDetail.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
+<?php foreach($rec as $value ){ ?>
           <div class="cardcontent" style="margin: 10px;display: flex; float: left; flex-direction: column;">
             <span class="flex" style="margin-top: 8px">
               <img src="../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index">
@@ -98,7 +98,7 @@ include('./client/partials/HeaderEd.blade.php');
       </div>
       <h1 style="padding: 20px ; text-align:center">Popular Lessons.</h1>
       <div class="cardoutline" style="display: inline-block; margin: 10px 10px 55px 10px">
-        <a href="./client/form/Asking.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
+        <a href="./client/ReserveDetail.php?client_id=<?=$client_id;?>&lesson_id=<?=$lesson_id;?>" style="text-decoration: none; color: black; margin: 13px 0">
 <?php foreach($rec2 as $key){ if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
           <div class="cardcontent" style="margin: 12px; display: flex; float: left; flex-direction: column">
             <span class="flex" style="margin-top: 8px">
