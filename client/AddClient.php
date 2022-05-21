@@ -173,10 +173,11 @@ if(isset($_POST['submit']))
   }
 
 
-  $sql_1 = "SELECT 
-                tbl_account.email
-              FROM 
-                tbl_account 
+  $sql_1 = "
+             SELECT 
+                 tbl_account.email
+               FROM 
+                 tbl_account 
              LEFT JOIN 
                  tbl_client 
                ON 
