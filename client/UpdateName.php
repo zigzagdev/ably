@@ -6,22 +6,21 @@ if(isset($_SESSION['name_error']))
   echo $_SESSION['name_error'];
   unset($_SESSION['name_error']);
 }
+$client_id = $_GET['client_id'];
 
-  if(isset($_GET['client_id']))
-  {
-    $client_id = $_GET['client_id'];
-    $sql2 = "SELECT name  FROM tbl_client WHERE client_id = $client_id";
-    $rec2 = mysqli_query($connect, $sql2);
-    if ($rec2 == true) {
-      $count = mysqli_num_rows($rec2);
-      if ($count == 1) {
-        $row = mysqli_fetch_assoc($rec2);
-        $name = $row['name'];
-      } else {
-        header('Location: '. $_SERVER['HTTP_REFERER']);
-      }
+if(isset($_GET['client_id'])) {
+  $sql2 = "SELECT name  FROM tbl_client WHERE client_id = $client_id";
+  $rec2 = mysqli_query($connect, $sql2);
+  if ($rec2 == true) {
+    $count = mysqli_num_rows($rec2);
+    if ($count == 1) {
+      $row = mysqli_fetch_assoc($rec2);
+      $name = $row['name'];
+    } else {
+      header('Location: '. $_SERVER['HTTP_REFERER']);
     }
   }
+}
 ?>
 
 <html>
