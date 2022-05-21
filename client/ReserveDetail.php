@@ -48,7 +48,7 @@ if($rec == TRUE) {
 
     </div>
   </body>
-</html>
+
 
 <?php
 //$rec = mysqli_query($connect, $sql);
