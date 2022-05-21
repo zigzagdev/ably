@@ -44,17 +44,28 @@ if($rec == TRUE) {
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
-  <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
-    <div style="margin: 40px 130px">
-      <div class="mainaccount">
+  <body style="background: linear-gradient(90deg, whitesmoke 5%, floralwhite 55%, snow 40%, snow 100%);">
+    <div style="margin: 40px 130px 70px 130px">
+      <div class="mainaccount"style="background: linear-gradient(90deg, lightblue 5%, floralwhite 55%, ghostwhite 40%);" >
         <li style="list-style: none;  margin:27px 0 7px 0; padding-top: 20px; text-align: center">
           <b style="font-size: 20px;width:70px; vertical-align: 70%; ">Your select Course.</b>
         </li>
         <li style="list-style: none;  margin:27px 0 17px 30px">
           <b style="font-size: 20px;margin-right:160px; float: left;">
+            TutorName
+          </b><br><br>
+          <b style="font-size: 20px; margin-right: 10px;">
+            <?php echo $user_name ?>
+          </b>
+        </li>
+        <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+        <li style="list-style: none;  margin:27px 0 17px 30px">
+          <b style="font-size: 20px;margin-right:160px; float: left;">
             CourseName
           </b><br><br>
-          <b style="font-size: 20px; margin-right: 10px"><?php echo $course ?></b>
+          <b style="font-size: 20px; margin-right: 10px;">
+            <?php echo $course ?>
+          </b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -75,7 +86,7 @@ if($rec == TRUE) {
     </div>
   </body>
 </html>
-
+<?php include "./partials/FooterEd.tpl" ?>
 <?php
 //$rec = mysqli_query($connect, $sql);
 //
