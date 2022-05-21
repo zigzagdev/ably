@@ -45,6 +45,7 @@ if($rec == TRUE) {
   </head>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
     <div style="margin: 10px 130px">
+
     </div>
   </body>
 </html>
