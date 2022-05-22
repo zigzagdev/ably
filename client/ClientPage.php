@@ -1,5 +1,6 @@
 <?php
 include "./partials/HeaderEd.blade.php";
+include "../config/Constants.blade.php";
 
   if(isset($_SESSION['cli_add']))
   {

@@ -4,7 +4,7 @@ include('../partials/FormHeader.blade.php');
 if(!empty($_GET['keyword'])) {
   $sql =
     "SELECT 
-         user_name, deadline, course, remaining, description, image_name 
+         user_name, deadline, course, remaining, description, image_name, lesson_id
      FROM
          tbl_account 
          LEFT JOIN tbl_lesson
@@ -33,33 +33,38 @@ if(!empty($_GET['keyword'])) {
         $remaining   = $rows['remaining'];
         $description = $rows['description'];
         $image_name  = $rows['image_name'];
+        $lesson_id   = $rows['lesson_id'];
       }
     }
   }
 }
+var_dump($rec);
+$client_id = $_GET['client_id'];
+$sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
+$rec2 = mysqli_query($connect, $sql2);
 
-  $client_id = $_GET['client_id'];
-  $sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
-  $rec2 = mysqli_query($connect, $sql2);
-
-  if($rec2 == TRUE)
-  {
-    $count2 = mysqli_num_rows($rec2);
-    if($count2>0)
+if($rec2 == TRUE)
+{
+  $count2 = mysqli_num_rows($rec2);
+  if($count2>0)
     {
-      while ($rows2 = mysqli_fetch_assoc($rec2))
-      {
-        $name = $rows2['name'];
-      }
+    while ($rows2 = mysqli_fetch_assoc($rec2))
+    {
+      $name = $rows2['name'];
     }
   }
+}
 
+var_dump($lesson_id);
 $sql3 = "
            SELECT
                remaining - COUNT(tbl_form.lesson_id)
            FROM
                tbl_form
-               LEFT JOIN tbl_lesson ON tbl_form.lesson_id = tbl_lesson.lesson_id
+               LEFT JOIN 
+                 tbl_lesson 
+                 ON tbl_form.lesson_id = tbl_lesson.lesson_id
+                 
            GROUP BY
                tbl_form.lesson_id
            ";
@@ -72,7 +77,7 @@ $sql3 = "
     {
       while($rows3 = mysqli_fetch_assoc($rec3))
       {
-        $rest  = $rows3['remaining - COUNT(tbl_form.lesson_id)'];
+        $rest       = $rows3['remaining - COUNT(tbl_form.lesson_id)'];
       }
     }
   }
@@ -86,33 +91,32 @@ $sql3 = "
   </head>
   <body>
 <?php
-  if(!empty($_GET['keyword']))
+if(!empty($_GET['keyword'])){
   { foreach ($rec as $value) ?>
     <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
     <div class="cardoutline" style="display: flex;">
-      <a href="./Asking.php?client_id=<?= $client_id?>" style="text-decoration: none; color: black; margin: 13px 0">
+      <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$lesson_id?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
           <span style="display: flex">
-            <strong style="padding:48px 30px 18px 50px"><?php echo $user_name; ?></strong>
-            <img src="../../images/profile/<?php echo $image_name; ?>" class="c_img_index" style="margin-top: 20px"><br/>
+            <strong style="padding:48px 30px 18px 50px"><?php echo $value['user_name']; ?></strong>
+            <img src="../../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index" style="margin-top: 20px"><br/>
           </span>
-          <strong style="color: darkblue; float: left; padding:20px 0 10px 20px"><?php echo $course; ?></strong><br><br>
+          <strong style="color: darkblue; float: left; padding:20px 0 10px 20px"><?php echo $value['course']; ?></strong><br><br>
           <div style="margin: 10px 20px;">
-            <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $description ), 0, 20, '…', 'UTF-8' ); ?></strong>
+            <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 20, '…', 'UTF-8' ); ?></strong>
           </div>
-<?php { foreach ($rec3 as $value) ?>
           <div style="margin: 50px 20px 20px 20px; text-align: center">
-            <strong style="float: left; margin-left: 30px">Rest Reservations<?php echo$value['remaining - COUNT(tbl_form.lesson_id)']?></strong><br>
-            <strong style="overflow-wrap: break-word; display: inline-block">Only  !!</strong>
-          </div>
+
+<?php { foreach ($rec3 as $key) if ($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
+            <strong style="float: left; margin-left: 30px">Only <?php echo$key['remaining - COUNT(tbl_form.lesson_id)']?> seats are remain !</strong><br>
+<?php } else{?>
+            <strong style="float: left; margin-left: 30px">Rest seats are<?php echo$key['remaining - COUNT(tbl_form.lesson_id)']?> !!</strong><br>
 <?php } ?>
+          </div>
         </div>
       </a>
     </div>
- <?php }
-
-
-  ?>
+ <?php }}} ?>
   </body>
 </html>
 
@@ -140,4 +144,4 @@ $sql3 = "
       }
     }
 
-  include('../../account/partials/ClientFooter.tpl'); ?>
+  include('../../account/partials/ClientFooter.tpl');
