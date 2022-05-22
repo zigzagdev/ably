@@ -99,8 +99,7 @@ if(isset($_POST['submit'])) {
   } else
   {
     $_SESSION['asking_f'] = "<div class='error'>Failed to Register your form.</div>";
-    $url = "http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id";
-    header('Location:' . $url, true, 401);
+    header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id", 401);
     die();
   }
 }
