@@ -10,15 +10,15 @@ if(!empty($_GET['keyword'])) {
          LEFT JOIN tbl_lesson
            ON tbl_account.account_id=tbl_lesson.account_id
      WHERE 
-         deadline LIKE '%". $_GET['keyword']. "%' 
+         deadline LIKE '%" . $_GET['keyword'] . "%' 
        OR
-         course LIKE '%". $_GET["keyword"]. "%'
+         course LIKE '%" . $_GET["keyword"] . "%'
        OR  
-         remaining LIKE '%". $_GET["keyword"]. "%'
+         remaining LIKE '%" . $_GET["keyword"] . "%'
        OR                       
-         user_name LIKE '%". $_GET["keyword"]. "%'  
+         user_name LIKE '%" . $_GET["keyword"] . "%'  
        OR                       
-         description LIKE '%". $_GET["keyword"]. "%'                                    
+         description LIKE '%" . $_GET["keyword"] . "%'                                    
      ";
 
   $rec = mysqli_query($connect, $sql);
@@ -37,26 +37,23 @@ if(!empty($_GET['keyword'])) {
       }
     }
   }
-}
-var_dump($rec);
-$client_id = $_GET['client_id'];
-$sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
-$rec2 = mysqli_query($connect, $sql2);
 
-if($rec2 == TRUE)
-{
-  $count2 = mysqli_num_rows($rec2);
-  if($count2>0)
-    {
-    while ($rows2 = mysqli_fetch_assoc($rec2))
-    {
-      $name = $rows2['name'];
+  var_dump($rows);
+  $client_id = $_GET['client_id'];
+  $sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
+  $rec2 = mysqli_query($connect, $sql2);
+
+  if ($rec2 == TRUE) {
+    $count2 = mysqli_num_rows($rec2);
+    if ($count2 > 0) {
+      while ($rows2 = mysqli_fetch_assoc($rec2)) {
+        $name = $rows2['name'];
+      }
     }
   }
-}
 
-var_dump($lesson_id);
-$sql3 = "
+  var_dump($lesson_id);
+  $sql3 = "
            SELECT
                remaining - COUNT(tbl_form.lesson_id)
            FROM
@@ -70,17 +67,15 @@ $sql3 = "
            ";
 
   $rec3 = mysqli_query($connect, $sql3);
-  if($rec3 == TRUE)
-  {
+  if ($rec3 == TRUE) {
     $count3 = mysqli_num_rows($rec3);
-    if($count3 > 0)
-    {
-      while($rows3 = mysqli_fetch_assoc($rec3))
-      {
-        $rest       = $rows3['remaining - COUNT(tbl_form.lesson_id)'];
+    if ($count3 > 0) {
+      while ($rows3 = mysqli_fetch_assoc($rec3)) {
+        $rest = $rows3['remaining - COUNT(tbl_form.lesson_id)'];
       }
     }
   }
+}
 ?>
 
 <html>
@@ -90,11 +85,11 @@ $sql3 = "
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
+    <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
 <?php
 if(!empty($_GET['keyword'])){
-  { foreach ($rec as $value) ?>
-    <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
-    <div class="cardoutline" style="display: flex;">
+   foreach ($rec as $value) {?>
+    <div style="display: inline-block; margin:0 30px 30px 40px">
       <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$lesson_id?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
           <span style="display: flex">
