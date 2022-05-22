@@ -85,16 +85,13 @@ if($rec == TRUE) {
       <div style="margin:60px 0; text-align: center">
         <div style="margin: 0 10px 20px 10px">
           <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateLesson.blade.php?lesson_id=<?=$lesson_id=$_GET['lesson_id'];?>">
-            Update your Lesson
-          </a>
-          <a class="btn-delete" style="margin: 0 7px 0 7px;" href="DeleteLesson.php?lesson_id=<?= $lesson_id=$_GET['lesson_id'];?>">
-            Delete your Lesson
+            Reserve the course
           </a>
 <?php
 $hostname = $_SERVER['HTTP_HOST'];
   if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
   {
-    echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return</a>';
+    echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return Page</a>';
   }
 ?>
         </div>
@@ -116,5 +113,3 @@ $hostname = $_SERVER['HTTP_HOST'];
 //    die();
 //  }
 //}
-
-?>
