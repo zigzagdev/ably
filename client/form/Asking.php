@@ -28,21 +28,6 @@ include('../partials/FormHeader.blade.php');
     die();
   }
 
-  if(isset($_POST['submit']))
-  {
-    $asking = $_POST['asking'];
-    if (8 > mb_strlen($asking, 'UTF-8')|| 200 <  mb_strlen($asking, 'UTF-8'))
-    {
-      $_SESSION['asking_f'] = "<div class='success'>Please fill your asking comment in 8~200 words !</div>";
-    }
-
-    //validation
-    if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
-      $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
-      header("Location:Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
-      die();
-    }
- }
 ?>
 
 <html>
@@ -83,8 +68,13 @@ if(isset($_POST['submit'])) {
   $asking = $_POST['asking'];
 
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
-    $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
+    $_SESSION['asking_f'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header("http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
+    die();
+  }
+  if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
+    $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
+    header("Location:Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
     die();
   }
 }
