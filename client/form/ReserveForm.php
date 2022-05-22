@@ -144,4 +144,4 @@ if(!empty($_GET['keyword'])){
       }
     }
 
-  include('../../account/partials/ClientFooter.tpl');
+  include('../../account/partials/ClientFooter.tpl'); ?>
