@@ -46,16 +46,14 @@ include('../partials/FormHeader.blade.php');
         </li>
         <div style="margin:60px 0; text-align: center">
           <div style="margin: 0 10px 20px 10px">
-            <a class="btn-primary" style="margin: 0 7px 0 7px" href="http://localhost:8001/client/ClientPage.php?client_id=<?=$client_id;?>">
-              Reserve here
-            </a>
-            <?php
-            $hostname = $_SERVER['HTTP_HOST'];
-            if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
-            {
-              echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return Page</a>';
-            }
-            ?>
+            <input type="submit" name="submit" value="submit" class=" btn-primary">
+<?php
+$hostname = $_SERVER['HTTP_HOST'];
+if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
+{
+  echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return Page</a>';
+}
+?>
           </div>
         </div>
       </form>
@@ -64,8 +62,12 @@ include('../partials/FormHeader.blade.php');
 </html>
 <?php include('../partials/FooterEd.tpl');
 
+$client_id = $_GET['client_id'];
+$lesson_id = $_GET['lesson_id'];
+
 if(isset($_POST['submit'])) {
-  $asking = $_POST['asking'];
+  $asking     = $_POST['asking'];
+  $created_at = date('Y-m-d H:i');
 
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
     $_SESSION['asking_f'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
@@ -75,6 +77,30 @@ if(isset($_POST['submit'])) {
   if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
     $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
     header("Location:Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
+    die();
+  }
+
+  $sql2 = "
+            INSERT INTO 
+                tbl_client
+              SET 
+                name       = '$asking',
+                created_at = '$created_at',
+                client_id  = '$client_id',
+                lesson_id  = '$lesson_id'
+          ";
+  $rec2 = mysqli_query($connect,$sql2);
+
+  if($rec2 == true)
+  {
+    $_SESSION['asking_s'] = "<div class='success'>Your form was reserved correctly!</div>";
+    header("location: http://localhost:8001/client/ClientPage?client_id=$client_id");
+    exit();
+  } else
+  {
+    $_SESSION['asking_f'] = "<div class='error'>Failed to Register your form.</div>";
+    $url = "http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id";
+    header('Location:' . $url, true, 401);
     die();
   }
 }

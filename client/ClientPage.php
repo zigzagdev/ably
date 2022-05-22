@@ -45,6 +45,11 @@ include "./partials/HeaderEd.blade.php";
     echo $_SESSION['name_error'];
     unset($_SESSION['name_error']);
   }
+  if(isset($_SESSION['asking_s']))
+  {
+    echo $_SESSION['asking_s'];
+    unset($_SESSION['asking_s']);
+  }
 
   $client_id = $_GET['client_id'];
 
