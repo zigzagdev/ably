@@ -84,7 +84,7 @@ if($rec == TRUE) {
       </div>
       <div style="margin:60px 0; text-align: center">
         <div style="margin: 0 10px 20px 10px">
-          <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateLesson.blade.php?lesson_id=<?=$lesson_id=$_GET['lesson_id'];?>">
+          <a class="btn-primary" style="margin: 0 7px 0 7px" href="http://localhost:8001/client/form/Asking.php?client_id=<?=$client_id;?>&lesson_id=<?=$_GET['lesson_id']?>">
             Reserve the course
           </a>
 <?php
