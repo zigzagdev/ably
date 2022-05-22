@@ -82,9 +82,9 @@ if(isset($_POST['submit'])) {
 
   $sql2 = "
             INSERT INTO 
-                tbl_client
+                tbl_form
               SET 
-                name       = '$asking',
+                asking     = '$asking',
                 created_at = '$created_at',
                 client_id  = '$client_id',
                 lesson_id  = '$lesson_id'
@@ -94,7 +94,7 @@ if(isset($_POST['submit'])) {
   if($rec2 == true)
   {
     $_SESSION['asking_s'] = "<div class='success'>Your form was reserved correctly!</div>";
-    header("location: http://localhost:8001/client/ClientPage?client_id=$client_id");
+    header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else
   {
