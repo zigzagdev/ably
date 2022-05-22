@@ -84,7 +84,7 @@ if(isset($_POST['submit'])) {
 
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
     $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
-    header('location:/client/AddClient.php');
+    header("http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
     die();
   }
 }
