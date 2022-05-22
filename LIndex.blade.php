@@ -120,13 +120,6 @@ include('./client/partials/HeaderEd.blade.php');
             </div>
             <div style="margin: 50px 20px 20px 20px; text-align: center; margin-top: auto">
               <strong style="float: left;">Rest Reservations</strong><br>
-<?php if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11 )  {?>
-              <strong style="float: left">Only remain <?php echo($key['remaining - COUNT(tbl_form.lesson_id)']); ?> seats !!</strong>
-<?php } else{?>
-              <strong style="float: left">Seats are <?php echo($key['remaining - COUNT(tbl_form.lesson_id)']); ?> available!</strong>
-<?php } ?>
-            </div>
-          </div>
 <?php }} ?>
         </a>
       </div>

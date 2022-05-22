@@ -6,8 +6,8 @@ if(!empty($_GET['keyword'])) {
     "SELECT 
          user_name, deadline, course, remaining, description, image_name, lesson_id
      FROM
-         tbl_account 
-         LEFT JOIN tbl_lesson
+         tbl_lesson 
+         LEFT JOIN tbl_account
            ON tbl_account.account_id=tbl_lesson.account_id
      WHERE 
          deadline LIKE '%" . $_GET['keyword'] . "%' 
@@ -52,7 +52,6 @@ if(!empty($_GET['keyword'])) {
     }
   }
 
-  var_dump($lesson_id);
   $sql3 = "
            SELECT
                remaining - COUNT(tbl_form.lesson_id)
