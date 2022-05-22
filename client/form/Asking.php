@@ -71,12 +71,12 @@ if(isset($_POST['submit'])) {
 
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
     $_SESSION['asking_f'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
-    header("http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
+    header("http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id", 401);
     die();
   }
   if (!preg_match("/^[a-zA-Z-' ]*$/", $asking)) {
     $_SESSION['asking_f'] = "<div class='success'>Only English is valid.!</div>";
-    header("Location:Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
+    header("Location:Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id", 401);
     die();
   }
 
