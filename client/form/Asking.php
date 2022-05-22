@@ -56,7 +56,7 @@ include('../partials/FormHeader.blade.php');
       <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Asking questions to tutor at here !!</strong>
       <form action="" method="post">
         <li style="list-style: none;">
-          <textarea id="description" type="text" name="content" cols="100" rows="6"
+          <textarea id="asking" type="text" name="asking" cols="100" rows="6"
                     style="margin:15px 0 0 50px" required placeholder="Write something .."></textarea>
         </li>
         <div style="margin:60px 0; text-align: center">
@@ -77,5 +77,15 @@ include('../partials/FormHeader.blade.php');
     </div>
   </body>
 </html>
+<?php include('../partials/FooterEd.tpl');
 
-<?php include('../partials/FooterEd.tpl'); ?>
+if(isset($_POST['submit'])) {
+  $asking = $_POST['asking'];
+
+  if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
+    $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
+    header('location:/client/AddClient.php');
+    die();
+  }
+}
+?>
