@@ -59,21 +59,21 @@ include('../partials/FormHeader.blade.php');
           <textarea id="description" type="text" name="content" cols="100" rows="6"
                     style="margin:15px 0 0 50px" required placeholder="Write something .."></textarea>
         </li>
+        <div style="margin:60px 0; text-align: center">
+          <div style="margin: 0 10px 20px 10px">
+            <a class="btn-primary" style="margin: 0 7px 0 7px" href="http://localhost:8001/client/ClientPage.php?client_id=<?=$client_id;?>">
+              Reserve here
+            </a>
+            <?php
+            $hostname = $_SERVER['HTTP_HOST'];
+            if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
+            {
+              echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return Page</a>';
+            }
+            ?>
+          </div>
+        </div>
       </form>
-    </div>
-    <div style="margin:60px 0; text-align: center">
-      <div style="margin: 0 10px 20px 10px">
-        <a class="btn-primary" style="margin: 0 7px 0 7px" href="http://localhost:8001/client/form/Asking.php?client_id=<?=$client_id;?>&lesson_id=<?=$_GET['lesson_id']?>">
-          Reserve the course
-        </a>
-        <?php
-        $hostname = $_SERVER['HTTP_HOST'];
-        if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
-        {
-          echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return Page</a>';
-        }
-        ?>
-      </div>
     </div>
   </body>
 </html>
