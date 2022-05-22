@@ -89,7 +89,7 @@ if(isset($_POST['submit'])) {
                 client_id  = '$client_id',
                 lesson_id  = '$lesson_id'
           ";
-  $rec2 = mysqli_query($connect,$sql2);
+  $rec2 = mysqli_query($connect, $sql2);
 
   if($rec2 == true)
   {
@@ -103,4 +103,3 @@ if(isset($_POST['submit'])) {
     die();
   }
 }
-?>
