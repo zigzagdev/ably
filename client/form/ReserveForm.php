@@ -87,7 +87,7 @@ if(!empty($_GET['keyword'])) {
     <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
 <?php
 if(!empty($_GET['keyword'])){
-   foreach ($rec as $value) {?>
+   foreach ($rec as $value){?>
     <div style="display: inline-block; margin:0 30px 30px 40px">
       <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$lesson_id?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
@@ -101,7 +101,7 @@ if(!empty($_GET['keyword'])){
           </div>
           <div style="margin: 50px 20px 20px 20px; text-align: center">
 
-<?php { foreach ($rec3 as $key) if ($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
+<?php foreach ($rec3 as $key){if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
             <strong style="float: left; margin-left: 30px">Only <?php echo$key['remaining - COUNT(tbl_form.lesson_id)']?> seats are remain !</strong><br>
 <?php } else{?>
             <strong style="float: left; margin-left: 30px">Rest seats are<?php echo$key['remaining - COUNT(tbl_form.lesson_id)']?> !!</strong><br>
@@ -138,4 +138,4 @@ if(!empty($_GET['keyword'])){
       }
     }
 
-  include('../../account/partials/ClientFooter.tpl'); ?>
+  include('../../account/partials/ClientFooter.tpl');
