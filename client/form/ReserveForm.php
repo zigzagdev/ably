@@ -126,14 +126,13 @@ if(!empty($_GET['keyword'])){
     if($rec3 == true)
       {
         $_SESSION['form_s'] = "<div class='success text-center'>Form order Successfully.</div>";
-        $form_id = mysqli_insert_id($connect);
         header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id", 302);
         die();
       }
     else
       {
         $_SESSION['form_f'] = "<div class='success text-center'>Form order Failed.</div>";
-        header("location: http://localhost:8001/client/form/ReserveForm.php?client_id=$client_id");
+        header("location: http://localhost:8001/client/form/ReserveForm.php?client_id=$client_id", 401);
         die();
       }
     }
