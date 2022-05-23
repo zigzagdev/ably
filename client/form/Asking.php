@@ -8,26 +8,6 @@ include('../partials/FormHeader.blade.php');
   }
   $client_id = $_GET['client_id'];
   $lesson_id = $_GET['lesson_id'];
-
-  $sql = "
-           SELECT
-               client_id, lesson_id
-           FROM
-               tbl_form
-           WHERE 
-               client_id='$client_id' 
-             AND 
-               lesson_id='$lesson_id'
-          ";
-
-  $rec  = mysqli_query($connect,$sql);
-  $rec2 = mysqli_num_rows($rec);
-  if ($rec2 > 0) {
-    $_SESSION['asking_f'] =  "<div class='success'>You already register this course.</div>";
-    header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
-    die();
-  }
-
 ?>
 
 <html>
@@ -69,6 +49,25 @@ if(isset($_POST['submit'])) {
   $asking     = $_POST['asking'];
   $created_at = date('Y-m-d H:i');
 
+  $sql = "
+           SELECT
+               client_id, lesson_id
+           FROM
+               tbl_form
+           WHERE 
+               client_id='$client_id' 
+             AND 
+               lesson_id='$lesson_id'
+          ";
+
+  $rec  = mysqli_query($connect,$sql);
+  $rec2 = mysqli_num_rows($rec);
+  if ($rec2 > 0) {
+    $_SESSION['asking_f'] =  "<div class='success'>You already register this course.</div>";
+    header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
+    die();
+  }
+
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
     $_SESSION['asking_f'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header("http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id", 401);
@@ -89,9 +88,9 @@ if(isset($_POST['submit'])) {
                 client_id  = '$client_id',
                 lesson_id  = '$lesson_id'
           ";
-  $rec2 = mysqli_query($connect, $sql2);
+  $rec3 = mysqli_query($connect, $sql2);
 
-  if($rec2 == true)
+  if($rec3 == true)
   {
     $_SESSION['asking_s'] = "<div class='success'>Your form was reserved correctly!</div>";
     header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");

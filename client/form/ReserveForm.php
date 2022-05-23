@@ -4,11 +4,13 @@ include('../partials/FormHeader.blade.php');
 if(!empty($_GET['keyword'])) {
   $sql =
     "SELECT 
-         user_name, deadline, course, remaining, description, image_name, lesson_id
+         user_name, deadline, course, remaining, description, image_name,tbl_lesson.lesson_id, remaining - COUNT(tbl_form.lesson_id)
      FROM
          tbl_lesson 
          LEFT JOIN tbl_account
-           ON tbl_account.account_id=tbl_lesson.account_id
+           ON tbl_account.account_id = tbl_lesson.account_id
+         RIGHT  JOIN tbl_form
+           ON tbl_form.lesson_id = tbl_lesson.lesson_id
      WHERE 
          deadline LIKE '%" . $_GET['keyword'] . "%' 
        OR
@@ -18,7 +20,9 @@ if(!empty($_GET['keyword'])) {
        OR                       
          user_name LIKE '%" . $_GET["keyword"] . "%'  
        OR                       
-         description LIKE '%" . $_GET["keyword"] . "%'                                    
+         description LIKE '%" . $_GET["keyword"] . "%'  
+     GROUP BY
+         tbl_form.lesson_id                                       
      ";
 
   $rec = mysqli_query($connect, $sql);
@@ -34,11 +38,12 @@ if(!empty($_GET['keyword'])) {
         $description = $rows['description'];
         $image_name  = $rows['image_name'];
         $lesson_id   = $rows['lesson_id'];
+        $rest        = $rows['remaining - COUNT(tbl_form.lesson_id)'];
       }
     }
   }
 
-  var_dump($rows);
+
   $client_id = $_GET['client_id'];
   $sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
   $rec2 = mysqli_query($connect, $sql2);
@@ -48,29 +53,6 @@ if(!empty($_GET['keyword'])) {
     if ($count2 > 0) {
       while ($rows2 = mysqli_fetch_assoc($rec2)) {
         $name = $rows2['name'];
-      }
-    }
-  }
-
-  $sql3 = "
-           SELECT
-               remaining - COUNT(tbl_form.lesson_id)
-           FROM
-               tbl_form
-               LEFT JOIN 
-                 tbl_lesson 
-                 ON tbl_form.lesson_id = tbl_lesson.lesson_id
-                 
-           GROUP BY
-               tbl_form.lesson_id
-           ";
-
-  $rec3 = mysqli_query($connect, $sql3);
-  if ($rec3 == TRUE) {
-    $count3 = mysqli_num_rows($rec3);
-    if ($count3 > 0) {
-      while ($rows3 = mysqli_fetch_assoc($rec3)) {
-        $rest = $rows3['remaining - COUNT(tbl_form.lesson_id)'];
       }
     }
   }
@@ -88,8 +70,8 @@ if(!empty($_GET['keyword'])) {
 <?php
 if(!empty($_GET['keyword'])){
    foreach ($rec as $value){?>
-    <div style="display: inline-block; margin:0 30px 30px 40px">
-      <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$lesson_id?>" style="text-decoration: none; color: black; margin: 13px 0">
+    <div style="display: inline-block; margin:0 30px 30px 45px">
+      <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$value['lesson_id']?>" style="text-decoration: none; color: black; margin: 13px 0">
         <div class="cardcontent" style="margin: 0 10px;">
           <span style="display: flex">
             <strong style="padding:48px 30px 18px 50px"><?php echo $value['user_name']; ?></strong>
@@ -99,18 +81,18 @@ if(!empty($_GET['keyword'])){
           <div style="margin: 10px 20px;">
             <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 20, '…', 'UTF-8' ); ?></strong>
           </div>
-          <div style="margin: 50px 20px 20px 20px; text-align: center">
-
-<?php foreach ($rec3 as $key){if($key['remaining - COUNT(tbl_form.lesson_id)'] < 11){?>
-            <strong style="float: left; margin-left: 30px">Only <?php echo$key['remaining - COUNT(tbl_form.lesson_id)']?> seats are remain !</strong><br>
+          <div style="margin: 50px 20px 20px 20px; text-align: center; margin-top: auto">
+            <strong style="float: left;">Rest Reservations</strong><br>
+<?php if($value['remaining - COUNT(tbl_form.lesson_id)'] < 11 )  {?>
+              <strong style="float: left">Only remain <?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?> seats !!</strong>
 <?php } else{?>
-            <strong style="float: left; margin-left: 30px">Rest seats are<?php echo$key['remaining - COUNT(tbl_form.lesson_id)']?> !!</strong><br>
+              <strong style="float: left">Seats are <?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?> available!</strong>
 <?php } ?>
           </div>
         </div>
       </a>
     </div>
- <?php }}} ?>
+ <?php }} ?>
   </body>
 </html>
 
