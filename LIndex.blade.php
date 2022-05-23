@@ -111,7 +111,7 @@ include('./client/partials/HeaderEd.blade.php');
             <span class="flex" style="margin-top: 8px">
               <img src="../images/profile/<?php echo $key['image_name']; ?>" class="c_img_index">
               <strong style="color: darkblue; padding:20px 0 0 20px">
-                TeacherName<br>
+                TutorName<br>
                 <strong style="color: black; padding: 5px 0 0 5px; display: flex"><?php echo $key['user_name']?></strong>
               </strong><br><br>
             </span>

@@ -175,7 +175,7 @@ include "../config/Constants.blade.php";
 <?php foreach($form_rec as $key ){?>
         <div class="cardoutline2" style="display: inline-block; float: left; margin: 50px 10px 10px 10px">
           <div style="padding: 15px 0 0 30px; text-align: left">
-            <strong style="color: darkblue">Teacher</strong>
+            <strong style="color: darkblue">Tutor</strong>
             <span class="flex">
               <p style="padding-left: 10px; margin-right: 70px;font-family: 'Apple LiSung'; font-size: 25px"><?php echo $key['user_name'] ?></p>
               <img src="../images/profile/<?php echo $key['image_name']; ?>" style="width: 60px; height: 60px; border-radius: 50px">

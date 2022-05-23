@@ -72,13 +72,16 @@ if(!empty($_GET['keyword'])){
    foreach ($rec as $value){?>
     <div style="display: inline-block; margin:0 30px 30px 45px">
       <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$value['lesson_id']?>" style="text-decoration: none; color: black; margin: 13px 0">
-        <div class="cardcontent" style="margin: 0 10px;">
-          <span style="display: flex">
-            <strong style="padding:48px 30px 18px 50px"><?php echo $value['user_name']; ?></strong>
-            <img src="../../images/profile/<?php echo $value['image_name']; ?>" class="c_img_index" style="margin-top: 20px"><br/>
-          </span>
-          <strong style="color: darkblue; float: left; padding:20px 0 10px 20px"><?php echo $value['course']; ?></strong><br><br>
-          <div style="margin: 10px 20px;">
+        <div class="cardcontent" style="margin-top: auto">
+          <div style="padding: 5px 0 0 30px; text-align: left">
+            <strong style="color: darkblue">Tutor</strong>
+            <span class="flex">
+              <p style="padding-left: 10px; margin-right: 70px;font-family: 'Apple LiSung'; font-size: 25px"><?php echo $value['user_name'] ?></p>
+              <img src="../../images/profile/<?php echo $value['image_name']; ?>" style="width: 70px; height: 70px; border-radius: 50px;">
+            </span>
+          </div>
+          <strong style="color: darkblue; float: left; padding:0 0 10px 20px"><?php echo $value['course']; ?></strong><br><br>
+          <div style="margin:0 20px;">
             <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 20, '…', 'UTF-8' ); ?></strong>
           </div><br><br>
           <div style="margin:0 20px 20px 20px; margin-top: auto">
