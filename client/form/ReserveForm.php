@@ -114,27 +114,4 @@ if(!empty($_GET['keyword'])){
   </body>
 </html>
 
-<?php
-  $client_id = $_GET['client_id'];
-
-  if(isset($_POST['submit']))
-    {
-      $asking = $_POST['asking'];
-      $sql3 = "INSERT INTO tbl_form SET asking = '$asking'";
-
-    $rec3=mysqli_query($connect,$sql3);
-    if($rec3 == true)
-      {
-        $_SESSION['form_s'] = "<div class='success text-center'>Form order Successfully.</div>";
-        header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id", 302);
-        die();
-      }
-    else
-      {
-        $_SESSION['form_f'] = "<div class='success text-center'>Form order Failed.</div>";
-        header("location: http://localhost:8001/client/form/ReserveForm.php?client_id=$client_id", 401);
-        die();
-      }
-    }
-
-include('../../account/partials/ClientFooter.tpl'); ?>
+<?php include('../../account/partials/ClientFooter.tpl'); ?>
