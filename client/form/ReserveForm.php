@@ -104,4 +104,4 @@ if(!empty($_GET['keyword'])){
   </body>
 </html>
 
-<?php include('../../account/partials/ClientFooter.tpl');
+<?php include('../../account/partials/ClientFooter.tpl'); ?>
