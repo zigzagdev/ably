@@ -8,6 +8,36 @@ include('../partials/FormHeader.blade.php');
   }
   $client_id = $_GET['client_id'];
   $lesson_id = $_GET['lesson_id'];
+
+  $sql = "
+           SELECT
+               client_id, lesson_id
+           FROM
+               tbl_form
+           WHERE 
+               client_id='$client_id' 
+             AND 
+               lesson_id='$lesson_id'
+          ";
+
+  $rec  = mysqli_query($connect,$sql);
+
+  if($rec == TRUE)
+  {
+    $count2 = mysqli_num_rows($rec);
+    if($count2 == 0)
+    {
+      while($rows2 = mysqli_fetch_assoc($rec))
+      {
+        $lesson_id = 0;
+      }
+    }
+  }
+//if ($rec2 > 0) {
+//  $_SESSION['asking_f'] =  "<div class='success'>You already register this course.</div>";
+//  header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
+//  die();
+//}
 ?>
 
 <html>
@@ -16,7 +46,10 @@ include('../partials/FormHeader.blade.php');
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
+<?php //if($_GET['lesson_id'] != $lesson_id && ){ ?>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
+¥
+  <?php var_dump($lesson_id);?>
     <div style="margin: 10px 130px">
       <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Asking questions to tutor at here !!</strong>
       <form action="" method="post">
@@ -48,25 +81,6 @@ $lesson_id = $_GET['lesson_id'];
 if(isset($_POST['submit'])) {
   $asking     = $_POST['asking'];
   $created_at = date('Y-m-d H:i');
-
-  $sql = "
-           SELECT
-               client_id, lesson_id
-           FROM
-               tbl_form
-           WHERE 
-               client_id='$client_id' 
-             AND 
-               lesson_id='$lesson_id'
-          ";
-
-  $rec  = mysqli_query($connect,$sql);
-  $rec2 = mysqli_num_rows($rec);
-  if ($rec2 > 0) {
-    $_SESSION['asking_f'] =  "<div class='success'>You already register this course.</div>";
-    header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
-    die();
-  }
 
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
     $_SESSION['asking_f'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
@@ -102,4 +116,3 @@ if(isset($_POST['submit'])) {
     die();
   }
 }
-?>
