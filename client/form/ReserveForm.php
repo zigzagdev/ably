@@ -80,13 +80,21 @@ if(!empty($_GET['keyword'])){
           <strong style="color: darkblue; float: left; padding:20px 0 10px 20px"><?php echo $value['course']; ?></strong><br><br>
           <div style="margin: 10px 20px;">
             <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 20, '…', 'UTF-8' ); ?></strong>
-          </div>
-          <div style="margin: 50px 20px 20px 20px; text-align: center; margin-top: auto">
+          </div><br><br>
+          <div style="margin:0 20px 20px 20px; margin-top: auto">
             <strong style="float: left;">Rest Reservations</strong><br>
 <?php if($value['remaining - COUNT(tbl_form.lesson_id)'] < 11 )  {?>
-              <strong style="float: left">Only remain <?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?> seats !!</strong>
+            <span>
+              <strong style="float: left">
+                Only remain <i style="color: red"><?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?></i> seats !!
+              </strong>
+            </span>
 <?php } else{?>
-              <strong style="float: left">Seats are <?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?> available!</strong>
+            <span>
+              <strong style="float: left">
+                Only remain <i style="color: blue"><?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?></i> seats !!
+              </strong>
+            </span>
 <?php } ?>
           </div>
         </div>
