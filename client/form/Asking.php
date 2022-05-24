@@ -9,6 +9,7 @@ include('../partials/FormHeader.blade.php');
   $client_id = $_GET['client_id'];
   $lesson_id = $_GET['lesson_id'];
 
+if(!empty($lesson_id)) {
   $sql = "
            SELECT
                client_id, lesson_id
@@ -19,25 +20,18 @@ include('../partials/FormHeader.blade.php');
              AND 
                lesson_id='$lesson_id'
           ";
+  $sql_lesson = 0 ;
+  $rec2 = mysqli_query($connect, $sql);
 
-  $rec  = mysqli_query($connect,$sql);
-
-  if($rec == TRUE)
-  {
-    $count2 = mysqli_num_rows($rec);
-    if($count2 == 0)
-    {
-      while($rows2 = mysqli_fetch_assoc($rec))
-      {
-        $lesson_id = 0;
+  if ($rec2 == TRUE) {
+    $count2 = mysqli_num_rows($rec2);
+    if ($count2 > 0) {
+      while ($rows2 = mysqli_fetch_assoc($rec2)) {
+        $sql_lesson = 1 ;
       }
     }
   }
-//if ($rec2 > 0) {
-//  $_SESSION['asking_f'] =  "<div class='success'>You already register this course.</div>";
-//  header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id");
-//  die();
-//}
+}
 ?>
 
 <html>
@@ -46,10 +40,9 @@ include('../partials/FormHeader.blade.php');
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
-<?php //if($_GET['lesson_id'] != $lesson_id && ){ ?>
+
+<?php if($sql_lesson == 0) { ?>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
-¥
-  <?php var_dump($lesson_id);?>
     <div style="margin: 10px 130px">
       <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Asking questions to tutor at here !!</strong>
       <form action="" method="post">
@@ -59,19 +52,14 @@ include('../partials/FormHeader.blade.php');
         </li>
         <div style="margin:60px 0; text-align: center">
           <div style="margin: 0 10px 20px 10px">
-            <input type="submit" name="submit" value="submit" class=" btn-primary">
-<?php
-$hostname = $_SERVER['HTTP_HOST'];
-if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
-{
-  echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return Page</a>';
-}
-?>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary" style="margin-top: 41px; width: 110px; height: 54px">
+            <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">Return</button>
           </div>
         </div>
       </form>
     </div>
   </body>
+<?php } ?>
 </html>
 <?php include('../partials/FooterEd.tpl');
 
@@ -79,7 +67,7 @@ $client_id = $_GET['client_id'];
 $lesson_id = $_GET['lesson_id'];
 
 if(isset($_POST['submit'])) {
-  $asking     = $_POST['asking'];
+  $asking = $_POST['asking'];
   $created_at = date('Y-m-d H:i');
 
   if (4 > mb_strlen($asking, 'UTF-8') || 100 < mb_strlen($asking, 'UTF-8')) {
@@ -104,16 +92,15 @@ if(isset($_POST['submit'])) {
           ";
   $rec3 = mysqli_query($connect, $sql2);
 
-  if($rec3 == true)
-  {
+  if ($rec3 == true) {
     $_SESSION['asking_s'] = "<div class='success'>Your form was reserved correctly!</div>";
     header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
-  } else
-  {
+  } else {
     $_SESSION['asking_f'] = "<div class='error'>Failed to Register your form.</div>";
     header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id", 401);
     die();
   }
 }
+
 ?>
