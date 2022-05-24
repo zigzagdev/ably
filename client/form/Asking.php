@@ -59,11 +59,11 @@ if(!empty($lesson_id)) {
       </form>
     </div>
   </body>
-<?php }else { ?>
+<?php }else{ ?>
   <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
-    <div>
-      <span>Sorry.. You already register this course...</span><br>
-      <div>
+    <div style="text-align: center; margin:100px 0">
+      <strong style="font-size: 20px">Sorry.. You already register this course...</strong><br>
+      <div style="margin: 50px">
         <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">
           Return
         </button>
