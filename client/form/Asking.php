@@ -69,7 +69,7 @@ if(!empty($lesson_id)) {
         </button>
       </div>
     </div>
-  </body>
+
 <?php } ?>
 </html>
 <?php include('../partials/FooterEd.tpl');
