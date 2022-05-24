@@ -59,6 +59,10 @@ if(!empty($lesson_id)) {
       </form>
     </div>
   </body>
+<?php }else { ?>
+  <body style="background: linear-gradient(180deg, whitesmoke 5%, floralwhite 60%, snow 40%, snow 100%);">
+    <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">Return</button>
+  </body>
 <?php } ?>
 </html>
 <?php include('../partials/FooterEd.tpl');
