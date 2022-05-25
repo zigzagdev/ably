@@ -104,7 +104,7 @@ if(isset($_POST['submit'])) {
   $rec3 = mysqli_query($connect, $sql2);
 
   if ($rec3 == true) {
-    $_SESSION['asking_s'] = "<div class='success'>Your form was reserved correctly!</div>";
+    $_SESSION['asking_s'] = "<div class='success'>Your asking form was reserved correctly!</div>";
     header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else {

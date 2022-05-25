@@ -185,6 +185,10 @@ include "../config/Constants.blade.php";
             <strong style="color: darkblue">Course Name</strong>
             <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px"><?php echo $key['course']?></p>
           </div>
+          <div style="padding: 6px 0 0 30px; text-align: left">
+            <strong style="color: darkblue">Lesson Day</strong>
+            <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px"><?php echo $key['deadline']?></p>
+          </div>
         </div>
 <?php } ?>
       </div>
