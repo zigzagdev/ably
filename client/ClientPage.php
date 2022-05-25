@@ -51,6 +51,11 @@ include "../config/Constants.blade.php";
     echo $_SESSION['asking_s'];
     unset($_SESSION['asking_s']);
   }
+  if(isset($_SESSION['asking_up_suc']))
+  {
+    echo $_SESSION['asking_up_suc'];
+    unset($_SESSION['asking_up_suc']);
+  }
 
   $client_id = $_GET['client_id'];
 
