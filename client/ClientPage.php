@@ -88,9 +88,11 @@ include "../config/Constants.blade.php";
                LEFT JOIN
                    tbl_account
                  ON
-                   tbl_lesson.account_id= tbl_account.account_id
+                   tbl_lesson.account_id = tbl_account.account_id
                WHERE 
                    tbl_lesson.deadline > CURDATE()
+                 AND 
+                   tbl_form.client_id = '$client_id'
           ";
   $form_rec = mysqli_query($connect, $form_sql);
 
@@ -174,7 +176,7 @@ include "../config/Constants.blade.php";
         </span>
         <br><br>
 <?php foreach($form_rec as $key ){?>
-        <a href="../client/form/UpAsking.php?client_id=<?php echo $client_id?>&form_id=<?php echo$key['form_id'] ?>"
+        <a href="../client/form/UpAsking.php?client_id=<?php echo $client_id?>&form_id=<?php echo $key['form_id'] ?>"
            style="text-decoration: none">
           <div class="cardoutline2" style="display: inline-block; float: left; margin: 50px 10px 10px 10px">
             <div style="padding: 15px 0 0 30px; text-align: left">
