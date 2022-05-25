@@ -57,7 +57,13 @@ include "../config/Constants.blade.php";
     unset($_SESSION['asking_up_suc']);
   }
 
-  $client_id = $_GET['client_id'];
+  if(isset($_SESSION['asking_up_f']))
+  {
+    echo  $_SESSION['asking_up_f'];
+    unset($_SESSION['asking_up_f']);
+  }
+
+$client_id = $_GET['client_id'];
 
   $sql = "SELECT * FROM tbl_client where client_id=$client_id";
   $rec = mysqli_query($connect, $sql);

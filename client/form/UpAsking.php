@@ -80,19 +80,19 @@ if(isset($_POST['submit'])) {
                 tbl_form
               SET 
                 asking     = '$asking',
-                updated_at = '$update_at',
-                client_id  = '$client_id',
-                lesson_id  = '$lesson_id'
+                updated_at = '$update_at'
+            WHERE 
+                form_id    = '$form_id'
           ";
   $rec3 = mysqli_query($connect, $sql2);
 
   if ($rec3 == true) {
     $_SESSION['asking_up_suc'] = "<div class='success'>Your asking form was updated correctly !</div>";
-    header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id ");
+    header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else {
     $_SESSION['asking_up_f'] = "<div class='error'>Failed to Register your form.</div>";
-    header("Location:http://localhost:8001/client/form/Asking.php?client_id=$client_id&lesson_id=$lesson_id", 401);
+    header("Location:http://localhost:8001/client/form/UpAsking.php?client_id=$client_id&form_id=$form_id", 401);
     die();
   }
 }
