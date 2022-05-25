@@ -199,7 +199,4 @@ include "../config/Constants.blade.php";
     </div>
   </body>
 </html>
-
-
-
 <?php include "./partials/FooterEd.tpl" ?>
