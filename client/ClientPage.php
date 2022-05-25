@@ -78,7 +78,7 @@ include "../config/Constants.blade.php";
   }
 //  form一覧
   $form_sql = "SELECT 
-                   asking, deadline, tbl_form.created_at, course, user_name, image_name 
+                   asking, deadline, tbl_form.created_at, course, user_name, image_name, form_id 
                  FROM 
                    tbl_form 
                LEFT JOIN 
@@ -106,6 +106,7 @@ include "../config/Constants.blade.php";
         $course     = $form_rows['course'];
         $user_name  = $form_rows['user_name'];
         $image_name = $form_rows['image_name'];
+        $form_id    = $form_rows['form_id'];
       }
     }
   }
@@ -165,7 +166,7 @@ include "../config/Constants.blade.php";
       <div class="cardoutline">
         <span style="padding-top: 20px;" class="search_box">
           <strong style="color: darkblue;">-Your Reserved form(s)-</strong>
-          <form class="reserveform" method="get" action="../client/form/ReserveForm.php">
+          <form class="reserveform" method="get" action="">
             <strong style="color: #2f3542; margin-left:13px;">Find Something</strong><br>
             <input type="hidden" name="client_id" value="<?php echo $client_id ?>"/>
             <input style=" margin-left: 60px; width: 175px;height: 30px" placeholder="  Name,Course" name="keyword"/>
@@ -173,23 +174,26 @@ include "../config/Constants.blade.php";
         </span>
         <br><br>
 <?php foreach($form_rec as $key ){?>
-        <div class="cardoutline2" style="display: inline-block; float: left; margin: 50px 10px 10px 10px">
-          <div style="padding: 15px 0 0 30px; text-align: left">
-            <strong style="color: darkblue">Tutor</strong>
-            <span class="flex">
-              <p style="padding-left: 10px; margin-right: 70px;font-family: 'Apple LiSung'; font-size: 25px"><?php echo $key['user_name'] ?></p>
-              <img src="../images/profile/<?php echo $key['image_name']; ?>" style="width: 60px; height: 60px; border-radius: 50px">
-            </span>
+        <a href="../client/form/UpAsking.php?client_id=<?php $client_id ?>&form_id=<?php $key['form_id'] ?>"
+           style="text-decoration: none">
+          <div class="cardoutline2" style="display: inline-block; float: left; margin: 50px 10px 10px 10px">
+            <div style="padding: 15px 0 0 30px; text-align: left">
+              <strong style="color: darkblue">Tutor</strong>
+              <span class="flex">
+                <p style="padding-left: 10px; margin-right: 70px;font-family: 'Apple LiSung'; font-size: 25px; color: black"><?php echo $key['user_name'] ?></p>
+                 <img src="../images/profile/<?php echo $key['image_name']; ?>" style="width: 60px; height: 60px; border-radius: 50px">
+              </span>
+            </div>
+            <div style="padding: 6px 0 0 30px; text-align: left">
+              <strong style="color: darkblue">Course Name</strong>
+              <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px; color: black"><?php echo $key['course']?></p>
+            </div>
+            <div style="padding: 6px 0 0 30px; text-align: left">
+              <strong style="color: darkblue">Lesson Day</strong>
+              <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px; color: black"><?php echo $key['deadline']?></p>
+            </div>
           </div>
-          <div style="padding: 6px 0 0 30px; text-align: left">
-            <strong style="color: darkblue">Course Name</strong>
-            <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px"><?php echo $key['course']?></p>
-          </div>
-          <div style="padding: 6px 0 0 30px; text-align: left">
-            <strong style="color: darkblue">Lesson Day</strong>
-            <p style="padding-left: 10px; font-family: 'Apple LiSung'; font-size: 18px"><?php echo $key['deadline']?></p>
-          </div>
-        </div>
+        </a>
 <?php } ?>
       </div>
     </div>
