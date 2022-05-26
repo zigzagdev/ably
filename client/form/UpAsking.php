@@ -87,7 +87,7 @@ if(isset($_POST['submit'])) {
   $rec3 = mysqli_query($connect, $sql2);
 
   if ($rec3 == true) {
-    $_SESSION['asking_up_suc'] = "<div class='success'>Your asking form was updated correctly !</div>";
+    $_SESSION['asking_up_suc'] = "<div class='success' style='margin-top: 30px'>Your asking form was updated correctly !</div>";
     header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else {
