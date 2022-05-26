@@ -1,10 +1,12 @@
-
-
 <?php
 include "../partials/DeHeader.tpl";
 
 $client_id = $_GET['client_id'];
 $lesson_id = $_GET['lesson_id'];
+
+$sql = "
+         
+       "
 ?>
 
 <html>
@@ -18,4 +20,4 @@ $lesson_id = $_GET['lesson_id'];
   </body>
 </html>
 
-<?php include "../partials/FooterEd.tpl" ?>
+<?php include "../partials/FooterEd.tpl"
