@@ -1,5 +1,5 @@
 <?php
-include('../partials/FormHeader.blade.php');
+include('../partials/FormHeader.tpl');
 
 if(isset($_SESSION['asking_f']))
 {

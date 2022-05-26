@@ -1,7 +1,7 @@
 
 
 <?php
-include "../partials/FormHeader.blade.php";
+include "../partials/DeHeader.tpl";
 
 $client_id = $_GET['client_id'];
 $lesson_id = $_GET['lesson_id'];

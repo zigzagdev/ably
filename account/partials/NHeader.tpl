@@ -1,6 +1,5 @@
 <?php
 include('../config/Constants.blade.php');
-//include('login-check.php');
 ?>
 
 <html>
@@ -15,6 +14,4 @@ include('../config/Constants.blade.php');
   </header>
 </html>
 
-
-<!--Menu Section -->
 

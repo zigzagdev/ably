@@ -1,5 +1,5 @@
 <?php
-include('../partials/FormHeader.blade.php');
+include('../partials/FormHeader.tpl');
 
 if(!empty($_GET['keyword'])) {
   $sql =
@@ -67,7 +67,7 @@ if(!empty($_GET['keyword'])) {
   </head>
   <body>
     <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
-<!--    このページじでの選定(予約したレッスンかどうかの)は行わない。-->
+<!--    このページでの選定(予約したレッスンかどうかの)は行わない。-->
 <?php
 if(!empty($_GET['keyword'])){
    foreach ($rec as $value){?>
