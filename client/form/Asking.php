@@ -32,6 +32,7 @@ if(!empty($lesson_id)) {
     }
   }
 }
+$url = "http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id"
 ?>
 
 <html>
@@ -66,6 +67,9 @@ if(!empty($lesson_id)) {
       <div style="margin: 50px">
         <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">
           Return
+        </button>
+        <button type="button" onclick="location.href='<?php echo $url; ?>'" class="btn-primary" style="height: 53px; width: 103px;">
+          DeleteForm
         </button>
       </div>
     </div>
