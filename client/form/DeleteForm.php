@@ -44,3 +44,5 @@ $rec = mysqli_query($connect, $sql);
 </html>
 
 <?php include "../partials/FooterEd.tpl" ?>
+
+
