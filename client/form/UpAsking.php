@@ -12,7 +12,15 @@ $form_id   = $_GET['form_id'];
 
 if ($_GET['client_id'] && $_GET['form_id'])
 {
-  $sql = " SELECT asking from tbl_form WHERE client_id = '$client_id' && form_id = '$form_id' ";
+  $sql = " SELECT 
+               asking 
+           FROM 
+               tbl_form 
+             WHERE 
+                 client_id = '$client_id' 
+               AND 
+                 form_id = '$form_id' 
+          ";
   $rec = mysqli_query($connect, $sql);
   if ($rec == true) {
     $count = mysqli_num_rows($rec);

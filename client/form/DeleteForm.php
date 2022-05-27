@@ -4,8 +4,14 @@ include "../partials/DeHeader.tpl";
 $client_id = $_GET['client_id'];
 $lesson_id = $_GET['lesson_id'];
 
-$sql = "
-         
+$sql = " SELECT 
+             *
+         FROM
+             tbl_form
+           WHERE 
+               client_id = '$client_id'
+             AND  
+               lesson_id = '$lesson_id'  
        "
 ?>
 
