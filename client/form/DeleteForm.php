@@ -12,7 +12,21 @@ $sql = " SELECT
                client_id = '$client_id'
              AND  
                lesson_id = '$lesson_id'  
-       "
+       ";
+$rec = mysqli_query($connect, $sql);
+  if ($rec == true)
+  {
+    $count = mysqli_num_rows($rec);
+    if($count == 1)
+    {
+      $row = mysqli_fetch_assoc($rec);
+      $asking = $row['asking'];
+      $form_id = $row['form_id'];
+    } else {
+      header('Location: '. $_SERVER['HTTP_REFERER']);
+      die();
+    }
+  }
 ?>
 
 <html>
