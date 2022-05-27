@@ -11,6 +11,3 @@ if($rec2 == TRUE) {
   $_SESSION['delete_f_lesson'] = "<div class='error'>Failed to Delete lesson.</div>";
   header("", 401);
 }
-
-
-
