@@ -16,8 +16,10 @@ $sql = "
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
-
+    <div style="margin: 10px 130px">
+      <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Delete Form confirm</strong>
+    </div>
   </body>
 </html>
 
-<?php include "../partials/FooterEd.tpl" ?>
+<?php include "../partials/FooterEd.tpl"
