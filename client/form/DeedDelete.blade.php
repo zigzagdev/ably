@@ -5,6 +5,4 @@ $client_id = $_GET['client_id'];
 $lesson_id = $_GET['lesson_id'];
 ?>
 
-<html>
-  <head>
 
