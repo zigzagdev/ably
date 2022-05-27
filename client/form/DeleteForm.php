@@ -37,7 +37,8 @@ $rec = mysqli_query($connect, $sql);
   </head>
   <body>
     <div style="margin: 10px 130px">
-      <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Delete Form confirm</strong>
+      <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Delete Form confirm</strong><br>
+      <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Are you Sure ? </strong>
     </div>
   </body>
 </html>
