@@ -11,7 +11,6 @@ if($rec2 == TRUE) {
   $_SESSION['delete_f_lesson'] = "<div class='error'>Failed to Delete lesson.</div>";
   header("Location:http://localhost:8001/lesson/DeleteLesson.php?id=$account_id", 401);
 }
-
-
+?>
 
 
