@@ -1,9 +1,9 @@
 .PHONY: setup
 setup: ~/.php/
 
-~/.php/:
-	mkdir ~/.php/
-	echo export 'PATH=~/.php/current/bin:$PATH' >> ~/.bash_profile
+#~/.php/:
+#	mkdir ~/.php/
+#	echo export 'PATH=~/.php/current/bin:$PATH' >> ~/.bash_profile
 
 .PHONY: ls
 ls:
