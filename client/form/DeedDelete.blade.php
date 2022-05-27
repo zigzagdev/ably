@@ -10,10 +10,3 @@ $lesson_id = $_GET['lesson_id'];
     <title>DeleteReservation</title>
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
-  </head>
-  <body>
-fuck
-  </body>
-</html>
-
-<?php include "../partials/FooterEd.tpl" ?>
