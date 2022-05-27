@@ -7,6 +7,4 @@ $lesson_id = $_GET['lesson_id'];
 
 <html>
   <head>
-    <title>DeleteReservation</title>
-    <link rel="stylesheet" href="../../css/Account.css">
-    <link rel="stylesheet" href="../../css/Forms.css">
+
