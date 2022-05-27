@@ -16,4 +16,4 @@ fuck
   </body>
 </html>
 
-<?php include "../partials/FooterEd.tpl"
+<?php include "../partials/FooterEd.tpl" ?>
