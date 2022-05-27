@@ -6,8 +6,8 @@ include "../config/Constants.blade.php";
 
   $rec = mysqli_query($connect, $sql);
 
-  if($rec == TRUE)
-  {
+if($rec == TRUE)
+{
   $count = mysqli_num_rows($rec);
   if ($count >= 0)
   {
@@ -27,3 +27,5 @@ include "../config/Constants.blade.php";
     $_SESSION['delete_f_lesson'] = "<div class='error'>Failed to Delete lesson.</div>";
     header("Location:http://localhost:8001/lesson/DeleteLesson.php?id=$account_id", 401);
   }
+
+?>
