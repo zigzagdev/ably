@@ -88,8 +88,13 @@ if ($rec == true)
         </div>
       </div>
     </div>
-    <div>
+    <div style="text-align: center">
      <strong style="text-align: left; margin: 15px 0 30px 30px;display: inline-block">Are you Sure? </strong>
+      <div style="display: flex">
+        <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">
+          Return
+        </button>
+      </div>
     </div>
   </body>
 </html>
