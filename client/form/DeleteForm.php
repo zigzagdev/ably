@@ -33,7 +33,7 @@ if ($rec == true)
     $course      = $row['course'];
     $description = $row['description'];
     $username    = $row['user_name'];
-    $image　　　  = $row['image_name'];
+    $image       = $row['image_name'];
 
   } else {
     header('Location: '. $_SERVER['HTTP_REFERER']);
@@ -49,11 +49,24 @@ if ($rec == true)
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
-    <div style="margin: 10px 130px">
-      <strong style="text-align: left; margin: 35px 0 30px 30px;display: inline-block">Delete Form confirm</strong><br>
+    <div style="margin: 10px 130px 30px 130px">
+      <strong style="text-align: left; margin: 35px 0 30px 1px;display: inline-block">Delete Form confirm</strong><br>
     </div>
-    <div style="display: flex">
-
+    <div style="display: flex; padding-bottom: 20px">
+      <div class="cardoutline2" style="margin:auto; display: flex">
+        <div style="margin: 20px 0 0 40px; display: flex">
+          <img src="../../images/profile/<?php echo $image; ?>" style="width: 68px; height: 68px; border-radius: 50px">
+          <span style="margin: 10px;display: inline-block">
+            <strong style="margin-left:20px; font-size: 25px"><?php echo $username ?></strong><br>
+            <span style="padding-top: 40px">
+              <strong style="margin: 0 20px"></strong>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="cardoutline2" style="margin:auto;">
+        aaaaa
+      </div>
     </div>
     <strong style="text-align: left; margin: 15px 0 30px 30px;display: inline-block">Are you Sure? </strong>
   </body>
