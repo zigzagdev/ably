@@ -88,8 +88,10 @@ if ($rec == true)
         </div>
       </div>
     </div>
-    <strong style="text-align: left; margin: 15px 0 30px 30px;display: inline-block">Are you Sure? </strong>
+    <div>
+     <strong style="text-align: left; margin: 15px 0 30px 30px;display: inline-block">Are you Sure? </strong>
+    </div>
   </body>
 </html>
 
-<?php include "../partials/FooterEd.tpl" ?>
+<?php include "../partials/FooterEd.tpl"
