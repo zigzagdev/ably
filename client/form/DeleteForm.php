@@ -34,7 +34,7 @@ if ($rec == true)
     $description = $row['description'];
     $username    = $row['user_name'];
     $image       = $row['image_name'];
-
+    $deadline    = $row['deadline'];
   } else {
     header('Location: '. $_SERVER['HTTP_REFERER']);
     die();
@@ -53,7 +53,7 @@ if ($rec == true)
       <strong style="text-align: left; margin: 35px 0 30px 1px;display: inline-block">Delete Form confirm</strong><br>
     </div>
     <div style="display: flex; padding-bottom: 20px">
-      <div class="cardoutline2" style="margin:auto; display: flex">
+      <div class="cardoutline2" style="margin:auto;">
         <div style="margin: 20px 0 0 40px; display: flex">
           <img src="../../images/profile/<?php echo $image; ?>" style="width: 68px; height: 68px; border-radius: 50px">
           <span style="margin: 10px;display: inline-block">
@@ -63,9 +63,29 @@ if ($rec == true)
             </span>
           </span>
         </div>
+        <div style="margin: 35px 0 0 40px;">
+          <strong><?php echo $course ?></strong>
+        </div>
+        <div style="margin: 35px 0 0 40px;">
+          <strong style="overflow-wrap: break-word">
+            <?php  echo mb_strimwidth( strip_tags( $description), 0, 60, '…', 'UTF-8' );?>
+          </strong>
+        </div>
       </div>
       <div class="cardoutline2" style="margin:auto;">
-        aaaaa
+        <div style=" margin-top: 20px; text-align: center">
+          <strong style="color: darkblue">YourForm</strong>
+        </div>
+        <div style="margin: 20px 0 0 40px; display: flex">
+          <span style="margin: 10px;display: inline-block">
+            <strong style="color: darkblue">LessonDay</strong><br>
+            <strong style="margin-left:20px; font-size: 25px"><?php echo $deadline?></strong><br>
+            <span style="padding-top: 40px">
+              <strong style="font-size: 25px">Asking</strong><br>
+              <strong style="font-size: 25px"><?php echo $asking ?></strong><br>
+            </span>
+          </span>
+        </div>
       </div>
     </div>
     <strong style="text-align: left; margin: 15px 0 30px 30px;display: inline-block">Are you Sure? </strong>
