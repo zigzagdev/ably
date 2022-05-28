@@ -10,10 +10,10 @@
         <h1 class="hchar" style="color: #125EAE;">FormRelative</h1>
       </div>
       <div class="account text-center">
-        <div class="wrapper">
-          <a href = "../../client/SLogout.blade.php" style="text-decoration: none; color: black" class="wrapper-inner">Logout</a>
-          <a href = "../../LIndex.blade.php?client_id=<?= $client_id=$_GET['client_id']?>" style="text-decoration: none; color: black" class="wrapper-inner">TopPage</a>
-          <a href = "../UpPassCli.blade.php?client_id=<?= $client_id=$_GET['client_id']?>" style="text-decoration: none; color: black" class="wrapper-inner">PasswordChange</a>
+        <div class="wrapper" style="margin-right: 100px">
+          <a href = "../../LIndex.blade.php?client_id=<?= $client_id=$_GET['client_id']?>" style="text-decoration: none; color: black" class="wrapper-inner">
+            TopPage
+          </a>
         </div>
       </div>
     </div>

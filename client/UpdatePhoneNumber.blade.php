@@ -1,5 +1,5 @@
 <?php
-include('./partials/HeaderEd.blade.php');
+include('./partials/HeaderEd.tpl');
 include "../config/Constants.blade.php";
 
   if(isset($_SESSION['order_f_p']))
