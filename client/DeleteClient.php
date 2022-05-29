@@ -1,30 +1,31 @@
 <?php
-  include('./partials/HeaderEd.tpl');
+include('./partials/HeaderEd.tpl');
+include "../config/Constants.blade.php";
 
-  if(isset($_SESSION['client_failed']))
-  {
-    echo $_SESSION['client_failed'];
-    unset($_SESSION['client_failed']);
-  }
+if(isset($_SESSION['client_failed']))
+{
+  echo $_SESSION['client_failed'];
+  unset($_SESSION['client_failed']);
+}
 
-  $client_id = $_GET['client_id'];
-  $sql= "SELECT * FROM tbl_client WHERE client_id = $client_id";
-  $rec = mysqli_query($connect, $sql);
-  if ($rec == TRUE)
+$client_id = $_GET['client_id'];
+$sql= "SELECT * FROM tbl_client WHERE client_id = $client_id";
+$rec = mysqli_query($connect, $sql);
+if ($rec == TRUE)
+{
+  $count = mysqli_num_rows($rec);
+  if ($count > 0)
   {
-    $count = mysqli_num_rows($rec);
-    $on = 1;
-    if ($count > 0)
+    while ($rows = mysqli_fetch_array($rec))
     {
-      while ($rows = mysqli_fetch_array($rec))
-      {
-        $name      = $rows['name'];
-        $email     = $rows['email'];
-        $telephone = $rows['telephone'];
-        $image     = $rows['image'];
-      }
+      $name      = $rows['name'];
+      $email     = $rows['email'];
+      $telephone = $rows['telephone'];
+      $image     = $rows['image'];
     }
   }
+}
+$url = "http://localhost:8001/client/DeleteClientDeed.blade.php?client_id=$client_id"
 ?>
 <html>
   <head>
@@ -57,43 +58,18 @@
           <b style="font-size: 20px;width:100px;margin-right:160px; float: left;">
             PhoneNumber
           </b>
-          <b style="font-size: 20px; margin-right: 170px"><br>
-            <?php echo $telephone ?>
-          </b>
+          <b style="font-size: 20px; margin-right: 170px"><?php echo $telephone ?></b>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div style="margin-bottom:40px ; text-align: center">
-        <form action="" method="post">
-          <input type="submit" class="btn-secondary" style="margin-right: 10px" value="Are you sure to delete ?">
-          <?php
-            $hostname = $_SERVER['HTTP_HOST'];
-            if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
-            {
-              echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return</a>';
-            }
-          ?>
-        </form>
+        <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;margin:0  0 30px 20px">
+          Return
+        </button>
+        <button type="button" onclick="location.href='<?php echo $url; ?>'" class="btn-primary" style="height: 53px; width: 103px;">
+          Delete
+        </button>
       </div>
     </div>
   </body>
 </html>
-
-<?php
-$client_id= $_GET['client_id'];
-
-$sql2= "DELETE FROM tbl_account WHERE client_id=$client_id";
-$rec2= mysqli_query($connect, $sql2);
-
-if($rec2 == TRUE) {
-  $_SESSION['dlt_cli'] = "<div class='success'>Delete Account Successfully.</div>";
-  header("Location:http:/localhost:8001/Index.blade.php");
-  die();
-}
-else
-{
-  $_SESSION['client_failed'] = "<div class='error'>Failed to Add Admin.</div>";
-  header("http:/localhost:8001/account/DeleteAccount.blade.php?client_id=$client_id");
-  die();
-}
-?>
