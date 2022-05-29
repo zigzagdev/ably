@@ -1,3 +1,6 @@
+<!--あくまでtbl_formに関しては聞く内容を書き込むだけであって、askingのみだけで入力は大丈夫である。-->
+
+
 <?php
 include('../partials/FormHeader.tpl');
 
