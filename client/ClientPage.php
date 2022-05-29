@@ -2,66 +2,71 @@
 include "./partials/HeaderEd.tpl";
 include "../config/Constants.blade.php";
 
-  if(isset($_SESSION['cli_add']))
-  {
-    echo  $_SESSION['cli_add'];
-    unset($_SESSION['cli_add']);
-  }
-  if(isset($_SESSION['name_s']))
-  {
-    echo  $_SESSION['name_s'];
-    unset($_SESSION['name_s']);
-  }
-  if(isset($_SESSION['form_s']))
-  {
-    echo  $_SESSION['form_s'];
-    unset($_SESSION['form_s']);
-  }
+if(isset($_SESSION['cli_add']))
+{
+  echo  $_SESSION['cli_add'];
+  unset($_SESSION['cli_add']);
+}
+if(isset($_SESSION['name_s']))
+{
+  echo  $_SESSION['name_s'];
+  unset($_SESSION['name_s']);
+}
+if(isset($_SESSION['form_s']))
+{
+  echo  $_SESSION['form_s'];
+  unset($_SESSION['form_s']);
+}
 
-  if(isset($_SESSION['s_login']))
-  {
-    echo  $_SESSION['s_login'];
-    unset($_SESSION['s_login']);
-  }
-  if(isset($_SESSION['order_tel']))
-  {
-    echo  $_SESSION['order_tel'];
-    unset($_SESSION['order_tel']);
-  }
+if(isset($_SESSION['s_login']))
+{
+  echo  $_SESSION['s_login'];
+  unset($_SESSION['s_login']);
+}
+if(isset($_SESSION['order_tel']))
+{
+  echo  $_SESSION['order_tel'];
+  unset($_SESSION['order_tel']);
+}
 
-  if(isset($_SESSION['change_pwd_c']))
-  {
-    echo  $_SESSION['change_pwd_c'];
-    unset($_SESSION['change_pwd_c']);
-  }
+if(isset($_SESSION['change_pwd_c']))
+{
+  echo  $_SESSION['change_pwd_c'];
+  unset($_SESSION['change_pwd_c']);
+}
 
-  if(isset($_SESSION['order']))
-  {
-    echo  $_SESSION['order'];
-    unset($_SESSION['order']);
-  }
+if(isset($_SESSION['order']))
+{
+  echo  $_SESSION['order'];
+  unset($_SESSION['order']);
+}
 
-  if(isset($_SESSION['name_error']))
-  {
-    echo $_SESSION['name_error'];
-    unset($_SESSION['name_error']);
-  }
-  if(isset($_SESSION['asking_s']))
-  {
-    echo $_SESSION['asking_s'];
-    unset($_SESSION['asking_s']);
-  }
-  if(isset($_SESSION['asking_up_suc']))
-  {
-    echo $_SESSION['asking_up_suc'];
-    unset($_SESSION['asking_up_suc']);
-  }
+if(isset($_SESSION['name_error']))
+{
+  echo $_SESSION['name_error'];
+  unset($_SESSION['name_error']);
+}
+if(isset($_SESSION['asking_s']))
+{
+  echo $_SESSION['asking_s'];
+  unset($_SESSION['asking_s']);
+}
+if(isset($_SESSION['asking_up_suc']))
+{
+  echo $_SESSION['asking_up_suc'];
+  unset($_SESSION['asking_up_suc']);
+}
 
-  if(isset($_SESSION['asking_up_f']))
-  {
-    echo  $_SESSION['asking_up_f'];
-    unset($_SESSION['asking_up_f']);
-  }
+if(isset($_SESSION['asking_up_f']))
+{
+  echo  $_SESSION['asking_up_f'];
+  unset($_SESSION['asking_up_f']);
+}
+if(isset($_SESSION['d_s_form']))
+{
+  echo  $_SESSION['d_s_form'];
+  unset($_SESSION['d_s_form']);
+}
 
 $client_id = $_GET['client_id'];
 
