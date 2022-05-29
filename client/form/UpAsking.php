@@ -34,7 +34,7 @@ if ($_GET['client_id'] && $_GET['form_id'])
     }
   }
 }
-$url = "http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id";
+$url = "http://localhost:8001/client/form/DeleteForm.blade.php?client_id=$client_id&lesson_id=$lesson_id";
 ?>
 
 <html>
