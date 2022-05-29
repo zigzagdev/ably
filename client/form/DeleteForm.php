@@ -4,6 +4,12 @@ include "../partials/DeHeader.tpl";
 $client_id = $_GET['client_id'];
 $lesson_id = $_GET['lesson_id'];
 
+if(isset($_SESSION['d_f_form']))
+{
+  echo $_SESSION['d_f_form'];
+  unset($_SESSION['d_f_form']);
+}
+
 $sql = " SELECT 
              *
            FROM

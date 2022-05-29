@@ -1,5 +1,5 @@
 <?php
-include "../config/Constants.blade.php";
+include "../../config/Constants.blade.php";
 
 $lesson_id = $_GET['lesson_id'];
 $client_id = $_GET['client_id'];
@@ -24,7 +24,7 @@ if($rec == TRUE)
 $deletesql = "
               DELETE
                 FROM
-                  tbl_lesson
+                  tbl_form
               WHERE
                   lesson_id = $lesson_id
                 AND
@@ -33,12 +33,14 @@ $deletesql = "
 
 $deleterec = mysqli_query($connect, $deletesql);
 
-  if($deleterec == TRUE) {
-    $_SESSION['delete_lesson'] = "<div class='success'>Delete Lesson Successfully.</div>";
-    header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 302);
-  } else {
-    $_SESSION['delete_f_lesson'] = "<div class='error'>Failed to Delete lesson.</div>";
-    header("Location:http://localhost:8001/lesson/DeleteLesson.php?id=$account_id", 401);
-  }
-
+if($deleterec == TRUE)
+{
+  $_SESSION['d_s_form'] = "<div class='success'>Delete your form Successfully.</div>";
+  header("Location:http://localhost:8001/Index.php", 302);
+  exit();
+} else {
+  $_SESSION['d_f_form'] = "<div class='success'>Failed to delete your form</div>";
+  header("Location:http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id", 401);
+  die();
+}
 ?>
