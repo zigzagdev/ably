@@ -25,7 +25,7 @@ if ($rec == TRUE)
     }
   }
 }
-$url = "http://localhost:8001/client/DeleteClientDeed.blade.php?client_id=$client_id"
+$url = "http://localhost:8001/client/DeleteClientDeed.blade.php?client_id=$client_id" ;
 ?>
 <html>
   <head>

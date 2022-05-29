@@ -46,7 +46,7 @@ if ($rec == true)
     die();
  }
 }
-$url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client_id&lesson_id=$lesson_id"
+$url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client_id&lesson_id=$lesson_id" ;
 
 ?>
 

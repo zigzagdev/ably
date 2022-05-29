@@ -1,19 +1,42 @@
 <?php
 include "../config/Constants.blade.php";
-$client_id= $_GET['client_id'];
 
-$sql2= "DELETE FROM tbl_client WHERE client_id=$client_id";
-$rec2= mysqli_query($connect, $sql2);
+$client_id = $_GET['client_id'];
 
-if($rec2 == TRUE) {
+$sql = "
+        SELECT
+            *
+          FROM
+            tbl_client
+        WHERE
+            client_id = $client_id
+       ";
+
+$rec = mysqli_query($connect, $sql);
+if($rec == TRUE)
+{
+  $count = mysqli_num_rows($rec);
+}
+
+$deletesql = "
+              DELETE
+                FROM
+                  tbl_client
+              WHERE
+                  client_id = $client_id
+             ";
+
+$deleterec = mysqli_query($connect, $deletesql);
+
+if($deleterec == TRUE)
+{
   $_SESSION['dlt_cli'] = "<div class='success'>Delete Account Successfully.</div>";
   header("Location:http://localhost:8001/Index.php");
   exit();
-}
-else
-{
+} else {
   $_SESSION['client_failed'] = "<div class='success'>Failed to delete Account.</div>";
-  header("http:/localhost:8001/client/DeleteClient.php?client_id=$client_id");
+  header("http:/localhost:8001//client/DeleteClient.php?client_id=$client_id");
   die();
 }
+
 ?>
