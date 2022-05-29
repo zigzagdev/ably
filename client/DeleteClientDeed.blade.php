@@ -39,4 +39,3 @@ if($deleterec == TRUE)
   die();
 }
 
-?>
