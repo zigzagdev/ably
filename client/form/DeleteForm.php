@@ -40,6 +40,8 @@ if ($rec == true)
     die();
  }
 }
+$url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client_id&lesson_id=$lesson_id"
+
 ?>
 
 <html>
@@ -93,6 +95,9 @@ if ($rec == true)
       <div style="display: flex">
         <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">
           Return
+        </button>
+        <button type="button" onclick="location.href='<?php echo $url; ?>'" class="btn-primary" style="height: 53px; width: 103px;">
+          Delete
         </button>
       </div>
     </div>
