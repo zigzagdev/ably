@@ -43,4 +43,5 @@ if($deleterec == TRUE)
   header("Location:http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id", 401);
   die();
 }
+
 ?>
