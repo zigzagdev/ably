@@ -55,7 +55,7 @@ $url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client
       <strong style="text-align: left; margin: 35px 0 30px 1px;display: inline-block">Delete Form confirm</strong><br>
     </div>
     <div style="display: flex; padding-bottom: 20px">
-      <div class="cardoutline2" style="margin:auto;">
+      <div class="cardoutline2" style="margin:0 50px 10px 120px">
         <div style="margin: 20px 0 0 40px; display: flex">
           <img src="../../images/profile/<?php echo $image; ?>" style="width: 68px; height: 68px; border-radius: 50px">
           <span style="margin: 10px;display: inline-block">
@@ -74,7 +74,7 @@ $url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client
           </strong>
         </div>
       </div>
-      <div class="cardoutline2" style="margin:auto;">
+      <div class="cardoutline2" style="margin:0 120px 10px 50px">
         <div style=" margin-top: 20px; text-align: center">
           <strong style="color: darkblue">YourForm</strong>
         </div>
@@ -92,8 +92,8 @@ $url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client
     </div>
     <div style="text-align: center">
      <strong style="text-align: left; margin: 15px 0 30px 30px;display: inline-block">Are you Sure? </strong>
-      <div style="display: flex">
-        <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">
+      <div style=" text-align: center">
+        <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;margin:0  0 30px 20px">
           Return
         </button>
         <button type="button" onclick="location.href='<?php echo $url; ?>'" class="btn-primary" style="height: 53px; width: 103px;">
