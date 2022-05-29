@@ -110,4 +110,4 @@ $url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client
   </body>
 </html>
 
-<?php include "../partials/FooterEd.tpl" ?>
+<?php include "../partials/FooterEd.tpl"
