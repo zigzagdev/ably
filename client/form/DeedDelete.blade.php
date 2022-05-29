@@ -36,7 +36,7 @@ $deleterec = mysqli_query($connect, $deletesql);
 if($deleterec == TRUE)
 {
   $_SESSION['d_s_form'] = "<div class='success'>Delete your form Successfully.</div>";
-  header("Location:http://localhost:8001/Index.php", 302);
+  header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id", 302);
   exit();
 } else {
   $_SESSION['d_f_form'] = "<div class='success'>Failed to delete your form</div>";
