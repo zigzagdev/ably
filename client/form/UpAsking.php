@@ -13,7 +13,7 @@ $form_id   = $_GET['form_id'];
 if ($_GET['client_id'] && $_GET['form_id'])
 {
   $sql = " SELECT 
-               asking 
+               asking, lesson_id
            FROM 
                tbl_form 
              WHERE 
@@ -26,14 +26,15 @@ if ($_GET['client_id'] && $_GET['form_id'])
     $count = mysqli_num_rows($rec);
     if ($count == 1) {
       $row = mysqli_fetch_assoc($rec);
-      $asking = $row['asking'];
+      $asking    = $row['asking'];
+      $lesson_id = $row['lesson_id'];
     } else {
       header('Location: '. $_SERVER['HTTP_REFERER']);
       die();
     }
   }
 }
-
+$url = "http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id"
 ?>
 
 <html>
@@ -54,6 +55,9 @@ if ($_GET['client_id'] && $_GET['form_id'])
           <div style="margin: 0 10px 20px 10px">
             <input type="submit" name="submit" value="Submit" class="btn btn-primary" style="margin-top: 41px; width: 110px; height: 54px">
             <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;">Return</button>
+            <button type="button" onclick="location.href='<?php echo $url; ?>'" class="btn-primary" style="height: 53px; width: 103px;">
+              DeletePage
+            </button>
           </div>
         </div>
       </form>

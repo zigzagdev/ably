@@ -84,13 +84,15 @@ $url = "http://localhost:8001/client/form/DeedDelete.blade.php?client_id=$client
         <div style=" margin-top: 20px; text-align: center">
           <strong style="color: darkblue">YourForm</strong>
         </div>
-        <div style="margin: 20px 0 0 40px; display: flex">
+        <div style="margin: 20px 20px 0 40px; display: flex">
           <span style="margin: 10px;display: inline-block">
             <strong style="color: darkblue">LessonDay</strong><br>
             <strong style="margin-left:20px; font-size: 25px"><?php echo $deadline?></strong><br>
-            <span style="padding-top: 40px">
+            <span style="padding-top: 40px;">
               <strong style="font-size: 25px">Asking</strong><br>
-              <strong style="font-size: 25px"><?php echo $asking ?></strong><br>
+              <strong style="font-size: 15px;word-break:break-all; margin-right: 20px">
+               <?php  echo mb_strimwidth( strip_tags( $asking), 0, 60, '…', 'UTF-8' );?>
+              </strong><br>
             </span>
           </span>
         </div>
