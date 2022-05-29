@@ -14,7 +14,7 @@ if($rec2 == TRUE)
 } else
 {
   $_SESSION['admin_failed'] = "<div class='error'>Failed to Add Admin.</div>";
-  header("Location:http://localhost:8001/account/DeleteAccount.blade.php?id=$account_id", 401);
+  header("Location:http://localhost:8001/account/DeleteAccount.blade.php?account_id=$account_id", 401);
   die();
 }
 ?>
