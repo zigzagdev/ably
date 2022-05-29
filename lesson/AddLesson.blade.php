@@ -91,18 +91,18 @@
             <option value="English(NZ accent)">English(NZ accent)</option>
             <option value="English(French accent)">English(French accent)</option>
             <option value="English(Canada accent)">English(Canada accent)</option>
-            <option value="French(advanced)">French(advanced)</option>
-            <option value="French(intermediate)">French(intermediate)</option>
-            <option value="French(beginner,)">French(beginner)</option>
-            <option value="Spanish(advanced)">Spanish(advanced)</option>
-            <option value="Spanish(intermediate)">Spanish(intermediate)</option>
-            <option value="Spanish(beginner)">Spanish(beginner)</option>
-            <option value="German(advanced)">German(advanced)</option>
-            <option value="German(intermediate)">German(intermediate)</option>
-            <option value="German(beginner)">German(beginner)</option>
-            <option value="Japanese(advanced)">Japanese(advanced)</option>
-            <option value="Japanese(intermediate)">japanese(intermediate)</option>
-            <option value="Japanese(beginner)">Japanese(beginner)</option>
+            <option value="French(Advanced)">French(Advanced)</option>
+            <option value="French(Intermediate)">French(Intermediate)</option>
+            <option value="French(Beginner)">French(Beginner)</option>
+            <option value="Spanish(Advanced)">Spanish(Advanced)</option>
+            <option value="Spanish(Intermediate)">Spanish(Intermediate)</option>
+            <option value="Spanish(Beginner)">Spanish(Beginner)</option>
+            <option value="German(Advanced)">German(Advanced)</option>
+            <option value="German(Intermediate)">German(Intermediate)</option>
+            <option value="German(Beginner)">German(Beginner)</option>
+            <option value="Japanese(Advanced)">Japanese(Advanced)</option>
+            <option value="Japanese(Intermediate)">Japanese(Intermediate)</option>
+            <option value="Japanese(Beginner)">Japanese(Beginner)</option>
           </select>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
