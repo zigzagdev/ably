@@ -38,3 +38,5 @@ if($deleterec == TRUE)
   header("http:/localhost:8001//client/DeleteClient.php?client_id=$client_id");
   die();
 }
+
+?>
