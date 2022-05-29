@@ -1,6 +1,6 @@
 <?php
 include('../config/Constants.blade.php');
-include ('../account/partials/ClientHeader.tpl');
+include('../account/partials/ClientHeader.blade.php');
 
   if(isset($_SESSION['pwd_error_client']))
   {
@@ -11,12 +11,12 @@ include ('../account/partials/ClientHeader.tpl');
 
 <html>
   <head>
-    <title>LogIn Page(Student)</title>
+    <title>Login Page(Student)</title>
     <link rel="stylesheet" href="../css/Account.css">
   </head>
   <body>
     <div style="text-align: right; margin:30px 160px 0 0">
-      <strong>Haven't create an account ?<a href="" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></strong>
+      <strong>Haven't create an account ?<a href="./AddClient.php" style="margin-left: 10px; text-decoration: none; color: darkcyan">Create</a></strong>
     </div>
     <div style="margin: 50px 400px 25px 400px">
       <div class="mainaccount">
@@ -35,7 +35,7 @@ include ('../account/partials/ClientHeader.tpl');
             <input type="password" required name="password" size="40px" style="height: 35px">
           </li>
           <li style="list-style: none;  margin:22px 0 22px 30px">
-            <a href="" class="passwordforgot">
+            <a href="./PassForget.blade.php" class="passwordforgot">
               Forgot your password?
             </a>
           </li>
@@ -57,7 +57,15 @@ if(isset($_POST['submit']))
   $email = $_POST['email'];
   $password = md5($_POST['password']);
 
-  $sql   = "SELECT email, password FROM tbl_client WHERE email='$email' AND password='$password'";
+  $sql   = "SELECT
+                email, password, name
+              FROM
+                tbl_client
+            WHERE
+                email='$email'
+              AND
+                password='$password'
+            ";
   $rec   = mysqli_query($connect, $sql);
   $count = mysqli_num_rows($rec);
 
@@ -65,17 +73,16 @@ if(isset($_POST['submit']))
   {
     $row = mysqli_fetch_assoc($rec);
     $client_id  = $row['client_id'];
-    $name       = $row['name']
+    $name       = $row['name'];
 
-    $url = "http://localhost:8001/client/ClientPage.php?client_id=$client_id";
-    $_SESSION['s_login'] = "<div class='success'>Login Successful.</div>";
-    $_SESSION['email'] = $email;
-    header('Location:'.$url, true, 302);
+    $_SESSION['s_login'] = "<div class='success'>Hi <?php echo $name;?>! You Login Successful.</div>";
+    header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
     exit();
   } else
   {
     $_SESSION['pwd_error_client'] = "<div class='success' style='text-align: center; font-size: 20px'>Username or Password did not match.</div>";
     header('Location:SLogin.blade.php');
+    die();
   }
 }
 include ('../account/partials/ClientFooter.tpl');

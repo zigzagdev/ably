@@ -11,5 +11,6 @@ if (isset($_COOKIE["PHPSESSID"])) {
 
 session_destroy();
 $_SESSION['ac_logout'] = "<div style='text-align: center;font-size: 20px;color: #ff6666 '>Logout Successful.</div>";
-header('Location:Index.php');
+header('Location:http:/Index.php');
+die();
 ?>

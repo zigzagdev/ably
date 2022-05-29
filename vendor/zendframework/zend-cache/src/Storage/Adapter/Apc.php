@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -44,12 +44,16 @@ class Apc extends AbstractAdapter implements
      */
     public function __construct($options = null)
     {
+        if (! extension_loaded('apc')) {
+            throw new Exception\ExtensionNotLoadedException('Missing ext/apc');
+        }
+
         $enabled = ini_get('apc.enabled');
         if (PHP_SAPI == 'cli') {
             $enabled = $enabled && (bool) ini_get('apc.enable_cli');
         }
 
-        if (!$enabled) {
+        if (! $enabled) {
             throw new Exception\ExtensionNotLoadedException(
                 "ext/apc is disabled - see 'apc.enabled' and 'apc.enable_cli'"
             );
@@ -69,7 +73,7 @@ class Apc extends AbstractAdapter implements
      */
     public function setOptions($options)
     {
-        if (!$options instanceof ApcOptions) {
+        if (! $options instanceof ApcOptions) {
             $options = new ApcOptions($options);
         }
 
@@ -84,7 +88,7 @@ class Apc extends AbstractAdapter implements
      */
     public function getOptions()
     {
-        if (!$this->options) {
+        if (! $this->options) {
             $this->setOptions(new ApcOptions());
         }
         return $this->options;
@@ -216,7 +220,7 @@ class Apc extends AbstractAdapter implements
         $internalKey = $prefix . $normalizedKey;
         $result      = apc_fetch($internalKey, $success);
 
-        if (!$success) {
+        if (! $success) {
             return;
         }
 
@@ -250,7 +254,7 @@ class Apc extends AbstractAdapter implements
         // remove namespace prefix
         $prefixL = strlen($prefix);
         $result  = [];
-        foreach ($fetch as $internalKey => & $value) {
+        foreach ($fetch as $internalKey => $value) {
             $result[substr($internalKey, $prefixL)] = $value;
         }
 
@@ -321,7 +325,7 @@ class Apc extends AbstractAdapter implements
         $internalKey = $prefix . $normalizedKey;
 
         // @see http://pecl.php.net/bugs/bug.php?id=22564
-        if (!apc_exists($internalKey)) {
+        if (! apc_exists($internalKey)) {
             $metadata = false;
         } else {
             $format   = APC_ITER_ALL ^ APC_ITER_VALUE ^ APC_ITER_TYPE ^ APC_ITER_REFCOUNT;
@@ -330,7 +334,7 @@ class Apc extends AbstractAdapter implements
             $metadata = $it->current();
         }
 
-        if (!$metadata) {
+        if (! $metadata) {
             return false;
         }
 
@@ -372,7 +376,7 @@ class Apc extends AbstractAdapter implements
         $result  = [];
         foreach ($it as $internalKey => $metadata) {
             // @see http://pecl.php.net/bugs/bug.php?id=22564
-            if (!apc_exists($internalKey)) {
+            if (! apc_exists($internalKey)) {
                 continue;
             }
 
@@ -401,7 +405,7 @@ class Apc extends AbstractAdapter implements
         $internalKey = $prefix . $normalizedKey;
         $ttl         = $options->getTtl();
 
-        if (!apc_store($internalKey, $value, $ttl)) {
+        if (! apc_store($internalKey, $value, $ttl)) {
             $type = is_object($value) ? get_class($value) : gettype($value);
             throw new Exception\RuntimeException(
                 "apc_store('{$internalKey}', <{$type}>, {$ttl}) failed"
@@ -428,9 +432,9 @@ class Apc extends AbstractAdapter implements
 
         $prefix                = $namespace . $options->getNamespaceSeparator();
         $internalKeyValuePairs = [];
-        foreach ($normalizedKeyValuePairs as $normalizedKey => &$value) {
+        foreach ($normalizedKeyValuePairs as $normalizedKey => $value) {
             $internalKey = $prefix . $normalizedKey;
-            $internalKeyValuePairs[$internalKey] = &$value;
+            $internalKeyValuePairs[$internalKey] = $value;
         }
 
         $failedKeys = apc_store($internalKeyValuePairs, null, $options->getTtl());
@@ -461,7 +465,7 @@ class Apc extends AbstractAdapter implements
         $internalKey = $prefix . $normalizedKey;
         $ttl         = $options->getTtl();
 
-        if (!apc_add($internalKey, $value, $ttl)) {
+        if (! apc_add($internalKey, $value, $ttl)) {
             if (apc_exists($internalKey)) {
                 return false;
             }
@@ -524,12 +528,12 @@ class Apc extends AbstractAdapter implements
         $prefix      = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
 
-        if (!apc_exists($internalKey)) {
+        if (! apc_exists($internalKey)) {
             return false;
         }
 
         $ttl = $options->getTtl();
-        if (!apc_store($internalKey, $value, $ttl)) {
+        if (! apc_store($internalKey, $value, $ttl)) {
             $type = is_object($value) ? get_class($value) : gettype($value);
             throw new Exception\RuntimeException(
                 "apc_store('{$internalKey}', <{$type}>, {$ttl}) failed"
@@ -607,7 +611,7 @@ class Apc extends AbstractAdapter implements
         if ($newValue === false) {
             $ttl      = $options->getTtl();
             $newValue = $value;
-            if (!apc_add($internalKey, $newValue, $ttl)) {
+            if (! apc_add($internalKey, $newValue, $ttl)) {
                 throw new Exception\RuntimeException(
                     "apc_add('{$internalKey}', {$newValue}, {$ttl}) failed"
                 );
@@ -638,7 +642,7 @@ class Apc extends AbstractAdapter implements
         if ($newValue === false) {
             $ttl      = $options->getTtl();
             $newValue = -$value;
-            if (!apc_add($internalKey, $newValue, $ttl)) {
+            if (! apc_add($internalKey, $newValue, $ttl)) {
                 throw new Exception\RuntimeException(
                     "apc_add('{$internalKey}', {$newValue}, {$ttl}) failed"
                 );
@@ -683,7 +687,6 @@ class Apc extends AbstractAdapter implements
                     'staticTtl'          => true,
                     'ttlPrecision'       => 1,
                     'useRequestTime'     => (bool) ini_get('apc.use_request_time'),
-                    'expiredRead'        => false,
                     'maxKeyLength'       => 5182,
                     'namespaceIsPrefix'  => true,
                     'namespaceSeparator' => $this->getOptions()->getNamespaceSeparator(),

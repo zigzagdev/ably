@@ -31,15 +31,13 @@
     if (mb_strlen($description, 'UTF-8')<= 10 || mb_strlen($description, 'UTF-8')>= 200)
     {
       $_SESSION['validation'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
-      $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 401);
       die();
     }
     if ($deadline <= $created_at)
     {
       $_SESSION['validation'] = "<div class='error'>Can't set Deadline before today .</div>";
-      $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
+      header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 401);
       die();
     }
 
@@ -51,7 +49,7 @@
               ,created_at  = '$created_at'
               ,account_id  = '$account_id'
           ";
-  $rec2=mysqli_query($connect,$sql2);
+  $rec2 = mysqli_query($connect,$sql2);
 
   if($rec2 == true)
   {

@@ -1,5 +1,6 @@
 <?php
-include('./partials/HeaderEd.blade.php');
+include('./partials/HeaderEd.tpl');
+include "../config/Constants.blade.php";
 
   if(isset($_SESSION['order_f_p']))
   {
@@ -33,7 +34,7 @@ include('./partials/HeaderEd.blade.php');
     <link rel="stylesheet" href="../css/Account.css">
     <link rel="stylesheet" href="../css/Forms.css">
   </head>
-  <body>
+  <body style="background: linear-gradient(90deg, ghostwhite 30%, lightcyan 40%, lightblue 60%); ">
     <section class="food-search">
       <div class="container2">
         <h2 style="text-align: center">ChangePhoneNumber</h2>
@@ -77,12 +78,12 @@ include('./partials/HeaderEd.blade.php');
     if($rec3 == true)
     {
       $_SESSION['order_tel'] = "<div class='success text-center'>PhoneNumber Updated.</div>";
-      header("Location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+      header("Location:http:/localhost:8001/client/ClientPage.php?client_id=$client_id", 201);
       die();
     } else
     {
       $_SESSION['order_f_p'] = "<div class='success text-center'>PhoneNumber Update Failed.</div>";
-      header("Location:http://localhost:8001/client/UpdatePhoneNumber.blade.php?client_id=$client_id");
+      header("Location:http:/localhost:8001/client/UpdatePhoneNumber.blade.php?client_id=$client_id", 302);
       die();
     }
   }

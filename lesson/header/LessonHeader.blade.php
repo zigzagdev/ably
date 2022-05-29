@@ -1,8 +1,13 @@
 <?php
 include ('../config/Constants.blade.php');
-  $sql = "SELECT * FROM tbl_lesson
-          INNER  JOIN  tbl_account
-            ON tbl_lesson.account_id = tbl_account.account_id
+  $sql = "
+           SELECT
+               *
+           FROM
+               tbl_lesson
+             INNER  JOIN  tbl_account
+           ON
+               tbl_lesson.account_id = tbl_account.account_id
           ";
   $rec = mysqli_query($connect, $sql);
 

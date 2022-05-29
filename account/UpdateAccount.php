@@ -108,7 +108,7 @@ include('partials/LoginAccount.blade.php');
           if($remove==false)
           {
             $_SESSION['update-fail'] = "<div style='text-align: center; color: #ff6666; font-size: 20px'>Failed to remove current Image.</div>";
-            header("Location:http:/localhost:8001/account/UpdateAccount.php?account_id=$account_id");
+            header("Location:http://localhost:8001/account/UpdateAccount.php?account_id=$account_id");
             die();
           }
         }
@@ -120,13 +120,16 @@ include('partials/LoginAccount.blade.php');
     {
       $image_name = $current_image;
     }
-    $sql = "UPDATE tbl_account SET 
-                   user_name   ='$user_name'
-                   ,image_name ='$image_name'
-                   ,email      ='$email'
-                   ,content    ='$content' 
+    $sql = "UPDATE 
+                tbl_account 
+            SET 
+                user_name   ='$user_name'
+                ,image_name ='$image_name'
+                ,email      ='$email'
+                ,content    ='$content' 
             WHERE 
-                  account_id = $account_id ";
+              account_id = $account_id 
+            ";
     $rec = mysqli_query($connect, $sql);
 
     if($rec==true)

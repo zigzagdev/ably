@@ -1,5 +1,5 @@
 <?php
-include('partials/Header.blade.php');
+include('partials/NHeader.tpl');
   if(isset($_SESSION['add_fail']))
   {
     echo  $_SESSION['add_fail'];

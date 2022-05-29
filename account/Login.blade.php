@@ -1,6 +1,6 @@
 <?php
 include('../config/Constants.blade.php');
-include ('./partials/ClientHeader.tpl');
+include('./partials/ClientHeader.blade.php');
 
   if(isset($_SESSION['pwd_notmatch']))
   {
@@ -17,7 +17,7 @@ include ('./partials/ClientHeader.tpl');
 
 <html>
   <head>
-    <title>LogIn Page</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="../css/Account.css">
   </head>
   <body>
@@ -70,11 +70,10 @@ include ('./partials/ClientHeader.tpl');
     {
       $row = mysqli_fetch_assoc($rec);
       $id  = $row['account_id'];
-      $url = "http://localhost:8001/account/ManageAccount.php?account_id=$id";
       $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
       $_SESSION['email'] = $email;
 
-      header('Location:'.$url, true, 302);
+      header("Location:http:/localhost:8001/account/ManageAccount.php?account_id=$id", 302);
       exit();
     } else
     {

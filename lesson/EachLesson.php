@@ -1,31 +1,29 @@
 <?php
 include "./header/LessonHeader.blade.php";
 
-  if(isset($_SESSION['fail_lesson']))
-  {
-    echo $_SESSION['fail_lesson'];
-    unset($_SESSION['fail_lesson']);
-  }
-  $lesson_id = $_GET['lesson_id'];
-  $sql = "SELECT * FROM `tbl_lesson`";
+if(isset($_SESSION['fail_lesson']))
+{
+  echo $_SESSION['fail_lesson'];
+  unset($_SESSION['fail_lesson']);
+}
+$lesson_id = $_GET['lesson_id'];
 
-  $rec = mysqli_query($connect, $sql);
+$sql = "SELECT * FROM tbl_lesson WHERE lesson_id= '$lesson_id'";
 
-  if($rec == TRUE)
-  {
-    $count = mysqli_num_rows($rec);
-    if ($count >= 0)
-    {
-      while ($rows = mysqli_fetch_array($rec))
-      {
-        $course      = $rows['course'];
-        $description = $rows['description'];
-        $deadline    = $rows['deadline'];
-        $account_id  = $rows['account_id'];
-        $created_at  = $rows['created_at'];
-      }
+$rec = mysqli_query($connect, $sql);
+
+if($rec == TRUE) {
+  $count = mysqli_num_rows($rec);
+  if ($count >= 0) {
+    while ($rows = mysqli_fetch_array($rec)) {
+      $course      = $rows['course'];
+      $description = $rows['description'];
+      $deadline    = $rows['deadline'];
+      $account_id  = $rows['account_id'];
+      $created_at  = $rows['created_at'];
     }
   }
+}
 
 ?>
 
@@ -74,7 +72,7 @@ include "./header/LessonHeader.blade.php";
   $hostname = $_SERVER['HTTP_HOST'];
   if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
   {
-    echo '<a href="' . $_SERVER['HTTP_REFERER'] . '" class="btn-primary" style="margin-left: 10px">Return</a>';
+    echo '<a href="'. $_SERVER['HTTP_REFERER']. '" class="btn-primary" style="margin-left: 10px">Return</a>';
   }
 ?>
         </div>

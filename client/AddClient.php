@@ -1,5 +1,5 @@
 <?php
-include('../account/partials/ClientHeader.tpl');
+include('../account/partials/ClientHeader.blade.php');
 include "../config/Constants.blade.php";
 
   if(isset($_SESSION['cli_fal']))
@@ -127,7 +127,7 @@ if(isset($_POST['submit']))
     header('location:/client/AddClient.php');
     die();
   }
-  if( 4 > mb_strlen($email, 'UTF-8') || 50 < mb_strlen($email, 'UTF-8') ) {
+  if( 4 > mb_strlen($email, 'UTF-8') || 100 < mb_strlen($email, 'UTF-8') ) {
     $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
     header('location:/client/AddClient.php');
     die();
@@ -173,10 +173,11 @@ if(isset($_POST['submit']))
   }
 
 
-  $sql_1 = "SELECT 
-                tbl_account.email
-              FROM 
-                tbl_account 
+  $sql_1 = "
+             SELECT 
+                 tbl_account.email
+               FROM 
+                 tbl_account 
              LEFT JOIN 
                  tbl_client 
                ON 
@@ -199,7 +200,7 @@ if(isset($_POST['submit']))
   $rec_2 = mysqli_num_rows($rec_1);
   if ($rec_2 > 0) {
     $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
-    header('location:/client/AddClient.php');
+    header('Location:http://localhost:8001/client/AddClient.php');
   }
 
   $sqltel = " SELECT telephone FROM tbl_client WHERE telephone='$telephone'";
@@ -208,23 +209,23 @@ if(isset($_POST['submit']))
   $rec2tel = mysqli_num_rows($rectel);
   if ($rec2tel >= 1) {
     $_SESSION['cli_fal'] = "<div class='success'>PhoneNumber was already registered.!</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
   }
 
 //  preg_match
   if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
     $_SESSION['cli_fal'] = "<div class='success'>Only English is valid.!</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
     die();
   }
 
@@ -232,7 +233,7 @@ if(isset($_POST['submit']))
   if(preg_match($tel_boolean, $telephone))
   {
     $_SESSION['cli_fal'] = "<div class='success'>Write down your phone number correctly !</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.php");
     die();
   }
 
@@ -253,10 +254,12 @@ if(isset($_POST['submit']))
     $_SESSION['cli_add'] = "<div class='success'>Your account Added Successfully.</div>";
     $client_id = mysqli_insert_id($connect);
     header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+    die();
   } else
   {
     $_SESSION['cli_fal'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
-    header("location: http://localhost:8001/client/AddClient.php");
+    header("location: http:/localhost:8001/client/AddClient.php");
+    die();
   }
 }
 include "./partials/FooterEd.tpl";

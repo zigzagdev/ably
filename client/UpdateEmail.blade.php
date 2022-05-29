@@ -1,5 +1,5 @@
 <?php
-include('./partials/HeaderEd.blade.php');
+include('./partials/HeaderEd.tpl');
 
   if(isset($_SESSION['order_f']))
   {
@@ -99,7 +99,14 @@ if(isset($_GET['client_id']))
       die();
     }
 
-  $sql3 = "UPDATE tbl_client SET email = '$email' WHERE client_id= '$client_id'" ;
+  $sql3 = "UPDATE
+               tbl_client
+           SET
+               email = '$email'
+           WHERE
+               client_id= '$client_id'
+           ";
+
   $rec3=mysqli_query($connect,$sql3);
 
   if($rec3 == true)

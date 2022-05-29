@@ -1,124 +1,111 @@
-<?php include('../account/partials/ClientHeader.tpl');?>
+<?php
+include('../partials/FormHeader.tpl');
+
+if(!empty($_GET['keyword'])) {
+  $sql =
+    "SELECT 
+         user_name, deadline, course, remaining, description, image_name,tbl_lesson.lesson_id, remaining - COUNT(tbl_form.lesson_id)
+     FROM
+         tbl_lesson 
+         LEFT JOIN tbl_account
+           ON tbl_account.account_id = tbl_lesson.account_id
+         RIGHT  JOIN tbl_form
+           ON tbl_form.lesson_id = tbl_lesson.lesson_id
+     WHERE 
+         deadline LIKE '%" . $_GET['keyword'] . "%' 
+       OR
+         course LIKE '%" . $_GET["keyword"] . "%'
+       OR  
+         remaining LIKE '%" . $_GET["keyword"] . "%'
+       OR                       
+         user_name LIKE '%" . $_GET["keyword"] . "%'  
+       OR                       
+         description LIKE '%" . $_GET["keyword"] . "%'  
+     GROUP BY
+         tbl_form.lesson_id                                       
+     ";
+
+  $rec = mysqli_query($connect, $sql);
+
+  if ($rec == TRUE) {
+    $count = mysqli_num_rows($rec);
+    if ($count > 0) {
+      while ($rows = mysqli_fetch_assoc($rec)) {
+        $user_name   = $rows['user_name'];
+        $deadline    = $rows['deadline'];
+        $course      = $rows['course'];
+        $remaining   = $rows['remaining'];
+        $description = $rows['description'];
+        $image_name  = $rows['image_name'];
+        $lesson_id   = $rows['lesson_id'];
+        $rest        = $rows['remaining - COUNT(tbl_form.lesson_id)'];
+      }
+    }
+  }
+
+
+  $client_id = $_GET['client_id'];
+  $sql2 = "SELECT name FROM tbl_client WHERE client_id = $client_id";
+  $rec2 = mysqli_query($connect, $sql2);
+
+  if ($rec2 == TRUE) {
+    $count2 = mysqli_num_rows($rec2);
+    if ($count2 > 0) {
+      while ($rows2 = mysqli_fetch_assoc($rec2)) {
+        $name = $rows2['name'];
+      }
+    }
+  }
+}
+?>
 
 <html>
   <head>
-    <title>ReserveLessonForm</title>
+    <title>ReserveLessonIndex</title>
     <link rel="stylesheet" href="../../css/Account.css">
     <link rel="stylesheet" href="../../css/Forms.css">
   </head>
   <body>
-      <form action="" method="post" enctype="multipart/form-data" style="">
-      <div style="margin-top: 60px">
-          <fieldset class="mainaccount" style="margin 0 100px">
-            <legend style="text-align: center;"><b style="color: darkblue">Lesson Reservation Form</b></legend>
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              FullName
-            </b>
-            <input type="text" name="name" placeholder="Michel Smith" style="width: 240px; height: 30px">
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              Email
-            </b>
-            <input type="email" name="email" placeholder="abc@com" class="input-responsive"  required style="height: 30px; width: 240px">
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              PhoneNumber
-            </b>
-            <input type="tel" name="telephone"  placeholder="090-1234-1234" class="input-responsive" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:200px; float: left;">
-              Sex
-            </b>
-            <select name= "sex">
-              <option value = "male">Male</option>
-              <option value = "female">Female</option>
-              <option value = "others">Others</option>
-            </select>
-            (can't change whatever reasons.)
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          </fieldset>
-          <div style="text-align: center; margin-bottom: 30px">
-          <input type="hidden" name="lesson_id" value="<?php echo filter_input(INPUT_GET, 'lesson_id');?>">
-          <input type="submit" name="submit" value="Submit" class="btn btn-third">
+    <h1 style="padding: 20px ; text-align:center">SearchResults</h1>
+<!--    このページでの選定(予約したレッスンかどうかの)は行わない。-->
+<?php
+if(!empty($_GET['keyword'])){
+   foreach ($rec as $value){?>
+    <div style="display: inline-block; margin:0 30px 30px 45px">
+      <a href="./Asking.php?client_id=<?=$client_id?>&lesson_id=<?=$value['lesson_id']?>" style="text-decoration: none; color: black; margin: 13px 0">
+        <div class="cardcontent" style="margin-top: auto">
+          <div style="padding: 5px 0 0 30px; text-align: left">
+            <strong style="color: darkblue">Tutor</strong>
+            <span class="flex">
+              <p style="padding-left: 10px; margin-right: 70px;font-family: 'Apple LiSung'; font-size: 25px"><?php echo $value['user_name'] ?></p>
+              <img src="../../images/profile/<?php echo $value['image_name']; ?>" style="width: 70px; height: 70px; border-radius: 50px;">
+            </span>
+          </div>
+          <strong style="color: darkblue; float: left; padding:0 0 10px 20px"><?php echo $value['course']; ?></strong><br><br>
+          <div style="margin:0 20px;">
+            <strong style="overflow-wrap: break-word; float: left"><?php echo mb_strimwidth( strip_tags( $value['description'] ), 0, 20, '…', 'UTF-8' ); ?></strong>
+          </div><br><br>
+          <div style="margin:0 20px 20px 20px; margin-top: auto">
+            <strong style="float: left;">Rest Reservations</strong><br>
+<?php if($value['remaining - COUNT(tbl_form.lesson_id)'] < 11 )  {?>
+            <span>
+              <strong style="float: left">
+                Only remain <i style="color: red"><?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?></i> seats !!
+              </strong>
+            </span>
+<?php } else{?>
+            <span>
+              <strong style="float: left">
+                Only remain <i style="color: blue"><?php echo($value['remaining - COUNT(tbl_form.lesson_id)']); ?></i> seats !!
+              </strong>
+            </span>
+<?php } ?>
           </div>
         </div>
-        </form>
+      </a>
+    </div>
+ <?php }} ?>
   </body>
 </html>
 
-<?php
-  $host = 'localhost';
-  $username = 'root';
-  $pass = 'root';
-  $dbname = 'ably';
-
-  if(isset($_POST['submit']))
-    {
-      $lesson_id = $_POST['lesson_id'];
-      $name = $_POST['name'];
-      $telephone = $_POST['telephone'];
-      $tel_boolean="/^(([0-9]{3}-[0-9]{4})|([0-9]{7}))$/";
-      if(preg_match($tel_boolean,$telephone))
-        {
-          print  'write down your phone number correctly !';
-        }
-      else
-        {
-          //
-        }
-
-        if(isset($_POST['email'])) {
-          $email = $_POST['email'];
-          $mysqli = mysqli_connect($host,$username,$pass,$dbname);
-          $sql = ("SELECT * FROM tbl_form where email='$email'");
-          $rec = mysqli_query($mysqli,$sql);
-          $rec2 = mysqli_num_rows($rec);
-          if ($rec2 >= 1) {
-            echo  "<div class style='color: #ff6b81; text-align: center' >Email exist　Push the DashBoard button !</div>";
-            die();
-          }
-    }
-    $contents_mail='/¥A\w\-\.]+¥@[\w\-\.]+.([a-z]+)\z/';
-    if(preg_match($contents_mail,$email))
-      {
-        print 'write down your email correctly ! ';
-      }
-    else
-      {
-            //
-      }
-    $sex = $_POST['sex'];
-
-    $sql3 = "INSERT INTO tbl_form SET 
-             name = '$name'
-             ,telephone = '$telephone'
-             ,email = '$email'
-             ,sex = '$sex'
-             ,lesson_id= '$lesson_id'";
-
-    $rec3=mysqli_query($mysqli,$sql3);
-    $url = "http://localhost:8001/account/Index.php";
-    if($rec3 == true)
-      {
-        $_SESSION['form'] = "<div class='success text-center'>Form order Successfully.</div>";
-        $form_id = mysqli_insert_id($mysqli);
-        $url = "http://localhost:8001/form/ManageForm.php?lesson_id=$lesson_id&form_id=$form_id";
-        header('Location:' .$url,true , 302);
-      }
-    else
-      {
-        $_SESSION['form'] = "<div class='success text-center'>Form order Failed.</div>";
-        header('Location:' .$url,true , 401);
-      }
-    }
-?>
-
-<?php include('../account/partials/ClientFooter.tpl'); ?>
+<?php include('../../account/partials/ClientFooter.tpl'); ?>

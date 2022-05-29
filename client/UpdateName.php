@@ -1,27 +1,26 @@
 <?php
-include('./partials/HeaderEd.blade.php');
+include('./partials/HeaderEd.tpl');
 
 if(isset($_SESSION['name_error']))
 {
   echo $_SESSION['name_error'];
   unset($_SESSION['name_error']);
 }
+$client_id = $_GET['client_id'];
 
-  if(isset($_GET['client_id']))
-  {
-    $client_id = $_GET['client_id'];
-    $sql2 = "SELECT name  FROM tbl_client WHERE client_id = $client_id";
-    $rec2 = mysqli_query($connect, $sql2);
-    if ($rec2 == true) {
-      $count = mysqli_num_rows($rec2);
-      if ($count == 1) {
-        $row       = mysqli_fetch_assoc($rec2);
-        $name      = $row['name'];
-      } else {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-      }
+if(isset($_GET['client_id'])) {
+  $sql2 = "SELECT name  FROM tbl_client WHERE client_id = $client_id";
+  $rec2 = mysqli_query($connect, $sql2);
+  if ($rec2 == true) {
+    $count = mysqli_num_rows($rec2);
+    if ($count == 1) {
+      $row = mysqli_fetch_assoc($rec2);
+      $name = $row['name'];
+    } else {
+      header('Location: '. $_SERVER['HTTP_REFERER']);
     }
   }
+}
 ?>
 
 <html>
@@ -64,8 +63,8 @@ if(isset($_SESSION['name_error']))
     $name_boolean = "/^[a-zA-Z]*$/";
     if(preg_match($name,$name_boolean))
     {
-      $_SESSION['name_error'] = "<div class='success text-center'>write down your name correctly(Only can use Alphabet.)!</div>";
-      header('location:http://localhost:8001/client/UpdateName.php?client_id=$client_id',);
+      $_SESSION['name_error'] = "<div class='success text-center'>Write down your name correctly(Only can use Alphabet.)!</div>";
+      header("location:http://localhost:8001/client/UpdateName.php?client_id=$client_id", 302);
       die();
     }
 
@@ -75,6 +74,7 @@ if(isset($_SESSION['name_error']))
     {
       $_SESSION['name_s'] = "<div class='success'>Name was Updated.</div>";
       header("location:http://localhost:8001/client/ClientPage.php?client_id=$client_id");
+      die();
     }
     else
     {
