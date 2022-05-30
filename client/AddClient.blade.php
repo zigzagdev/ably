@@ -27,7 +27,7 @@ if(isset($_POST['submit']))
       if ($upload == false)
       {
         $_SESSION['cli_add'] = "<div class='error'>Failed to Upload Image.</div>";
-        header('location:/client/AddClient.php');
+        header('location:/client/AddClient.blade.php');
         die();
       }
     }
@@ -39,12 +39,12 @@ if(isset($_POST['submit']))
 //  correct words validation
   if( 4 > mb_strlen($name, 'UTF-8') || 50 < mb_strlen($name, 'UTF-8') ) {
     $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
-    header('location:/client/AddClient.php');
+    header('location:/client/AddClient.blade.php');
     die();
   }
   if( 4 > mb_strlen($email, 'UTF-8') || 100 < mb_strlen($email, 'UTF-8') ) {
     $_SESSION['cli_fal'] = "<div class='success'>Please fill your content in 4~50 words. !</div>";
-    header('location:/client/AddClient.php');
+    header('location:/client/AddClient.blade.php');
     die();
   }
 
@@ -52,7 +52,7 @@ if(isset($_POST['submit']))
   if ($password !== $password2)
   {
     $_SESSION['cli_fal'] = "<div class='success'>Passwords should the same one.!</div>";
-    header('location:/client/AddClient.php');
+    header('location:/client/AddClient.blade.php');
     die();
   }
 
@@ -83,7 +83,7 @@ if(isset($_POST['submit']))
   $rec2 = mysqli_num_rows($rec);
   if ($rec2 > 0) {
     $_SESSION['add_fail_client'] =  "<div class='success'>Password already exists</div>";
-    header('location:/client/AddClient.php');
+    header('location:/client/AddClient.blade.php');
     die();
   }
 
@@ -115,7 +115,7 @@ if(isset($_POST['submit']))
   $rec_2 = mysqli_num_rows($rec_1);
   if ($rec_2 > 0) {
     $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
-    header('Location:http://localhost:8001/client/AddClient.php');
+    header('Location:http://localhost:8001/client/AddClient.blade.php');
     die();
   }
 
@@ -125,26 +125,26 @@ if(isset($_POST['submit']))
   $rec2tel = mysqli_num_rows($rectel);
   if ($rec2tel >= 1) {
     $_SESSION['cli_fal'] = "<div class='success'>PhoneNumber was already registered.!</div>";
-    header("Location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.blade.php");
     die();
   }
 
 //  preg_match
   if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
     $_SESSION['cli_fal'] = "<div class='success'>Only English is valid.!</div>";
-    header("Location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.blade.php");
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
-    header("Location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.blade.php");
     die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
-    header("Location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.blade.php");
     die();
   }
 
@@ -152,7 +152,7 @@ if(isset($_POST['submit']))
   if(preg_match($tel_boolean, $telephone))
   {
     $_SESSION['cli_fal'] = "<div class='success'>Write down your phone number correctly !</div>";
-    header("Location: http://localhost:8001/client/AddClient.php");
+    header("Location: http://localhost:8001/client/AddClient.blade.php");
     die();
   }
 
@@ -178,7 +178,7 @@ if(isset($_POST['submit']))
   } else
   {
     $_SESSION['cli_fal'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
-    header("location: http:/localhost:8001/client/AddClient.php");
+    header("location: http:/localhost:8001/client/AddClient.blade.php");
     die();
   }
 }
