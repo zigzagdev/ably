@@ -2,96 +2,11 @@
 include('../account/partials/ClientHeader.blade.php');
 include "../config/Constants.blade.php";
 
-  if(isset($_SESSION['cli_fal']))
-  {
-    echo  $_SESSION['cli_fal'];
-    unset($_SESSION['cli_fal']);
-  }
-?>
-
-<html>
-  <head>
-    <title>Start learning</title>
-    <link rel="stylesheet" href="../css/Account.css">
-    <link rel="stylesheet" href="../css/Forms.css">
-  </head>
-  <body>
-    <div style="margin: 0 200px">
-      <div class="mainaccount">
-        <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Start learning at here !!</h1>
-        <form action="" method="post" enctype="multipart/form-data" style="">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              UserName
-            </b>
-            <input id="name" type="text" name="name" placeholder="Steve Smith" size="40" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Email
-            </b>
-            <input type="text" name="email" placeholder="abc@com" size="40" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Password
-            </b>
-            <input type="password" name="password"  size="40" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              PasswordAgain
-            </b>
-            <input type="password" name="password2"  size="40" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Content
-            </b>
-            <textarea type="text" name="content" cols="60" rows="4" required></textarea>
-          </li>
-          <hr color="#a9a9a9" width="94%" size="1" style="margin: 8px 5px 0 8px ;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              Sex
-            </b>
-            <select name="sex" required>
-              <option value="">Please Select(Only select here)</option>
-              <option value="man">man</option>
-              <option value="woman">woman</option>
-              <option value="others">other</option>
-            </select>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
-              PhoneNumber
-            </b>
-            <input type="tel" name="telephone"  size="20" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 17px 30px">
-            <b style="font-size: 20px;width:100px ;margin-right:150px; float: left;">
-              Image
-            </b>
-            <input type="file" name="image" required>
-          </li>
-          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
-          <li style="list-style: none;  margin:17px 0 5px 250px">
-            <input type="submit" name="submit" value="Add an account" class="btn-secondary">
-          </li>
-        </form>
-      </div>
-    </div>
-  </body>
-</html>
-
-<?php
-
+if(isset($_SESSION['cli_fal']))
+{
+  echo  $_SESSION['cli_fal'];
+  unset($_SESSION['cli_fal']);
+}
 if(isset($_POST['submit']))
 {
   $name       = $_POST['name'];
@@ -201,6 +116,7 @@ if(isset($_POST['submit']))
   if ($rec_2 > 0) {
     $_SESSION['add_fail_c'] =  "<div class='success'>User already exists</div>";
     header('Location:http://localhost:8001/client/AddClient.php');
+    die();
   }
 
   $sqltel = " SELECT telephone FROM tbl_client WHERE telephone='$telephone'";
@@ -210,17 +126,20 @@ if(isset($_POST['submit']))
   if ($rec2tel >= 1) {
     $_SESSION['cli_fal'] = "<div class='success'>PhoneNumber was already registered.!</div>";
     header("Location: http://localhost:8001/client/AddClient.php");
+    die();
   }
 
 //  preg_match
   if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
     $_SESSION['cli_fal'] = "<div class='success'>Only English is valid.!</div>";
     header("Location: http://localhost:8001/client/AddClient.php");
+    die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password)) {
     $_SESSION['cli_fal'] = "<div class='success'>Password format is not correctly !</div>";
     header("Location: http://localhost:8001/client/AddClient.php");
+    die();
   }
 
   if (!preg_match("/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,50}+\z/i", $password2)) {
@@ -237,24 +156,25 @@ if(isset($_POST['submit']))
     die();
   }
 
-  $sql = "INSERT INTO 
-            tbl_client
+  $sql = "INSERT 
+            INTO 
+              tbl_client
           SET 
-            name        = '$name'
-            ,password   = '$password'
-            ,image      = '$image'
-            ,email      = '$email'
-            ,sex        = '$sex'
-            ,telephone  = '$telephone'
+              name        = '$name'
+              ,password   = '$password'
+              ,image      = '$image'
+              ,email      = '$email'
+              ,sex        = '$sex'
+              ,telephone  = '$telephone'
           ";
 
-  $rec = mysqli_query($connect,$sql) or die(mysqli_error($connect));
+  $rec = mysqli_query($connect, $sql);
   if($rec == TRUE)
   {
     $_SESSION['cli_add'] = "<div class='success'>Your account Added Successfully.</div>";
     $client_id = mysqli_insert_id($connect);
     header("location: http://localhost:8001/client/ClientPage.php?client_id=$client_id");
-    die();
+    exit();
   } else
   {
     $_SESSION['cli_fal'] = "<div style='text-align: center; color: #ff6666; font-size: 20px''>Failed to add your account.</div>";
@@ -264,3 +184,84 @@ if(isset($_POST['submit']))
 }
 include "./partials/FooterEd.tpl";
 ?>
+
+<html>
+  <head>
+    <title>Start learning</title>
+    <link rel="stylesheet" href="../css/Account.css">
+    <link rel="stylesheet" href="../css/Forms.css">
+  </head>
+  <body>
+    <div style="margin: 0 200px">
+      <div class="mainaccount">
+        <h1 style="text-align: center; margin: 55px 0 50px 0; padding-top: 20px">Start learning at here !!</h1>
+        <form action="" method="post" enctype="multipart/form-data" style="">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              UserName
+            </b>
+            <input id="name" type="text" name="name" placeholder="Steve Smith" size="40" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              Email
+            </b>
+            <input type="text" name="email" placeholder="abc@com" size="40" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              Password
+            </b>
+            <input type="password" name="password"  size="40" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              PasswordAgain
+            </b>
+            <input type="password" name="password2"  size="40" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              Content
+            </b>
+            <textarea type="text" name="content" cols="60" rows="4" required></textarea>
+          </li>
+          <hr color="#a9a9a9" width="94%" size="1" style="margin: 8px 5px 0 8px ;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              Sex
+            </b>
+            <select name="sex" required>
+              <option value="">Please Select(Only select here)</option>
+              <option value="man">man</option>
+              <option value="woman">woman</option>
+              <option value="others">other</option>
+            </select>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px;margin-right:150px; float: left;">
+              PhoneNumber
+            </b>
+            <input type="tel" name="telephone"  size="20" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 17px 30px">
+            <b style="font-size: 20px;width:100px ;margin-right:150px; float: left;">
+              Image
+            </b>
+            <input type="file" name="image" required>
+          </li>
+          <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
+          <li style="list-style: none;  margin:17px 0 5px 250px">
+            <input type="submit" name="submit" value="Add an account" class="btn-secondary">
+          </li>
+         </form>
+      </div>
+    </div>
+  </body>
+</html>

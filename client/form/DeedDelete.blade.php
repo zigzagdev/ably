@@ -40,7 +40,7 @@ if($deleterec == TRUE)
   exit();
 } else {
   $_SESSION['d_f_form'] = "<div class='success'>Failed to delete your form</div>";
-  header("Location:http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id", 401);
+  header("Location:http://localhost:8001/client/form/DeleteForm.blade.php?client_id=$client_id&lesson_id=$lesson_id", 401);
   die();
 }
 

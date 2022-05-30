@@ -2,93 +2,97 @@
 include "./partials/HeaderEd.tpl";
 include "../config/Constants.blade.php";
 
-  if(isset($_SESSION['cli_add']))
-  {
-    echo  $_SESSION['cli_add'];
-    unset($_SESSION['cli_add']);
-  }
-  if(isset($_SESSION['name_s']))
-  {
-    echo  $_SESSION['name_s'];
-    unset($_SESSION['name_s']);
-  }
-  if(isset($_SESSION['form_s']))
-  {
-    echo  $_SESSION['form_s'];
-    unset($_SESSION['form_s']);
-  }
+if(isset($_SESSION['cli_add']))
+{
+  echo  $_SESSION['cli_add'];
+  unset($_SESSION['cli_add']);
+}
+if(isset($_SESSION['name_s']))
+{
+  echo  $_SESSION['name_s'];
+  unset($_SESSION['name_s']);
+}
+if(isset($_SESSION['form_s']))
+{
+  echo  $_SESSION['form_s'];
+  unset($_SESSION['form_s']);
+}
 
-  if(isset($_SESSION['s_login']))
-  {
-    echo  $_SESSION['s_login'];
-    unset($_SESSION['s_login']);
-  }
-  if(isset($_SESSION['order_tel']))
-  {
-    echo  $_SESSION['order_tel'];
-    unset($_SESSION['order_tel']);
-  }
+if(isset($_SESSION['s_login']))
+{
+  echo  $_SESSION['s_login'];
+  unset($_SESSION['s_login']);
+}
+if(isset($_SESSION['order_tel']))
+{
+  echo  $_SESSION['order_tel'];
+  unset($_SESSION['order_tel']);
+}
 
-  if(isset($_SESSION['change_pwd_c']))
-  {
-    echo  $_SESSION['change_pwd_c'];
-    unset($_SESSION['change_pwd_c']);
-  }
+if(isset($_SESSION['change_pwd_c']))
+{
+  echo  $_SESSION['change_pwd_c'];
+  unset($_SESSION['change_pwd_c']);
+}
 
-  if(isset($_SESSION['order']))
-  {
-    echo  $_SESSION['order'];
-    unset($_SESSION['order']);
-  }
+if(isset($_SESSION['order']))
+{
+  echo  $_SESSION['order'];
+  unset($_SESSION['order']);
+}
 
-  if(isset($_SESSION['name_error']))
-  {
-    echo $_SESSION['name_error'];
-    unset($_SESSION['name_error']);
-  }
-  if(isset($_SESSION['asking_s']))
-  {
-    echo $_SESSION['asking_s'];
-    unset($_SESSION['asking_s']);
-  }
-  if(isset($_SESSION['asking_up_suc']))
-  {
-    echo $_SESSION['asking_up_suc'];
-    unset($_SESSION['asking_up_suc']);
-  }
+if(isset($_SESSION['name_error']))
+{
+  echo $_SESSION['name_error'];
+  unset($_SESSION['name_error']);
+}
+if(isset($_SESSION['asking_s']))
+{
+  echo $_SESSION['asking_s'];
+  unset($_SESSION['asking_s']);
+}
+if(isset($_SESSION['asking_up_suc']))
+{
+  echo $_SESSION['asking_up_suc'];
+  unset($_SESSION['asking_up_suc']);
+}
 
-  if(isset($_SESSION['asking_up_f']))
-  {
-    echo  $_SESSION['asking_up_f'];
-    unset($_SESSION['asking_up_f']);
-  }
+if(isset($_SESSION['asking_up_f']))
+{
+  echo  $_SESSION['asking_up_f'];
+  unset($_SESSION['asking_up_f']);
+}
+if(isset($_SESSION['d_s_form']))
+{
+  echo  $_SESSION['d_s_form'];
+  unset($_SESSION['d_s_form']);
+}
 
 $client_id = $_GET['client_id'];
 
-  $sql = "SELECT * FROM tbl_client where client_id=$client_id";
-  $rec = mysqli_query($connect, $sql);
+$sql = "SELECT * FROM tbl_client WHERE client_id=$client_id";
+$rec = mysqli_query($connect, $sql);
 
-  if($rec==TRUE)
+if($rec == TRUE)
+{
+  $count = mysqli_num_rows($rec);
+  if($count>0)
   {
-    $count = mysqli_num_rows($rec);
-    if($count>0)
+    while ($rows = mysqli_fetch_assoc($rec))
     {
-      while ($rows = mysqli_fetch_assoc($rec))
+      $name        = $rows['name'];
+      $image       = $rows['image'];
+      $email       = $rows['email'];
+      $phone       = $rows['telephone'];
+      if ($image == "")
       {
-        $name        = $rows['name'];
-        $image       = $rows['image'];
-        $email       = $rows['email'];
-        $phone       = $rows['telephone'];
-
-        if ($image == "")
-        {
-          echo "<div class='success'>Image not Added.</div>";
-        }
+        echo "<div class='success'>Image not Added.</div>";
       }
     }
   }
+}
 //  form一覧
-  $form_sql = "SELECT 
+$form_sql = "  SELECT 
                    asking, deadline, tbl_form.created_at, course, user_name, image_name, form_id 
                  FROM 
                    tbl_form 
@@ -105,24 +109,24 @@ $client_id = $_GET['client_id'];
                  AND 
                    tbl_form.client_id = '$client_id'
           ";
-  $form_rec = mysqli_query($connect, $form_sql);
+$form_rec = mysqli_query($connect, $form_sql);
 
-  if($form_rec==TRUE)
+if($form_rec == TRUE)
+{
+  $form_count = mysqli_num_rows($form_rec);
+  if($form_count>0)
   {
-    $form_count = mysqli_num_rows($form_rec);
-    if($form_count>0)
+    while ($form_rows = mysqli_fetch_assoc($form_rec))
     {
-      while ($form_rows = mysqli_fetch_assoc($form_rec))
-      {
-        $asking     = $form_rows['asking'];
-        $deadline   = $form_rows['deadline'];
-        $course     = $form_rows['course'];
-        $user_name  = $form_rows['user_name'];
-        $image_name = $form_rows['image_name'];
-        $form_id    = $form_rows['form_id'];
-      }
+      $asking     = $form_rows['asking'];
+      $deadline   = $form_rows['deadline'];
+      $course     = $form_rows['course'];
+      $user_name  = $form_rows['user_name'];
+      $image_name = $form_rows['image_name'];
+      $form_id    = $form_rows['form_id'];
     }
   }
+}
 ?>
 <html>
   <head>

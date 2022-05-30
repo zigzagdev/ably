@@ -1,37 +1,37 @@
 <?php
-include('./header/LessonHeader.blade.php');
+include('./header/EachHeader.tpl');
 
-  if(isset($_SESSION['lesson-upd-fail']))
-  {
-    echo $_SESSION['lesson-upd-fail'];
-    unset($_SESSION['lesson-upd-fail']);
-  }
+if(isset($_SESSION['lesson-upd-fail']))
+{
+  echo $_SESSION['lesson-upd-fail'];
+  unset($_SESSION['lesson-upd-fail']);
+}
 
-  if(isset($_SESSION['lesson-dlt-error']))
-  {
-    echo $_SESSION['lesson-dlt-error'];
-    unset($_SESSION['lesson-dlt-error']);
-  }
+if(isset($_SESSION['lesson-dlt-error']))
+{
+  echo $_SESSION['lesson-dlt-error'];
+  unset($_SESSION['lesson-dlt-error']);
+}
 
-  if(isset($_GET['lesson_id']))
+if(isset($_GET['lesson_id']))
+{
+  $lesson_id = $_GET['lesson_id'];
+  $sql = "SELECT * FROM tbl_lesson WHERE lesson_id= $lesson_id";
+  $rec = mysqli_query($connect, $sql);
+  if ($rec == true)
   {
-    $lesson_id = $_GET['lesson_id'];
-    $sql = "SELECT * FROM tbl_lesson  where lesson_id= $lesson_id";
-    $rec = mysqli_query($connect, $sql);
-    if ($rec == true)
+    $count = mysqli_num_rows($rec);
+    if ($count > 0)
     {
-      $count = mysqli_num_rows($rec);
-      if ($count == 1)
-      {
-        $row = mysqli_fetch_assoc($rec);
-        $course = $row['course'];
-        $content = $row['content'];
-        $deadline = $row['deadline'];
-      } else {
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-      }
+      $row = mysqli_fetch_assoc($rec);
+      $course   = $row['course'];
+      $content  = $row['description'];
+      $deadline = $row['deadline'];
+    } else {
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
   }
+}
 ?>
 <html>
   <head>
@@ -81,7 +81,7 @@ include('./header/LessonHeader.blade.php');
           <b style="font-size: 20px;width:100px;margin-right:157px; vertical-align: 110%">
             LessonDetail
           </b>
-          <textarea name="content" class="input-responsive" cols="60" rows="4"><?php echo $content ?></textarea>
+          <textarea name="description" class="input-responsive" cols="60" rows="4"><?php echo $content ?></textarea>
         </li>
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -100,21 +100,20 @@ include('./header/LessonHeader.blade.php');
   </body>
 </html>
 <?php
-  if(isset($_POST['submit']))
+if(isset($_POST['submit']))
+{
+  $course     = $_POST['course'];
+  $content    = $_POST['description'];
+  $deadline   = $_POST['deadline'];
+  $updated_at = date('Y-m-d H:i');
+  if (empty($course) || empty($content) || empty($deadline) )
   {
-    $course     = $_POST['course'];
-    $content    = $_POST['content'];
-    $deadline   = $_POST['deadline'];
-    $updated_at = date('Y-m-d H:i');
+    $_SESSION['lesson-upd-fail'] = "<div class='fail'>Failed to Upload Lesson. </div>";
+    header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);
+    die();
+  }
 
-    if (empty($course) || empty($content) || empty($deadline) )
-    {
-      $_SESSION['lesson-upd-fail'] = "<div class='fail'>Failed to Upload Lesson. </div>";
-      header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);
-      die();
-    }
-
-    $sql2 = " UPDATE
+  $sql2 =   " UPDATE
                   tbl_lesson
               SET
                   course      = '$course'
@@ -124,21 +123,19 @@ include('./header/LessonHeader.blade.php');
               WHERE
                   lesson_id=$lesson_id
             ";
-    $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
+  $rec2 = mysqli_query($connect, $sql2) or die(mysqli_error($connect));
 
-    if($rec2 == true)
-    {
-      $_SESSION['lesson-upd'] = "<div class='success' style='font-size: 30px'> Your Lesson was Updated Successfully.</div>";
-      header("Location:http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id", 302);
-      die();
-    }
-    else
-    {
-      $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Lesson.</i></div>";
-      header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);
-      die();
-    }
+  if($rec2 == true)
+  {
+    $_SESSION['lesson-upd'] = "<div class='success' style='font-size: 30px'> Your Lesson was Updated Successfully.</div>";
+    header("Location:http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id", 302);
+    exit();
+  } else {
+    $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Lesson.</i></div>";
+    header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);
+    die();
   }
+}
 include('../account/partials/Footer.tpl'); ?>
 
 

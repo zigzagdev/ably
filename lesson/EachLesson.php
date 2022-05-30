@@ -1,5 +1,5 @@
 <?php
-include "./header/LessonHeader.blade.php";
+include "./header/EachHeader.tpl";
 
 if(isset($_SESSION['fail_lesson']))
 {
@@ -8,7 +8,7 @@ if(isset($_SESSION['fail_lesson']))
 }
 $lesson_id = $_GET['lesson_id'];
 
-$sql = "SELECT * FROM tbl_lesson WHERE lesson_id= '$lesson_id'";
+$sql = "SELECT * FROM tbl_lesson WHERE lesson_id = $lesson_id";
 
 $rec = mysqli_query($connect, $sql);
 

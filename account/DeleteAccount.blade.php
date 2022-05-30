@@ -1,30 +1,30 @@
 <?php
 include ('./partials/LoginAccount.blade.php');
 
-  if(isset($_SESSION['admin_failed']))
-  {
-    echo $_SESSION['admin_failed'];
-    unset($_SESSION['admin_failed']);
-  }
+if(isset($_SESSION['admin_failed']))
+{
+  echo $_SESSION['admin_failed'];
+  unset($_SESSION['admin_failed']);
+}
 
-  $account_id = $_GET['account_id'];
-  $sql= "SELECT * FROM tbl_account WHERE account_id = $account_id";
-  $rec = mysqli_query($connect, $sql);
-  if ($rec == TRUE)
+$account_id = $_GET['account_id'];
+$sql= "SELECT * FROM tbl_account WHERE account_id = $account_id";
+$rec = mysqli_query($connect, $sql);
+if ($rec == TRUE)
+{
+  $count = mysqli_num_rows($rec);
+  if ($count > 0)
   {
-    $count = mysqli_num_rows($rec);
-    $on = 1;
-    if ($count > 0)
+    while ($rows = mysqli_fetch_array($rec))
     {
-      while ($rows = mysqli_fetch_array($rec))
-      {
-        $name       = $rows['username'];
-        $content    = $rows['content'];
-        $image      = $rows['image_name'];
-        $email      = $rows['email'];
-      }
+      $name       = $rows['user_name'];
+      $content    = $rows['content'];
+      $image      = $rows['image_name'];
+      $email      = $rows['email'];
     }
   }
+}
+$url = "http://localhost:8001/account/DeleteAccountDeed.blade.php?account_id=$account_id" ;
 ?>
 <html>
   <head>
@@ -64,36 +64,15 @@ include ('./partials/LoginAccount.blade.php');
         <hr color="#a9a9a9" width="100%" size="1" style="text-align: center;">
       </div>
       <div style="margin-bottom:40px ; text-align: center">
-        <form action="" method="post">
-          <input type="submit" class="btn-secondary" style="margin-right: 10px" value="Are you sure to delete ?">
-<?php
-          $hostname = $_SERVER['HTTP_HOST'];
-          if (!empty($_SERVER['HTTP_REFERER']) && (strpos($_SERVER['HTTP_REFERER'],$hostname) !== false))
-          {
-            echo '<a href="' . $_SERVER['HTTP_REFERER'] . '" class="btn-primary" style="margin-left: 10px">Return</a>';
-          }
-?>
-        </form>
+        <div style=" text-align: center">
+          <button type="button" onclick=history.back() class="btn-primary" style="height: 53px; width: 103px;margin:0  0 30px 20px">
+            Return
+          </button>
+          <button type="button" onclick="location.href='<?php echo $url;?>'" class="btn-primary" style="height: 53px; width: 103px;">
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   </body>
 </html>
-
-<?php
-  $account_id= $_GET['account_id'];
-
-  $sql2= "DELETE FROM tbl_account WHERE account_id=$account_id";
-  $rec2= mysqli_query($connect, $sql2);
-
-if($rec2 == TRUE) {
-    $_SESSION['delete_ac'] = "<div class='success'>Delete Account Successfully.</div>";
-    $url = "http://localhost:8001/Index.blade.php";
-    header('Location:' .$url,true , 302);
-}
-else
-{
-    $_SESSION['admin_failed'] = "<div class='error'>Failed to Add Admin.</div>";
-    $url = "http://localhost:8001/account/DeleteAccount.blade.php?id=$account_id";
-    header('Location:' .$url,true , 401);
-}
-?>

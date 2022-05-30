@@ -1,3 +1,6 @@
+<!--あくまでtbl_formに関しては聞く内容を書き込むだけであって、askingのみだけで入力は大丈夫である。-->
+
+
 <?php
 include('../partials/FormHeader.tpl');
 
@@ -32,7 +35,7 @@ if(!empty($lesson_id)) {
     }
   }
 }
-$url = "http://localhost:8001/client/form/DeleteForm.php?client_id=$client_id&lesson_id=$lesson_id"
+$url = "http://localhost:8001/client/form/DeleteForm.blade.php?client_id=$client_id&lesson_id=$lesson_id"
 ?>
 
 <html>
