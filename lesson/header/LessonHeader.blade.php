@@ -36,9 +36,9 @@ include ('../config/Constants.blade.php');
       </div>
       <div class="account text-center">
         <div class="wrapper">
-          <a href = "../account/ManageAccount.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">Profile</a>
-          <a href = "../lesson/ManageLesson.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">ManageLesson</a>
-          <a href = "../lesson/AddLesson.blade.php?account_id=<?= $account_id ?>" style="text-decoration: none; color: black" class="wrapper-inner">AddLesson</a>
+          <a href = "../account/ManageAccount.php?account_id=<?= $_GET['account_id']; ?>" style="text-decoration: none; color: black" class="wrapper-inner">Profile</a>
+          <a href = "../lesson/ManageLesson.php?account_id=<?= $_GET['account_id']; ?>" style="text-decoration: none; color: black" class="wrapper-inner">ManageLesson</a>
+          <a href = "../lesson/AddLesson.blade.php?account_id=<?= $_GET['account_id'];?>" style="text-decoration: none; color: black" class="wrapper-inner">AddLesson</a>
         </div>
       </div>
     </div>

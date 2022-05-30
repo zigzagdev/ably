@@ -13,7 +13,7 @@
   }
 
   $account_id = $_GET['account_id'];
-
+var_dump($account_id);
   if(isset($_POST['submit']))
   {
     $course      = $_POST['course'];
@@ -41,13 +41,14 @@
       die();
     }
 
-  $sql2 = " INSERT INTO tbl_lesson
-            SET
-              course       = '$course'
-              ,description = '$description'
-              ,deadline    = '$deadline'
-              ,created_at  = '$created_at'
-              ,account_id  = '$account_id'
+  $sql2 = " INSERT INTO
+                tbl_lesson
+              SET
+                course       = '$course'
+                ,description = '$description'
+                ,deadline    = '$deadline'
+                ,created_at  = '$created_at'
+                ,account_id  = '$account_id'
           ";
   $rec2 = mysqli_query($connect,$sql2);
 
