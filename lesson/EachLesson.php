@@ -1,5 +1,5 @@
 <?php
-include "./header/LessonHeader.tpl";
+include "./header/EachHeader.tpl";
 
 if(isset($_SESSION['fail_lesson']))
 {

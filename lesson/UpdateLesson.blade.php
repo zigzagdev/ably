@@ -1,5 +1,5 @@
 <?php
-include('./header/LessonHeader.tpl');
+include('./header/EachHeader.tpl');
 
   if(isset($_SESSION['lesson-upd-fail']))
   {
@@ -16,7 +16,7 @@ include('./header/LessonHeader.tpl');
   if(isset($_GET['lesson_id']))
   {
     $lesson_id = $_GET['lesson_id'];
-    $sql = "SELECT * FROM tbl_lesson  where lesson_id= $lesson_id";
+    $sql = "SELECT * FROM tbl_lesson WHERE lesson_id= $lesson_id";
     $rec = mysqli_query($connect, $sql);
     if ($rec == true)
     {
@@ -24,8 +24,8 @@ include('./header/LessonHeader.tpl');
       if ($count == 1)
       {
         $row = mysqli_fetch_assoc($rec);
-        $course = $row['course'];
-        $content = $row['content'];
+        $course   = $row['course'];
+        $content  = $row['description'];
         $deadline = $row['deadline'];
       } else {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
