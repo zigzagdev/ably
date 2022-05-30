@@ -1,57 +1,56 @@
 <?php
-include('./header/LessonHeader.tpl');
+include('./header/EachHeader.tpl');
 
-  if(isset($_SESSION['lesson-upd']))
-  {
-    echo $_SESSION['lesson-upd'];
-    unset($_SESSION['lesson-upd']);
-  }
-  if(isset($_SESSION['lesson_add']))
-  {
-    echo $_SESSION['lesson_add'];
-    unset($_SESSION['lesson_add']);
-  }
+if(isset($_SESSION['lesson-upd']))
+{
+  echo $_SESSION['lesson-upd'];
+  unset($_SESSION['lesson-upd']);
+}
+if(isset($_SESSION['lesson_add']))
+{
+  echo $_SESSION['lesson_add'];
+  unset($_SESSION['lesson_add']);
+}
+if(isset($_SESSION['change-lesson']))
+{
+  echo $_SESSION['change-lesson'];
+  unset($_SESSION['change-lesson']);
+}
+if(isset($_SESSION['delete_lesson']))
+{
+  echo $_SESSION['delete_lesson'];
+  unset($_SESSION['delete_lesson']);
+}
 
-  if(isset($_SESSION['change-lesson']))
-  {
-    echo $_SESSION['change-lesson'];
-    unset($_SESSION['change-lesson']);
-  }
-  if(isset($_SESSION['delete_lesson']))
-  {
-    echo $_SESSION['delete_lesson'];
-    unset($_SESSION['delete_lesson']);
-  }
-
-  $account_id = $_GET['account_id'];
-  $sql = "
+$account_id = $_GET['account_id'];
+$sql = "
            SELECT 
                * 
              FROM 
-               tbl_lesson 
+                 tbl_lesson 
            INNER JOIN 
-                   tbl_account 
-                 ON tbl_lesson.account_id = tbl_account.account_id 
+                  tbl_account 
+             ON tbl_lesson.account_id = tbl_account.account_id 
            WHERE 
                tbl_lesson.account_id=$account_id
           ";
-  $rec = mysqli_query($connect, $sql);
+$rec = mysqli_query($connect, $sql);
 
-  if($rec == TRUE)
+if($rec == TRUE)
+{
+  $count = mysqli_num_rows($rec);
+  if ($count >= 0)
   {
-    $count = mysqli_num_rows($rec);
-    if ($count >= 0)
+    while ($rows = mysqli_fetch_array($rec))
     {
-      while ($rows = mysqli_fetch_array($rec))
-      {
-        $course      = $rows['course'];
-        $description = $rows['description'];
-        $deadline    = $rows['deadline'];
-        $lesson_id   = $rows['lesson_id'];
-        $created_at  = $rows['created_at'];
-      }
+      $course      = $rows['course'];
+      $description = $rows['description'];
+      $deadline    = $rows['deadline'];
+      $lesson_id   = $rows['lesson_id'];
+      $created_at  = $rows['created_at'];
     }
   }
+}
 ?>
 
 <html>

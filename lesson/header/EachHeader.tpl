@@ -15,14 +15,14 @@ include ('../config/Constants.blade.php');
   {
     $count = mysqli_num_rows($rec);
     if ($count >= 0)
-{
-while ($rows = mysqli_fetch_array($rec))
-{
-$account_id = $rows['account_id'];
-$lesson_id  = $rows['lesson_id'];
-}
-}
-}
+    {
+      while ($rows = mysqli_fetch_array($rec))
+      {
+        $account_id = $rows['account_id'];
+        $lesson_id  = $rows['lesson_id'];
+      }
+    }
+  }
 ?>
 
 <html>
@@ -36,11 +36,11 @@ $lesson_id  = $rows['lesson_id'];
   </div>
   <div class="account text-center">
     <div class="wrapper">
-      <a href = "../account/ManageAccount.php?lesson_id=<?= $_GET['lesson_id']; ?>" style="text-decoration: none; color: black" class="wrapper-inner">
+      <a href = "../account/ManageAccount.php?account_id=<?= $account_id; ?>" style="text-decoration: none; color: black" class="wrapper-inner">
         Detail
       </a>
-      <a href = "../lesson/ManageLesson.php?lesson_id=<?= $_GET['lesson_id']; ?>" style="text-decoration: none; color: black" class="wrapper-inner">ManageLessonPage</a>
-      <a href = "../lesson/AddLesson.blade.php?lesson_id=<?= $_GET['lesson_id'];?>" style="text-decoration: none; color: black" class="wrapper-inner">AddLessonPage</a>
+      <a href = "../lesson/ManageLesson.php?account_id=<?= $account_id; ?>" style="text-decoration: none; color: black" class="wrapper-inner">ManageLessonPage</a>
+      <a href = "../lesson/AddLesson.blade.php?account_id=<?= $account_id;?>" style="text-decoration: none; color: black" class="wrapper-inner">AddLessonPage</a>
     </div>
   </div>
 </div>

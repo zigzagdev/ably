@@ -129,7 +129,7 @@ if(isset($_POST['submit']))
   {
     $_SESSION['lesson-upd'] = "<div class='success' style='font-size: 30px'> Your Lesson was Updated Successfully.</div>";
     header("Location:http://localhost:8001/lesson/ManageLesson.php?lesson_id=$lesson_id", 302);
-    die();
+    exit();
   } else {
     $_SESSION['lesson-upd-fail'] = "<div class='fail'><i style='color: #ff6666;font-size: 20px'>Failed to Update Lesson.</i></div>";
     header("Location:http://localhost:8001/lesson/UpdateLesson.blade.php?lesson_id=$lesson_id", 401);

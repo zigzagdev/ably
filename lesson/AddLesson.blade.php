@@ -1,45 +1,42 @@
-<?php include('./header/LessonHeader.tpl');
+<?php include('./header/EachHeader.tpl');
 
-  if(isset($_SESSION['fail_lesson']))
+if(isset($_SESSION['fail_lesson']))
+{
+  echo $_SESSION['fail_lesson'];
+  unset($_SESSION['fail_lesson']);
+}
+
+if(isset($_SESSION['validation']))
+{
+  echo $_SESSION['validation'];
+  unset($_SESSION['validation']);
+}
+
+if(isset($_POST['submit']))
+{
+  $course      = $_POST['course'];
+  $description = $_POST['description'];
+  $deadline    = $_POST['deadline'];
+  $created_at  = date('Y-m-d H:i');
+
+  if (empty($course) || empty($description) || empty($deadline))
   {
-    echo $_SESSION['fail_lesson'];
-    unset($_SESSION['fail_lesson']);
-  }
-
-  if(isset($_SESSION['validation']))
-  {
-    echo $_SESSION['validation'];
-    unset($_SESSION['validation']);
-  }
-
-  $account_id = $_GET['account_id'];
-var_dump($account_id);
-  if(isset($_POST['submit']))
-  {
-    $course      = $_POST['course'];
-    $description = $_POST['description'];
-    $deadline    = $_POST['deadline'];
-    $created_at  = date('Y-m-d H:i');
-
-    if (empty($course) || empty($description) || empty($deadline))
-    {
       $_SESSION['validation'] = "<div class='error'>Please fill your Registration.</div>";
-      $url = "http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id";
-      header('Location:' .$url,true , 401);
-      die();
-    }
-    if (mb_strlen($description, 'UTF-8')<= 10 || mb_strlen($description, 'UTF-8')>= 200)
-    {
-      $_SESSION['validation'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
       header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 401);
-      die();
-    }
-    if ($deadline <= $created_at)
-    {
-      $_SESSION['validation'] = "<div class='error'>Can't set Deadline before today .</div>";
-      header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 401);
-      die();
-    }
+      exit();
+  }
+  if (mb_strlen($description, 'UTF-8')<= 10 || mb_strlen($description, 'UTF-8')>= 200)
+  {
+    $_SESSION['validation'] = "<div class='error'>Please Fill the content within 10~200 characters.</div>";
+    header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 401);
+    die();
+  }
+  if ($deadline <= $created_at)
+  {
+    $_SESSION['validation'] = "<div class='error'>Can't set Deadline before today .</div>";
+    header("Location:http://localhost:8001/lesson/ManageLesson.php?account_id=$account_id", 401);
+    die();
+  }
 
   $sql2 = " INSERT INTO
                 tbl_lesson
@@ -66,7 +63,6 @@ var_dump($account_id);
     die();
   }
 }
-
 ?>
 
 <html>
@@ -77,7 +73,6 @@ var_dump($account_id);
   </head>
   <body>
     <form action="" method="post" style="margin: 0 170px">
-    <div>
       <fieldset class="mainaccount" style="margin: 0 100px">
         <legend style="text-align: center;"><b style="color: darkblue">LessonCreate Form</b></legend>
         <li style="list-style: none;  margin:17px 0 17px 30px">
@@ -125,10 +120,9 @@ var_dump($account_id);
           <input type="submit" name="submit" value="Submit" class="btn btn-third">
           <button type="button" onclick=history.back() class="btn-secondary">Return</button>
         </div>
-        </fieldset>
-      </div>
+      </fieldset>
     </form>
   </body>
 </html>
 
-<?php include('../account/partials/Footer.tpl'); ?>
+<?php  include('../account/partials/Footer.tpl'); ?>
