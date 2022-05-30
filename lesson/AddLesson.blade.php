@@ -1,4 +1,4 @@
-<?php include('./header/LessonHeader.blade.php');
+<?php include('./header/LessonHeader.tpl');
 
   if(isset($_SESSION['fail_lesson']))
   {

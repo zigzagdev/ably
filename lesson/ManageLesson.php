@@ -1,5 +1,5 @@
 <?php
-include('./header/LessonHeader.blade.php');
+include('./header/LessonHeader.tpl');
 
   if(isset($_SESSION['lesson-upd']))
   {
@@ -86,4 +86,4 @@ include('./header/LessonHeader.blade.php');
   </body>
 </html>
 
-<?php include('../account/partials/Footer.tpl') ?>
+<?php include('./header/LsFooter.tpl') ?>

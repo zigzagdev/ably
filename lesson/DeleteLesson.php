@@ -1,5 +1,5 @@
 <?php
-include ('./header/LessonHeader.blade.php');
+include('./header/LessonHeader.tpl');
 
   if(isset($_SESSION['delete_f_lesson']))
   {
