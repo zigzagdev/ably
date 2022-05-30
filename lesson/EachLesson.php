@@ -65,7 +65,7 @@ if($rec == TRUE) {
           <a class="btn-primary" style="margin: 0 7px 0 7px" href="UpdateLesson.blade.php?lesson_id=<?=$lesson_id=$_GET['lesson_id'];?>">
             Update your Lesson
           </a>
-          <a class="btn-delete" style="margin: 0 7px 0 7px;" href="DeleteLesson.php?lesson_id=<?= $lesson_id=$_GET['lesson_id'];?>">
+          <a class="btn-delete" style="margin: 0 7px 0 7px;" href="DeleteLesson.blade.php?lesson_id=<?= $lesson_id=$_GET['lesson_id'];?>">
             Delete your Lesson
           </a>
 <?php

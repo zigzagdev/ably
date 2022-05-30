@@ -35,7 +35,7 @@ include('./header/EachHeader.tpl');
   <body>
     <div style="margin: 0 130px">
       <div class="mainaccount">
-        <form method="post" action="DeleteLessonDeed.php?lesson_id=<?= $lesson_id ?>">
+        <form method="post" action="DeleteLessonDeed.blade.php?lesson_id=<?= $lesson_id ?>">
           <li style="list-style: none;  margin:27px 0 7px 70px; padding-top: 20px">
             <b style="font-size: 20px;width:70px;margin-right:10px; vertical-align: 70%">Delete your Lesson</b>
           </li>

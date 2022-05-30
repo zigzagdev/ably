@@ -74,7 +74,7 @@ if(isset($_SESSION['d_s_form']))
     <div style=" background: linear-gradient(40deg, salmon 20%, lightcoral 30%, lightsalmon 50%, palegoldenrod 100%);">
       <div class="flex" style=" padding: 150px 0 100px 250px">
         <div style="display: flex">
-          <a href = "./client/AddClient.php" style="text-decoration: none; color: black">
+          <a href = "client/AddClient.blade.php" style="text-decoration: none; color: black">
             <div style="width: 450px; height: 180px; border-radius: 10px; background-color: lightpink; margin: 0 20px; display: inline-block">
               <div class="flex">
                 <img src="./images/business.svg" width="90px" height="90px" style="padding:40px 0 0 30px">
