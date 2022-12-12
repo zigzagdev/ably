@@ -7,6 +7,7 @@ if (isset($_SESSION['add_fail_up_c'])) {
     unset($_SESSION['add_fail_up_c']);
 }
 
+
 if (isset($_GET['client_id'])) {
     $client_id = $_GET['client_id'];
     $sql = "SELECT password FROM tbl_client WHERE client_id=$client_id";
